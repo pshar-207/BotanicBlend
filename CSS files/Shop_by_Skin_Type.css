@@ -1,0 +1,44 @@
+/* Shop by Skin Type */
+.shop_by_skin_type,
+.shop_by_category {
+  background-color: rgb(255, 255, 255);
+  height: 80vh;
+}
+.shop_by_skin_type p,
+.shop_by_category p {
+  font-size: 3rem;
+  text-align: center;
+  font-weight: bolder;
+  color: rgb(0, 0, 0);
+  padding: 5rem;
+}
+.skin_type,
+.category_container {
+  display: grid;
+  grid-template-rows: 1;
+  grid-template-columns: repeat(3, 1fr);
+  margin-left: 10rem;
+  margin-right: 10rem;
+}
+.skin_type img,
+.category_container img {
+  width: 5rem;
+  height: 100%;
+}
+.dry,
+.oily,
+.sensitive,
+.gel {
+  text-align: center;
+  color: rgb(0, 0, 0);
+}
+.skin_type_category,
+.category {
+  display: flex;
+  justify-content: center;
+  height: 5rem;
+}
+.shop_by_skin_type a {
+  text-decoration: none;
+}
+/* Shop by Skin Type */
