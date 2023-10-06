@@ -20,9 +20,12 @@
   margin-left: 10rem;
   margin-right: 10rem;
 }
-.skin_type img,
-.category_container img {
+.skin_type img {
   width: 5rem;
+  height: 100%;
+}
+.category_container img {
+  width: 15rem;
   height: 100%;
 }
 .dry,

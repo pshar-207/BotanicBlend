@@ -13,7 +13,7 @@
 
 /* Instagram link */
 .instagram_link {
-  background-color: rgb(49, 49, 49);
+  background-color: rgb(52, 52, 52);
   height: 2rem;
   display: flex;
   justify-content: center;
@@ -21,7 +21,7 @@
 }
 .instagram_link a {
   text-decoration: none;
-  color: rgb(225, 225, 225);
+  color: rgb(255, 255, 255);
 }
 /* Instagram link */
 
@@ -31,7 +31,7 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  background-color: white;
+  /* background-color: transparent; */
 }
 
 /* Left Side Navbar */
