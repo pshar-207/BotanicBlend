@@ -1,0 +1,30 @@
+/* hero section */
+.hero_section_image {
+  display: flex;
+  justify-content: center;
+}
+.hero_section_image img {
+  border-bottom: 1rem solid white;
+  height: calc(100vh - 4rem);
+}
+.quiz_section {
+  position: absolute;
+  top: 30vh;
+  left: 10vw;
+  font-size: 1.5rem;
+}
+.quiz_section_a_cotainer {
+  padding: 0.5rem;
+  width: 13rem;
+  background-color: rgb(39, 39, 39);
+}
+.quiz_section_h1 {
+  font-size: 3rem;
+  font-weight: bolder;
+  width: 35rem;
+}
+.quiz_section_a {
+  text-decoration: none;
+  color: white;
+}
+/* hero section */
