@@ -1,0 +1,144 @@
+/* Basic css */
+* {
+  margin: 0;
+  padding: 0;
+}
+/* Basic css */
+
+/* For header */
+.header {
+  width: 100%; /* Add this line to span the entire width */
+}
+/* For header */
+
+/* Instagram link */
+.instagram_link {
+  background-color: rgb(49, 49, 49);
+  height: 2rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.instagram_link a {
+  text-decoration: none;
+  color: rgb(225, 225, 225);
+}
+/* Instagram link */
+
+/* Navbar */
+.navbar-container {
+  height: 2.5rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: white;
+}
+
+/* Left Side Navbar */
+.left_nav {
+  display: flex;
+  width: 20%;
+  margin: 1rem;
+  align-items: center;
+}
+.shop_left_navbar,
+.category_left_navbar,
+.ingredient_left_navbar {
+  margin-right: 1rem;
+  font-size: 1.3rem;
+}
+/* shop */
+.shop_dropdownmenu_container {
+  display: none;
+}
+.shop_dropdownmenu {
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+}
+.shop_left_navbar:hover .shop_dropdownmenu_container {
+  display: block;
+}
+.shop_left_navbar:hover {
+  font-size: 1.5rem;
+}
+.shop_dropdownmenu a {
+  list-style: none;
+  text-decoration: none;
+  color: rgb(41, 41, 41);
+  font-size: 1rem;
+}
+/* shop */
+
+/* category */
+.category_dropdownmenu_container {
+  display: none;
+}
+.category_dropdownmenu {
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+}
+.category_dropdownmenu a {
+  list-style: none;
+  text-decoration: none;
+  color: rgb(41, 41, 41);
+  font-size: 1rem;
+}
+.category_left_navbar:hover .category_dropdownmenu_container {
+  display: block;
+}
+.category_left_navbar:hover {
+  font-size: 1.5rem;
+}
+/* category */
+
+/* ingredient */
+.ingredient_left_navbar a {
+  text-decoration: none;
+  color: black;
+}
+/* ingredient */
+/* Left Side Navbar */
+
+/* Center navbar logo */
+.nav_logo {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 2rem;
+  padding-right: 3rem;
+}
+.nav_logo img {
+  position: relative;
+  height: 3rem;
+  width: 3rem;
+  top: 0.1em;
+}
+/*Center navbar logo */
+
+/* Right Side Navbar */
+.right_nav {
+  width: 20%;
+}
+.righ_navbar_items {
+  display: flex;
+  justify-content: center;
+}
+.search_icon button,
+.cart_icon button {
+  margin: 0;
+  padding: 0;
+  border: none;
+  background: none;
+  color: inherit;
+  font: inherit;
+  cursor: pointer;
+}
+.search_icon,
+.login_icon,
+.cart_icon {
+  margin-left: 2rem;
+}
+/* Right Side Navbar */
+/* Navbar */
