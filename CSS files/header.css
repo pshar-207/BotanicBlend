@@ -102,6 +102,12 @@
 /* Left Side Navbar */
 
 /* Center navbar logo */
+.nav_logo a {
+  text-decoration: none;
+  color: black;
+  display: flex;
+  align-items: center;
+}
 .nav_logo {
   display: flex;
   justify-content: center;
