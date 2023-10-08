@@ -3,9 +3,9 @@
   margin: 0;
   padding: 0;
 }
-body {
+/* body {
   overflow-y: hidden;
-}
+} */
 /* Basic css */
 
 /* Footer Container */
@@ -70,6 +70,7 @@ body {
 /* Cpoyright */
 .footer_copyright {
   background-color: rgb(40, 40, 40);
+  color: rgb(205, 205, 205);
   height: 2rem;
   line-height: 2em;
   padding-left: 1rem;
