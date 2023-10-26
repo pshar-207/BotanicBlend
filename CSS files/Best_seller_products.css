@@ -19,10 +19,9 @@
   gap: 5rem;
   justify-content: center;
 }
-.prduct {
+.product {
   position: relative;
 }
-
 /* 3D Effect */
 .bg_image {
   z-index: 10;
@@ -37,7 +36,7 @@
   z-index: 100;
   transition: 400ms;
 }
-.prduct :hover .front_image {
+.product :hover .front_image {
   opacity: 1;
   scale: 1.5;
   transform: translateY(0rem) translateZ(-10px);
@@ -53,12 +52,12 @@
   transform: translateY(0.8rem) translateX(-5rem) translateZ(20px);
   transition: 400ms;
 }
-.prduct:hover .product_name {
+.product:hover .product_name {
   transform: translateY(0.3rem) translateX(-3.1rem) translateZ(20px);
   scale: 1.2;
 }
 
-.prduct::after {
+.product::after {
   content: "";
   position: absolute;
   inset: 0 0;
@@ -67,7 +66,7 @@
   opacity: 0;
 }
 
-.prduct:hover::after {
+.product:hover::after {
   opacity: 1;
 }
 /* 3D Effect */
