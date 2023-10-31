@@ -1,17 +1,22 @@
 /* hero section */
-.hero_section_image {
+.hero_section {
+  background-color: aquamarine;
+}
+/* .hero_section_image {
   display: flex;
   justify-content: center;
+} */
+.hero_section {
+  position: relative;
+  top: -2.5rem;
 }
 .hero_section_image img {
-  border-bottom: 1rem solid white;
-  margin-top: 2rem;
-  height: calc(100vh - 2rem);
+  width: 100%;
 }
 .quiz_section {
   position: absolute;
-  top: 30vh;
-  left: 10vw;
+  top: 30%;
+  left: 10%;
   font-size: 1.5rem;
 }
 .quiz_section_a_cotainer {
@@ -23,6 +28,7 @@
   font-size: 3rem;
   font-weight: bolder;
   width: 35rem;
+  white-space: normal;
 }
 .quiz_section_a {
   text-decoration: none;

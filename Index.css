@@ -1,10 +1,22 @@
-* {
-  margin: 0;
-  padding: 0;
+/* * {
+  
   font-family: Arial, Helvetica, sans-serif;
-}
+} */
 body {
   overflow-x: hidden;
+  background-color: cyan;
+  width: 100%;
+  margin: 0;
+  padding: 0;
+}
+#page-content {
+  position: relative;
+}
+.header_containor {
+  position: sticky;
+  top: 0;
+  width: 100%;
+  z-index: 1;
 }
 /* .wrapper {
   position: relative;
