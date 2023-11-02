@@ -34,7 +34,9 @@
   background-color: transparent;
   transition: background-color 0.2s ease;
 }
-
+/* .navbar-container:hover {
+  background-color: white;
+} */
 /* Left Side Navbar */
 .left_nav {
   display: flex;
@@ -57,7 +59,7 @@
   left: 0.5rem;
   display: flex;
   flex-direction: column;
-  background-color: white;
+  /* background-color: rgb(165, 41, 41); */
   padding: 0.5rem;
   border-radius: 0 0 0.5rem 0.5rem;
 }
@@ -84,7 +86,7 @@
   position: absolute;
   display: flex;
   flex-direction: column;
-  background-color: white;
+  /* background-color: white; */
   padding: 0.5rem;
   border-radius: 0 0 0.5rem 0.5rem;
 }
