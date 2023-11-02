@@ -1,44 +1,33 @@
 /* why botenic blend */
+.why_BB_outer_container {
+  /* padding: 5rem; */
+  background-color: white;
+}
 .why_BB_container {
-  height: 100vh;
-  position: relative;
   display: flex;
-  justify-content: center;
-  align-items: center;
-  transform-style: preserve-3d;
-  z-index: -1;
-  text-align: justify;
+  padding: 5rem 0 5rem 0;
+  height: fit-content;
 }
 .why_BB_text {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  height: 50%;
-  width: 80%;
-  border-radius: 3rem;
-  padding: 5rem;
-  font-size: 2rem;
-  background-color: rgb(38, 38, 38, 0.5);
-  color: rgb(255, 255, 255);
+  width: 40vw;
+  padding: 0 10rem 0 8rem;
 }
-.why_BB_text_content,
-.why_BB_text_h1 {
+.why_BB_text h1 {
+  font-size: 3.5rem;
+  padding: 2rem 0 2rem 0;
   text-align: center;
 }
-.why_BB_text_h1 {
-  margin-bottom: 5%;
-  display: block;
+.why_BB_text p {
+  font-size: 2rem;
+  line-height: 2rem;
+  text-align: center;
 }
-.why_BB_text_content {
-  width: 80%;
+.why_BB_media {
+  margin: 0 8rem 0 2rem;
+  width: 30vw;
 }
-.parallax_background {
-  position: absolute;
-  height: 100;
+.why_BB_media video {
   width: 100%;
-  z-index: -2;
-  object-fit: cover;
-  transform: translateZ(-200px) scale(4);
-  top: 1rem;
+  height: 100%;
 }
 /* why botenic blend */

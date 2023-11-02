@@ -6,7 +6,7 @@
 } */
 .hero_section {
   position: relative;
-  top: -3rem;
+  margin-top: -3rem;
   background-color: aquamarine;
   height: auto;
 }
@@ -24,15 +24,15 @@
   display: flex;
   column-gap: 1rem;
   position: absolute;
-  bottom: 1.25rem;
+  bottom: 1rem;
   left: 50%;
   transform: translateX(-50%);
   z-index: 1;
 }
 
 .slider-nav a {
-  width: 0.7rem;
-  height: 0.7rem;
+  width: 0.6rem;
+  height: 0.6rem;
   border-radius: 50%;
   background-color: rgb(255, 255, 255);
 }
