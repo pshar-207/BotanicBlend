@@ -14,7 +14,7 @@
 /* Instagram link */
 .instagram_link {
   background-color: rgb(52, 52, 52);
-  height: 2rem;
+  height: 2.5rem;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -27,7 +27,7 @@
 
 /* Navbar */
 .navbar-container {
-  height: 2.5rem;
+  height: 3rem;
   display: flex;
   justify-content: space-between;
   align-items: center;
