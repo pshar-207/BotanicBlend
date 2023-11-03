@@ -13,14 +13,16 @@
   padding: 8rem;
 }
 .best_sellers_products {
-  height: 10rem;
+  height: 20rem;
   display: flex;
   flex-wrap: wrap;
-  gap: 5rem;
+  gap: 1rem;
   justify-content: center;
 }
 .product {
   position: relative;
+  width: 20rem;
+  object-fit: cover;
 }
 /* 3D Effect */
 .bg_image {
@@ -29,7 +31,7 @@
 }
 .front_image {
   position: absolute;
-  width: 20rem;
+  width: 100%;
   scale: 1.125;
   transform-origin: bottom;
   opacity: 0;
