@@ -1,19 +1,25 @@
-.hero {
+.testimonial_container {
   position: relative;
-  height: 35rem;
+  height: 100%;
   width: 100%;
 }
-.hero h1 {
+.testimonial_container img {
+  width: 100%;
+}
+.testimonial_container h1 {
+  position: absolute;
   text-align: center;
   padding: 3rem 0 3rem 0;
   font-size: 3rem;
   color: white;
 }
 .container {
-  width: 50rem;
+  position: absolute;
+  top: 25%;
+  width: 40rem;
   height: 20rem;
 }
-.hero,
+.testimonial_container,
 .container {
   display: flex;
   align-items: center;
@@ -23,6 +29,7 @@
   height: 100%;
   width: 100%;
   overflow-x: hidden;
+  border-radius: 1rem;
 }
 .slider_row {
   display: flex;
@@ -36,7 +43,7 @@
 }
 .user_text {
   background: linear-gradient(to right, rgb(108, 228, 228), rgb(3, 160, 160));
-  width: 50rem;
+  width: 40rem;
   height: 100%;
   border-radius: 1rem;
   padding: 5rem;
