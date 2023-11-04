@@ -1,7 +1,7 @@
 /* why botenic blend */
 .why_BB_outer_container {
   /* padding: 5rem; */
-  background-color: #ffffff;
+  background: linear-gradient(to right, rgb(138, 254, 254), rgb(2, 187, 187));
 }
 .why_BB_container {
   display: flex;
