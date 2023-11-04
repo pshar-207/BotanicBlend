@@ -11,7 +11,7 @@
   text-align: center;
   padding: 3rem 0 3rem 0;
   font-size: 3rem;
-  color: white;
+  color: rgb(0, 0, 0);
 }
 .container {
   position: absolute;
@@ -42,12 +42,16 @@
   height: 100%;
 }
 .user_text {
-  background: linear-gradient(to right, rgb(108, 228, 228), rgb(3, 160, 160));
+  background: linear-gradient(
+    to right,
+    rgb(108, 228, 228, 0.7),
+    rgb(3, 160, 160, 0.7)
+  );
   width: 40rem;
   height: 100%;
   border-radius: 1rem;
   padding: 5rem;
-  color: white;
+  color: rgb(0, 0, 0);
   box-sizing: border-box;
 }
 .user_text p {
@@ -56,7 +60,7 @@
 }
 .user_text h3 {
   margin-top: 2rem;
-  color: rgb(255, 255, 255);
+  color: rgb(0, 0, 0);
 }
 .btn {
   display: inline-block;
