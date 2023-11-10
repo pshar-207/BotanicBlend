@@ -34,9 +34,9 @@
   background-color: transparent;
   transition: background-color 0.2s ease;
 }
-/* .navbar-container:hover {
+.navbar-container:hover {
   background-color: white;
-} */
+}
 /* Left Side Navbar */
 .left_nav {
   display: flex;
