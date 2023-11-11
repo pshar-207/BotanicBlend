@@ -17,28 +17,6 @@ function loadAndInsertContent(url, placeholderId) {
     });
  }
 
-// Function to change Navbar background color on scroll
-// function changeNavbarBackgroundColorOnScroll() {
-//   const navbarContainer = document.getElementById("navbar-container");
-//   const shopbg = document.getElementById("shop_bg");
-//   const categorybg = document.getElementById("category_bg");
-
-//   window.addEventListener("scroll", () => {
-//     console.log("Scroll position:", window.scrollY);
-//     if (window.scrollY > 0) {
-//       // console.log("Scrolling down.");
-//       navbarContainer.style.backgroundColor = "white";
-//       shopbg.style.backgroundColor = "white";
-//       categorybg.style.backgroundColor = "white";
-//     } else {
-//       // console.log("At the top.");
-//       navbarContainer.style.backgroundColor = "transparent";
-//       shopbg.style.backgroundColor = "transparent";
-//       categorybg.style.backgroundColor = "transparent";
-//     }
-//   });
-//  }
-
  function changeNavbarBackgroundColorOnScroll() {
   const navbarContainer = document.getElementById("navbar-container");
   const shopbg = document.getElementById("shop_bg");
