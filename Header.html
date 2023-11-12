@@ -13,6 +13,7 @@
       referrerpolicy="no-referrer"
     />
     <link rel="stylesheet" href="CSS files/cart.css" />
+    <link rel="stylesheet" href="CSS files/search.css" />
   </head>
   <body>
     <div class="header">
@@ -61,8 +62,11 @@
         <div class="right_nav">
           <div class="righ_navbar_items">
             <div class="search_icon">
-              <button><i class="fa fa-search"></i></button>
+              <button onclick="togglesearch()">
+                <i class="fa fa-search search_button"></i>
+              </button>
             </div>
+
             <div class="login_icon">
               <a href="HTML files/Login_Page.html">
                 <i class="fa-solid fa-user" style="color: #000000"></i>
@@ -73,19 +77,27 @@
                 <i class="fa-solid fa-cart-shopping" style="color: #000000"></i>
               </button>
             </div>
+            <!-- side cart -->
+            <div class="side-cart" id="sideCart">
+              <!-- Your cart content goes here -->
+              <p>Shopping Cart</p>
+              <hr />
+              <ul>
+                <!-- List your cart items here -->
+                <li>You have no product in your cart</li>
+                <!-- ... -->
+              </ul>
+            </div>
+            <!-- side cart -->
+            <!-- search window -->
+            <div class="search_container" id="searchContainer">
+              <input type="text" placeholder="Search..." />
+              <button type="submit"><i class="fa fa-search"></i></button>
+            </div>
+            <!-- search window -->
           </div>
         </div>
       </div>
-    </div>
-    <div class="side-cart" id="sideCart">
-      <!-- Your cart content goes here -->
-      <p>Shopping Cart</p>
-      <hr />
-      <ul>
-        <!-- List your cart items here -->
-        <li>You have no product in your cart</li>
-        <!-- ... -->
-      </ul>
     </div>
   </body>
 </html>

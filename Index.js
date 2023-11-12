@@ -15,9 +15,9 @@ function loadAndInsertContent(url, placeholderId) {
     .catch((error) => {
       console.error("Error loading content:", error);
     });
- }
+}
 
- function changeNavbarBackgroundColorOnScroll() {
+function changeNavbarBackgroundColorOnScroll() {
   const navbarContainer = document.getElementById("navbar-container");
   const shopbg = document.getElementById("shop_bg");
   const categorybg = document.getElementById("category_bg");
@@ -31,9 +31,11 @@ function loadAndInsertContent(url, placeholderId) {
 
   // Function to handle mouseout event
   function handleNavbarMouseOut() {
-    navbarContainer.style.backgroundColor = "transparent";
-    shopbg.style.backgroundColor = "transparent";
+    if (window.scrollY == 0 && isSearchOpen != true && isCartOpen != true) {
+      navbarContainer.style.backgroundColor = "transparent";
+      shopbg.style.backgroundColor = "transparent";
       categorybg.style.backgroundColor = "transparent";
+    }
   }
 
   // Add event listeners for hover effect
@@ -46,7 +48,7 @@ function loadAndInsertContent(url, placeholderId) {
       navbarContainer.style.backgroundColor = "white";
       shopbg.style.backgroundColor = "white";
       categorybg.style.backgroundColor = "white";
-    } else {
+    } else if (isSearchOpen != true && isCartOpen != true) {
       navbarContainer.style.backgroundColor = "transparent";
       shopbg.style.backgroundColor = "transparent";
       categorybg.style.backgroundColor = "transparent";
