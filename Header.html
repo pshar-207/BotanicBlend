@@ -12,6 +12,7 @@
       crossorigin="anonymous"
       referrerpolicy="no-referrer"
     />
+    <link rel="stylesheet" href="CSS files/cart.css" />
   </head>
   <body>
     <div class="header">
@@ -67,7 +68,7 @@
                 <i class="fa-solid fa-user" style="color: #000000"></i>
               </a>
             </div>
-            <div class="cart_icon">
+            <div class="cart_icon" onclick="toggleCart()">
               <button>
                 <i class="fa-solid fa-cart-shopping" style="color: #000000"></i>
               </button>
@@ -75,6 +76,16 @@
           </div>
         </div>
       </div>
+    </div>
+    <div class="side-cart" id="sideCart">
+      <!-- Your cart content goes here -->
+      <p>Shopping Cart</p>
+      <hr />
+      <ul>
+        <!-- List your cart items here -->
+        <li>You have no product in your cart</li>
+        <!-- ... -->
+      </ul>
     </div>
   </body>
 </html>
