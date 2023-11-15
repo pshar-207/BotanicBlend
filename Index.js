@@ -16,7 +16,11 @@ function loadAndInsertContent(url, placeholderId) {
       console.error("Error loading content:", error);
     });
 }
+// Load header and footer using the function
+loadAndInsertContent("Header.html", "header-placeholder");
+loadAndInsertContent("Footer.html", "footer-placeholder");
 
+//Function to change Navbar color
 function changeNavbarBackgroundColorOnScroll() {
   const navbarContainer = document.getElementById("navbar-container");
   const shopbg = document.getElementById("shop_bg");
@@ -55,7 +59,3 @@ function changeNavbarBackgroundColorOnScroll() {
     }
   });
 }
-
-// Load header and footer using the function
-loadAndInsertContent("Header.html", "header-placeholder");
-loadAndInsertContent("Footer.html", "footer-placeholder");
