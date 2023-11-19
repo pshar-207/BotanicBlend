@@ -2,7 +2,8 @@
 .science_container {
   padding: 5rem;
   text-align: center;
-  background: linear-gradient(to right, rgb(138, 254, 254), rgb(2, 187, 187));
+  /* background: linear-gradient(to right, rgb(138, 254, 254), rgb(2, 187, 187)); */
+  background-color: white;
 }
 .science_content {
   padding: 2rem;
