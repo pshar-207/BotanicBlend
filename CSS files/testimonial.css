@@ -1,77 +1,36 @@
-.testimonial_container {
-  position: relative;
-  height: 100%;
-  width: 100%;
-}
-.testimonial_container img {
-  width: 100%;
-}
-.testimonial_container h1 {
-  position: absolute;
-  text-align: center;
-  padding: 3rem 0 3rem 0;
-  font-size: 3rem;
-  color: rgb(0, 0, 0);
-}
-.container {
-  position: absolute;
-  top: 25%;
-  width: 40rem;
-  height: 20rem;
-}
-.testimonial_container,
-.container {
+.testimonial_heading {
   display: flex;
+  justify-content: center;
   align-items: center;
-  flex-flow: column;
+  font-size: 4rem;
+  font-weight: bold;
 }
 .testimonial {
-  height: 100%;
-  width: 100%;
-  overflow-x: hidden;
-  border-radius: 1rem;
-}
-.slider_row {
   display: flex;
+  padding: 5%;
+}
+.testimonial_image {
   width: 100%;
-  height: 100%;
-  transition: 500ms;
 }
-.slide_col {
-  width: 100%;
-  height: 100%;
+.testimonial_image img {
+  width: 40vw;
 }
-.user_text {
-  background: linear-gradient(
-    to right,
-    rgb(108, 228, 228, 0.7),
-    rgb(3, 160, 160, 0.7)
-  );
-  width: 40rem;
-  height: 100%;
-  border-radius: 1rem;
-  padding: 5rem;
-  color: rgb(0, 0, 0);
-  box-sizing: border-box;
+.testimonial_text {
+  display: inline;
+  align-items: flex-start;
+  padding: 5%;
 }
-.user_text p {
-  font-size: 1rem;
-  line-height: 2rem;
+.testimonial_text_about_product {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 2rem;
+  height: 70%;
 }
-.user_text h3 {
-  margin-top: 2rem;
-  color: rgb(0, 0, 0);
-}
-.btn {
-  display: inline-block;
-  height: 0.5rem;
-  width: 0.5rem;
-  margin: 0.1rem;
-  border-radius: 0.5rem;
-  background: #ffffff;
-  cursor: pointer;
-  transition: 500ms;
-}
-.active {
-  width: 1.5rem;
+.testimonial_product {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 3rem;
+  height: 30%;
 }

@@ -2,7 +2,7 @@
 .best_sellers_container {
   background-color: rgb(246, 255, 255);
   width: 100%;
-  height: 100vh;
+  height: 100rem;
 }
 .best_sellers_container p {
   position: relative;

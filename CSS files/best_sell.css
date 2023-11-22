@@ -1,5 +1,6 @@
 .best_sell_container {
   background-color: whitesmoke;
+  padding-bottom: 5rem;
 }
 .best_sell_heading {
   display: flex;
@@ -34,4 +35,21 @@
 .best_sell_product_buttons {
   display: flex;
   justify-content: space-between;
+}
+.best_sell_product_buttons button {
+  border: none;
+  background-color: rgb(184, 228, 213);
+  padding: 0.3rem;
+  border-radius: 0.5rem;
+}
+.best_sellers_viewAll_button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.best_sellers_viewAll_button button {
+  border: none;
+  background-color: aqua;
+  padding: 0.7rem;
+  border-radius: 1.5rem;
 }

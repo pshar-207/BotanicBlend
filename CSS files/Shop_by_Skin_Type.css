@@ -1,50 +1,45 @@
-/* Shop by Skin Type */
-.shop_by_skin_type {
+.skin_type_container {
   position: relative;
-  background-color: rgb(255, 255, 255);
-  width: 100%;
-  height: 100%;
 }
-.shop_by_skin_type img {
-  width: 100%;
+.skintype_upper_section {
+  height: 40svh;
+  background-color: whitesmoke;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 2rem;
 }
-.shop_by_skin_type p {
+
+.skintype_lower_section {
+  height: 40svh;
+  background-color: #ffdceb;
+}
+.skintype {
   position: absolute;
-  top: 30%;
+  top: 52%;
   left: 50%;
-  font-size: 3rem;
-  /* text-align: center; */
-  font-weight: bolder;
-  color: rgb(0, 0, 0);
-  /* padding: 5rem; */
-}
-.skin_type {
-  position: absolute;
-  top: 50%;
-  left: 40%;
+  transform: translate(-50%, -52%);
   display: grid;
-  grid-template-rows: 1;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 10rem;
-  /* margin-left: 10rem;
-  margin-right: 10rem; */
+  grid-template-columns: repeat(3, auto);
+  grid-template-rows: repeat(2, auto);
+  gap: 0.5rem;
+  /* padding: 10rem 10% 10rem 10%; */
+  justify-items: center;
+  align-items: center;
 }
-.skin_type img {
-  width: 6rem;
-  height: 100%;
-}
-.dry,
-.oily,
-.sensitive {
-  text-align: center;
-  color: rgb(0, 0, 0);
-}
-.skin_type_category {
+.skin_type_img {
+  background-color: whitesmoke;
+  height: 10rem;
+  width: 10rem;
   display: flex;
   justify-content: center;
-  /* height: 5rem; */
+  align-items: center;
+  border-radius: 50%;
+  margin: 0 5rem 0 5rem;
 }
-.shop_by_skin_type a {
-  text-decoration: none;
+.skin_type_img img {
+  width: 60%;
 }
-/* Shop by Skin Type */
+.skintype_text {
+  font-size: 1.5rem;
+}
