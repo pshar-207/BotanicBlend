@@ -1,10 +1,70 @@
-/* about */
-.about_container {
-  background-color: whitesmoke;
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+body {
+  background-color: rgb(255, 255, 255);
+}
+.video_container {
+  width: 100svw;
+  aspect-ratio: 16/4;
+  background-color: aqua;
+  position: relative;
+}
+.video_container video {
+  width: 100%;
+  /* aspect-ratio: 16/4; */
+  object-fit: cover;
+}
+.black-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: black;
+  opacity: 0.5; /* Set the opacity to 50% */
+  pointer-events: none; /* Allow clicks to go through the filter to the video */
+}
+.about_text {
+  position: absolute;
+  top: 52%;
+  left: 50%;
+  transform: translate(-50%, -52%);
   text-align: center;
-  padding: 5rem 20rem 5rem 20rem;
 }
-.about_container h1 {
-  padding-bottom: 5rem;
+
+.about_text h1 {
+  font-size: 5rem;
 }
-/* about */
+.about_text p {
+  font-size: 1.5rem;
+}
+.about_text h1,
+.about_text p {
+  color: white;
+}
+
+.prototypr_container {
+  position: relative;
+}
+.prototype_heading {
+  font-size: 2rem;
+  text-align: center;
+}
+.prototype_content {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: repeat(2, 1fr);
+  /* gap: 5rem; */
+  padding: 0 5rem 5rem 5rem;
+  justify-items: center;
+  align-items: center;
+}
+.prototype_arrow {
+  position: absolute;
+  top: 30%;
+  left: 65%;
+  transform: translate(-30%, -65%);
+}

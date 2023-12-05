@@ -9,6 +9,7 @@
   font-size: 1.5rem;
 }
 .category_img_container {
+  position: relative;
   display: grid;
   grid-template-columns: 1fr 1fr 2fr;
   grid-template-rows: repeat(2, 1fr);
@@ -35,8 +36,38 @@
   grid-row: 2 / span 1; /* Row 2, span 1 row */
 }
 
-.category_img {
+.category_img_container img {
   width: 100%;
   height: 100%;
   object-fit: cover;
+}
+.img_overlayer {
+  position: relative;
+}
+.bathing:hover::after {
+  content: "Bathing";
+  font-size: 2rem;
+}
+.gel:hover::after {
+  content: "Gel";
+  font-size: 2rem;
+}
+.body_care:hover::after {
+  content: "BodyCare";
+  font-size: 3rem;
+}
+.cream:hover::after {
+  content: "Cream";
+  font-size: 2.5rem;
+}
+.img_overlayer:hover::after {
+  display: grid;
+  place-items: center;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(180, 26, 147, 0.329); /* Black color with 50% opacity */
+  z-index: 5; /* Ensure the overlay is on top of the image */
 }

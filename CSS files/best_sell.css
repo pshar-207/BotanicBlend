@@ -1,12 +1,16 @@
 .best_sell_container {
   background-color: whitesmoke;
-  padding-bottom: 5rem;
+  /* padding-bottom: 5rem;
+  display: grid;
+  grid-template-rows: 1fr 1fr; */
+  padding: 0 5% 0 5%;
 }
 .best_sell_heading {
   display: flex;
-  justify-content: center;
+  justify-content: left;
   align-items: center;
-  padding: 3rem;
+  text-align: left;
+  padding: 5% 0 5% 0;
   font-size: 1.7rem;
 }
 .best_sell_products {
@@ -19,7 +23,7 @@
 .best_sell_products ul {
   display: flex;
   flex-flow: row;
-  justify-content: space-evenly;
+  justify-content: space-between;
   flex-wrap: wrap;
 }
 .best_sell_products li {
@@ -47,9 +51,25 @@
   justify-content: center;
   align-items: center;
 }
-.best_sellers_viewAll_button button {
-  border: none;
-  background-color: aqua;
-  padding: 0.7rem;
-  border-radius: 1.5rem;
+.best_sellers_viewAll_button a {
+  text-decoration: none;
+}
+.view_all_btn {
+  background-color: whitesmoke;
+  border: 0.1rem solid black;
+  padding: 0.5rem 2rem 0.5rem 2rem;
+  border-radius: 5rem;
+  color: black;
+  margin-bottom: 30%;
+}
+
+.best_sell_product_price {
+  display: flex;
+  justify-content: space-between;
+}
+.best_sell_product_name,
+.best_sell_product_desc,
+.best_sell_product_rating,
+.best_sell_product_price {
+  padding-bottom: 0.2rem;
 }

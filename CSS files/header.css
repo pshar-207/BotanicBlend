@@ -8,13 +8,15 @@
 /* For header */
 .header {
   width: 100%; /* Add this line to span the entire width */
+  z-index: 2;
+  position: relative;
 }
 /* For header */
 
 /* Instagram link */
 .instagram_link {
   background-color: rgb(52, 52, 52);
-  height: 2.5rem;
+  height: 1.5rem;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -22,143 +24,80 @@
 .instagram_link a {
   text-decoration: none;
   color: rgb(255, 255, 255);
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+    Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
 }
 /* Instagram link */
 
 /* Navbar */
+/* left navbar */
 .navbar-container {
-  height: 3rem;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  background-color: transparent;
-  transition: background-color 0.2s ease;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
 }
-.navbar-container:hover {
-  background-color: white;
-}
-/* Left Side Navbar */
 .left_nav {
-  display: flex;
-  width: 20%;
-  margin: 1rem;
-  align-items: center;
+  padding: 0.5rem;
 }
-.shop_left_navbar,
-.category_left_navbar,
-.ingredient_left_navbar {
+.left_nav img {
+  width: 5.5%;
+  object-fit: cover;
+  margin-right: 0.5rem;
+}
+.left_nav a {
+  display: flex;
+  align-items: center;
+  text-decoration: none;
+  color: black;
+  font-size: 2rem;
+}
+/* left navbar */
+
+/* right navbar */
+.right_nav {
+  display: flex;
+  gap: 1rem;
   margin-right: 1rem;
+  justify-content: end;
+  font-size: 1.3rem;
+  align-items: center;
+  /* padding-bottom: 2rem; */
+}
+.right_nav a {
+  text-decoration: none;
+  color: black;
+}
+.cart_icon button {
+  border: none;
+  background-color: transparent;
+}
+.cart_icon i {
   font-size: 1.3rem;
 }
-/* shop */
-.shop_dropdownmenu_container {
-  display: none;
-}
-.shop_dropdownmenu {
-  position: absolute;
-  left: 0.5rem;
+.shop_dropdownmenu_container a,
+.category_dropdownmenu_container a {
   display: flex;
-  flex-direction: column;
-  /* background-color: rgb(165, 41, 41); */
-  padding: 0.5rem;
-  border-radius: 0 0 0.5rem 0.5rem;
-  transition: background-color 0.2s ease;
 }
-.shop_left_navbar:hover .shop_dropdownmenu_container {
-  display: block;
-}
-/* .shop_left_navbar:hover {
-  font-size: 1.5rem;
-} */
-.shop_dropdownmenu a {
-  list-style: none;
-  text-decoration: none;
-  color: rgb(41, 41, 41);
-  font-size: 1rem;
-  margin-top: 0.5rem;
-}
-/* shop */
-
-/* category */
+.shop_dropdownmenu_container,
 .category_dropdownmenu_container {
   display: none;
 }
-.category_dropdownmenu {
+
+.shop_dropdownmenu_container {
   position: absolute;
-  display: flex;
-  flex-direction: column;
-  /* background-color: white; */
-  padding: 0.5rem;
-  border-radius: 0 0 0.5rem 0.5rem;
-  transition: background-color 0.2s ease;
+  top: 3.6rem;
+  left: 72%;
+  padding-top: 1rem;
 }
-.category_dropdownmenu a {
-  list-style: none;
-  text-decoration: none;
-  color: rgb(41, 41, 41);
-  font-size: 1rem;
-  margin-top: 0.5rem;
+.category_dropdownmenu_container {
+  position: absolute;
+  top: 3.6rem;
+  left: 76%;
+  padding-top: 1rem;
 }
-.category_left_navbar:hover .category_dropdownmenu_container {
+
+.shop_navbar:hover .shop_dropdownmenu_container,
+.category_navbar:hover .category_dropdownmenu_container {
   display: block;
 }
-/* .category_left_navbar:hover {
-  font-size: 1.5rem;
-} */
-/* category */
-
-/* ingredient */
-.ingredient_left_navbar a {
-  text-decoration: none;
-  color: black;
-}
-/* ingredient */
-/* Left Side Navbar */
-
-/* Center navbar logo */
-.nav_logo a {
-  text-decoration: none;
-  color: black;
-  display: flex;
-  align-items: center;
-}
-.nav_logo {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  font-size: 2rem;
-  padding-right: 3rem;
-}
-.nav_logo img {
-  position: relative;
-  height: 3rem;
-  width: 3rem;
-  top: 0.1em;
-}
-/*Center navbar logo */
-
-/* Right Side Navbar */
-.right_nav {
-  width: 20%;
-}
-.righ_navbar_items {
-  display: flex;
-  justify-content: center;
-}
-.search_icon button,
-.cart_icon button {
-  margin: 0;
-  padding: 0;
-  border: none;
-  background: none;
-  color: inherit;
-  font: inherit;
-  cursor: pointer;
-}
-.search_icon,
-.login_icon,
-.cart_icon {
-  margin-left: 2rem;
-}
-/* Right Side Navbar */
+/* right navbar */
 /* Navbar */

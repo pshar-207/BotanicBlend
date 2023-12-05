@@ -1,5 +1,6 @@
 .skin_type_container {
   position: relative;
+  overflow-x: hidden;
 }
 .skintype_upper_section {
   height: 40svh;
@@ -16,13 +17,13 @@
 }
 .skintype {
   position: absolute;
-  top: 52%;
+  top: 48%;
   left: 50%;
-  transform: translate(-50%, -52%);
+  transform: translate(-50%, -48%);
   display: grid;
-  grid-template-columns: repeat(3, auto);
+  grid-template-columns: repeat(7, auto);
   grid-template-rows: repeat(2, auto);
-  gap: 0.5rem;
+  /* gap: 0.5rem; */
   /* padding: 10rem 10% 10rem 10%; */
   justify-items: center;
   align-items: center;
@@ -35,11 +36,34 @@
   justify-content: center;
   align-items: center;
   border-radius: 50%;
-  margin: 0 5rem 0 5rem;
+  /* margin: 0 5rem 0 5rem; */
 }
 .skin_type_img img {
   width: 60%;
 }
-.skintype_text {
-  font-size: 1.5rem;
+.skin_type_img a {
+  text-decoration: none;
+  color: black;
+}
+.skin_type_text {
+  display: none;
+  font-size: 2rem;
+}
+.leftfill,
+.rightfill {
+  background-color: #ffdceb;
+  width: 50rem;
+  height: 3vh;
+}
+.leftfill {
+  border-radius: 0 5rem 0 0;
+}
+.rightfill {
+  border-radius: 5rem 0 0 0;
+}
+.centerfill {
+  background-color: #ffdceb;
+  width: 5rem;
+  height: 3vh;
+  border-radius: 5rem 5rem 0 0;
 }
