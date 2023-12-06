@@ -1,0 +1,133 @@
+body {
+  font-family: "Times New Roman", Times, serif;
+}
+body::-webkit-scrollbar {
+  width: 0;
+}
+#header-placeholder {
+  background-color: white;
+}
+.product_container {
+  font-size: 1.5rem;
+  padding: 5rem 10rem 5rem 15rem;
+  position: relative;
+  top: 2rem;
+  display: flex;
+}
+
+.image_container {
+  height: 30rem;
+  position: sticky;
+  top: 5rem;
+  display: flex;
+  flex-flow: column;
+}
+.product_image {
+  width: 30dvw;
+  aspect-ratio: 1/1;
+}
+.product_image img {
+  width: 100%;
+  object-fit: cover;
+}
+.additional-images {
+  width: 30dvw;
+  aspect-ratio: 5/1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+}
+.additional-images img.selected {
+  box-sizing: border-box;
+  border: 2px solid #865ed1; /* Change border color as desired */
+}
+.additional-images img {
+  margin: 10px;
+  max-width: 50px;
+  max-height: 50px;
+  border-radius: 1.5rem;
+}
+
+.product_content {
+  width: 50vw;
+  padding: 0 5rem 0 2rem;
+}
+.product_name,
+.product_description,
+.product_for_skintype,
+.Product_size,
+.Product_QTY {
+  margin-bottom: 1rem;
+}
+.size_select {
+  width: 10rem;
+  height: 2rem;
+  font-size: 1rem;
+}
+.quantity_select {
+  height: 2rem;
+  font-size: 1rem;
+}
+.product_for_skintype,
+.Product_QTY {
+  display: flex;
+  gap: 1rem;
+}
+#add_to_cart {
+  width: 15rem;
+  height: 2rem;
+  background-color: #865ed1;
+}
+
+.quantity-select {
+  width: 100px;
+  padding: 10px;
+  font-size: 16px;
+}
+
+.ingredients-list {
+  display: none;
+}
+
+.toggle_container {
+  position: relative;
+}
+#toggle-ingredients {
+  border: none;
+  background-color: transparent;
+  font-size: 1.5rem;
+  position: absolute;
+  right: 0;
+  top: -1.9rem;
+}
+#footer-placeholder {
+  position: relative;
+}
+.ingredients_container {
+  font-size: 1.2rem;
+}
+.ingredients_container li {
+  list-style: none;
+}
+
+/* reveiw */
+.review-section {
+  background-color: #f9f9f9;
+  padding: 20px;
+}
+.review-form {
+  background-color: white;
+  padding: 10px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+}
+
+.stars input {
+  color: #e6e6e6;
+  cursor: pointer;
+  transition: color 0.2s ease;
+}
+.stars input.active {
+  color: #ff9c1a;
+}
