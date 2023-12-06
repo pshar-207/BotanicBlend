@@ -1,0 +1,312 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+
+    <link rel="stylesheet" href="CSS files/quiz.css" />
+    <link rel="stylesheet" href="CSS files/cart.css" />
+    <link rel="stylesheet" href="CSS files/search.css" />
+  </head>
+  <body>
+    <!-- header -->
+    <div class="header_containor">
+      <div id="header-placeholder"></div>
+    </div>
+    <!-- header -->
+    <div class="back_btn">Back</div>
+    <!-- q1 -->
+    <div class="q1">
+      <div class="question">CHOOSE YOUR GENDER</div>
+      <div
+        class="female"
+        onmouseover="changeColors(this)"
+        onclick="changeColorsClick(this)"
+        onmouseout="restoreOriginalColors(this)"
+      >
+        <img src="Photos/quiz/gender/femenine 1.png" alt="" />Female
+      </div>
+      <div
+        class="male"
+        onmouseover="changeColors(this)"
+        onclick="changeColorsClick(this)"
+        onmouseout="restoreOriginalColors(this)"
+      >
+        <img src="Photos/quiz/gender/mars 1.png" alt="" />Male
+      </div>
+    </div>
+    <!-- q1 -->
+
+    <!-- q2 -->
+    <div class="q2">
+      <div class="question">WHAT IS YOUR SKIN TYPE?</div>
+      <div class="q2_skinType">
+        <div
+          class="q2_dry"
+          onmouseover="changeColors(this)"
+          onclick="changeColorsClick(this)"
+          onmouseout="restoreOriginalColors(this)"
+        >
+          <img src="Photos/quiz/skinType/dry-skin 2 1.png" alt="" />Dry
+        </div>
+        <div
+          class="q2_oily"
+          onmouseover="changeColors(this)"
+          onclick="changeColorsClick(this)"
+          onmouseout="restoreOriginalColors(this)"
+        >
+          <img src="Photos/quiz/skinType/oily 2 1.png" alt="" />Oily
+        </div>
+        <div
+          class="q2_normal"
+          onmouseover="changeColors(this)"
+          onclick="changeColorsClick(this)"
+          onmouseout="restoreOriginalColors(this)"
+        >
+          <img src="Photos/quiz/skinType/normal 1 1.png" alt="" />Normal
+        </div>
+      </div>
+    </div>
+    <!-- q2 -->
+
+    <!-- q3 -->
+    <div class="q3">
+      <div class="question">WHAT IS YOUR AGE?</div>
+      <div class="q3_age">
+        <div
+          class="q3_under25"
+          onmouseover="changeColors(this)"
+          onclick="changeColorsClick(this)"
+          onmouseout="restoreOriginalColors(this)"
+        >
+          Under 25
+        </div>
+        <div
+          class="q3_25_35"
+          onmouseover="changeColors(this)"
+          onclick="changeColorsClick(this)"
+          onmouseout="restoreOriginalColors(this)"
+        >
+          25 - 35
+        </div>
+        <div
+          class="q3_35_45"
+          onmouseover="changeColors(this)"
+          onclick="changeColorsClick(this)"
+          onmouseout="restoreOriginalColors(this)"
+        >
+          35 - 45
+        </div>
+        <div
+          class="q3_45Above"
+          onmouseover="changeColors(this)"
+          onclick="changeColorsClick(this)"
+          onmouseout="restoreOriginalColors(this)"
+        >
+          45 Above
+        </div>
+      </div>
+    </div>
+    <!-- q3 -->
+
+    <!-- q4 -->
+    <div class="q4">
+      <div class="question">ANY THING ELSE WE SHOULD KNOW?</div>
+      <textarea
+        name="comment"
+        id="comment"
+        placeholder="Type here..."
+      ></textarea>
+    </div>
+    <!-- q4 -->
+
+    <!-- q5 -->
+    <div class="q5">
+      <div class="question">DO YOU HAVE ACTIVE ACNE</div>
+      <div class="q5_yes_no">
+        <div
+          class="q5_yes"
+          onmouseover="changeColors(this)"
+          onclick="changeColorsClick(this)"
+          onmouseout="restoreOriginalColors(this)"
+        >
+          Yes
+        </div>
+        <div
+          class="q5_no"
+          onmouseover="changeColors(this)"
+          onclick="changeColorsClick(this)"
+          onmouseout="restoreOriginalColors(this)"
+        >
+          No
+        </div>
+      </div>
+    </div>
+    <!-- q5 -->
+
+    <!-- q6 -->
+    <div class="q6">
+      <div class="question">SELECT UP TO FIVE GOALS</div>
+      <div class="q6_goals">
+        <div
+          class="goals"
+          onmouseover="changeColors(this)"
+          onclick="changeColorsClick(this)"
+          onmouseout="restoreOriginalColors(this)"
+        >
+          No Dark Circle
+        </div>
+        <div
+          class="goals"
+          onmouseover="changeColors(this)"
+          onclick="changeColorsClick(this)"
+          onmouseout="restoreOriginalColors(this)"
+        >
+          Hydrating
+        </div>
+        <div
+          class="goals"
+          onmouseover="changeColors(this)"
+          onclick="changeColorsClick(this)"
+          onmouseout="restoreOriginalColors(this)"
+        >
+          D Tanning
+        </div>
+        <div
+          class="goals"
+          onmouseover="changeColors(this)"
+          onclick="changeColorsClick(this)"
+          onmouseout="restoreOriginalColors(this)"
+        >
+          Anti Wrinkle
+        </div>
+        <div
+          class="goals"
+          onmouseover="changeColors(this)"
+          onclick="changeColorsClick(this)"
+          onmouseout="restoreOriginalColors(this)"
+        >
+          Glowing Skin
+        </div>
+        <div
+          class="goals"
+          onmouseover="changeColors(this)"
+          onclick="changeColorsClick(this)"
+          onmouseout="restoreOriginalColors(this)"
+        >
+          Fade Dark Spot
+        </div>
+        <div
+          class="goals"
+          onmouseover="changeColors(this)"
+          onclick="changeColorsClick(this)"
+          onmouseout="restoreOriginalColors(this)"
+        >
+          Sunburn Treatment
+        </div>
+      </div>
+    </div>
+    <!-- q6 -->
+
+    <!-- navigation -->
+    <div class="navigation">
+      <div class="whyWeAsk_container">
+        <div class="whyWeAsk">WHY WE ASK:</div>
+      </div>
+      <div class="No_next">
+        <span>1 of 6</span>
+        <div class="next_btn">NEXT</div>
+      </div>
+    </div>
+    <!-- navigation -->
+
+    <!-- Footer -->
+    <div class="footer_container">
+      <div id="footer-placeholder"></div>
+    </div>
+    <!-- Footer -->
+    <script src="/BotenicBlend/other pages/JavaScript files/Index.js"></script>
+    <script src="/BotenicBlend/other pages/JavaScript files/cart.js"></script>
+    <script src="/BotenicBlend/other pages/JavaScript files/search.js"></script>
+
+    <script>
+      // Store references to each question section
+      var questions = document.querySelectorAll(".q1, .q2, .q3, .q4, .q5, .q6");
+
+      // Store references to the navigation buttons
+      var backButton = document.querySelector(".back_btn");
+      var nextButton = document.querySelector(".next_btn");
+
+      // Set initial question index
+      var currentQuestionIndex = 0;
+
+      // Add event listeners to the navigation buttons
+      nextButton.addEventListener("click", showNextQuestion);
+      backButton.addEventListener("click", showPreviousQuestion);
+
+      function showNextQuestion() {
+        if (currentQuestionIndex < questions.length - 1) {
+          questions[currentQuestionIndex].style.display = "none";
+          currentQuestionIndex++;
+          questions[currentQuestionIndex].style.display = "flex";
+          updateBackButtonVisibility();
+        }
+      }
+
+      function showPreviousQuestion() {
+        if (currentQuestionIndex > 0) {
+          questions[currentQuestionIndex].style.display = "none";
+          currentQuestionIndex--;
+          questions[currentQuestionIndex].style.display = "flex";
+          updateBackButtonVisibility();
+        }
+      }
+
+      function updateBackButtonVisibility() {
+        backButton.style.display =
+          currentQuestionIndex === 0 ? "none" : "block";
+      }
+    </script>
+
+    <script>
+      var clickedDiv = null;
+      var originalBackgroundColor = element.style.backgroundColor;
+      var originalBorder = element.style.border;
+      function changeColors(element) {
+        // Apply hover effect only if the div is not clicked
+        if (element !== clickedDiv) {
+          // Save the original colors
+
+          // Change colors on hover
+          element.style.backgroundColor = "#fcc6e2"; // Change this to the desired background color
+          element.style.border = "1px solid white";
+        }
+      }
+
+      function changeColorsClick(div) {
+        // Reset styles for the previously clicked div
+        if (clickedDiv) {
+          clickedDiv.style.backgroundColor = "white";
+          clickedDiv.style.border = "1px solid black";
+        }
+
+        // Set styles for the clicked div
+        div.style.backgroundColor = "#fcc6e2"; // Change this to the desired color
+        div.style.color = "black"; // Change this to the desired color
+
+        // Update the clickedDiv variable
+        clickedDiv = div;
+      }
+      function restoreOriginalColors(element) {
+        // Restore original colors only if the div is not clicked
+        if (element !== clickedDiv) {
+          element.style.backgroundColor = "white";
+          element.style.border = "1px solid black";
+        }
+      }
+    </script>
+
+    <script></script>
+  </body>
+</html>
