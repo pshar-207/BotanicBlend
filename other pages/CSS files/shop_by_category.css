@@ -1,5 +1,6 @@
 .shop_by_category_container {
   background-color: whitesmoke;
+  margin-top: 10%;
 }
 .shop_by_category_heading {
   display: flex;

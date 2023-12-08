@@ -17,6 +17,7 @@
     />
     <link rel="stylesheet" href="other pages/CSS files/cart.css" />
     <link rel="stylesheet" href="other pages/CSS files/search.css" />
+    <link rel="stylesheet" href="other pages/CSS files/login_form.css" />
   </head>
   <body>
     <div class="header">
@@ -69,35 +70,75 @@
             <a href="/BotenicBlend/other pages/About_page.html">About</a>
           </div>
 
-          <div class="login_icon">
-            <a href="HTML files/Login_Page.html">
+          <div class="login_icon" onclick="toggleLoginForm()">
+            <button>
               <i class="fa-solid fa-user" style="color: #000000"></i>
-            </a>
+            </button>
           </div>
           <div class="cart_icon" onclick="toggleCart()">
             <button>
               <i class="fa-solid fa-cart-shopping" style="color: #000000"></i>
             </button>
           </div>
-          <!-- side cart -->
-          <div class="side-cart" id="sideCart">
-            <!-- Your cart content goes here -->
-            <p>Shopping Cart</p>
-            <hr />
-            <ul>
-              <!-- List your cart items here -->
-              <li>You have no product in your cart</li>
-              <!-- ... -->
-            </ul>
-          </div>
-          <!-- side cart -->
-          <!-- search window -->
-          <div class="search_container" id="searchContainer">
-            <input type="text" placeholder="Search..." />
-            <button type="submit"><i class="fa fa-search"></i></button>
-          </div>
-          <!-- search window -->
         </div>
+        <!-- side cart -->
+        <div class="side-cart" id="sideCart">
+          <!-- Your cart content goes here -->
+          <p>Shopping Cart</p>
+          <hr />
+          <ul>
+            <!-- List your cart items here -->
+            <li>You have no product in your cart</li>
+            <!-- ... -->
+          </ul>
+        </div>
+        <!-- side cart -->
+
+        <!-- login form -->
+        <div class="login_form_container" id="login_form_container">
+          <div class="close_btn" onclick="toggleLoginForm()">Close</div>
+          <div class="logo_image">
+            <img
+              src="/BotenicBlend/other pages/Photos/Footer Image/BBL 2.png"
+              alt=""
+            />
+          </div>
+          <div class="logo_name">BotanicBlend</div>
+          <form action="" method="post">
+            <div class="form_container">
+              <input
+                type="email"
+                id="email"
+                name="email"
+                placeholder="Email Address"
+              />
+              <input
+                type="password"
+                id="password"
+                name="password"
+                placeholder="Password"
+              />
+              <a href="#">Forget your password?</a>
+              <input
+                type="button"
+                value="LOG IN"
+                onclick="alert('You logged in!')"
+              />
+              <div class="sign_up">
+                Don't have account?
+                <a href="/BotenicBlend/other pages/signUp.html">Register now</a>
+              </div>
+            </div>
+          </form>
+        </div>
+        <!-- login form -->
+
+        <!-- search window -->
+        <div class="search_container" id="searchContainer">
+          <input type="text" placeholder="Search..." />
+          <button type="submit"><i class="fa fa-search"></i></button>
+        </div>
+        <!-- search window -->
       </div>
     </div>
   </body>

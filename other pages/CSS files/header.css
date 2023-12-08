@@ -34,6 +34,7 @@
 .navbar-container {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
+  position: relative;
 }
 .left_nav {
   padding: 0.5rem;
@@ -66,11 +67,15 @@
   text-decoration: none;
   color: black;
 }
-.cart_icon button {
+.cart_icon button,
+.login_icon button {
   border: none;
   background-color: transparent;
 }
 .cart_icon i {
+  font-size: 1.3rem;
+}
+.login_icon i {
   font-size: 1.3rem;
 }
 .shop_dropdownmenu_container a,

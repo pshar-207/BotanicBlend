@@ -61,6 +61,7 @@
   border-radius: 5rem;
   color: black;
   margin-bottom: 30%;
+  transition: background-color 0.5s;
 }
 
 .best_sell_product_price {

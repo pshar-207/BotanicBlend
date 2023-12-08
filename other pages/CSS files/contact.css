@@ -39,7 +39,7 @@ body {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: 1rem;
-  margin: 5% 10% 5% 5%;
+  margin: 5% 10% 5% 10%;
 }
 .info {
   border: 0.1rem solid black;
@@ -51,7 +51,7 @@ body {
 }
 
 .contat_form_container {
-  margin: 0 10% 10% 5%;
+  margin: 0 10% 10% 10%;
 }
 .contat_form_container h2 {
   margin-bottom: 1rem;

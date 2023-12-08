@@ -7,6 +7,7 @@
     <link rel="stylesheet" href="CSS files/term&condition.css" />
     <link rel="stylesheet" href="CSS files/cart.css" />
     <link rel="stylesheet" href="CSS files/search.css" />
+    <link rel="stylesheet" href="CSS files/login_form.css" />
   </head>
   <body>
     <!-- header -->
@@ -100,17 +101,22 @@
     <script src="/BotenicBlend/other pages/JavaScript files/Index.js"></script>
     <script src="/BotenicBlend/other pages/JavaScript files/cart.js"></script>
     <script src="/BotenicBlend/other pages/JavaScript files/search.js"></script>
+    <script src="/BotenicBlend/other pages/JavaScript files/loginFormShow.js"></script>
     <script>
       function toggleAnswer(span) {
         var answer = span.parentElement.nextElementSibling; // Get the next sibling (answer div)
         var parentDiv = span.parentElement;
-        if (answer.style.display === "block" || answer.style.display === "") {
-          answer.style.display = "none";
+        if (answer.style.opacity === "1") {
+          answer.style.opacity = "0";
+          answer.style.visibility = "hidden";
+          answer.style.height = "0px";
           span.textContent = "+";
           parentDiv.style.backgroundColor = "white";
           parentDiv.style.color = "black";
         } else {
-          answer.style.display = "block";
+          answer.style.opacity = "1";
+          answer.style.visibility = "visible";
+          answer.style.height = "auto";
           span.textContent = "-";
           parentDiv.style.backgroundColor = "#092A63";
           parentDiv.style.color = "white";

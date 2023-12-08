@@ -67,6 +67,7 @@
   width: fit-content;
   background-color: white;
   border-radius: 10rem;
+  border: 0.1rem solid black;
   transition: background-color 0.5s, color 0.5s;
 }
 
