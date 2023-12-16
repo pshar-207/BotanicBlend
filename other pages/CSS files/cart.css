@@ -1,6 +1,6 @@
 .side-cart {
   position: fixed;
-  top: 5.5rem;
+  top: 0;
   right: -20rem; /* Initially hide the side cart off-screen */
   width: 20rem;
   height: 100%;
@@ -9,7 +9,16 @@
   transition: right 0.3s ease-in-out;
   overflow-y: auto;
 }
+.cart_heading {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
 
+.cart_heading span {
+  margin: 1rem;
+  cursor: pointer;
+}
 .side-cart p {
   font-weight: bold;
   margin: 1rem;
