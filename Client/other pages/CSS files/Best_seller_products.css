@@ -1,0 +1,79 @@
+/* best seller products */
+.best_sellers_container {
+  background-color: rgb(246, 255, 255);
+  width: 100%;
+  height: 100rem;
+}
+.best_sellers_container p {
+  position: relative;
+  text-align: center;
+  font-size: 5rem;
+  font-weight: bolder;
+  color: rgb(135, 159, 230);
+  padding: 8rem;
+}
+.best_sellers_products {
+  height: 20rem;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  justify-content: center;
+}
+.product {
+  position: relative;
+  width: 20rem;
+  object-fit: cover;
+}
+/* 3D Effect */
+.bg_image {
+  z-index: 10;
+  object-fit: cover;
+}
+.front_image {
+  position: absolute;
+  width: 100%;
+  scale: 1.125;
+  transform-origin: bottom;
+  opacity: 0;
+  z-index: 100;
+  transition: 400ms;
+}
+.product :hover .front_image {
+  opacity: 1;
+  scale: 1.5;
+  transform: translateY(0rem) translateZ(-10px);
+}
+
+.product_name {
+  position: absolute;
+  z-index: 1000;
+  width: 8rem;
+  top: 80%;
+  left: 50%;
+  font-size: 1rem;
+  transform: translateY(0.8rem) translateX(-5rem) translateZ(20px);
+  transition: 400ms;
+}
+.product:hover .product_name {
+  transform: translateY(0.3rem) translateX(-3.1rem) translateZ(20px);
+  scale: 1.2;
+}
+
+.product::after {
+  content: "";
+  position: absolute;
+  inset: 0 0;
+  background: rgba(255, 255, 255, 0.6);
+  z-index: 1;
+  opacity: 0;
+}
+
+.product:hover::after {
+  opacity: 1;
+}
+/* 3D Effect */
+.best_sellers_products img {
+  width: 10rem;
+}
+
+/* best seller products */

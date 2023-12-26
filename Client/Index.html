@@ -1,0 +1,672 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.0/css/all.min.css"
+    />
+    <link
+      src="http://maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css"
+      rel="stylesheet"
+    />
+
+    <link rel="stylesheet" href="other pages/CSS files/Index.css" />
+    <link rel="stylesheet" href="other pages/CSS files/hero_section.css" />
+    <link rel="stylesheet" href="other pages/CSS files/Why_BB.css" />
+    <link rel="stylesheet" href="other pages/CSS files/new_arrivals.css" />
+    <link rel="stylesheet" href="other pages/CSS files/testimonial.css" />
+    <link rel="stylesheet" href="other pages/CSS files/best_sell.css" />
+    <link rel="stylesheet" href="other pages/CSS files/science.css" />
+    <link rel="stylesheet" href="other pages/CSS files/shop_by_category.css" />
+    <link rel="stylesheet" href="other pages/CSS files/Prons.css" />
+    <link rel="stylesheet" href="other pages/CSS files/Shop_by_Skin_Type.css" />
+    <link rel="stylesheet" href="other pages/CSS files/slider.css" />
+    <link rel="stylesheet" href="other pages/CSS files/cart.css" />
+    <link rel="stylesheet" href="other pages/CSS files/search.css" />
+    <link rel="stylesheet" href="other pages/CSS files/login_form.css" />
+
+    <title>Document</title>
+  </head>
+  <body>
+    <!-- header -->
+    <div class="header_containor">
+      <div id="header-placeholder"></div>
+    </div>
+    <!-- header -->
+
+    <!-- Hero Section -->
+    <div class="hero_section">
+      <div class="hero_image_container">
+        <img
+          src="other pages/Photos/Hero Section Image/hero_image_1.jpg"
+          class="slide"
+          alt=""
+        />
+        <img
+          src="other pages/Photos/Hero Section Image/hero_image_2.jpg"
+          class="slide"
+          alt=""
+        />
+        <img
+          src="other pages/Photos/Hero Section Image/hero_image_3.jpg"
+          class="slide"
+          alt=""
+        />
+      </div>
+      <div class="hero_buttons">
+        <button class="hero_b1" onclick="goPrev()">&lt;</button>
+        <button class="hero_b2" onclick="goNext()">&gt;</button>
+      </div>
+      <div class="hero_indicators"></div>
+      <div class="quiz_section">
+        <div class="quiz_section_h1">Transform Yourself with Custom Care</div>
+
+        <a href="other pages/quiz.html" class="quiz_section_a"
+          ><div
+            class="quiz_section_a_cotainer"
+            onmouseover="changeColors(this)"
+          >
+            Take free skin quiz
+          </div></a
+        >
+      </div>
+    </div>
+    <!-- Hero Section -->
+
+    <div class="new_arrival_container">
+      <div class="new_arrival_heading">
+        <h1>NEW ARRIVALS</h1>
+      </div>
+      <div class="new_arrival_products">
+        <ul id="newArrivalsList" class="New-arrivals-products"></ul>
+      </div>
+    </div>
+
+    <!-- New Arrivals -->
+    <div class="new_arrival_container">
+      <div class="new_arrival_heading">
+        <h1>NEW ARRIVALS</h1>
+      </div>
+      <div class="new_arrival_products">
+        <ul>
+          <li class="first_product">
+            <div class="new_arrival_product_section">
+              <div class="new_arrival_product_image">
+                <a href="#">
+                  <img
+                    src="other pages/Photos/products/Creams/WINTER CREAM.jpg"
+                    alt=""
+                /></a>
+              </div>
+              <div class="new_arrival_product_name">Products Name</div>
+              <div class="new_arrival_product_desc">Product Description</div>
+              <div class="new_arrival_product_rating">rating</div>
+              <div class="new_arrival_product_price">
+                price
+                <div
+                  class="add_to_cart product-container"
+                  onmouseover="showAddToCart(this) ; changeColors(this)"
+                  onmouseout="hideAddToCart(this)"
+                >
+                  <div class="icon">
+                    <span class="fa fa-home fa-2x"></span>
+                  </div>
+                  <div class="add-to-cart">Add to Cart</div>
+                </div>
+              </div>
+              <a href=""
+                ><div
+                  class="new_arrival_product_buttons btn_color"
+                  onmouseover="changeColors(this)"
+                >
+                  Buy
+                </div></a
+              >
+            </div>
+          </li>
+          <li>
+            <div class="new_arrival_product_section">
+              <div class="new_arrival_product_image">
+                <a href="#"
+                  ><img
+                    src="other pages/Photos/New Arrivals/new_arrival_2.jpg"
+                    alt=""
+                /></a>
+              </div>
+              <div class="new_arrival_product_name">Products Name</div>
+              <div class="new_arrival_product_desc">Product Description</div>
+              <div class="new_arrival_product_rating">rating</div>
+              <div class="new_arrival_product_price">
+                price
+                <div
+                  class="add_to_cart product-container"
+                  onmouseover="showAddToCart(this) ; changeColors(this)"
+                  onmouseout="hideAddToCart(this)"
+                >
+                  <div class="icon">
+                    <i
+                      class="fa-solid fa-cart-shopping"
+                      style="color: #000000"
+                    ></i>
+                  </div>
+                  <div class="add-to-cart">Add to Cart</div>
+                </div>
+              </div>
+              <a href=""
+                ><div
+                  class="new_arrival_product_buttons btn_color"
+                  onmouseover="changeColors(this)"
+                >
+                  Buy
+                </div></a
+              >
+            </div>
+          </li>
+          <li>
+            <div class="new_arrival_product_section">
+              <div class="new_arrival_product_image">
+                <a href="#"
+                  ><img
+                    src="other pages/Photos/New Arrivals/new_arrival_3.jpg"
+                    alt=""
+                /></a>
+              </div>
+              <div class="new_arrival_product_name">Products Name</div>
+              <div class="new_arrival_product_desc">Product Description</div>
+              <div class="new_arrival_product_rating">rating</div>
+              <div class="new_arrival_product_price">
+                price
+                <div
+                  class="add_to_cart product-container"
+                  onmouseover="showAddToCart(this) ; changeColors(this)"
+                  onmouseout="hideAddToCart(this)"
+                >
+                  <div class="icon">
+                    <i
+                      class="fa-solid fa-cart-shopping"
+                      style="color: #000000"
+                    ></i>
+                  </div>
+                  <div class="add-to-cart">Add to Cart</div>
+                </div>
+              </div>
+              <a href="">
+                <div
+                  class="new_arrival_product_buttons btn_color"
+                  onmouseover="changeColors(this)"
+                >
+                  Buy
+                </div></a
+              >
+            </div>
+          </li>
+          <li>
+            <div class="new_arrival_product_section">
+              <div class="new_arrival_product_image">
+                <a href="#"
+                  ><img
+                    src="other pages/Photos/New Arrivals/new_arrival_4.jpg"
+                    alt=""
+                /></a>
+              </div>
+              <div class="new_arrival_product_name">Products Name</div>
+              <div class="new_arrival_product_desc">Product Description</div>
+              <div class="new_arrival_product_rating">rating</div>
+              <div class="new_arrival_product_price">
+                price
+                <div
+                  class="add_to_cart product-container"
+                  onmouseover="showAddToCart(this) ; changeColors(this)"
+                  onmouseout="hideAddToCart(this)"
+                >
+                  <div class="icon">
+                    <i
+                      class="fa-solid fa-cart-shopping"
+                      style="color: #000000"
+                    ></i>
+                  </div>
+                  <div class="add-to-cart">Add to Cart</div>
+                </div>
+              </div>
+              <a href="">
+                <div
+                  class="new_arrival_product_buttons btn_color"
+                  onmouseover="changeColors(this)"
+                >
+                  Buy
+                </div></a
+              >
+            </div>
+          </li>
+        </ul>
+      </div>
+    </div>
+    <!-- New Arrivals -->
+
+    <!-- Why BotanicBlend -->
+    <!-- <div class="why_BB_outer_container">
+      <div class="why_BB_container">
+        <div class="why_BB_text">
+          <h1>Why BotanicBlend?</h1>
+          <p class="slide_in_text">
+            At BotanicBlend we're your go-to for pure, effective organic
+            skincare. With a commitment to transparency, cruelty-free practices,
+            and sustainable choices, we offer a skincare experience that's not
+            only good for your skin but also for the planet. Choose BotanicBlend
+            for a naturally beautiful and conscientious approach to skincare.
+          </p>
+        </div>
+        <div class="why_BB_media">
+          <video autoplay loop muted playsinline>
+            <source
+              src="other pages/Photos/Why BotanicBlend/why_BB (online-video-cutter.com).mp4"
+              type="video/mp4"
+            />
+            Your browser does not support the video tag.
+          </video>
+        </div>
+      </div>
+    </div> -->
+    <!-- Why BotanicBlend -->
+
+    <!-- Best Selling Products -->
+    <!-- <div class="best_sell_container">
+      <div class="best_sell_heading">
+        <h1>Our Best Selling Products</h1>
+      </div>
+      <div class="best_sell_products">
+        <ul>
+          <li>
+            <div class="best_sell_product_section">
+              <div class="best_sell_product_image">
+                <a href="#"
+                  ><img
+                    src="other pages/Photos/Best Seller Products Image/aloveragel.jpg"
+                    alt=""
+                /></a>
+              </div>
+              <div class="best_sell_product_name">Products Name</div>
+              <div class="best_sell_product_desc">Product Description</div>
+              <div class="best_sell_product_rating">rating</div>
+              <div class="best_sell_product_price">
+                price
+                <div
+                  class="add_to_cart product-container"
+                  onmouseover="showAddToCart(this) ; changeColors(this)"
+                  onmouseout="hideAddToCart(this)"
+                >
+                  <div class="icon">
+                    <i
+                      class="fa-solid fa-cart-shopping"
+                      style="color: #000000"
+                    ></i>
+                  </div>
+                  <div class="add-to-cart">Add to Cart</div>
+                </div>
+              </div>
+              <a href=""
+                ><div
+                  class="new_arrival_product_buttons btn_color"
+                  onmouseover="changeColors(this)"
+                >
+                  Buy
+                </div></a
+              >
+            </div>
+          </li>
+          <li>
+            <div class="best_sell_product_section">
+              <div class="best_sell_product_image">
+                <a href="#"
+                  ><img
+                    src="other pages/Photos/Best Seller Products Image/scrub.jpg"
+                    alt=""
+                /></a>
+              </div>
+              <div class="best_sell_product_name">Products Name</div>
+              <div class="best_sell_product_desc">Product Description</div>
+              <div class="best_sell_product_rating">rating</div>
+              <div class="best_sell_product_price">
+                price
+                <div
+                  class="add_to_cart product-container"
+                  onmouseover="showAddToCart(this) ; changeColors(this)"
+                  onmouseout="hideAddToCart(this)"
+                >
+                  <div class="icon">
+                    <i
+                      class="fa-solid fa-cart-shopping"
+                      style="color: #000000"
+                    ></i>
+                  </div>
+                  <div class="add-to-cart">Add to Cart</div>
+                </div>
+              </div>
+              <a href=""
+                ><div
+                  class="new_arrival_product_buttons btn_color"
+                  onmouseover="changeColors(this)"
+                >
+                  Buy
+                </div></a
+              >
+            </div>
+          </li>
+          <li>
+            <div class="best_sell_product_section">
+              <div class="best_sell_product_image">
+                <a href="#"
+                  ><img
+                    src="other pages/Photos/Best Seller Products Image/shower.jpg"
+                    alt=""
+                /></a>
+              </div>
+              <div class="best_sell_product_name">Products Name</div>
+              <div class="best_sell_product_desc">Product Description</div>
+              <div class="best_sell_product_rating">rating</div>
+              <div class="best_sell_product_price">
+                price
+                <div
+                  class="add_to_cart product-container"
+                  onmouseover="showAddToCart(this) ; changeColors(this)"
+                  onmouseout="hideAddToCart(this)"
+                >
+                  <div class="icon">
+                    <i
+                      class="fa-solid fa-cart-shopping"
+                      style="color: #000000"
+                    ></i>
+                  </div>
+                  <div class="add-to-cart">Add to Cart</div>
+                </div>
+              </div>
+              <a href=""
+                ><div
+                  class="new_arrival_product_buttons btn_color"
+                  onmouseover="changeColors(this)"
+                >
+                  Buy
+                </div></a
+              >
+            </div>
+          </li>
+          <li>
+            <div class="best_sell_product_section">
+              <div class="best_sell_product_image">
+                <a href="#"
+                  ><img
+                    src="other pages/Photos/Best Seller Products Image/vitamin_c cream.jpg"
+                    alt=""
+                /></a>
+              </div>
+              <div class="best_sell_product_name">Products Name</div>
+              <div class="best_sell_product_desc">Product Description</div>
+              <div class="best_sell_product_rating">rating</div>
+              <div class="best_sell_product_price">
+                price
+                <div
+                  class="add_to_cart product-container"
+                  onmouseover="showAddToCart(this) ; changeColors(this)"
+                  onmouseout="hideAddToCart(this)"
+                >
+                  <div class="icon">
+                    <i
+                      class="fa-solid fa-cart-shopping"
+                      style="color: #000000"
+                    ></i>
+                  </div>
+                  <div class="add-to-cart">Add to Cart</div>
+                </div>
+              </div>
+              <a href=""
+                ><div
+                  class="new_arrival_product_buttons btn_color"
+                  onmouseover="changeColors(this)"
+                >
+                  Buy
+                </div></a
+              >
+            </div>
+          </li>
+        </ul>
+      </div>
+      <div class="best_sellers_viewAll_button">
+        <a href=""
+          ><div class="view_all_btn" onmouseover="changeColors(this)">
+            View All
+          </div></a
+        >
+      </div>
+    </div> -->
+    <!-- Best Selling Products -->
+
+    <!-- Testimonial -->
+    <!-- <div class="testimonial_container">
+      <div class="testimonial_heading">What People Are Saying!</div>
+      <div class="testimonial">
+        <div class="testimonial_image">
+          <img src="other pages/Photos/Testimonials/sunscrean.jpg" alt="" />
+        </div>
+        <div class="testimonial_text_right">
+          <div class="testimonial_text_about_product_right">
+            I recently tried out your sunscreen, and I am so glad I did! It was
+            a great product that effectively protected my skin from the sun's UV
+            rays. It was easy to apply and it didn't leave my skin feeling
+            greasy or sticky like some other sunscreens do. I will be purchasing
+            more soon!
+          </div>
+          <div class="testimonial_product"><a href="">About Sunscreen</a></div>
+        </div>
+      </div>
+      <div class="testimonial">
+        <div class="testimonial_text_left">
+          <div class="testimonial_text_about_product_left">
+            The gel really evens out my skin tone, and makes my skin look
+            glowier than ever. The smell is so natural and not at all
+            irritating. nice product.
+          </div>
+          <div class="testimonial_product">
+            <a href="">About Kesar Chandan Gel</a>
+          </div>
+        </div>
+        <div class="testimonial_image left_img">
+          <img src="other pages/Photos/Testimonials/keshar.jpg" alt="" />
+        </div>
+      </div>
+      <div class="testimonial">
+        <div class="testimonial_image">
+          <img src="other pages/Photos/Testimonials/amla.jpg" alt="" />
+        </div>
+        <div class="testimonial_text_right">
+          <div class="testimonial_text_about_product_right">
+            My dandruff has really reduced with your shampoo, and it costs so
+            less compared to all the branded shampoos that don't even work that
+            much.
+          </div>
+          <div class="testimonial_product">
+            <a href="">About Amla Shikakai Shampoo</a>
+          </div>
+        </div>
+      </div>
+    </div> -->
+    <!-- Testimonial -->
+
+    <!-- shop_by_category -->
+    <!-- <div class="shop_by_category_container">
+      <div class="shop_by_category_heading">
+        <h1>Shop By Category</h1>
+      </div>
+      <div class="category_img_container">
+        <div class="bathing img_overlayer" id="img_1">
+          <img
+            class="category_img"
+            src="other pages/Photos/Shop by Category/Bathing.jpg"
+            alt=""
+          />
+        </div>
+        <div class="gel img_overlayer" id="img_2">
+          <img
+            class="category_img"
+            src="other pages/Photos/Shop by Category/Gels.jpg"
+            alt=""
+          />
+        </div>
+        <div class="body_care img_overlayer" id="img_3">
+          <img
+            class="category_img"
+            src="other pages/Photos/Shop by Category/Body care.jpg"
+            alt=""
+          />
+        </div>
+        <div class="cream img_overlayer" id="img_4">
+          <img
+            class="category_img"
+            src="other pages/Photos/Shop by Category/Cerams.jpg"
+            alt=""
+          />
+        </div>
+      </div>
+    </div> -->
+    <!-- shop_by_category -->
+
+    <!-- prons -->
+    <!-- <div class="prons_container">
+      <img
+        class="prons_img"
+        src="other pages/Photos/prons/free_shipping.png"
+        alt=""
+      />
+      <img class="prons_img" src="other pages/Photos/prons/return.png" alt="" />
+      <img
+        class="prons_img"
+        src="other pages/Photos/prons/online_support.png"
+        alt=""
+      />
+      <img
+        class="prons_img"
+        src="other pages/Photos/prons/payment_flexibility.png"
+        alt=""
+      />
+      <p class="prons_heading">Free Shipping</p>
+      <p class="prons_heading">Returns</p>
+      <p class="prons_heading">Online Support</p>
+      <p class="prons_heading">Flexible Payment</p>
+      <p class="prons_text">Free Shipping for Rrders over 10,00,000&#8377;</p>
+      <p class="prons_text">Within 5 Minutes for an Exchange</p>
+      <p class="prons_text">5 Seconds a Day, 1 Day a Week</p>
+      <p class="prons_text">Pay with Multiple Payment Options</p>
+    </div> -->
+    <!-- prons -->
+
+    <!-- skin-Type -->
+    <!-- <div class="skin_type_container">
+      <div class="skintype_upper_section">
+        <h2>Shop by Skin-Type</h2>
+      </div>
+      <div class="skintype_lower_section"></div>
+      <div class="skintype">
+        <div class="leftfill"></div>
+        <div
+          class="skin_type_img"
+          onmouseover="showText(this)"
+          onmouseout="hideText(this)"
+        >
+          <img
+            class="skinType_img"
+            src="other pages/Photos/Skin-Type Image/oily 2.png"
+            alt=""
+          />
+          <a href=""> <span class="skin_type_text">Oily</span></a>
+        </div>
+        <div class="centerfill"></div>
+        <div
+          class="skin_type_img"
+          onmouseover="showText(this)"
+          onmouseout="hideText(this)"
+        >
+          <img
+            class="skinType_img"
+            src="other pages/Photos/Skin-Type Image/dry-skin 2.png"
+            alt=""
+          />
+          <a href=""><span class="skin_type_text">Dry</span> </a>
+        </div>
+        <div class="centerfill"></div>
+        <div
+          class="skin_type_img"
+          onmouseover="showText(this)"
+          onmouseout="hideText(this)"
+        >
+          <img
+            class="skinType_img"
+            src="other pages/Photos/Skin-Type Image/normal 1.png"
+            alt=""
+          />
+          <a href=""><span class="skin_type_text">Normal</span></a>
+        </div>
+        <div class="rightfill"></div>
+      </div>
+    </div> -->
+    <!-- skin-Type -->
+
+    <!-- science -->
+    <!-- <div class="science_container">
+      <h2 class="science_content">Science-backed clean ingredients</h2>
+      <p class="science_content">
+        Every product at BotanicBlend we formulate is free of sulfates,
+        parabens, GMOs, mineral oils, and is always cruelty-free.
+      </p>
+      <div class="science_icons_container science_content">
+        <div class="science_icon">
+          <img
+            src="other pages/Photos/Science Image/Cruelty_icon.webp"
+            alt=""
+          />
+          <span>CRUELTY FREE</span>
+        </div>
+        <div class="science_icon">
+          <img
+            src="other pages/Photos/Science Image/Sulfate_icon.webp"
+            alt=""
+          />
+          <span>SULFATE FREE</span>
+        </div>
+        <div class="science_icon">
+          <img
+            src="other pages/Photos/Science Image/Paraben_icon.webp"
+            alt=""
+          />
+          <span>PARABEN FREE</span>
+        </div>
+        <div class="science_icon">
+          <img src="other pages/Photos/Science Image/GMO_icon_1.webp" alt="" />
+          <span>GMO FREE</span>
+        </div>
+        <div class="science_icon">
+          <img
+            src="other pages/Photos/Science Image/Phtlates_iconn.webp"
+            alt=""
+          /><span>PHTHALATE FREE</span>
+        </div>
+      </div>
+    </div> -->
+    <!-- science -->
+
+    <!-- Footer -->
+    <div class="footer_container">
+      <div id="footer-placeholder"></div>
+    </div>
+    <!-- Footer -->
+    <script src="other pages/JavaScript files/header_footer_loader.js.js"></script>
+    <script src="other pages/JavaScript files/image_slider.js"></script>
+    <script src="other pages/JavaScript files/testimonial.js"></script>
+    <script src="other pages/JavaScript files/cart.js"></script>
+    <script src="other pages/JavaScript files/loginFormShow.js"></script>
+    <script src="other pages/JavaScript files/search.js"></script>
+    <script src="other pages/JavaScript files/button_color_change.js"></script>
+    <script src="other pages/JavaScript files/cart_icon_change.js"></script>
+    <script src="other pages/JavaScript files/skintype_show.js"></script>
+    <script src="app.js"></script>
+  </body>
+</html>
