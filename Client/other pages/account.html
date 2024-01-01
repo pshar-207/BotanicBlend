@@ -12,6 +12,7 @@
     <link rel="stylesheet" href="CSS files/cart.css" />
     <link rel="stylesheet" href="CSS files/search.css" />
     <link rel="stylesheet" href="CSS files/login_form.css" />
+    <link rel="stylesheet" href="CSS files/header.css" />
   </head>
   <body>
     <!-- header -->
@@ -54,48 +55,416 @@
       </div>
 
       <div class="right_side_options">
+        <!-- Account Details -->
         <div class="account_details_container">
           <div class="account_deital_heading">Account Details</div>
           <hr />
           <div class="account_details">
             <h2>Name</h2>
-            <span>User Name</span>
-            <div class="edit"><span>EDIT</span></div>
+            <span id="user_name">User Name</span>
+            <div class="edit"><span class="edit_pop1">EDIT</span></div>
 
             <h2>Email</h2>
-            <span>User Email Address</span>
-            <div class="edit"><span>EDIT</span></div>
+            <span id="user_email">User Email Address</span>
+            <div class="edit"><span class="edit_pop2">EDIT</span></div>
 
             <h2>Password</h2>
-            <span>********</span>
-            <div class="edit"><span>EDIT</span></div>
+            <span id="user_password">********</span>
+            <div class="edit"><span class="edit_pop3">EDIT</span></div>
 
             <h2>Birthday</h2>
-            <span>We'd love to celebrate you with a little gift!</span>
-            <div class="edit"><span>ADD</span></div>
+            <span id="user_DOB"
+              >We'd love to celebrate you with a little gift!</span
+            >
+            <div class="edit"><span class="edit_pop4">ADD</span></div>
 
             <h2>Skin Type</h2>
-            <span>We'll tailor a ritual just for you</span>
-            <div class="edit"><span>ADD</span></div>
+            <span id="user_skinType">We'll tailor a ritual just for you</span>
+            <div class="edit"><span class="edit_pop5">ADD</span></div>
           </div>
         </div>
-      </div>
 
-      <div class="edit_popup">
-        <div class="name_edit">
-          <div class="edit_close">
-            <i class="fa-solid fa-xmark"></i>
+        <div class="edit_popup">
+          <!-- name -->
+          <div class="name_edit pop1">
+            <div class="edit_close close_pop1">
+              <i class="fa-solid fa-xmark"></i>
+            </div>
+            <h2 class="name">Name</h2>
+            <form action="/update-name" method="post" id="nameEditForm">
+              <input
+                type="text"
+                class="name"
+                placeholder="First Name"
+                id="firstNameInput"
+              />
+              <input
+                type="text"
+                class="name"
+                placeholder="Last Name"
+                id="lastNameInput"
+              />
+            </form>
+            <div class="cancel_save">
+              <span class="cancel" onclick="hidePopup('pop1')">CANCEL</span>
+              <span class="save" onclick="submitForm('nameEditForm')"
+                >SAVE</span
+              >
+            </div>
           </div>
-          <h2>Name</h2>
-          <form action="" method="post">
-            <input type="text" placeholder="First Name" />
-            <input type="text" placeholder="Last Name" />
-          </form>
-          <div class="cancel_save">
-            <span class="cancel">CANCEL</span><span class="saev">SAVE</span>
+
+          <!-- email -->
+          <div class="name_edit pop2">
+            <div class="edit_close close_pop2">
+              <i class="fa-solid fa-xmark"></i>
+            </div>
+            <h2 class="name">Email</h2>
+            <form action="/update-email" method="post" id="emailEditForm">
+              <input
+                type="text"
+                class="name"
+                id="new_email"
+                placeholder="Enter New Email"
+              />
+            </form>
+            <div class="cancel_save">
+              <span class="cancel" onclick="hidePopup('pop2')">CANCEL</span
+              ><span class="save" onclick="submitEmailForm('emailEditForm')"
+                >SAVE</span
+              >
+            </div>
+          </div>
+
+          <!-- password -->
+          <div class="name_edit pop3">
+            <div class="edit_close close_pop3">
+              <i class="fa-solid fa-xmark"></i>
+            </div>
+            <h2 class="name">Password</h2>
+            <form action="/update-password" method="post" id="passwordEditForm">
+              <input
+                type="password"
+                class="name"
+                id="previous_password"
+                placeholder="Previous Password"
+              />
+              <input
+                type="password"
+                class="name"
+                id="new_password"
+                placeholder="New Password"
+              />
+            </form>
+            <div class="cancel_save">
+              <span class="cancel" onclick="hidePopup('pop3')">CANCEL</span
+              ><span class="save" onclick="updatePassword()">SAVE</span>
+            </div>
+          </div>
+
+          <!-- Birthday -->
+          <div class="name_edit pop4">
+            <div class="edit_close close_pop4">
+              <i class="fa-solid fa-xmark"></i>
+            </div>
+            <h2 class="name">Date of Birth</h2>
+            <form action="/update-dob" method="post" id="birthdayEditForm">
+              <input
+                type="date"
+                class="name"
+                name="dob"
+                id="dobInput"
+                placeholder="DOB"
+              />
+            </form>
+            <div class="cancel_save">
+              <span class="cancel" onclick="hidePopup('pop4')">CANCEL</span
+              ><span class="save" onclick="updateBirthday()">SAVE</span>
+            </div>
+          </div>
+
+          <!-- Skin Type -->
+          <div class="name_edit pop5">
+            <div class="edit_close close_pop5">
+              <i class="fa-solid fa-xmark"></i>
+            </div>
+            <h2 class="name">Skin-Type</h2>
+            <form action="" method="post" id="skinTypeEditForm">
+              <div
+                class="q2_dry"
+                onmouseover="changeColors(this)"
+                onclick="changeColorsClick(this)"
+                onmouseout="restoreOriginalColors(this)"
+              >
+                Dry
+              </div>
+              <div
+                class="q2_oily"
+                onmouseover="changeColors(this)"
+                onclick="changeColorsClick(this)"
+                onmouseout="restoreOriginalColors(this)"
+              >
+                Oily
+              </div>
+              <div
+                class="q2_normal"
+                onmouseover="changeColors(this)"
+                onclick="changeColorsClick(this)"
+                onmouseout="restoreOriginalColors(this)"
+              >
+                Normal
+              </div>
+            </form>
+            <div class="cancel_save">
+              <span class="cancel" onclick="hidePopup('pop5')">CANCEL</span
+              ><span class="save" onclick="saveSkinType()">SAVE</span>
+            </div>
           </div>
         </div>
+        <!-- Account Details -->
+
+        <!-- My Orders -->
+        <div class="my_orders_container">
+          <div class="my_orders_heading">My Orders</div>
+          <hr />
+          <ul class="myOrderProducts">
+            <li>
+              <div class="my_product_orders">
+                <div class="produce_img">
+                  <img src="Photo/Header Image/BBL 2.png" alt="" />
+                </div>
+                <div class="product_name_desc">
+                  <div class="product_name">Alowera</div>
+                  <p class="description">
+                    Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                    Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                    Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                  </p>
+                </div>
+                <div class="product_price_rating">
+                  <div class="price">520</div>
+                  <div class="rating">5</div>
+                </div>
+                <div class="shipping_date">1/5/202</div>
+              </div>
+            </li>
+            <li>
+              <div class="my_product_orders">
+                <div class="produce_img">
+                  <img src="Photo/Header Image/BBL 2.png" alt="" />
+                </div>
+                <div class="product_name_desc">
+                  <div class="product_name">Alowera</div>
+                  <p class="description">
+                    Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                    Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                    Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                  </p>
+                </div>
+                <div class="product_price_rating">
+                  <div class="price">520</div>
+                  <div class="rating">5</div>
+                </div>
+                <div class="shipping_date">1/5/202</div>
+              </div>
+            </li>
+            <li>
+              <div class="my_product_orders">
+                <div class="produce_img">
+                  <img src="Photo/Header Image/BBL 2.png" alt="" />
+                </div>
+                <div class="product_name_desc">
+                  <div class="product_name">Alowera</div>
+                  <p class="description">
+                    Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                    Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                    Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                  </p>
+                </div>
+                <div class="product_price_rating">
+                  <div class="price">520</div>
+                  <div class="rating">5</div>
+                </div>
+                <div class="shipping_date">1/5/202</div>
+              </div>
+            </li>
+          </ul>
+        </div>
+        <!-- My Orders -->
+
+        <!-- Cart -->
+        <div class="my_cart_container">
+          <div class="my_cart_heading">Cart</div>
+          <hr />
+          <ul class="myCartProducts">
+            <li>
+              <div class="cart_product_section">
+                <div class="cart_product_image">
+                  <a href="#">
+                    <img
+                      src="Photo/Best Seller Products Image/aloveragel.jpg"
+                      alt=""
+                  /></a>
+                </div>
+                <div class="cart_product_name">Products Name</div>
+                <div class="cart_product_desc">Product Description</div>
+                <div class="cart_product_rating">rating</div>
+                <div class="cart_product_price">price</div>
+                <a href=""
+                  ><div
+                    class="cart_product_buttons"
+                    onmouseover="changeColors(this)"
+                  >
+                    Buy
+                  </div></a
+                >
+              </div>
+            </li>
+            <li>
+              <div class="cart_product_section">
+                <div class="cart_product_image">
+                  <a href="#">
+                    <img
+                      src="Photo/Best Seller Products Image/aloveragel.jpg"
+                      alt=""
+                  /></a>
+                </div>
+                <div class="cart_product_name">Products Name</div>
+                <div class="cart_product_desc">Product Description</div>
+                <div class="cart_product_rating">rating</div>
+                <div class="cart_product_price">price</div>
+                <a href=""
+                  ><div
+                    class="cart_product_buttons"
+                    onmouseover="changeColors(this)"
+                  >
+                    Buy
+                  </div></a
+                >
+              </div>
+            </li>
+            <li>
+              <div class="cart_product_section">
+                <div class="cart_product_image">
+                  <a href="#">
+                    <img
+                      src="Photo/Best Seller Products Image/aloveragel.jpg"
+                      alt=""
+                  /></a>
+                </div>
+                <div class="cart_product_name">Products Name</div>
+                <div class="cart_product_desc">Product Description</div>
+                <div class="cart_product_rating">rating</div>
+                <div class="cart_product_price">price</div>
+                <a href=""
+                  ><div
+                    class="cart_product_buttons"
+                    onmouseover="changeColors(this)"
+                  >
+                    Buy
+                  </div></a
+                >
+              </div>
+            </li>
+            <li>
+              <div class="cart_product_section">
+                <div class="cart_product_image">
+                  <a href="#">
+                    <img
+                      src="Photo/Best Seller Products Image/aloveragel.jpg"
+                      alt=""
+                  /></a>
+                </div>
+                <div class="cart_product_name">Products Name</div>
+                <div class="cart_product_desc">Product Description</div>
+                <div class="cart_product_rating">rating</div>
+                <div class="cart_product_price">price</div>
+                <a href=""
+                  ><div
+                    class="cart_product_buttons"
+                    onmouseover="changeColors(this)"
+                  >
+                    Buy
+                  </div></a
+                >
+              </div>
+            </li>
+            <li>
+              <div class="cart_product_section">
+                <div class="cart_product_image">
+                  <a href="#">
+                    <img
+                      src="Photo/Best Seller Products Image/aloveragel.jpg"
+                      alt=""
+                  /></a>
+                </div>
+                <div class="cart_product_name">Products Name</div>
+                <div class="cart_product_desc">Product Description</div>
+                <div class="cart_product_rating">rating</div>
+                <div class="cart_product_price">price</div>
+                <a href=""
+                  ><div
+                    class="cart_product_buttons"
+                    onmouseover="changeColors(this)"
+                  >
+                    Buy
+                  </div></a
+                >
+              </div>
+            </li>
+            <li>
+              <div class="cart_product_section">
+                <div class="cart_product_image">
+                  <a href="#">
+                    <img
+                      src="Photo/Best Seller Products Image/aloveragel.jpg"
+                      alt=""
+                  /></a>
+                </div>
+                <div class="cart_product_name">Products Name</div>
+                <div class="cart_product_desc">Product Description</div>
+                <div class="cart_product_rating">rating</div>
+                <div class="cart_product_price">price</div>
+                <a href=""
+                  ><div
+                    class="cart_product_buttons"
+                    onmouseover="changeColors(this)"
+                  >
+                    Buy
+                  </div></a
+                >
+              </div>
+            </li>
+            <li>
+              <div class="cart_product_section">
+                <div class="cart_product_image">
+                  <a href="#">
+                    <img
+                      src="Photo/Best Seller Products Image/aloveragel.jpg"
+                      alt=""
+                  /></a>
+                </div>
+                <div class="cart_product_name">Products Name</div>
+                <div class="cart_product_desc">Product Description</div>
+                <div class="cart_product_rating">rating</div>
+                <div class="cart_product_price">price</div>
+                <a href=""
+                  ><div
+                    class="cart_product_buttons"
+                    onmouseover="changeColors(this)"
+                  >
+                    Buy
+                  </div></a
+                >
+              </div>
+            </li>
+          </ul>
+        </div>
+        <!-- Cart -->
       </div>
+    </div>
+
+    <div id="logoutButton">
+      <input type="button" value="LOG OUT" onclick="logoutUser()" />
     </div>
 
     <!-- Footer -->
@@ -103,9 +472,386 @@
       <div id="footer-placeholder"></div>
     </div>
     <!-- Footer -->
-    <script src="/BotenicBlend/other pages/JavaScript files/Index.js"></script>
-    <script src="/BotenicBlend/other pages/JavaScript files/cart.js"></script>
-    <script src="/BotenicBlend/other pages/JavaScript files/search.js"></script>
-    <script src="/BotenicBlend/other pages/JavaScript files/loginFormShow.js"></script>
+    <script>
+      // Function to hide the specified pop-up div
+      function hidePopup(popId) {
+        var popup = document.querySelector("." + popId);
+        if (popup) {
+          popup.style.display = "none";
+        }
+      }
+
+      document.addEventListener("DOMContentLoaded", function () {
+        // Function to show the specified pop-up div and hide others
+        function showPopup(popId) {
+          var popups = document.querySelectorAll(".name_edit");
+          popups.forEach(function (popup) {
+            popup.style.display = "none";
+          });
+
+          var popup = document.querySelector("." + popId);
+          if (popup) {
+            popup.style.display = "block";
+          }
+        }
+
+        // Attach click event listeners to trigger show/hide for each pop-up
+        document
+          .querySelector(".edit_pop1")
+          .addEventListener("click", function () {
+            showPopup("pop1");
+          });
+
+        document
+          .querySelector(".close_pop1")
+          .addEventListener("click", function () {
+            hidePopup("pop1");
+          });
+
+        document
+          .querySelector(".edit_pop2")
+          .addEventListener("click", function () {
+            showPopup("pop2");
+          });
+
+        document
+          .querySelector(".close_pop2")
+          .addEventListener("click", function () {
+            hidePopup("pop2");
+          });
+
+        document
+          .querySelector(".edit_pop3")
+          .addEventListener("click", function () {
+            showPopup("pop3");
+          });
+
+        document
+          .querySelector(".close_pop3")
+          .addEventListener("click", function () {
+            hidePopup("pop3");
+          });
+
+        document
+          .querySelector(".edit_pop4")
+          .addEventListener("click", function () {
+            showPopup("pop4");
+          });
+
+        document
+          .querySelector(".close_pop4")
+          .addEventListener("click", function () {
+            hidePopup("pop4");
+          });
+
+        document
+          .querySelector(".edit_pop5")
+          .addEventListener("click", function () {
+            showPopup("pop5");
+          });
+
+        document
+          .querySelector(".close_pop5")
+          .addEventListener("click", function () {
+            hidePopup("pop5");
+          });
+      });
+    </script>
+    <script src="JavaScript files/header_footer_loader.js"></script>
+    <script src="JavaScript files/cart.js"></script>
+    <script src="JavaScript files/search.js"></script>
+    <script src="JavaScript files/loginFormShow.js"></script>
+    <script>
+      // Function to handle user logout
+      //document.addEventListener("DOMContentLoaded", () => {
+      function logoutUser() {
+        fetch("/logout")
+          .then((response) => response.json())
+          .then((data) => {
+            if (data.message === "Logged out successfully") {
+              alert("You have been logged out!");
+              window.location.href = "/"; // Refresh the page or redirect as needed
+            } else {
+              alert("Error logging out");
+            }
+          })
+          .catch((error) => console.error("Error logging out:", error));
+      }
+    </script>
+    <script>
+      document.addEventListener("DOMContentLoaded", () => {
+        // Fetch user details
+
+        fetch("/user_detail")
+          .then((response) => response.json())
+          .then((data) => {
+            updateDetails(data.userDetails);
+          })
+          .catch((error) =>
+            console.error("Error checking authentication:", error)
+          );
+
+        // Function to update the details in the HTML
+        function updateDetails(userDetails) {
+          updateDetail(
+            "user_name",
+            `${userDetails.first_name} ${userDetails.last_name}`
+          );
+          updateDetail("user_email", userDetails.email);
+          updateDetail(
+            "user_DOB",
+            formatBirthday(userDetails.birthday) ||
+              "We'd love to celebrate you with a little gift!"
+          );
+          updateDetail(
+            "user_skinType",
+            userDetails.skin_type || "We'll tailor a ritual just for you"
+          );
+
+          // Populate the input fields in the pop-up with current name
+          document.getElementById("firstNameInput").value =
+            userDetails.first_name;
+          document.getElementById("lastNameInput").value =
+            userDetails.last_name;
+        }
+
+        function formatBirthday(birthday) {
+          if (birthday) {
+            const date = new Date(birthday);
+            return date.toLocaleDateString();
+          }
+          return null;
+        }
+
+        function updateDetail(elementId, value) {
+          const detailElement = document.getElementById(elementId);
+          if (detailElement) {
+            detailElement.textContent = value;
+          }
+        }
+      });
+
+      // Function to handle form submissions
+      function submitForm(formId) {
+        const firstNameInput = document.getElementById("firstNameInput");
+        const lastNameInput = document.getElementById("lastNameInput");
+
+        const firstName = firstNameInput.value;
+        const lastName = lastNameInput.value;
+
+        if (!firstName || !lastName) {
+          alert("Please enter both first name and last name");
+          return;
+        }
+
+        fetch("/update-name", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({
+            firstName: firstName,
+            lastName: lastName,
+          }),
+        })
+          .then((response) => response.json())
+          .then((data) => {
+            if (data.success) {
+              alert("Name updated successfully!");
+              hidePopup("pop1"); // Assuming you have a function to hide the popup
+              // Optionally, you can fetch and update user details after the name update
+              fetch("/user_detail")
+                .then((response) => response.json())
+                .then((data) => {
+                  updateDetails(data.userDetails);
+                })
+                .catch((error) =>
+                  console.error("Error updating details:", error)
+                );
+            } else {
+              alert("Error updating name");
+            }
+          })
+          .catch((error) => console.error("Error updating name:", error));
+      }
+      // Add this function to handle email form submissions
+      function submitEmailForm(formId) {
+        const newEmail = document.getElementById("new_email").value;
+
+        fetch("/update-email", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({ newEmail }),
+        })
+          .then((response) => response.json())
+          .then((data) => {
+            if (data.success) {
+              alert("Email updated successfully");
+              // Optionally, you can update the displayed email on the page
+              updateDetail("user_email", newEmail);
+              hidePopup("pop2");
+            } else {
+              alert("Error updating email");
+            }
+          })
+          .catch((error) => console.error("Error updating email:", error));
+      }
+
+      // Function to handle password form submission
+      function updatePassword() {
+        const previousPassword =
+          document.getElementById("previous_password").value;
+        const newPassword = document.getElementById("new_password").value;
+
+        // You can add additional validation here if needed
+
+        // Send a fetch request to the server to update the password
+        fetch("/update-password", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({
+            previousPassword: previousPassword,
+            newPassword: newPassword,
+          }),
+        })
+          .then((response) => response.json())
+          .then((data) => {
+            if (data.success) {
+              alert("Password updated successfully!");
+              hidePopup("pop3"); // Close the password edit popup
+            } else {
+              alert(
+                "Failed to update password. Please check your input and try again."
+              );
+            }
+          })
+          .catch((error) => {
+            console.error("Error updating password:", error);
+            alert(
+              "An error occurred while updating the password. Please try again later."
+            );
+          });
+      }
+
+      // Add this function to handle birthday form submissions
+      function updateBirthday() {
+        // Get the date of birth value from the input field
+        const dobInput = document.getElementById("dobInput");
+        const newDob = dobInput.value;
+
+        // Prepare the request options
+        const options = {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({ newDob }),
+        };
+
+        // Fetch to the server endpoint for updating DOB
+        fetch("/update-dob", options)
+          .then((response) => response.json())
+          .then((data) => {
+            if (data.success) {
+              // Optionally update the UI or show a success message
+              console.log("DOB updated successfully!");
+            } else {
+              // Handle the case where the update was not successful
+              if (data.message === "Date of birth already added") {
+                alert("Date of birth has already been added!");
+              } else {
+                console.error("Failed to update DOB.");
+              }
+            }
+          })
+          .catch((error) => {
+            console.error("Error updating DOB:", error);
+          });
+      }
+    </script>
+
+    <!-- color chanege -->
+    <script>
+      // Include your existing JavaScript code here
+
+      let selectedSkinType = null;
+      var clickedDiv = null;
+      var originalBackgroundColor = element.style.backgroundColor;
+      var originalBorder = element.style.border;
+      function changeColors(element) {
+        // Apply hover effect only if the div is not clicked
+        if (element !== clickedDiv) {
+          // Save the original colors
+
+          // Change colors on hover
+          element.style.backgroundColor = "#fcc6e2"; // Change this to the desired background color
+          element.style.border = "1px solid white";
+        }
+      }
+
+      function changeColorsClick(div) {
+        // Reset styles for the previously clicked div
+        if (clickedDiv) {
+          clickedDiv.style.backgroundColor = "white";
+          clickedDiv.style.border = "1px solid black";
+        }
+
+        // Set styles for the clicked div
+        div.style.backgroundColor = "#fcc6e2"; // Change this to the desired color
+        div.style.color = "black"; // Change this to the desired color
+
+        // Update the clickedDiv variable
+        clickedDiv = div;
+
+        //select div by skin type
+        selectedSkinType = div.innerText;
+      }
+      function restoreOriginalColors(element) {
+        // Restore original colors only if the div is not clicked
+        if (element !== clickedDiv) {
+          element.style.backgroundColor = "white";
+          element.style.border = "1px solid black";
+        }
+      }
+
+      function saveSkinType() {
+        // You can now use the selectedSkinType variable to send the data to the server
+        console.log("Selected Skin Type:", selectedSkinType);
+
+        // Fetch to the server endpoint for updating skin type
+        const options = {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({ skinType: selectedSkinType }),
+        };
+
+        fetch("/update-skin-type", options)
+          .then((response) => response.json())
+          .then((data) => {
+            if (data.success) {
+              // Optionally update the UI or show a success message
+              console.log("Skin type updated successfully!");
+              alert("Skin-Type Updated!");
+            } else {
+              // Handle the case where the update was not successful
+              console.error("Failed to update skin type.");
+            }
+          })
+          .catch((error) => {
+            console.error("Error updating skin type:", error);
+          });
+
+        // Close the popup or perform any other necessary actions
+        hidePopup("pop5");
+      }
+    </script>
+    <script src="JavaScript files/button_color_change.js"></script>
+    <script src="JavaScript files/account_option_selector.js"></script>
   </body>
 </html>

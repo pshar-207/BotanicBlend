@@ -29,7 +29,8 @@
 .best_sell_products li {
   list-style: none;
 }
-.best_sell_product_image {
+.best_sell_product_image,
+.best_sell_product_desc {
   width: 15rem;
 }
 .best_sell_product_image img {

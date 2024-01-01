@@ -47,7 +47,7 @@ function changeNavbarBackgroundColorOnScroll() {
   navbarContainer.addEventListener("mouseout", handleNavbarMouseOut);
 
   window.addEventListener("scroll", () => {
-    console.log("Scroll position:", window.scrollY);
+    // console.log("Scroll position:", window.scrollY);
     if (window.scrollY > 0) {
       navbarContainer.style.backgroundColor = "white";
       shopbg.style.backgroundColor = "white";

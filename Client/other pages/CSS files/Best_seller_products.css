@@ -72,7 +72,8 @@
   opacity: 1;
 }
 /* 3D Effect */
-.best_sellers_products img {
+.best_sellers_products img,
+.best_sell_product_desc {
   width: 10rem;
 }
 

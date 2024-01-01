@@ -14,7 +14,7 @@
     />
     <link rel="stylesheet" href="other pages/CSS files/cart.css" />
     <link rel="stylesheet" href="other pages/CSS files/search.css" />
-    <link rel="stylesheet" href="other pages/CSS files/login_form.css" />
+    <link rel="stylesheet" href="CSS files/login_form.css" />
   </head>
   <body>
     <div class="header">
@@ -64,7 +64,7 @@
             <a href="other pages/About_page.html">About</a>
           </div>
 
-          <div class="login_icon" onclick="toggleLoginForm()">
+          <div class="login_icon" onclick="toggleLoginForm()" id="login-button">
             <button>
               <i class="fa-solid fa-user" style="color: #000000"></i>
             </button>
@@ -95,31 +95,32 @@
         <div class="login_form_container" id="login_form_container">
           <div class="close_btn" onclick="toggleLoginForm()">Close</div>
           <div class="logo_image">
-            <img src="other pages/Photos/Footer Image/BBL 2.png" alt="" />
+            <img
+              src="/BotenicBlend/Client/other pages/Photos/Header Image/BBL 2.png"
+              alt=""
+            />
           </div>
           <div class="logo_name">BotanicBlend</div>
-          <form action="" method="post">
+          <form action="/login" method="post">
             <div class="form_container">
               <input
                 type="email"
                 id="email"
                 name="email"
                 placeholder="Email Address"
+                required
               />
               <input
                 type="password"
                 id="password"
                 name="password"
                 placeholder="Password"
+                required
               />
               <a href="#">Forget your password?</a>
-              <input
-                type="button"
-                value="LOG IN"
-                onclick="alert('You logged in!')"
-              />
+              <input type="button" value="LOG IN" onclick="loginUser()" />
               <div class="sign_up">
-                Don't have account?
+                Don't have an account?
                 <a href="other pages/signUp.html">Register now</a>
               </div>
             </div>
