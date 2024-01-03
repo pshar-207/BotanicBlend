@@ -4,245 +4,463 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
-    <link rel="stylesheet" href="/BotenicBlend/CSS files/navbar.css" />
-    <link rel="stylesheet" href="/BotenicBlend/CSS files/Product_Page.css" />
-    <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css"
-    />
-    <script src="script.js" defer></script>
+    <link rel="stylesheet" href="CSS files/header.css" />
+    <link rel="stylesheet" href="CSS files/cart.css" />
+    <link rel="stylesheet" href="CSS files/search.css" />
+    <link rel="stylesheet" href="CSS files/login_form.css" />
+    <link rel="stylesheet" href="CSS files/best_sell.css" />
+    <link rel="stylesheet" href="CSS files/new_arrivals.css" />
+    <link rel="stylesheet" href="CSS files/Product_Page.css" />
   </head>
   <body>
     <!-- header -->
-    <div id="header-placeholder"></div>
+    <div class="header_containor">
+      <div id="header-placeholder"></div>
+    </div>
     <!-- header -->
 
-    <div class="product_container">
-      <div class="image_container">
-        <div class="product_image" alt="Main Image">
-          <img
-            id="main-image"
-            src="/BotenicBlend/Photos/products/Keasar-Chandan Gel/20230924_183826.jpg"
-            alt=""
-          />
+    <div class="product_detail_container">
+      <div class="product_image_container">
+        <div class="product_image">
+          <img src="Photos/Best Seller Products Image/aloveragel.jpg" alt="" />
         </div>
-        <div class="additional-images">
-          <img
-            src="/BotenicBlend/Photos/products/Keasar-Chandan Gel/20230924_183826.jpg"
-            alt="Image 1"
-          />
-          <img
-            src="/BotenicBlend/Photos/products/Keasar-Chandan Gel/20230924_172932.jpg"
-            alt="Image 2"
-          />
+        <div class="other_images">
+          <img src="Photos/Best Seller Products Image/aloveragel.jpg" alt="" />
+          <img src="Photos/Best Seller Products Image/aloveragel.jpg" alt="" />
+          <img src="Photos/Best Seller Products Image/aloveragel.jpg" alt="" />
         </div>
       </div>
-      <div class="product_content">
-        <div class="product_name"><h2>Product Name</h2></div>
+      <div class="product_detail">
+        <div class="name_assurance_container">
+          <div class="product_name">Alovera</div>
+          <div class="assurance">100% alovera extract</div>
+        </div>
+        <div class="rating">*****</div>
         <div class="product_description">
-          <h3>Description</h3>
-          <p>
-            100₹ Lorem ipsum dolor sit amet consectetur adipisicing elit.
-            Perferendis hic quod exercitationem, accusamus, nemo accusantium eos
-            similique ipsa dolorem fuga fugit tenetur distinctio non cupiditate
-            incidunt aperiam perspiciatis cumque laudantium.
+          Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolores quam
+          assumenda nemo, nisi molestiae dolorem alias iusto illo expedita earum
+          repellat officiis distinctio facere quos blanditiis deserunt, sit
+          atque temporibus.
+        </div>
+        <div class="weight_container">
+          <div class="weight">Weight</div>
+          <span
+            onmouseover="changeColorsWeight(this)"
+            onclick="changeColorsClickWeight(this)"
+            onmouseout="restoreOriginalColorsWeight(this)"
+            >100ml</span
+          ><span
+            onmouseover="changeColorsWeight(this)"
+            onclick="changeColorsClickWeight(this)"
+            onmouseout="restoreOriginalColorsWeight(this)"
+            >250ml</span
+          ><span
+            onmouseover="changeColorsWeight(this)"
+            onclick="changeColorsClickWeight(this)"
+            onmouseout="restoreOriginalColorsWeight(this)"
+            >500ml</span
+          >
+        </div>
+        <div class="flavour_container">
+          <div class="flavour">Flavour</div>
+          <span
+            onmouseover="changeColorsFlavour(this)"
+            onclick="changeColorsClickFlavour(this)"
+            onmouseout="restoreOriginalColorsFlavour(this)"
+            >Keshar Chandan</span
+          ><span
+            onmouseover="changeColorsFlavour(this)"
+            onclick="changeColorsClickFlavour(this)"
+            onmouseout="restoreOriginalColorsFlavour(this)"
+            >Alovera</span
+          ><span
+            onmouseover="changeColorsFlavour(this)"
+            onclick="changeColorsClickFlavour(this)"
+            onmouseout="restoreOriginalColorsFlavour(this)"
+            >Glycerine Gulab</span
+          >
+        </div>
+        <div class="quantity_container">
+          <div class="quantity">Quantity</div>
+          <span class="qty_descrese">-</span><span class="qty_number">1</span
+          ><span class="qty_increse">+</span>
+        </div>
+        <div class="buy_cart_container">
+          <div
+            class="buy_button"
+            onmouseover="changeColors(this)"
+            onclick="changeColorsClick(this)"
+            onmouseout="restoreOriginalColors(this)"
+          >
+            BUY
+          </div>
+          <div
+            class="add_to_cart_button"
+            onmouseover="changeColors(this)"
+            onclick="changeColorsClick(this)"
+            onmouseout="restoreOriginalColors(this)"
+          >
+            ADD TO CART
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="description_review_policy_container">
+      <div class="desc_shipping_review">
+        <div
+          class="description"
+          onclick="changeColorsClickDescriptionShipping(this)"
+          onmouseover="changeColorsDescriptionShipping(this)"
+          onmouseout="restoreOriginalColorsDescriptionShipping(this)"
+        >
+          Description
+        </div>
+        <div
+          class="shipping_Returns"
+          onclick="changeColorsClickDescriptionShipping(this)"
+          onmouseover="changeColorsDescriptionShipping(this)"
+          onmouseout="restoreOriginalColorsDescriptionShipping(this)"
+        >
+          Shipping & Returns
+        </div>
+        <div
+          class="reviews"
+          onmouseover="changeColors(this)"
+          onclick="scrollToReview()"
+        >
+          Reviews
+        </div>
+      </div>
+      <div class="product_description_container">
+        <div class="product_description">
+          <div class="desc_product_name">
+            Product Name : <span>Alovera Gel</span>
+          </div>
+        </div>
+        <div class="keyIngredientsContainer">
+          <div class="keyIngredients">Key Ingredients :</div>
+          <ul class="keyIngredientsList">
+            <li>
+              Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolore
+              qui ab consectetur odit error quas fugit esse accusantium minus
+              ullam. Voluptatem delectus molestiae porro ut est minus quisquam,
+              magnam nihil.
+            </li>
+            <li>
+              Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolore
+              qui ab consectetur odit error quas fugit esse accusantium minus
+              ullam. Voluptatem delectus molestiae porro ut est minus quisquam,
+              magnam nihil.
+            </li>
+          </ul>
+        </div>
+        <div class="featuresContainer">
+          <div class="features">Features :</div>
+          <ul class="featuresList">
+            <li>
+              Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolore
+              qui ab consectetur odit error quas fugit esse accusantium minus
+              ullam. Voluptatem delectus molestiae porro ut est minus quisquam,
+              magnam nihil.
+            </li>
+            <li>
+              Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolore
+              qui ab consectetur odit error quas fugit esse accusantium minus
+              ullam. Voluptatem delectus molestiae porro ut est minus quisquam,
+              magnam nihil.
+            </li>
+          </ul>
+        </div>
+
+        <div class="howToUseContainer">
+          <div class="howToUse">How To Use :</div>
+          <ul class="howToUseList">
+            <li>
+              Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolore
+              qui ab consectetur odit error quas fugit esse accusantium minus
+              ullam. Voluptatem delectus molestiae porro ut est minus quisquam,
+              magnam nihil.
+            </li>
+            <li>
+              Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolore
+              qui ab consectetur odit error quas fugit esse accusantium minus
+              ullam. Voluptatem delectus molestiae porro ut est minus quisquam,
+              magnam nihil.
+            </li>
+          </ul>
+        </div>
+        <div class="cautionContainer">
+          <div class="caution">Caution :</div>
+          <ul class="cautionList">
+            <li>
+              Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolore
+              qui ab consectetur odit error quas fugit esse accusantium minus
+              ullam. Voluptatem delectus molestiae porro ut est minus quisquam,
+              magnam nihil.
+            </li>
+            <li>
+              Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolore
+              qui ab consectetur odit error quas fugit esse accusantium minus
+              ullam. Voluptatem delectus molestiae porro ut est minus quisquam,
+              magnam nihil.
+            </li>
+          </ul>
+        </div>
+      </div>
+      <div class="shipping_Returns_container">
+        <div class="returnPolicy_container">
+          <div class="returnPolicy">RETURN POLICY</div>
+          <p class="returnPolicy_detail">
+            Welcome to BotanicBlend, where customer satisfaction is our
+            priority. <br /><br />
+            Our skincare product return policy is designed to ensure a seamless
+            and transparent process for our valued customers. Eligible products
+            for return must be unused, unopened, and in their original
+            packaging, with returns accepted within 3 days from the date of
+            purchase.
+            <br />
+            Initiating a return is easy; simply initiate the return through your
+            customer account For a smooth return process, a return authorization
+            is required, and you can obtain it by contacting our customer
+            support.
+            <br />
+            Returned products must meet the criteria of being in their original
+            condition.
+            <br />
+            Regarding return shipping, the customer or is responsible for return
+            shipping.
+            <br />
+            Refunds are typically processed within 15 days of receiving the
+            returned product and will be issued via credit card refund.
+            <br />
+            Be sure to review any exceptions to our return policy, such as
+            specific sale items or promotional products. In the rare event of
+            receiving a damaged or defective product, please contact our
+            customer support immediately, and include photos of the product for
+            verification. <br /><br />
+            Thank you for choosing BotanicBlend for your skincare needs.
           </p>
         </div>
-        <div class="product_suitability">
-          <h3>Product Suitable For</h3>
-          <div class="product_for_skintype">
-            <div class="dry_skin">Dry</div>
-            <div class="Oily">Oily</div>
-            <div class="Normal">Normal</div>
-          </div>
+        <br /><br />
+        <div class="shippingDetail_container">
+          <div class="shippingDetail">SHIPPING DETAIL</div>
+          <p class="shippingDetail_detial">
+            We can ship to vitually any address in the world. Note that there
+            Are restriction on some products, and some products cannot be
+            Shipped to international destination.
+            <br /><br />
+            When you place an order, we Will estimate shipping and delivery
+            dates for you based on the Availabilty of your item and the shipping
+            options you choose. Depending on the shipping provider you choose,
+            shipping dates Estimates may appear on the shipping quotes page.
+            <br /><br />
+            Please also note That the shipping rates for many items we sell are
+            wieght-based. The Wieght of any such item can be found on its detail
+            page. To reflect The policies of the shipping companies we use, all
+            weights will be Rounded up to the next full pound.
+          </p>
         </div>
-        <div class="Product_size">
-          <select id="size" class="size_select">
-            <option value="1">Full Size 100ml</option>
-            <option value="2">Small Size 50ml</option>
-          </select>
+      </div>
+      <div class="customer_reviews_container">
+        <div class="customerReviewHeading">
+          <div class="heading">Customer Reviews</div>
+          <span
+            class="writeReview"
+            onmouseover="changeColors(this)"
+            onmouseout="restoreOriginalColors(this)"
+            >Write a review</span
+          >
         </div>
-        <div class="Product_QTY add_cart">
-          <div class="Product_quantity">
-            <label for="QTY">QTY</label>
-            <select id="quantity" class="quantity_select">
-              <option value="1">1</option>
-              <option value="2">2</option>
-              <option value="2">3</option>
-              <option value="2">4</option>
-              <option value="2">5</option>
-            </select>
+        <div class="review_write_container">
+          <div class="review_write_container_heading">Write a review</div>
+          <div class="rating_container">
+            <div class="rating">Rating</div>
+            <span>*****</span>
           </div>
-          <div class="cart">
-            <button id="add_to_cart" type="button">ADD TO CART</button>
-          </div>
-        </div>
-        <hr />
-        <div class="ingredients_container">
-          <h3>Ingredients</h3>
-          <div class="toggle_container">
-            <button id="toggle-ingredients">+</button>
-            <div class="ingredients-list">
-              <ul>
-                <li>
-                  Ingredient 1 Lorem ipsum dolor sit amet, consectetur
-                  adipisicing elit. Similique, officiis? Est perferendis illo
-                  dicta placeat quo deserunt, laboriosam ipsam minima, nisi sed
-                  pariatur, maiores deleniti commodi error iusto iure nam?
-                </li>
-                <li>
-                  Ingredient 2 Lorem ipsum dolor sit amet consectetur,
-                  adipisicing elit. Nobis in reprehenderit, repudiandae ducimus
-                  et aperiam maxime numquam nihil dignissimos autem neque ab quo
-                  perferendis, libero fuga sint. Praesentium, tempora
-                  reprehenderit.
-                </li>
-                <li>
-                  Ingredient 3 Lorem ipsum dolor sit amet consectetur,
-                  adipisicing elit. Facilis in voluptatibus amet impedit
-                  repudiandae voluptatum earum nobis laborum quis praesentium.
-                  Eligendi at modi, sequi debitis dolorum ea delectus blanditiis
-                  dolor.
-                </li>
-                <!-- Add more ingredients as needed -->
-              </ul>
+          <form action="">
+            <div class="review_title_container">
+              <div class="review_title">Review Title</div>
+              <input
+                type="text"
+                id="review"
+                name="review"
+                placeholder="Give your review a title"
+              />
             </div>
-          </div>
+            <div class="review_body_container">
+              <div class="review_body">Body of review (1500)</div>
+              <textarea
+                name="review_body"
+                id="review_body"
+                cols="30"
+                rows="10"
+                placeholder="Write your review here..."
+              ></textarea>
+            </div>
+            <div class="submit_button">
+              <input
+                type="submit"
+                value="Submit Review"
+                onmouseover="changeColors(this)"
+                onmouseout="restoreOriginalColors(this)"
+              />
+            </div>
+          </form>
+        </div>
+        <div class="review_container">
+          <ul class="review_list">
+            <li>
+              <div class="customerName_date_container">
+                <div class="customer_name">Crish bumstured</div>
+                <span>on</span>
+                <div class="date">11/11/2024</div>
+              </div>
+              <div class="rating">*****</div>
+              <div class="review_title">xyz</div>
+              <div class="review_body">
+                Lorem ipsum dolor sit, amet consectetur adipisicing elit.
+                Voluptates quod praesentium ducimus assumenda sit repudiandae
+                est? Eum, qui ut officiis modi cupiditate pariatur, vel vitae
+                reprehenderit facere aperiam ipsum necessitatibus?
+              </div>
+            </li>
+            <li>
+              <div class="customerName_date_container">
+                <div class="customer_name">Crish bumstured</div>
+                <span>on</span>
+                <div class="date">11/11/2024</div>
+              </div>
+              <div class="rating">*****</div>
+              <div class="review_title">xyz</div>
+              <div class="review_body">
+                Lorem ipsum dolor sit, amet consectetur adipisicing elit.
+                Voluptates quod praesentium ducimus assumenda sit repudiandae
+                est? Eum, qui ut officiis modi cupiditate pariatur, vel vitae
+                reprehenderit facere aperiam ipsum necessitatibus?
+              </div>
+            </li>
+            <li>
+              <div class="customerName_date_container">
+                <div class="customer_name">Crish bumstured</div>
+                <span>on</span>
+                <div class="date">11/11/2024</div>
+              </div>
+              <div class="rating">*****</div>
+              <div class="review_title">xyz</div>
+              <div class="review_body">
+                Lorem ipsum dolor sit, amet consectetur adipisicing elit.
+                Voluptates quod praesentium ducimus assumenda sit repudiandae
+                est? Eum, qui ut officiis modi cupiditate pariatur, vel vitae
+                reprehenderit facere aperiam ipsum necessitatibus?
+              </div>
+            </li>
+          </ul>
         </div>
       </div>
     </div>
 
-    <div class="review-section">
-      <h2>Customer Reviews</h2>
-
-      <!-- Review Form -->
-      <div class="review-form">
-        <h3>Write a Review</h3>
-        <form id="reviewForm">
-          <label for="name">Name:</label>
-          <input type="text" id="name" name="name" required />
-          <br />
-          <label for="rating">Rating:</label>
-          <div class="stars">
-            <input type="radio" name="rating" class="fa-solid fa-star"></input>
-            <input type="radio" name="rating" class="fa-solid fa-star"></input>
-            <input type="radio" name="rating" class="fa-solid fa-star"></input>
-            <input type="radio" name="rating" class="fa-solid fa-star"></input>
-            <input type="radio" name="rating" class="fa-solid fa-star"></input>
-          </div>
-          <br />
-          <label for="comment">Comment:</label>
-          <textarea id="comment" name="comment" required></textarea>
-          <br />
-          <button type="submit">Submit Review</button>
-        </form>
+    <!-- Best Sellers Dynamically -->
+    <div class="best_sell_container">
+      <div class="best_sell_heading">
+        <h1>Our Best Selling Products</h1>
       </div>
-
-      <!-- Display Reviews -->
-      <div class="reviews">
-        <!-- Reviews will be dynamically added here using JavaScript -->
+      <div class="best_sell_products">
+        <ul id="bestSellerList"></ul>
+      </div>
+      <div class="best_sellers_viewAll_button">
+        <a href=""
+          ><div class="view_all_btn" onmouseover="changeColors(this)">
+            View All
+          </div></a
+        >
       </div>
     </div>
+    <!-- Best Sellers Dynamically -->
 
     <!-- Footer -->
-    <div id="footer-placeholder"></div>
+    <div class="footer_container">
+      <div id="footer-placeholder"></div>
+    </div>
     <!-- Footer -->
-    <script src="/BotenicBlend/Index.js"></script>
+    <script src="JavaScript files/header_footer_loader.js"></script>
+    <script src="JavaScript files/cart.js"></script>
+    <script src="JavaScript files/search.js"></script>
+    <script src="JavaScript files/loginFormShow.js"></script>
+    <script src="JavaScript files/button_color_change.js"></script>
+    <script src="JavaScript files/cart_icon_change.js"></script>
     <script>
-      // JavaScript to toggle the ingredients list when clicking the button
-      const toggleIngredientsButton =
-        document.getElementById("toggle-ingredients");
-      const ingredientsList = document.querySelector(".ingredients-list");
+      //BEST SELLERS PRODUCTS
+      fetch("/Best_Sellers")
+        .then((response) => response.json())
+        .then((data) => {
+          // Call a function to render the data
+          renderBestSellers(data);
+        })
+        .catch((error) => console.error("Error fetching data:", error));
 
-      toggleIngredientsButton.addEventListener("click", function () {
-        if (
-          ingredientsList.style.display === "none" ||
-          ingredientsList.style.display === ""
-        ) {
-          ingredientsList.style.display = "block";
-          toggleIngredientsButton.textContent = "-";
-        } else {
-          ingredientsList.style.display = "none";
-          toggleIngredientsButton.textContent = "+";
-        }
-      });
+      // Function to render new arrivals
+      function renderBestSellers(data) {
+        // Get the UL element
+        const bestSellerList = document.getElementById("bestSellerList");
 
-      // javascropt for select images
-      document.addEventListener("DOMContentLoaded", function () {
-        const additionalImages = document.querySelectorAll(
-          ".additional-images img"
-        );
+        // Loop through the data and create list items
+        data.forEach((product) => {
+          const listItem = document.createElement("li");
 
-        additionalImages.forEach(function (image) {
-          image.addEventListener("click", function () {
-            // Remove the border from all images
-            additionalImages.forEach(function (img) {
-              img.classList.remove("selected");
-            });
+          var modifiedImagePath = product.image_url.replace("other pages/", "");
 
-            // Add a border to the clicked image
-            this.classList.add("selected");
-          });
+          listItem.innerHTML = `
+                <div class="best_sell_product_section">
+                  <div class="best_sell_product_image">
+                      <a href="#"><img src="${modifiedImagePath}" alt="" /></a>
+
+                    </div>
+                    <div class="best_sell_product_name">${product.name}</div>
+                    <div class="best_sell_product_desc">${product.description}</div>
+                    <div class="best_sell_product_rating">${product.rating}</div>
+                    <div class="best_sell_product_price">
+                        <div class="price">${product.price}</div>
+                        <!-- Add to Cart section -->
+                        <div class="add_to_cart product-container"
+                            onmouseover="showAddToCart(this) ; changeColors(this)"
+                            onmouseout="hideAddToCart(this)">
+                            <div class="icon">
+                                 <svg
+                                    xmlns="http://www.w3.org/2000/svg"
+                                    height="16"
+                                    width="15"
+                                    viewBox="0 0 576 512"
+                                    >
+                                    <!--!Font Awesome Free 6.5.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2023 Fonticons, Inc.-->
+                                    <path
+                                        d="M0 24C0 10.7 10.7 0 24 0H69.5c22 0 41.5 12.8 50.6 32h411c26.3 0 45.5 25 38.6 50.4l-41 152.3c-8.5 31.4-37 53.3-69.5 53.3H170.7l5.4 28.5c2.2 11.3 12.1 19.5 23.6 19.5H488c13.3 0 24 10.7 24 24s-10.7 24-24 24H199.7c-34.6 0-64.3-24.6-70.7-58.5L77.4 54.5c-.7-3.8-4-6.5-7.9-6.5H24C10.7 48 0 37.3 0 24zM128 464a48 48 0 1 1 96 0 48 48 0 1 1 -96 0zm336-48a48 48 0 1 1 0 96 48 48 0 1 1 0-96z"
+                                    />
+                                </svg>
+                            </div>
+                            <div class="add-to-cart">Add to Cart</div>
+                        </div>
+                    </div>
+                    <!-- Buy button -->
+                    <a href=""><div class="new_arrival_product_buttons btn_color"
+                        onmouseover="changeColors(this)">
+                        Buy
+                    </div></a>
+                </div>
+            `;
+
+          // Append the list item to the UL
+          bestSellerList.appendChild(listItem);
         });
-      });
-
-      // Image selector
-      document.addEventListener("DOMContentLoaded", function () {
-        const mainImage = document.getElementById("main-image");
-        const additionalImages = document.querySelectorAll(
-          ".additional-images img"
-        );
-
-        additionalImages.forEach(function (image) {
-          image.addEventListener("click", function () {
-            // Set the main image's src to the clicked image's src
-            mainImage.src = this.src;
-          });
-        });
-      });
-
-      // review submit button
-      document.addEventListener("DOMContentLoaded", function () {
-        const reviewForm = document.getElementById("reviewForm");
-        const reviewsContainer = document.querySelector(".reviews");
-
-        reviewForm.addEventListener("submit", function (event) {
-          event.preventDefault();
-
-          const name = document.getElementById("name").value;
-          const rating = document.querySelector('input[name="rating"]:checked').value;
-          const comment = document.getElementById("comment").value;
-
-          const reviewElement = document.createElement("div");
-          reviewElement.classList.add("review");
-          reviewElement.innerHTML = `
-            <h4>${name}</h4>
-            <p>Rating: ${rating} stars</p>
-            <p>${comment}</p>
-        `;
-
-          reviewsContainer.appendChild(reviewElement);
-
-          // Clear the form fields
-          reviewForm.reset();
-        });
-      });
-
-    // star rating 
- // Select all elements with the "i" tag and store them in a NodeList called "stars"
- const stars = document.querySelectorAll(".stars input");
-// Loop through the "stars" NodeList
-stars.forEach((star, index1) => {
-  // Add an event listener that runs a function when the "click" event is triggered
-  star.addEventListener("click", () => {
-    // Loop through the "stars" NodeList Again
-    stars.forEach((star, index2) => {
-      // Add the "active" class to the clicked star and any stars with a lower index
-      // and remove the "active" class from any stars with a higher index
-      index1 >= index2 ? star.classList.add("active") : star.classList.remove("active");
-    });
-  });
-});
+      }
     </script>
+
+    <script src="JavaScript files/productPageWeightSelector.js"></script>
+    <script src="JavaScript files/productsPageFlavourSelector.js"></script>
+    <script src="JavaScript files/productPage_descriptionOrShipping_hide_show.js"></script>
+    <script src="JavaScript files/button_color_change.js"></script>
+    <script src="JavaScript files/productPage_reviewScroll.js"></script>
+    <script src="JavaScript files/productPageQtySelector.js"></script>
+    <script src="JavaScript files/productPage_reviewWrite_HideShow.js"></script>
   </body>
 </html>
