@@ -78,31 +78,81 @@
 .login_icon i {
   font-size: 1.3rem;
 }
-.shop_dropdownmenu_container a,
-.category_dropdownmenu_container a {
+
+.shop {
+  cursor: pointer;
+  height: 100%;
   display: flex;
+  align-items: center;
 }
-.shop_dropdownmenu_container,
-.category_dropdownmenu_container {
+.shopDropDownOuterContainer {
+  position: absolute;
+  right: 0;
+  padding: 1% 3% 2% 3%;
+  width: 30rem;
+  background-color: rgb(255, 255, 255);
   display: none;
 }
-
-.shop_dropdownmenu_container {
-  position: absolute;
-  top: 3.6rem;
-  left: 72%;
-  padding-top: 1rem;
+.shopDropDownInnerContainer {
+  display: flex;
+  justify-content: space-between;
+  gap: 10%;
 }
-.category_dropdownmenu_container {
+.shopDropDownInnerContainer > *,
+.shopDropDownInnerContainer a {
+  white-space: nowrap;
+  text-decoration: none;
+  color: black;
+}
+.products_collection,
+.shopByCategory,
+.shopBySkinType {
+  display: flex;
+  flex-direction: column;
+}
+.products_collection > * {
+  margin-bottom: 10%;
+}
+.products_collection {
+  font-size: 1.2rem;
+  line-height: 1.5rem;
+}
+.shopByCategory span,
+.shopBySkinType span {
+  font-size: 1.2rem;
+  font-weight: bold;
+  margin-bottom: 0.5rem;
+}
+.shopByCategory a,
+.shopBySkinType a {
+  line-height: 1.5rem;
+}
+.products_collection a,
+.shopByCategory a,
+.shopBySkinType a {
+  position: relative;
+  width: fit-content;
+}
+.products_collection a::before,
+.shopByCategory a::before,
+.shopBySkinType a::before {
+  content: "";
   position: absolute;
-  top: 3.6rem;
-  left: 76%;
-  padding-top: 1rem;
+  width: 100%;
+  height: 1px; /* Set your desired underline thickness */
+  bottom: 0;
+  left: 0;
+  background-color: #000; /* Set your desired underline color */
+  transform: scaleX(0);
+  transform-origin: bottom right;
+  transition: transform 0.3s ease-out;
 }
 
-.shop_navbar:hover .shop_dropdownmenu_container,
-.category_navbar:hover .category_dropdownmenu_container {
-  display: block;
+.products_collection a:hover::before,
+.shopByCategory a:hover::before,
+.shopBySkinType a:hover::before {
+  transform: scaleX(1);
+  transform-origin: bottom left;
 }
 /* right navbar */
 /* Navbar */
