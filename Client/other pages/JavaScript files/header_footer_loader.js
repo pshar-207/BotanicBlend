@@ -29,16 +29,12 @@ function changeNavbarBackgroundColorOnScroll() {
   // Function to handle hover effect
   function handleNavbarHover() {
     navbarContainer.style.backgroundColor = "white";
-    shopbg.style.backgroundColor = "white";
-    categorybg.style.backgroundColor = "white";
   }
 
   // Function to handle mouseout event
   function handleNavbarMouseOut() {
     if (window.scrollY == 0 && isSearchOpen != true && isCartOpen != true) {
       navbarContainer.style.backgroundColor = "transparent";
-      shopbg.style.backgroundColor = "transparent";
-      categorybg.style.backgroundColor = "transparent";
     }
   }
 

@@ -335,6 +335,137 @@ app.get("/Best_Sellers", async (req, res) => {
   }
 });
 
+// fetch all products
+app.get("/getAllProducts", async (req, res) => {
+  try {
+    const [results] = await pool.query(
+      "SELECT products.image_url,products.name,products.description,products.rating,MIN(product_variations.price) AS price FROM products INNER JOIN product_variations ON products.id = product_variations.product_id GROUP BY products.image_url,products.name,products.description,products.rating;"
+    );
+    res.json(results);
+    console.log("server all products");
+  } catch (err) {
+    console.error(err);
+    res.status(500).send("Error fetching products");
+  }
+});
+
+//All Best Sellers
+app.get("/All_Best_Sellers", async (req, res) => {
+  try {
+    const [results] = await pool.query(
+      "SELECT products.image_url,products.name,products.description,products.rating,MIN(product_variations.price) AS price FROM products INNER JOIN product_variations ON products.id = product_variations.product_id WHERE products.best_seller = TRUE GROUP BY products.image_url,products.name,products.description,products.rating;"
+    );
+    res.json(results);
+  } catch (err) {
+    console.error(err);
+    res.status(500).send("Error fetching names");
+  }
+});
+
+//All New Arrivals
+app.get("/All_New_Arrivals", async (req, res) => {
+  try {
+    const [results] = await pool.query(
+      "SELECT products.image_url,products.name,products.description,products.rating,MIN(product_variations.price) AS price FROM products INNER JOIN product_variations ON products.id = product_variations.product_id GROUP BY products.image_url,products.name,products.description,products.rating,products.date ORDER BY products.date desc limit 8;"
+    );
+    res.json(results);
+  } catch (err) {
+    console.error(err);
+    res.status(500).send("Error fetching names");
+  }
+});
+
+//All CREAMS PRODUCTS
+app.get("/All_Creams_Products", async (req, res) => {
+  try {
+    const [results] = await pool.query(
+      "SELECT products.image_url,products.name,products.description,products.rating,MIN(product_variations.price) AS price FROM products INNER JOIN product_variations ON products.id = product_variations.product_id where products.category = 'Creams' GROUP BY products.image_url,products.name,products.description,products.rating;"
+    );
+    res.json(results);
+  } catch (err) {
+    console.error(err);
+    res.status(500).send("Error fetching names");
+  }
+});
+
+//All GELS PRODUCTS
+app.get("/All_Gels_Products", async (req, res) => {
+  try {
+    const [results] = await pool.query(
+      "SELECT products.image_url,products.name,products.description,products.rating,MIN(product_variations.price) AS price FROM products INNER JOIN product_variations ON products.id = product_variations.product_id where products.category = 'gels' GROUP BY products.image_url,products.name,products.description,products.rating;"
+    );
+    res.json(results);
+  } catch (err) {
+    console.error(err);
+    res.status(500).send("Error fetching names");
+  }
+});
+
+//All BATHING PRODUCTS
+app.get("/All_Bathing_Products", async (req, res) => {
+  try {
+    const [results] = await pool.query(
+      "SELECT products.image_url,products.name,products.description,products.rating,MIN(product_variations.price) AS price FROM products INNER JOIN product_variations ON products.id = product_variations.product_id where products.category = 'bathing' GROUP BY products.image_url,products.name,products.description,products.rating;"
+    );
+    res.json(results);
+  } catch (err) {
+    console.error(err);
+    res.status(500).send("Error fetching names");
+  }
+});
+
+//All BODYCARE PRODUCTS
+app.get("/All_BodyCare_Products", async (req, res) => {
+  try {
+    const [results] = await pool.query(
+      "SELECT products.image_url,products.name,products.description,products.rating,MIN(product_variations.price) AS price FROM products INNER JOIN product_variations ON products.id = product_variations.product_id where products.category = 'bodyCare' GROUP BY products.image_url,products.name,products.description,products.rating;"
+    );
+    res.json(results);
+  } catch (err) {
+    console.error(err);
+    res.status(500).send("Error fetching names");
+  }
+});
+
+//DRY SKIN PRODUCTS
+app.get("/DrySkin_Products", async (req, res) => {
+  try {
+    const [results] = await pool.query(
+      "SELECT products.image_url,products.name,products.description,products.rating,MIN(product_variations.price) AS price FROM products INNER JOIN product_variations ON products.id = product_variations.product_id where products.Dry = 1 GROUP BY products.image_url,products.name,products.description,products.rating;"
+    );
+    res.json(results);
+  } catch (err) {
+    console.error(err);
+    res.status(500).send("Error fetching names");
+  }
+});
+
+//OILY SKIN PRODUCTS
+app.get("/OilySkin_Products", async (req, res) => {
+  try {
+    const [results] = await pool.query(
+      "SELECT products.image_url,products.name,products.description,products.rating,MIN(product_variations.price) AS price FROM products INNER JOIN product_variations ON products.id = product_variations.product_id where products.Oily = 1 GROUP BY products.image_url,products.name,products.description,products.rating;"
+    );
+    res.json(results);
+  } catch (err) {
+    console.error(err);
+    res.status(500).send("Error fetching names");
+  }
+});
+
+//NORMAL SKIN PRODUCTS
+app.get("/NormalSkin_Products", async (req, res) => {
+  try {
+    const [results] = await pool.query(
+      "SELECT products.image_url,products.name,products.description,products.rating,MIN(product_variations.price) AS price FROM products INNER JOIN product_variations ON products.id = product_variations.product_id where products.Normal = 1 GROUP BY products.image_url,products.name,products.description,products.rating;"
+    );
+    res.json(results);
+  } catch (err) {
+    console.error(err);
+    res.status(500).send("Error fetching names");
+  }
+});
+
 //Check Server is listening
 app.listen(port, () => {
   console.log(`Server listening on port ${port}`);

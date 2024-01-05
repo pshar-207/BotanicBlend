@@ -37,7 +37,10 @@ body {
   color: white;
   z-index: 1;
 }
-
+.headingText a {
+  text-decoration: none;
+  color: white;
+}
 /* sortBy and count */
 .soryBy_Count {
   display: flex;
@@ -60,7 +63,7 @@ body {
   gap: 3%;
   padding-left: 0;
   padding: 0 5% 0 5%;
-  margin-bottom: 10%;
+  margin-bottom: 30%;
 }
 .ProductsListCotainer li {
   list-style: none;
