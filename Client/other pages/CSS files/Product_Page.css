@@ -202,3 +202,21 @@ body {
   border-radius: 0;
   border: 1px solid black;
 }
+
+.rating_container {
+  margin: 0.5rem 0 0.5rem 0;
+}
+.rating {
+  cursor: pointer;
+  font-size: 0;
+  display: flex;
+}
+.star {
+  width: 1rem;
+  height: 1rem;
+  object-fit: contain;
+  margin: 0;
+}
+.star_container {
+  padding-right: 0.2rem;
+}

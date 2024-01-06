@@ -274,11 +274,77 @@
         </div>
         <div class="review_write_container">
           <div class="review_write_container_heading">Write a review</div>
-          <div class="rating_container">
-            <div class="rating">Rating</div>
-            <span>*****</span>
-          </div>
           <form action="">
+            <div class="rating_container">
+              <div class="rating">
+                <div
+                  class="star_container"
+                  onmousemove="updateStars(1)"
+                  onmouseleave="resetStars()"
+                  onclick="setRating(1)"
+                >
+                  <img
+                    src="Photos/Stars/unactive-star.png"
+                    alt="Star"
+                    class="star"
+                    id="star1"
+                  />
+                </div>
+                <div
+                  class="star_container"
+                  onmousemove="updateStars(2)"
+                  onmouseleave="resetStars()"
+                  onclick="setRating(2)"
+                >
+                  <img
+                    src="Photos/Stars/unactive-star.png"
+                    alt="Star"
+                    class="star"
+                    id="star2"
+                  />
+                </div>
+                <div
+                  class="star_container"
+                  onmousemove="updateStars(3)"
+                  onmouseleave="resetStars()"
+                  onclick="setRating(3)"
+                >
+                  <img
+                    src="Photos/Stars/unactive-star.png"
+                    alt="Star"
+                    class="star"
+                    id="star3"
+                  />
+                </div>
+                <div
+                  class="star_container"
+                  onmousemove="updateStars(4)"
+                  onmouseleave="resetStars()"
+                  onclick="setRating(4)"
+                >
+                  <img
+                    src="Photos/Stars/unactive-star.png"
+                    alt="Star"
+                    class="star"
+                    id="star4"
+                  />
+                </div>
+                <div
+                  class="star_container"
+                  onmousemove="updateStars(5)"
+                  onmouseleave="resetStars()"
+                  onclick="setRating(5)"
+                >
+                  <img
+                    src="Photos/Stars/unactive-star.png"
+                    alt="Star"
+                    class="star"
+                    id="star5"
+                  />
+                </div>
+              </div>
+            </div>
+
             <div class="review_title_container">
               <div class="review_title">Review Title</div>
               <input
@@ -310,21 +376,6 @@
         </div>
         <div class="review_container">
           <ul class="review_list">
-            <li>
-              <div class="customerName_date_container">
-                <div class="customer_name">Crish bumstured</div>
-                <span>on</span>
-                <div class="date">11/11/2024</div>
-              </div>
-              <div class="rating">*****</div>
-              <div class="review_title">xyz</div>
-              <div class="review_body">
-                Lorem ipsum dolor sit, amet consectetur adipisicing elit.
-                Voluptates quod praesentium ducimus assumenda sit repudiandae
-                est? Eum, qui ut officiis modi cupiditate pariatur, vel vitae
-                reprehenderit facere aperiam ipsum necessitatibus?
-              </div>
-            </li>
             <li>
               <div class="customerName_date_container">
                 <div class="customer_name">Crish bumstured</div>
@@ -463,5 +514,48 @@
     <script src="JavaScript files/productPageQtySelector.js"></script>
     <script src="JavaScript files/productPage_reviewWrite_HideShow.js"></script>
     <script src="JavaScript files/shopDropdownShow.js"></script>
+
+    <!-- Star JavaScript -->
+    <script>
+      let selectedRating = 0;
+
+      function updateStars(rating) {
+        if (selectedRating === 0) {
+          const stars = document.querySelectorAll(".star");
+
+          for (let i = 0; i < stars.length; i++) {
+            if (i < rating) {
+              stars[i].src = "Photos/Stars/active-star.png";
+            } else {
+              stars[i].src = "Photos/Stars/unactive-star.png";
+            }
+          }
+        }
+      }
+
+      function resetStars() {
+        if (selectedRating === 0) {
+          const stars = document.querySelectorAll(".star");
+
+          stars.forEach((star) => {
+            star.src = "Photos/Stars/unactive-star.png";
+          });
+        }
+      }
+
+      function setRating(rating) {
+        selectedRating = rating;
+
+        const stars = document.querySelectorAll(".star");
+
+        stars.forEach((star, index) => {
+          if (index < rating) {
+            star.src = "Photos/Stars/active-star.png";
+          } else {
+            star.src = "Photos/Stars/unactive-star.png";
+          }
+        });
+      }
+    </script>
   </body>
 </html>
