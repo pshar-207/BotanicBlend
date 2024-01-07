@@ -62,7 +62,8 @@ body {
   gap: 1rem;
   margin-bottom: 2rem;
 }
-.customer_info input[type="text"] {
+.customer_info input[type="text"],
+.customer_info input[type="tel"] {
   border-radius: 0;
   width: 100%;
   background-color: white;

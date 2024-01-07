@@ -47,17 +47,19 @@
       </div>
     </div>
 
-    <div class="contat_form_container">
+    <!-- <div class="contat_form_container">
       <h2>Contact Form</h2>
       <form method="post">
         <div class="customer_info">
           <input type="text" id="username" name="username" placeholder="Name" />
           <input type="text" id="email" name="email" placeholder="Email" />
           <input
-            type="text"
-            id="address"
-            name="address"
-            placeholder="Address"
+            type="tel"
+            id="phoneNumber"
+            name="phoneNumber"
+            pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}"
+            placeholder="Phone No."
+            required
           />
         </div>
         <div class="comment_section">
@@ -72,6 +74,39 @@
           <input type="button" value="SEND" onclick="alert('Massage send!')" />
         </div>
       </form>
+    </div> -->
+
+    <div class="contat_form_container">
+      <h2>Contact Form</h2>
+      <form method="post" id="feedbackForm">
+        <div class="customer_info">
+          <input type="text" id="username" name="username" placeholder="Name" />
+          <input
+            type="text"
+            id="user_email"
+            name="user_email"
+            placeholder="Email"
+          />
+          <input
+            type="tel"
+            id="phoneNumber"
+            name="phoneNumber"
+            placeholder="Phone No."
+            required
+          />
+        </div>
+        <div class="comment_section">
+          <textarea
+            id="comment"
+            name="comment"
+            placeholder="Type your comment here..."
+            required
+          ></textarea>
+        </div>
+        <div class="send_btn">
+          <input type="button" value="SEND" onclick="submitFeedback()" />
+        </div>
+      </form>
     </div>
     <!-- contact info -->
 
@@ -84,5 +119,52 @@
     <script src="JavaScript files/cart.js"></script>
     <script src="JavaScript files/search.js"></script>
     <script src="JavaScript files/loginFormShow.js"></script>
+
+    <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+    <script>
+      function checkAuthAndFillUserInfo() {
+        // Run the code after the page has fully loaded
+        $(window).on("load", function () {
+          $.get("/checkAuth", function (data) {
+            if (data.isAuthenticated) {
+              $.get("/user_detail", function (userData) {
+                // Autofill name and email input fields
+                $("#username").val(
+                  userData.userDetails.first_name +
+                    " " +
+                    userData.userDetails.last_name
+                );
+                $("#user_email").val(userData.userDetails.email);
+
+                // Make name and email fields read-only
+                $("#username").prop("readonly", true);
+                $("#user_email").prop("readonly", true);
+              });
+            }
+          });
+        });
+      }
+
+      function submitFeedback() {
+        var feedbackData = {
+          name: $("#username").val(),
+          email: $("#email").val(),
+          phoneNumber: $("#phoneNumber").val(),
+          comment: $("#comment").val(),
+        };
+
+        $.post("/submitFeedback", feedbackData, function (response) {
+          if (response.success) {
+            alert("Feedback submitted successfully");
+          } else {
+            alert("Error submitting feedback");
+          }
+        });
+      }
+
+      $(document).ready(function () {
+        checkAuthAndFillUserInfo();
+      });
+    </script>
   </body>
 </html>

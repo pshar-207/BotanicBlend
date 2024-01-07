@@ -143,7 +143,7 @@ app.get("/user_detail", (req, res) => {
   // Check if the user is authenticated
   if (req.session.isAuthenticated) {
     // Get user details from the database based on the user's ID stored in the session
-    console.log("inside ifelsw");
+
     const userId = req.session.userId;
 
     pool
@@ -463,6 +463,41 @@ app.get("/NormalSkin_Products", async (req, res) => {
   } catch (err) {
     console.error(err);
     res.status(500).send("Error fetching names");
+  }
+});
+
+app.post("/submitFeedback", async (req, res) => {
+  try {
+    const { name, email, phoneNumber, comment } = req.body;
+
+    if (req.session.isAuthenticated) {
+      const userId = req.session.userId;
+      await pool.query(
+        "INSERT INTO feedback (user_id, name, email, phone_number, comment) VALUES (?, ?, ?, ?, ?)",
+        [userId, name, email, phoneNumber, comment]
+      );
+
+      res.json({ success: true, message: "Feedback submitted successfully" });
+    } else {
+      // const [result] = await pool.query(
+      //   "INSERT INTO users (first_name, last_name, email) VALUES (?, ?, ?)",
+      //   [name, "", email]
+      // );
+
+      // const newUserId = result.insertId;
+
+      await pool.query(
+        "INSERT INTO feedback (name, email, phone_number, comment) VALUES (?, ?, ?, ?)",
+        [name, email, phoneNumber, comment]
+      );
+
+      res.json({ success: true, message: "Feedback submitted successfully" });
+    }
+  } catch (err) {
+    console.error(err);
+    res
+      .status(500)
+      .json({ success: false, message: "Error submitting feedback" });
   }
 });
 
