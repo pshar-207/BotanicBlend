@@ -59,22 +59,6 @@ document.addEventListener("DOMContentLoaded", () => {
   });
 });
 
-// Add these lines to handle logout
-document.addEventListener("DOMContentLoaded", () => {
-  const logoutButton = document.getElementById("logoutButton");
-  logoutButton.addEventListener("click", () => {
-    fetch("/logout")
-      .then((response) => response.json())
-      .then((data) => {
-        if (data.message === "Logged out successfully") {
-          alert("You have been logged out!");
-          window.location.reload(); // Refresh the page
-        }
-      })
-      .catch((error) => console.error("Error logging out:", error));
-  });
-});
-
 //NEW ARRIVALS PRODUCTS
 fetch("/New_Arrivals")
   .then((response) => response.json())
@@ -135,7 +119,6 @@ function renderNewArrivals(data) {
 
     // Append the list item to the UL
     newArrivalsList.appendChild(listItem);
-    console.log(product.image_url);
   });
 }
 
@@ -198,6 +181,5 @@ function renderBestSellers(data) {
 
     // Append the list item to the UL
     bestSellerList.appendChild(listItem);
-    console.log(product.image_url);
   });
 }

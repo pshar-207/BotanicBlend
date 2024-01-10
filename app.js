@@ -1,7 +1,8 @@
 const express = require("express");
-const mysql = require("mysql2/promise"); // Using mysql2 with Promise-based API
+const mysql = require("mysql2/promise");
 const bcrypt = require("bcrypt");
 const bodyParser = require("body-parser");
+const path = require("path");
 
 const app = express();
 
@@ -17,10 +18,10 @@ app.use(
   })
 );
 
-const port = 3000; // Or any port you prefer
+const port = 3000;
 
 // Serve static files from the 'public' directory
-app.use(express.static("Client")); // Place this line before any route definitions
+app.use(express.static(path.join(__dirname, "Client")));
 
 // MySQL database connection pool
 const pool = mysql.createPool({
@@ -54,7 +55,7 @@ app.post("/signup", async (req, res) => {
     const { fname, lname, email, password } = req.body;
 
     // Hash the password using a library like bcrypt
-    const hashedPassword = await bcrypt.hash(password, 10); // Adjust salt rounds as needed
+    const hashedPassword = await bcrypt.hash(password, 10);
 
     // Prepare the SQL query to insert data into the `users` table
     const [result] = await pool.query(
@@ -138,12 +139,12 @@ app.get("/isUserLogedIn", (req, res) => {
     res.json({ isAuthenticated: false });
   }
 });
+
 //fetch user details
 app.get("/user_detail", (req, res) => {
   // Check if the user is authenticated
   if (req.session.isAuthenticated) {
     // Get user details from the database based on the user's ID stored in the session
-
     const userId = req.session.userId;
 
     pool
@@ -342,7 +343,6 @@ app.get("/getAllProducts", async (req, res) => {
       "SELECT products.image_url,products.name,products.description,products.rating,MIN(product_variations.price) AS price FROM products INNER JOIN product_variations ON products.id = product_variations.product_id GROUP BY products.image_url,products.name,products.description,products.rating;"
     );
     res.json(results);
-    console.log("server all products");
   } catch (err) {
     console.error(err);
     res.status(500).send("Error fetching products");
@@ -466,6 +466,7 @@ app.get("/NormalSkin_Products", async (req, res) => {
   }
 });
 
+//USER FEEDBACK
 app.post("/submitFeedback", async (req, res) => {
   try {
     const { name, email, phoneNumber, comment } = req.body;

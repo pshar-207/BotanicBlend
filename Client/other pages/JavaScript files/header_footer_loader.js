@@ -23,8 +23,6 @@ loadAndInsertContent("/other pages/Footer.html", "footer-placeholder");
 //Function to change Navbar color
 function changeNavbarBackgroundColorOnScroll() {
   const navbarContainer = document.getElementById("navbar-container");
-  const shopbg = document.getElementById("shop_bg");
-  const categorybg = document.getElementById("category_bg");
 
   // Function to handle hover effect
   function handleNavbarHover() {
@@ -33,7 +31,7 @@ function changeNavbarBackgroundColorOnScroll() {
 
   // Function to handle mouseout event
   function handleNavbarMouseOut() {
-    if (window.scrollY == 0 && isSearchOpen != true && isCartOpen != true) {
+    if (window.scrollY == 0 && isCartOpen != true) {
       navbarContainer.style.backgroundColor = "transparent";
     }
   }
@@ -46,12 +44,8 @@ function changeNavbarBackgroundColorOnScroll() {
     // console.log("Scroll position:", window.scrollY);
     if (window.scrollY > 0) {
       navbarContainer.style.backgroundColor = "white";
-      shopbg.style.backgroundColor = "white";
-      categorybg.style.backgroundColor = "white";
-    } else if (isSearchOpen != true && isCartOpen != true) {
+    } else if (isCartOpen != true) {
       navbarContainer.style.backgroundColor = "transparent";
-      shopbg.style.backgroundColor = "transparent";
-      categorybg.style.backgroundColor = "transparent";
     }
   });
 }

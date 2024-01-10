@@ -13,7 +13,7 @@
   width: 100svw;
   height: 100%;
   object-fit: cover;
-  transition: transform 0.5s ease;
+  transition: transform 1s ease;
 }
 
 .hero_buttons button {
@@ -48,7 +48,7 @@
   border-radius: 0.5rem;
   background: #ffffff;
   cursor: pointer;
-  transition: 500ms;
+  transition: 1s;
 }
 
 .dot.active {

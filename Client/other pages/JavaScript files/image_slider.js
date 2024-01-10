@@ -1,6 +1,7 @@
 const slides = document.querySelectorAll(".slide");
 const indicatorsContainer = document.querySelector(".hero_indicators");
 var counter = 0;
+var intervalId;
 
 slides.forEach((slide, index) => {
   slide.style.left = `${index * 100}%`;
@@ -39,7 +40,14 @@ slides.forEach((_, index) => {
   dot.addEventListener("click", () => {
     counter = index;
     slideImage();
+    clearInterval(intervalId);
+    startInterval();
   });
   indicatorsContainer.appendChild(dot);
 });
 updateIndicators();
+
+const startInterval = () => {
+  intervalId = setInterval(goNext, 5000);
+};
+startInterval();

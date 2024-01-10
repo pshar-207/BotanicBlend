@@ -68,6 +68,7 @@ body {
   width: 100%;
   background-color: white;
   border: 1px solid black;
+  padding: 1rem;
 }
 .comment_section {
   margin-bottom: 2rem;

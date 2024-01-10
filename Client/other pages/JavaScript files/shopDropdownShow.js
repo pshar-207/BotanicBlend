@@ -15,7 +15,7 @@ document.addEventListener("DOMContentLoaded", function () {
   shopDropDown.addEventListener("mouseout", () => {
     shopDropDown.style.display = "none";
     shop.style.textDecoration = "none";
-    if (window.scrollY == 0 && isSearchOpen != true && isCartOpen != true) {
+    if (window.scrollY == 0 && isCartOpen != true) {
       navbarContainer.style.backgroundColor = "transparent";
     }
   });
