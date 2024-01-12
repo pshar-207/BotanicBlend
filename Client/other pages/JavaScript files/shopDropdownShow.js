@@ -23,4 +23,5 @@ document.addEventListener("DOMContentLoaded", function () {
     shopDropDown.style.display = "none";
     shop.style.textDecoration = "none";
   });
+  console.log("shop dropdown working");
 });

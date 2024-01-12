@@ -222,12 +222,12 @@ function renderProducts(data) {
     listItem.innerHTML = `
       <div class="product_container">
         <div class="product_image">
-          <a href="#">
+          <a href="Product_Page.html?productName=${product.name}">
             <img src="${newImgUrl}" alt="" />
           </a>
         </div>
         <div class="product_name">${product.name}</div>
-        <div class="product_desc">${product.description}</div>
+        
         <div class="product_rating">${product.rating}</div>
         <div class="product_price">
           ${product.price}

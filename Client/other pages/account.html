@@ -556,10 +556,8 @@
           });
       });
     </script>
-    <script src="JavaScript files/header_footer_loader.js"></script>
-    <script src="JavaScript files/cart.js"></script>
 
-    <script src="JavaScript files/loginFormShow.js"></script>
+    <!-- <script src="JavaScript files/loginFormShow.js"></script> -->
     <script>
       // Function to handle user logout
       //document.addEventListener("DOMContentLoaded", () => {
@@ -856,18 +854,24 @@
       // Add these lines to handle logout
       document.addEventListener("DOMContentLoaded", () => {
         const logoutButton = document.getElementById("logoutButton");
+        logoutButton.removeEventListener("click", existingClickListener);
         logoutButton.addEventListener("click", () => {
           fetch("/logout")
             .then((response) => response.json())
             .then((data) => {
               if (data.message === "Logged out successfully") {
                 alert("You have been logged out!");
-                window.location.reload(); // Refresh the page
+                window.location.href = "/";
               }
             })
             .catch((error) => console.error("Error logging out:", error));
         });
       });
     </script>
+    <script src="JavaScript files/header_footer_loader.js"></script>
+    <script src="JavaScript files/cart.js"></script>
+    <script src="JavaScript files/Load_logo_img.js"></script>
+    <script src="JavaScript files/shopDropdownShow.js"></script>
+    <script src="JavaScript files/link_changer.js"></script>
   </body>
 </html>

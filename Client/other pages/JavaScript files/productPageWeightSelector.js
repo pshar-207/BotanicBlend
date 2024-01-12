@@ -25,7 +25,7 @@ function changeColorsClickWeight(div) {
   clickedDiv = div;
 
   //select div by skin type
-  selectedSkinType = div.innerText;
+  selectedWeight = div.innerText;
 }
 function restoreOriginalColorsWeight(element) {
   // Restore original colors only if the div is not clicked

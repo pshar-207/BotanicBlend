@@ -26,21 +26,23 @@ body {
 .product_name {
   font-size: 3.5rem;
 }
-.assurance {
-  font-size: 2rem;
-}
+
 .weight_container,
 .flavour_container,
-.quantity_container {
+.quantity_container,
+.product_price_container {
   display: flex;
   align-items: center;
 }
 .weight,
 .flavour,
-.quantity {
+.quantity,
+.price_heading,
+.productPrice {
   font-size: 1.5rem;
   margin-right: 5%;
 }
+
 .flavour {
   margin-right: 3.9%;
 }
@@ -206,7 +208,7 @@ body {
 .rating_container {
   margin: 0.5rem 0 0.5rem 0;
 }
-.rating {
+.review_rating {
   cursor: pointer;
   font-size: 0;
   display: flex;

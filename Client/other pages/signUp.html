@@ -6,7 +6,6 @@
     <title>Document</title>
     <link rel="stylesheet" href="CSS files/signUp.css" />
     <link rel="stylesheet" href="CSS files/cart.css" />
-    <link rel="stylesheet" href="CSS files/search.css" />
     <link rel="stylesheet" href="CSS files/loginForm.css" />
     <link rel="stylesheet" href="CSS files/header.css" />
   </head>
@@ -23,7 +22,13 @@
       <form action="/signup" method="POST" class="singUp">
         <input type="text" name="fname" id="fname" placeholder="First Name" />
         <input type="text" name="lname" id="lname" placeholder="Last Name" />
-        <input type="email" name="email" id="email" placeholder="Email" />
+        <input
+          id="email"
+          class="userEmail"
+          type="email"
+          name="email"
+          required
+        />
         <input
           type="password"
           name="password"
@@ -51,6 +56,6 @@
     <script src="/BotenicBlend/app.js"></script>
     <script src="JavaScript files/cart.js"></script>
     <script src="JavaScript files/loginFormShow.js"></script>
-    <script src="JavaScript files/search.js"></script>
+    <script src="JavaScript files/signUp.js"></script>
   </body>
 </html>

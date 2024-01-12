@@ -6,8 +6,7 @@
     <title>Document</title>
     <link rel="stylesheet" href="CSS files/header.css" />
     <link rel="stylesheet" href="CSS files/cart.css" />
-    <link rel="stylesheet" href="CSS files/search.css" />
-    <link rel="stylesheet" href="CSS files/login_form.css" />
+    <link rel="stylesheet" href="CSS files/loginForm.css" />
     <link rel="stylesheet" href="CSS files/best_sell.css" />
     <link rel="stylesheet" href="CSS files/new_arrivals.css" />
     <link rel="stylesheet" href="CSS files/Product_Page.css" />
@@ -25,66 +24,37 @@
           <img src="Photos/Best Seller Products Image/aloveragel.jpg" alt="" />
         </div>
         <div class="other_images">
-          <img src="Photos/Best Seller Products Image/aloveragel.jpg" alt="" />
-          <img src="Photos/Best Seller Products Image/aloveragel.jpg" alt="" />
-          <img src="Photos/Best Seller Products Image/aloveragel.jpg" alt="" />
+          <img class="firdt_img" src="" alt="" />
+          <img class="second_img" src="" alt="" />
         </div>
       </div>
       <div class="product_detail">
         <div class="name_assurance_container">
-          <div class="product_name">Alovera</div>
-          <div class="assurance">100% alovera extract</div>
+          <div class="product_name">Product Name</div>
         </div>
-        <div class="rating">*****</div>
-        <div class="product_description">
-          Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolores quam
-          assumenda nemo, nisi molestiae dolorem alias iusto illo expedita earum
-          repellat officiis distinctio facere quos blanditiis deserunt, sit
-          atque temporibus.
-        </div>
+        <div class="rating"></div>
+        <div class="product_description">Product Description</div>
+
         <div class="weight_container">
           <div class="weight">Weight</div>
-          <span
-            onmouseover="changeColorsWeight(this)"
-            onclick="changeColorsClickWeight(this)"
-            onmouseout="restoreOriginalColorsWeight(this)"
-            >100ml</span
-          ><span
-            onmouseover="changeColorsWeight(this)"
-            onclick="changeColorsClickWeight(this)"
-            onmouseout="restoreOriginalColorsWeight(this)"
-            >250ml</span
-          ><span
-            onmouseover="changeColorsWeight(this)"
-            onclick="changeColorsClickWeight(this)"
-            onmouseout="restoreOriginalColorsWeight(this)"
-            >500ml</span
-          >
         </div>
-        <div class="flavour_container">
-          <div class="flavour">Flavour</div>
-          <span
-            onmouseover="changeColorsFlavour(this)"
-            onclick="changeColorsClickFlavour(this)"
-            onmouseout="restoreOriginalColorsFlavour(this)"
-            >Keshar Chandan</span
-          ><span
-            onmouseover="changeColorsFlavour(this)"
-            onclick="changeColorsClickFlavour(this)"
-            onmouseout="restoreOriginalColorsFlavour(this)"
-            >Alovera</span
-          ><span
-            onmouseover="changeColorsFlavour(this)"
-            onclick="changeColorsClickFlavour(this)"
-            onmouseout="restoreOriginalColorsFlavour(this)"
-            >Glycerine Gulab</span
-          >
-        </div>
-        <div class="quantity_container">
+
+        <!-- <div class="quantity_container">
           <div class="quantity">Quantity</div>
           <span class="qty_descrese">-</span><span class="qty_number">1</span
           ><span class="qty_increse">+</span>
+        </div> -->
+        <div class="quantity_container">
+          <div class="quantity">Quantity</div>
+          <span class="qty_descrese" onclick="decreaseQuantity()">-</span>
+          <span class="qty_number">1</span>
+          <span class="qty_increse" onclick="increaseQuantity()">+</span>
         </div>
+
+        <div class="product_price_container">
+          <div class="price_heading">Price</div>
+        </div>
+
         <div class="buy_cart_container">
           <div
             class="buy_button"
@@ -135,7 +105,8 @@
       <div class="product_description_container">
         <div class="product_description">
           <div class="desc_product_name">
-            Product Name : <span>Alovera Gel</span>
+            Product Name :
+            <span class="DescriptionProductName">Product Name</span>
           </div>
         </div>
         <div class="keyIngredientsContainer">
@@ -276,7 +247,7 @@
           <div class="review_write_container_heading">Write a review</div>
           <form action="">
             <div class="rating_container">
-              <div class="rating">
+              <div class="review_rating">
                 <div
                   class="star_container"
                   onmousemove="updateStars(1)"
@@ -511,9 +482,10 @@
     <script src="JavaScript files/productPage_descriptionOrShipping_hide_show.js"></script>
     <script src="JavaScript files/button_color_change.js"></script>
     <script src="JavaScript files/productPage_reviewScroll.js"></script>
-    <script src="JavaScript files/productPageQtySelector.js"></script>
+    <!-- <script src="JavaScript files/productPageQtySelector.js"></script> -->
     <script src="JavaScript files/productPage_reviewWrite_HideShow.js"></script>
     <script src="JavaScript files/shopDropdownShow.js"></script>
+    <script src="JavaScript files/Load_logo_img.js"></script>
 
     <!-- Star JavaScript -->
     <script>
@@ -526,8 +498,10 @@
           for (let i = 0; i < stars.length; i++) {
             if (i < rating) {
               stars[i].src = "Photos/Stars/active-star.png";
+              console.log(stars[i]);
             } else {
               stars[i].src = "Photos/Stars/unactive-star.png";
+              console.log(stars[i]);
             }
           }
         }
@@ -555,6 +529,175 @@
             star.src = "Photos/Stars/unactive-star.png";
           }
         });
+      }
+    </script>
+
+    <!-- products fetching -->
+    <script>
+      var originalPrice;
+      var newPrice;
+      document.addEventListener("DOMContentLoaded", function () {
+        const queryString = window.location.search;
+
+        // Parse the query string into a URLSearchParams object
+        const urlParams = new URLSearchParams(queryString);
+
+        // Access individual parameters using their names
+        const product_Name = urlParams.get("productName");
+        console.log(product_Name);
+
+        fetch(`/productDetails?productName=${product_Name}`)
+          .then((response) => response.json())
+          .then((productDetails) => {
+            // Update HTML elements with product details
+
+            document.querySelector(".product_image img").src =
+              productDetails[0].image_url.replace("other pages/", "");
+
+            document.querySelector(".firdt_img").src =
+              productDetails[0].image_url.replace("other pages/", "");
+
+            document.querySelector(".second_img").src =
+              productDetails[0].another_img_url.replace("other pages/", "");
+
+            document.querySelector(".product_name").innerText =
+              productDetails[0].name;
+
+            const ratingContainer = document.querySelector(".rating");
+            for (let i = 0; i < productDetails[0].rating; i++) {
+              const starImage = document.createElement("img");
+              starImage.src = "Photos/Stars/active-star.png";
+              starImage.alt = "Star";
+              starImage.className = "star";
+              starImage.id = "star" + (i + 1); // IDs should be unique, so append i+1
+
+              ratingContainer.appendChild(starImage);
+            }
+
+            document.querySelector(".product_description").innerText =
+              productDetails[0].description;
+
+            const weightContainer = document.querySelector(".weight_container");
+            for (let i = 0; i < productDetails.length; i++) {
+              const weightSpan = document.createElement("span");
+              weightSpan.innerText = productDetails[i].size;
+              weightSpan.setAttribute(
+                "onmouseover",
+                "changeColorsWeight(this)"
+              );
+              weightSpan.setAttribute(
+                "onclick",
+                `changeColorsClickWeight(this); weightSelector(this, ${JSON.stringify(
+                  productDetails
+                )})`
+              );
+              weightSpan.setAttribute(
+                "onmouseout",
+                "restoreOriginalColorsWeight(this)"
+              );
+              weightContainer.appendChild(weightSpan);
+            }
+
+            const priceContainer = document.querySelector(
+              ".product_price_container"
+            );
+            for (let i = 0; i < productDetails.length; i++) {
+              const priceDiv = document.createElement("div");
+              priceDiv.innerText = productDetails[i].price;
+              priceDiv.setAttribute("class", "productPrice");
+              priceDiv.setAttribute("id", `price${i + 1}`);
+              priceContainer.appendChild(priceDiv);
+              originalPrice = productDetails[0].price;
+              if (i > 0) {
+                priceDiv.style.display = "none";
+              } else {
+                priceDiv.style.display = "block";
+              }
+            }
+
+            document.querySelector(".DescriptionProductName").innerText =
+              productDetails[0].name;
+            document.querySelector(".keyIngredientsList").innerHTML =
+              productDetails[0].KeyIngredients;
+            document.querySelector(".featuresList").innerHTML =
+              productDetails[0].Features;
+            document.querySelector(".howToUseList").innerHTML =
+              productDetails[0].HowToUse;
+            document.querySelector(".cautionList").innerHTML =
+              productDetails[0].Caution;
+          })
+          .catch((error) =>
+            console.error("Error fetching product details:", error)
+          );
+      });
+      var quantity = 1;
+      function weightSelector(div, productDetails) {
+        const selectedWeight = div.innerText;
+        console.log(selectedWeight);
+
+        const indexOfSize = productDetails.findIndex(
+          (item) => item.size === selectedWeight
+        );
+
+        if (indexOfSize !== -1) {
+          // Iterate over all price divs and show/hide based on the selected weight
+          for (let i = 0; i < productDetails.length; i++) {
+            const priceDiv = document.getElementById(`price${i + 1}`);
+
+            if (i === indexOfSize) {
+              // Show the price div for the selected weight
+              priceDiv.style.display = "block";
+            } else {
+              // Hide other price divs
+              priceDiv.style.display = "none";
+            }
+          }
+          quantity = 1;
+          console.log(quantity);
+          newPrice = document.getElementById(`price${indexOfSize + 1}`);
+          console.log(newPrice);
+          originalPrice = productDetails[indexOfSize].price;
+
+          updateQty();
+          updateTotalPrice();
+        } else {
+          console.log(`${selectedWeight} not found in productDetails`);
+        }
+      }
+
+      // JavaScript fro set price according to size
+      var Qty = document.querySelector(".qty_number");
+
+      function increaseQuantity() {
+        if (quantity < 10) {
+          quantity++;
+          updateQtyAndPrice();
+        }
+      }
+
+      function decreaseQuantity() {
+        if (quantity > 1) {
+          quantity--;
+          updateQtyAndPrice();
+        }
+      }
+
+      function updateQtyAndPrice() {
+        updateQty();
+        updateTotalPrice();
+      }
+
+      function updateQty() {
+        Qty.textContent = quantity;
+      }
+      newPrice = document.getElementById("price1");
+      function updateTotalPrice() {
+        console.log(originalPrice);
+        var totalPrice = originalPrice * quantity;
+        console.log(totalPrice);
+
+        console.log(newPrice);
+        newPrice.innerText = totalPrice;
       }
     </script>
   </body>

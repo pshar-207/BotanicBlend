@@ -5,5 +5,5 @@ function toggleCart() {
   if (isCartOpen === false) {
     isCartOpen = true;
   } else isCartOpen = false;
-  console.log(isCartOpen);
 }
+console.log("Cart Working");

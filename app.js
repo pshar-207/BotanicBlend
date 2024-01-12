@@ -45,12 +45,12 @@ app.get("/checkAuth", (req, res) => {
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.post("/signup", async (req, res) => {
+  console.log("enterd");
   try {
     // Check if the user is already authenticated
     if (req.session.isAuthenticated) {
       return res.status(400).json({ message: "User is already logged in" });
     }
-
     // Get form data from the request body
     const { fname, lname, email, password } = req.body;
 
@@ -58,6 +58,7 @@ app.post("/signup", async (req, res) => {
     const hashedPassword = await bcrypt.hash(password, 10);
 
     // Prepare the SQL query to insert data into the `users` table
+
     const [result] = await pool.query(
       "INSERT INTO users (first_name, last_name, email, password) VALUES (?, ?, ?, ?)",
       [fname, lname, email, hashedPassword]
@@ -65,7 +66,7 @@ app.post("/signup", async (req, res) => {
 
     // Set the user as authenticated in the session
     req.session.isAuthenticated = true;
-
+    req.session.userId = result.insertId;
     //res.json({ message: "User created successfully" }); // Send a success response
     res.redirect(`index.html?successMessage=User created successfully`);
   } catch (err) {
@@ -82,7 +83,7 @@ app.get("/logout", (req, res) => {
       console.error(err);
       res.status(500).json("Error logging out");
     } else {
-      // res.redirect("/"); // Redirect to home or login page
+      //res.redirect("/"); // Redirect to home or login page
       res.json({ message: "Logged out successfully" });
     }
   });
@@ -145,8 +146,9 @@ app.get("/user_detail", (req, res) => {
   // Check if the user is authenticated
   if (req.session.isAuthenticated) {
     // Get user details from the database based on the user's ID stored in the session
+    console.log("logged in");
     const userId = req.session.userId;
-
+    console.log(userId);
     pool
       .query(
         "SELECT first_name, last_name, email, birthday, skin_type FROM users LEFT JOIN profiles ON users.user_id = profiles.user_id WHERE users.user_id = ?",
@@ -314,7 +316,7 @@ app.post("/update-skin-type", async (req, res) => {
 app.get("/New_Arrivals", async (req, res) => {
   try {
     const [results] = await pool.query(
-      "SELECT products.image_url,products.name,products.description,products.rating,MIN(product_variations.price) AS price FROM products INNER JOIN product_variations ON products.id = product_variations.product_id GROUP BY products.image_url,products.name,products.description,products.rating,products.date ORDER BY products.date desc limit 4;"
+      "SELECT products.image_url,products.name,products.rating,MIN(product_variations.price) AS price FROM products INNER JOIN product_variations ON products.id = product_variations.product_id GROUP BY products.image_url,products.name,products.rating,products.date ORDER BY products.date desc limit 4;"
     );
     res.json(results);
   } catch (err) {
@@ -327,7 +329,7 @@ app.get("/New_Arrivals", async (req, res) => {
 app.get("/Best_Sellers", async (req, res) => {
   try {
     const [results] = await pool.query(
-      "SELECT products.image_url,products.name,products.description,products.rating,MIN(product_variations.price) AS price FROM products INNER JOIN product_variations ON products.id = product_variations.product_id WHERE products.best_seller = TRUE GROUP BY products.image_url,products.name,products.description,products.rating limit 4;"
+      "SELECT products.image_url,products.name,products.rating,MIN(product_variations.price) AS price FROM products INNER JOIN product_variations ON products.id = product_variations.product_id WHERE products.best_seller = TRUE GROUP BY products.image_url,products.name,products.rating limit 4;"
     );
     res.json(results);
   } catch (err) {
@@ -499,6 +501,22 @@ app.post("/submitFeedback", async (req, res) => {
     res
       .status(500)
       .json({ success: false, message: "Error submitting feedback" });
+  }
+});
+
+// Handle product details request
+app.get("/productDetails", async (req, res) => {
+  const productName = req.query.productName;
+  try {
+    const [results] = await pool.query(
+      "SELECT p.image_url, p.another_img_url, p.name, p.rating, p.description, pv.size, pv.price, pd.KeyIngredients, pd.Features, pd.HowToUse, pd.Caution FROM products p JOIN product_variations pv ON p.id = pv.product_id JOIN product_description pd ON p.id = pd.product_id WHERE p.name = ?;",
+      [productName]
+    );
+    res.json(results);
+    // console.log(results[0].rating);
+  } catch (err) {
+    console.error(err);
+    res.status(500).send("Error fetching names");
   }
 });
 

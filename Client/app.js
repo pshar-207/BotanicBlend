@@ -1,64 +1,3 @@
-//Add these lines to check if the user is logged in or not
-document.addEventListener("DOMContentLoaded", () => {
-  const login_button = document.getElementById("login-button");
-
-  // Check if the user is authenticated
-  fetch("/isUserLogedIn")
-    .then((response) => response.json())
-    .then((data) => {
-      login_button.style.backgroundColor = "cyan";
-      if (data.isAuthenticated) {
-        // User is authenticated, show logout button
-        login_button.onclick = "";
-        login_button.onclick = () => {
-          window.location.href = "other pages/account.html";
-        };
-        console.log("Setting onclick to logoutUser");
-      } else {
-        login_button.onclick = toggleLoginForm;
-        console.log("Setting onclick to toggleLoginForm");
-      }
-    })
-    .catch((error) => console.error("Error checking authentication:", error));
-});
-
-//SingUp
-document.addEventListener("DOMContentLoaded", () => {
-  const form = document.querySelector("form");
-  form.addEventListener("submit", (event) => {
-    event.preventDefault(); // Prevent default form submission
-
-    fetch("/signup", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({
-        fname: document.getElementById("fname").value,
-        lname: document.getElementById("lname").value,
-        email: document.getElementById("email").value,
-        password: document.getElementById("password").value,
-      }),
-    })
-      .then((response) => {
-        if (response.redirected) {
-          window.location.href = response.url; // Follow redirect
-        } else {
-          return response.json(); // Handle other responses
-        }
-      })
-      .then((data) => {
-        if (data.message === "User created successfully") {
-          alert("Your account has been created!");
-          console.log("created");
-        } // Handle success response
-      })
-      .catch((error) => {
-        console.error("Error:", error); // Handle errors
-      });
-  });
-});
-
 //NEW ARRIVALS PRODUCTS
 fetch("/New_Arrivals")
   .then((response) => response.json())
@@ -81,11 +20,10 @@ function renderNewArrivals(data) {
     listItem.innerHTML = `
                 <div class="new_arrival_product_section">
                     <div class="new_arrival_product_image">
-                        <a href="#"><img src="${product.image_url}" alt="" /></a>
+                        <a href="other pages/Product_Page.html?productName=${product.name}"><img src="${product.image_url}" alt="" /></a>
 
                     </div>
-                    <div class="new_arrival_product_name">${product.name}</div>
-                    <div class="new_arrival_product_desc">${product.description}</div>
+                    <div class="new_arrival_product_name">${product.name}</div>                    
                     <div class="new_arrival_product_rating">${product.rating}</div>
                     <div class="new_arrival_product_price">
                         <div class="price">${product.price}</div>
@@ -143,11 +81,11 @@ function renderBestSellers(data) {
     listItem.innerHTML = `
                 <div class="best_sell_product_section">
                   <div class="best_sell_product_image">
-                      <a href="#"><img src="${product.image_url}" alt="" /></a>
-
+                    <a href="other pages/Product_Page.html?productName=${product.name}">
+                      <img src="${product.image_url}" alt="" />
+                    </a>
                     </div>
-                    <div class="best_sell_product_name">${product.name}</div>
-                    <div class="best_sell_product_desc">${product.description}</div>
+                    <div class="best_sell_product_name">${product.name}</div>                    
                     <div class="best_sell_product_rating">${product.rating}</div>
                     <div class="best_sell_product_price">
                         <div class="price">${product.price}</div>
