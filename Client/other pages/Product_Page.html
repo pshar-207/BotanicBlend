@@ -21,7 +21,7 @@
     <div class="product_detail_container">
       <div class="product_image_container">
         <div class="product_image">
-          <img src="Photos/Best Seller Products Image/aloveragel.jpg" alt="" />
+          <img src="" alt="" />
         </div>
         <div class="other_images">
           <img class="firdt_img" src="" alt="" />
@@ -245,7 +245,7 @@
         </div>
         <div class="review_write_container">
           <div class="review_write_container_heading">Write a review</div>
-          <form action="">
+          <form id="reviewForm" class="ReviewFrom">
             <div class="rating_container">
               <div class="review_rating">
                 <div
@@ -320,16 +320,16 @@
               <div class="review_title">Review Title</div>
               <input
                 type="text"
-                id="review"
-                name="review"
+                id="reviewTitle"
+                name="reviewTitle"
                 placeholder="Give your review a title"
               />
             </div>
             <div class="review_body_container">
               <div class="review_body">Body of review (1500)</div>
               <textarea
-                name="review_body"
-                id="review_body"
+                name="reviewBody"
+                id="reviewBody"
                 cols="30"
                 rows="10"
                 placeholder="Write your review here..."
@@ -339,15 +339,17 @@
               <input
                 type="submit"
                 value="Submit Review"
+                id="ReviewSubmitButton"
                 onmouseover="changeColors(this)"
                 onmouseout="restoreOriginalColors(this)"
               />
             </div>
           </form>
         </div>
-        <div class="review_container">
-          <ul class="review_list">
-            <li>
+
+        <div class="review_container" id="reviewContainer">
+          <ul class="review_list" id="reviewList">
+            <!-- <li>
               <div class="customerName_date_container">
                 <div class="customer_name">Crish bumstured</div>
                 <span>on</span>
@@ -376,7 +378,7 @@
                 est? Eum, qui ut officiis modi cupiditate pariatur, vel vitae
                 reprehenderit facere aperiam ipsum necessitatibus?
               </div>
-            </li>
+            </li> -->
           </ul>
         </div>
       </div>
@@ -478,11 +480,9 @@
     </script>
 
     <script src="JavaScript files/productPageWeightSelector.js"></script>
-    <script src="JavaScript files/productsPageFlavourSelector.js"></script>
     <script src="JavaScript files/productPage_descriptionOrShipping_hide_show.js"></script>
     <script src="JavaScript files/button_color_change.js"></script>
     <script src="JavaScript files/productPage_reviewScroll.js"></script>
-    <!-- <script src="JavaScript files/productPageQtySelector.js"></script> -->
     <script src="JavaScript files/productPage_reviewWrite_HideShow.js"></script>
     <script src="JavaScript files/shopDropdownShow.js"></script>
     <script src="JavaScript files/Load_logo_img.js"></script>
@@ -498,10 +498,11 @@
           for (let i = 0; i < stars.length; i++) {
             if (i < rating) {
               stars[i].src = "Photos/Stars/active-star.png";
-              console.log(stars[i]);
+              // console.log(`star activated${i}`);
+              // console.log(stars[i]);
             } else {
               stars[i].src = "Photos/Stars/unactive-star.png";
-              console.log(stars[i]);
+              // console.log(stars[i]);
             }
           }
         }
@@ -567,9 +568,9 @@
             for (let i = 0; i < productDetails[0].rating; i++) {
               const starImage = document.createElement("img");
               starImage.src = "Photos/Stars/active-star.png";
-              starImage.alt = "Star";
-              starImage.className = "star";
-              starImage.id = "star" + (i + 1); // IDs should be unique, so append i+1
+              starImage.alt = "Product_Star";
+              starImage.className = "Product_star";
+              starImage.id = "Product_star" + (i + 1); // IDs should be unique, so append i+1
 
               ratingContainer.appendChild(starImage);
             }
@@ -699,6 +700,123 @@
         console.log(newPrice);
         newPrice.innerText = totalPrice;
       }
+    </script>
+
+    <!-- user review -->
+    <script>
+      // Function to submit a review
+      const queryString = window.location.search;
+      const urlParams = new URLSearchParams(queryString);
+      const product_Name = urlParams.get("productName");
+      console.log(product_Name);
+      function submitReview(event) {
+        event.preventDefault(); // Prevent the default form submission
+
+        // Get the values from the form
+        const rating = getSelectedRating(); // You need to implement this function
+        const title = document.getElementById("reviewTitle").value;
+        const body = document.getElementById("reviewBody").value;
+        // console.log(`rating ${rating}`);
+        // console.log(`title${title}`);
+        // console.log(`body${body}`);
+
+        // Check if the user is authenticated
+        fetch("/checkAuth")
+          .then((response) => response.json())
+          .then((data) => {
+            if (data.isAuthenticated) {
+              // If authenticated, proceed to submit the review
+              const reviewData = { rating, title, body, product_Name };
+              submitReviewToServer(reviewData);
+            } else {
+              // If not authenticated, show an alert
+              alert("You must log in before submitting a review.");
+            }
+          })
+          .catch((error) => {
+            console.error("Error checking authentication:", error);
+          });
+      }
+
+      // Function to submit the review data to the server
+      function submitReviewToServer(reviewData) {
+        fetch("/submitReview", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(reviewData),
+        })
+          .then((response) => response.json())
+          .then((data) => {
+            // console.log(data);
+            if (data.success) {
+              // If the review is successfully submitted, update the UI
+              // updateReviewList();
+              console.log("review submited");
+              alert("Review Submited");
+              // You may also want to update the product rating in the UI
+              // (e.g., by refreshing the product details section)
+            } else {
+              alert("Failed to submit the review. Please try again later.");
+            }
+          })
+          .catch((error) => {
+            console.error("Error submitting review:", error);
+          });
+      }
+
+      // Function to update the review list from the server
+      function updateReviewList() {
+        fetch("/getReviews")
+          .then((response) => response.json())
+          .then((data) => {
+            // Assuming the server returns an array of reviews
+            const reviews = data.reviews;
+
+            // Update the review list in the UI
+            const reviewList = document.getElementById("reviewList");
+            reviewList.innerHTML = ""; // Clear existing reviews
+
+            reviews.forEach((review) => {
+              // Create HTML elements for each review and append to the list
+              const listItem = document.createElement("li");
+              listItem.innerHTML = `
+                <div class="customerName_date_container">
+                  <div class="customer_name">${review.customer_name}</div>
+                  <span>on</span>
+                  <div class="date">${review.created_at}</div>
+                </div>
+                <div class="rating">${generateStars(review.rating)}</div>
+                <div class="review_title">${review.title}</div>
+                <div class="review_body">${review.body}</div>
+              `;
+              reviewList.appendChild(listItem);
+            });
+          })
+          .catch((error) => {
+            console.error("Error updating review list:", error);
+          });
+      }
+
+      // Function to generate star icons based on the rating
+      function generateStars(rating) {
+        // You need to implement this based on your star icon logic
+        // For example, return a string of star icons based on the rating
+        // e.g., for rating 4: "****"
+      }
+
+      // Function to get the selected rating
+      function getSelectedRating() {
+        // You need to implement this based on your star selection logic
+        // Return the selected rating (1 to 5)
+        return selectedRating;
+      }
+
+      // Attach the submitReview function to the form submission
+      document
+        .getElementById("reviewForm")
+        .addEventListener("submit", submitReview);
     </script>
   </body>
 </html>

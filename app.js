@@ -520,6 +520,70 @@ app.get("/productDetails", async (req, res) => {
   }
 });
 
+// Endpoint to submit a review
+app.post("/submitReview", async (req, res) => {
+  try {
+    // Assuming you have a 'reviews' table with columns 'user_id', 'rating', 'title', 'body', 'product_id'
+    const { rating, title, body, product_Name } = req.body;
+    const userId = req.session.userId; // Assuming you have stored the user ID in the session
+
+    // Replace 'your-product-id' with the actual product ID for which the review is being submitted
+
+    const productIdResult = await pool.query(
+      "SELECT id FROM products WHERE name = ?",
+      [product_Name]
+    );
+
+    const productId = productIdResult[0][0].id;
+
+    console.log(product_Name);
+    console.log(productId);
+    console.log(userId);
+    console.log(rating);
+    console.log(title);
+    console.log(body);
+
+    // Insert the review into the database
+    const [result] = await pool.query(
+      "INSERT INTO reviews (user_id, product_id,user_rating, title, body) VALUES (?, ?, ?, ?, ?)",
+      [userId, productId, rating, title, body]
+    );
+    console.log("sdfds");
+    // Next, perform the UPDATE query
+    const [updateResult] = await pool.query(
+      "UPDATE products SET rating = (SELECT AVG(user_rating) FROM reviews WHERE product_id = ?) WHERE id = ?",
+      [productId, productId]
+    );
+
+    res.json({ success: true });
+  } catch (error) {
+    console.log("review not submited");
+    console.error("Error submitting review:", error);
+    res.json({ success: false });
+  }
+});
+
+// Endpoint to get reviews
+app.get("/getReviews", async (req, res) => {
+  try {
+    // Replace 'your-product-id' with the actual product ID for which reviews are being retrieved
+    const productId = "your-product-id";
+
+    // Assuming you have a 'reviews' table with columns 'user_id', 'rating', 'title', 'body', 'created_at'
+    const [rows] = await pool.query(
+      "SELECT user_id, rating, title, body, created_at FROM reviews WHERE product_id = ?",
+      [productId]
+    );
+
+    // You might want to fetch additional details like user names based on 'user_id'
+
+    res.json({ reviews: rows });
+  } catch (error) {
+    console.error("Error getting reviews:", error);
+    res.json({ reviews: [] });
+  }
+});
+
 //Check Server is listening
 app.listen(port, () => {
   console.log(`Server listening on port ${port}`);

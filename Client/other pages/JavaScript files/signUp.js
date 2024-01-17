@@ -20,7 +20,7 @@ document.addEventListener("DOMContentLoaded", () => {
         fname: document.getElementById("fname").value,
         lname: document.getElementById("lname").value,
         email: emailuser,
-        password: document.getElementById("password").value,
+        password: document.querySelector(".user_password").value,
       }),
     })
       .then((response) => {
