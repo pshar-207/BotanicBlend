@@ -349,13 +349,13 @@
 
         <div class="review_container" id="reviewContainer">
           <ul class="review_list" id="reviewList">
-            <!-- <li>
+            <li>
               <div class="customerName_date_container">
                 <div class="customer_name">Crish bumstured</div>
                 <span>on</span>
                 <div class="date">11/11/2024</div>
               </div>
-              <div class="rating">*****</div>
+              <div class="rating"></div>
               <div class="review_title">xyz</div>
               <div class="review_body">
                 Lorem ipsum dolor sit, amet consectetur adipisicing elit.
@@ -364,21 +364,6 @@
                 reprehenderit facere aperiam ipsum necessitatibus?
               </div>
             </li>
-            <li>
-              <div class="customerName_date_container">
-                <div class="customer_name">Crish bumstured</div>
-                <span>on</span>
-                <div class="date">11/11/2024</div>
-              </div>
-              <div class="rating">*****</div>
-              <div class="review_title">xyz</div>
-              <div class="review_body">
-                Lorem ipsum dolor sit, amet consectetur adipisicing elit.
-                Voluptates quod praesentium ducimus assumenda sit repudiandae
-                est? Eum, qui ut officiis modi cupiditate pariatur, vel vitae
-                reprehenderit facere aperiam ipsum necessitatibus?
-              </div>
-            </li> -->
           </ul>
         </div>
       </div>
@@ -716,9 +701,6 @@
         const rating = getSelectedRating(); // You need to implement this function
         const title = document.getElementById("reviewTitle").value;
         const body = document.getElementById("reviewBody").value;
-        // console.log(`rating ${rating}`);
-        // console.log(`title${title}`);
-        // console.log(`body${body}`);
 
         // Check if the user is authenticated
         fetch("/checkAuth")
@@ -752,9 +734,10 @@
             // console.log(data);
             if (data.success) {
               // If the review is successfully submitted, update the UI
-              // updateReviewList();
+
               console.log("review submited");
-              alert("Review Submited");
+              // alert("Review Submited");
+              updateReviewList(product_Name);
               // You may also want to update the product rating in the UI
               // (e.g., by refreshing the product details section)
             } else {
@@ -767,8 +750,13 @@
       }
 
       // Function to update the review list from the server
-      function updateReviewList() {
-        fetch("/getReviews")
+      function updateReviewList(product_Name) {
+        fetch(`/getReviews?productName=${product_Name}`, {
+          method: "GET",
+          headers: {
+            "Content-Type": "application/json",
+          },
+        })
           .then((response) => response.json())
           .then((data) => {
             // Assuming the server returns an array of reviews
@@ -779,18 +767,21 @@
             reviewList.innerHTML = ""; // Clear existing reviews
 
             reviews.forEach((review) => {
+              const formattedDate = new Date(
+                review.created_at
+              ).toLocaleString();
               // Create HTML elements for each review and append to the list
               const listItem = document.createElement("li");
               listItem.innerHTML = `
-                <div class="customerName_date_container">
-                  <div class="customer_name">${review.customer_name}</div>
-                  <span>on</span>
-                  <div class="date">${review.created_at}</div>
-                </div>
-                <div class="rating">${generateStars(review.rating)}</div>
-                <div class="review_title">${review.title}</div>
-                <div class="review_body">${review.body}</div>
-              `;
+          <div class="customerName_date_container">
+            <div class="customer_name">${review.user_name}</div>
+            <span>on</span>
+            <div class="date">${formattedDate}</div>
+          </div>
+          <div class="rating">${generateStars(review.user_rating)}</div>
+          <div class="review_title">${review.title}</div>
+          <div class="review_body">${review.body}</div>
+        `;
               reviewList.appendChild(listItem);
             });
           })
@@ -801,15 +792,18 @@
 
       // Function to generate star icons based on the rating
       function generateStars(rating) {
-        // You need to implement this based on your star icon logic
-        // For example, return a string of star icons based on the rating
-        // e.g., for rating 4: "****"
+        const maxStars = 5; // Set the maximum number of stars
+
+        // Create an array of active star images based on the rating
+        const starHtml = Array.from({ length: rating }, () => {
+          return `<img class="reviesStars" src="Photos/Stars/active-star.png" alt="" />`;
+        });
+
+        return starHtml.join(""); // Join the array of active star images into a string
       }
 
       // Function to get the selected rating
       function getSelectedRating() {
-        // You need to implement this based on your star selection logic
-        // Return the selected rating (1 to 5)
         return selectedRating;
       }
 
@@ -817,6 +811,8 @@
       document
         .getElementById("reviewForm")
         .addEventListener("submit", submitReview);
+
+      updateReviewList(product_Name);
     </script>
   </body>
 </html>

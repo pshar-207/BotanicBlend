@@ -209,12 +209,14 @@ body {
 .rating {
   margin: 0.5rem 0 0.5rem 0;
 }
-.review_rating {
+.review_rating,
+.rating {
   cursor: pointer;
   font-size: 0;
   display: flex;
 }
 .star,
+.reviesStars,
 .Product_star {
   width: 1rem;
   height: 1rem;

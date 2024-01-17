@@ -8,6 +8,7 @@ const app = express();
 
 // Add these lines after creating the express app
 const session = require("express-session");
+const { request } = require("http");
 
 // Use sessions
 app.use(
@@ -548,14 +549,20 @@ app.post("/submitReview", async (req, res) => {
       "INSERT INTO reviews (user_id, product_id,user_rating, title, body) VALUES (?, ?, ?, ?, ?)",
       [userId, productId, rating, title, body]
     );
-    console.log("sdfds");
+
     // Next, perform the UPDATE query
     const [updateResult] = await pool.query(
       "UPDATE products SET rating = (SELECT AVG(user_rating) FROM reviews WHERE product_id = ?) WHERE id = ?",
       [productId, productId]
     );
 
-    res.json({ success: true });
+    [rows] = await pool.query(
+      "SELECT  CONCAT(u.first_name, ' ', u.last_name) AS user_name, r.created_at, r.user_rating, r.title, r.body FROM users u JOIN reviews r ON u.user_id = r.user_id WHERE r.product_id = ?",
+      [productId]
+    );
+    console.log(rows[0]);
+
+    res.json({ success: true, reviews: rows });
   } catch (error) {
     console.log("review not submited");
     console.error("Error submitting review:", error);
@@ -563,24 +570,27 @@ app.post("/submitReview", async (req, res) => {
   }
 });
 
-// Endpoint to get reviews
+//get reviews
 app.get("/getReviews", async (req, res) => {
   try {
-    // Replace 'your-product-id' with the actual product ID for which reviews are being retrieved
-    const productId = "your-product-id";
+    const productName = req.query.productName; // Access product_Name from the query parameters
 
-    // Assuming you have a 'reviews' table with columns 'user_id', 'rating', 'title', 'body', 'created_at'
+    const productIdResult = await pool.query(
+      "SELECT id FROM products WHERE name = ?",
+      [productName]
+    );
+    const productId = productIdResult[0][0].id;
+
     const [rows] = await pool.query(
-      "SELECT user_id, rating, title, body, created_at FROM reviews WHERE product_id = ?",
+      "SELECT  CONCAT(u.first_name, ' ', u.last_name) AS user_name, r.created_at, r.user_rating, r.title, r.body FROM users u JOIN reviews r ON u.user_id = r.user_id WHERE r.product_id = ? order by r.created_at desc",
       [productId]
     );
 
-    // You might want to fetch additional details like user names based on 'user_id'
-
     res.json({ reviews: rows });
   } catch (error) {
-    console.error("Error getting reviews:", error);
-    res.json({ reviews: [] });
+    console.log("review not found");
+    console.error("Error getting review:", error);
+    res.json({ success: false });
   }
 });
 
