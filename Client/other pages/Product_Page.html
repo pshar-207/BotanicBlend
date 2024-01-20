@@ -39,11 +39,6 @@
           <div class="weight">Weight</div>
         </div>
 
-        <!-- <div class="quantity_container">
-          <div class="quantity">Quantity</div>
-          <span class="qty_descrese">-</span><span class="qty_number">1</span
-          ><span class="qty_increse">+</span>
-        </div> -->
         <div class="quantity_container">
           <div class="quantity">Quantity</div>
           <span class="qty_descrese" onclick="decreaseQuantity()">-</span>
@@ -59,7 +54,6 @@
           <div
             class="buy_button"
             onmouseover="changeColors(this)"
-            onclick="changeColorsClick(this)"
             onmouseout="restoreOriginalColors(this)"
           >
             BUY
@@ -67,7 +61,6 @@
           <div
             class="add_to_cart_button"
             onmouseover="changeColors(this)"
-            onclick="changeColorsClick(this)"
             onmouseout="restoreOriginalColors(this)"
           >
             ADD TO CART
@@ -377,13 +370,6 @@
       <div class="best_sell_products">
         <ul id="bestSellerList"></ul>
       </div>
-      <div class="best_sellers_viewAll_button">
-        <a href=""
-          ><div class="view_all_btn" onmouseover="changeColors(this)">
-            View All
-          </div></a
-        >
-      </div>
     </div>
     <!-- Best Sellers Dynamically -->
 
@@ -398,71 +384,7 @@
     <script src="JavaScript files/loginFormShow.js"></script>
     <script src="JavaScript files/button_color_change.js"></script>
     <script src="JavaScript files/cart_icon_change.js"></script>
-    <script>
-      //BEST SELLERS PRODUCTS
-      fetch("/Best_Sellers")
-        .then((response) => response.json())
-        .then((data) => {
-          // Call a function to render the data
-          renderBestSellers(data);
-        })
-        .catch((error) => console.error("Error fetching data:", error));
-
-      // Function to render new arrivals
-      function renderBestSellers(data) {
-        // Get the UL element
-        const bestSellerList = document.getElementById("bestSellerList");
-
-        // Loop through the data and create list items
-        data.forEach((product) => {
-          const listItem = document.createElement("li");
-
-          var modifiedImagePath = product.image_url.replace("other pages/", "");
-
-          listItem.innerHTML = `
-                <div class="best_sell_product_section">
-                  <div class="best_sell_product_image">
-                      <a href="#"><img src="${modifiedImagePath}" alt="" /></a>
-
-                    </div>
-                    <div class="best_sell_product_name">${product.name}</div>
-                    <div class="best_sell_product_desc">${product.description}</div>
-                    <div class="best_sell_product_rating">${product.rating}</div>
-                    <div class="best_sell_product_price">
-                        <div class="price">${product.price}</div>
-                        <!-- Add to Cart section -->
-                        <div class="add_to_cart product-container"
-                            onmouseover="showAddToCart(this) ; changeColors(this)"
-                            onmouseout="hideAddToCart(this)">
-                            <div class="icon">
-                                 <svg
-                                    xmlns="http://www.w3.org/2000/svg"
-                                    height="16"
-                                    width="15"
-                                    viewBox="0 0 576 512"
-                                    >
-                                    <!--!Font Awesome Free 6.5.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2023 Fonticons, Inc.-->
-                                    <path
-                                        d="M0 24C0 10.7 10.7 0 24 0H69.5c22 0 41.5 12.8 50.6 32h411c26.3 0 45.5 25 38.6 50.4l-41 152.3c-8.5 31.4-37 53.3-69.5 53.3H170.7l5.4 28.5c2.2 11.3 12.1 19.5 23.6 19.5H488c13.3 0 24 10.7 24 24s-10.7 24-24 24H199.7c-34.6 0-64.3-24.6-70.7-58.5L77.4 54.5c-.7-3.8-4-6.5-7.9-6.5H24C10.7 48 0 37.3 0 24zM128 464a48 48 0 1 1 96 0 48 48 0 1 1 -96 0zm336-48a48 48 0 1 1 0 96 48 48 0 1 1 0-96z"
-                                    />
-                                </svg>
-                            </div>
-                            <div class="add-to-cart">Add to Cart</div>
-                        </div>
-                    </div>
-                    <!-- Buy button -->
-                    <a href=""><div class="new_arrival_product_buttons btn_color"
-                        onmouseover="changeColors(this)">
-                        Buy
-                    </div></a>
-                </div>
-            `;
-
-          // Append the list item to the UL
-          bestSellerList.appendChild(listItem);
-        });
-      }
-    </script>
+    <script></script>
 
     <script src="JavaScript files/productPageWeightSelector.js"></script>
     <script src="JavaScript files/productPage_descriptionOrShipping_hide_show.js"></script>
@@ -601,6 +523,11 @@
               }
             }
 
+            document.querySelector(".add_to_cart_button").onclick =
+              function () {
+                addToCart(product_Name);
+              };
+
             document.querySelector(".DescriptionProductName").innerText =
               productDetails[0].name;
             document.querySelector(".keyIngredientsList").innerHTML =
@@ -689,6 +616,76 @@
 
     <!-- user review -->
     <script>
+      //BEST SELLERS PRODUCTS
+      fetch("/Best_Sellers")
+        .then((response) => response.json())
+        .then((data) => {
+          // Call a function to render the data
+          renderBestSellers(data);
+        })
+        .catch((error) => console.error("Error fetching data:", error));
+
+      // Function to render new arrivals
+      function renderBestSellers(data) {
+        // Get the UL element
+        const bestSellerList = document.getElementById("bestSellerList");
+
+        // Loop through the data and create list items
+        data.forEach((product) => {
+          const listItem = document.createElement("li");
+
+          var modifiedImagePath = product.image_url.replace("other pages/", "");
+
+          listItem.innerHTML = `
+                <div class="best_sell_product_section">
+                  <div class="best_sell_product_image">
+                      <a href="#"><img src="${modifiedImagePath}" alt="" /></a>
+
+                    </div>
+                    <div class="best_sell_product_name">${product.name}</div>
+                    <div class="best_sell_product_desc">${
+                      product.description
+                    }</div>
+                    <div class="best_sell_product_rating">${generateStars(
+                      product.rating
+                    )}</div>
+                    <div class="best_sell_product_price">
+                        <div class="price">${product.price}</div>
+                        <!-- Add to Cart section -->
+                        <div class="add_to_cart product-container"
+                            onmouseover="showAddToCart(this) ; changeColors(this)"
+                            onmouseout="hideAddToCart(this)">
+                            <div class="icon">
+                                 <svg
+                                    xmlns="http://www.w3.org/2000/svg"
+                                    height="16"
+                                    width="15"
+                                    viewBox="0 0 576 512"
+                                    >
+                                    <!--!Font Awesome Free 6.5.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2023 Fonticons, Inc.-->
+                                    <path
+                                        d="M0 24C0 10.7 10.7 0 24 0H69.5c22 0 41.5 12.8 50.6 32h411c26.3 0 45.5 25 38.6 50.4l-41 152.3c-8.5 31.4-37 53.3-69.5 53.3H170.7l5.4 28.5c2.2 11.3 12.1 19.5 23.6 19.5H488c13.3 0 24 10.7 24 24s-10.7 24-24 24H199.7c-34.6 0-64.3-24.6-70.7-58.5L77.4 54.5c-.7-3.8-4-6.5-7.9-6.5H24C10.7 48 0 37.3 0 24zM128 464a48 48 0 1 1 96 0 48 48 0 1 1 -96 0zm336-48a48 48 0 1 1 0 96 48 48 0 1 1 0-96z"
+                                    />
+                                </svg>
+                            </div>
+                            <div class="add-to-cart" onclick='addToCart("${
+                              product.name
+                            }")'>Add to Cart</div>
+                        </div>
+                    </div>
+                    <!-- Buy button -->
+                    <a href=""><div class="new_arrival_product_buttons btn_color"
+                        onmouseover="changeColors(this)">
+                        Buy
+                    </div></a>
+                </div>
+            `;
+
+          // Append the list item to the UL
+          bestSellerList.appendChild(listItem);
+        });
+      }
+
       // Function to submit a review
       const queryString = window.location.search;
       const urlParams = new URLSearchParams(queryString);
@@ -778,7 +775,9 @@
             <span>on</span>
             <div class="date">${formattedDate}</div>
           </div>
-          <div class="rating">${generateStars(review.user_rating)}</div>
+          <div class="rating">${generateStarsForReviewSection(
+            review.user_rating
+          )}</div>
           <div class="review_title">${review.title}</div>
           <div class="review_body">${review.body}</div>
         `;
@@ -791,12 +790,12 @@
       }
 
       // Function to generate star icons based on the rating
-      function generateStars(rating) {
+      function generateStarsForReviewSection(rating) {
         const maxStars = 5; // Set the maximum number of stars
 
         // Create an array of active star images based on the rating
         const starHtml = Array.from({ length: rating }, () => {
-          return `<img class="reviesStars" src="Photos/Stars/active-star.png" alt="" />`;
+          return `<img class="CustomerReviesStars" src="Photos/Stars/active-star.png" alt="" />`;
         });
 
         return starHtml.join(""); // Join the array of active star images into a string
@@ -814,5 +813,6 @@
 
       updateReviewList(product_Name);
     </script>
+    <script src="JavaScript files/addToCart.js"></script>
   </body>
 </html>

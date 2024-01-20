@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="CSS files/QuizResults.css" />
+    <link rel="stylesheet" href="CSS files/cart.css" />
+    <link rel="stylesheet" href="CSS files/loginForm.css" />
+    <link rel="stylesheet" href="CSS files/header.css" />
+  </head>
+  <body>
+    <!-- header -->
+    <div class="header_containor">
+      <div id="header-placeholder"></div>
+    </div>
+    <!-- header -->
+
+    <!-- heading image and heading -->
+    <div class="heading_container">
+      <img src="Photos/contact/heading image.jpg" loading="lazy" alt="" />
+      <div class="quiz_text">
+        <h1>QUIZ RESULT</h1>
+        <p>Home / For You</p>
+      </div>
+    </div>
+    <!-- heading image and heading -->
+
+    <div class="quizResultOuterContainer">
+      <div class="skinCareRoutineHeading">
+        Skincare Routine in <strike>Rs 500</strike> Rs 450
+      </div>
+      <ul class="quizResultProductsContainer" id="FourFifty">
+        <!-- <li>
+          <div class="quizProduct">
+            <img
+              src="Photos/products/BodyCare/SUNSCREEN.jpg"
+              alt=""
+              loading="lazy"
+            />
+            <div class="quizProductName">SUNSCREEN</div>
+            <div class="quizProductWeight">Weight - 100ML</div>
+            <div class="quizProductRating">*****</div>
+          </div>
+        </li> -->
+      </ul>
+      <div class="addToCart_Buy_btn">
+        <div class="QuizResult_AddToCart_Button" id="AddToCart_FourFifty">
+          Add To Cart All
+        </div>
+        <div class="QuizResult_Buy_Button">Buy All</div>
+      </div>
+
+      <hr />
+
+      <div class="skinCareRoutineHeading">
+        Skincare Routine in <strike>Rs 750</strike> Rs 700
+      </div>
+      <ul class="quizResultProductsContainer" id="SevenHundred"></ul>
+      <div class="addToCart_Buy_btn">
+        <div class="QuizResult_AddToCart_Button" id="AddToCart_SevenHundred">
+          Add To Cart All
+        </div>
+        <div class="QuizResult_Buy_Button">Buy All</div>
+      </div>
+
+      <hr />
+
+      <div class="skinCareRoutineHeading">
+        Skincare Routine in <strike>Rs 1100</strike> Rs 1000
+      </div>
+      <ul class="quizResultProductsContainer" id="OneThousand"></ul>
+      <div class="addToCart_Buy_btn">
+        <div class="QuizResult_AddToCart_Button" id="AddToCart_OneHundred">
+          Add To Cart All
+        </div>
+        <div class="QuizResult_Buy_Button">Buy All</div>
+      </div>
+      <hr />
+    </div>
+
+    <!-- Footer -->
+    <div class="footer_container">
+      <div id="footer-placeholder"></div>
+    </div>
+    <!-- Footer -->
+    <script src="JavaScript files/header_footer_loader.js"></script>
+    <script src="JavaScript files/cart.js"></script>
+    <script src="JavaScript files/loginFormShow.js"></script>
+    <script src="JavaScript files/Load_logo_img.js"></script>
+    <script src="JavaScript files/shopDropdownShow.js"></script>
+    <script src="JavaScript files/link_changer.js"></script>
+    <script src="JavaScript files/singIn.js"></script>
+    <script src="JavaScript files/loginButtonChanger.js"></script>
+    <script src="JavaScript files/addToCart.js"></script>
+
+    <script>
+      var urlParams = new URLSearchParams(window.location.search);
+      var skinType = urlParams.get("skinType");
+      var hasActiveAcne = urlParams.get("hasActiveAcne");
+      const product_list_for_cart_FourFifty = [];
+      const product_list_for_cart_SevenHundred = [];
+      const product_list_for_cart_OneThousand = [];
+
+      function getQuizProducts(skinType, hasActiveAcne) {
+        console.log(skinType);
+        console.log(hasActiveAcne);
+        fetch(
+          `/GetQuizResults?skinTypeName=${skinType}&Has_Active_Acne=${hasActiveAcne}`,
+          {
+            method: "GET",
+            headers: {
+              "Content-Type": "application/json",
+            },
+          }
+        )
+          .then((response) => response.json())
+          .then((data) => {
+            if (data.success) {
+              const FourFifty = document.getElementById("FourFifty");
+              const SevenHundred = document.getElementById("SevenHundred");
+              const OneThousand = document.getElementById("OneThousand");
+
+              const firstRow = data.First_Row;
+
+              firstRow.forEach((row) => {
+                var img_url = row.image_url.replace("other pages/", "");
+                const listItem = document.createElement("li");
+                listItem.innerHTML = `
+                     <div class="quizProduct">
+                      <img
+                        src="${img_url}"
+                        alt=""
+                        loading="lazy"
+                      />
+                      <div class="quizProductName">${row.name}</div>
+                      <div class="quizProductWeight">Weight - ${row.size}</div>
+                      <div class="quizProductRating">${generateStarsForQuizResult(
+                        row.rating
+                      )}</div>
+                    </div>
+                  `;
+                FourFifty.appendChild(listItem);
+                product_list_for_cart_FourFifty.push(row.name);
+              });
+
+              const secondRow = data.Second_Row;
+              secondRow.forEach((row) => {
+                var img_url = row.image_url.replace("other pages/", "");
+                const listItem = document.createElement("li");
+                listItem.innerHTML = `
+                     <div class="quizProduct">
+                      <img
+                        src="${img_url}"
+                        alt=""
+                        loading="lazy"
+                      />
+                      <div class="quizProductName">${row.name}</div>
+                      <div class="quizProductWeight">Weight - ${row.size}</div>
+                      <div class="quizProductRating">${generateStarsForQuizResult(
+                        row.rating
+                      )}</div>
+                    </div>
+                  `;
+                SevenHundred.appendChild(listItem);
+                product_list_for_cart_SevenHundred.push(row.name);
+              });
+
+              const thirdRow = data.Third_Row;
+              thirdRow.forEach((row) => {
+                var img_url = row.image_url.replace("other pages/", "");
+                const listItem = document.createElement("li");
+                listItem.innerHTML = `
+                     <div class="quizProduct">
+                      <img
+                        src="${img_url}"
+                        alt=""
+                        loading="lazy"
+                      />
+                      <div class="quizProductName">${row.name}</div>
+                      <div class="quizProductWeight">Weight - ${row.size}</div>
+                      <div class="quizProductRating">${generateStarsForQuizResult(
+                        row.rating
+                      )}</div>
+                    </div>
+                  `;
+                OneThousand.appendChild(listItem);
+                product_list_for_cart_OneThousand.push(row.name);
+              });
+            } else {
+              console.log("fail to quiz");
+            }
+          })
+          .catch((error) => {
+            console.error("Error getting quiz product:", error);
+          });
+      }
+      getQuizProducts(skinType, hasActiveAcne);
+      function generateStarsForQuizResult(rating) {
+        const maxStars = 5; // Set the maximum number of stars
+
+        // Create an array of active star images based on the rating
+        const starHtml = Array.from({ length: rating }, () => {
+          return `<img class="QuizResultReviesStars" src="Photos/Stars/active-star.png" alt="" />`;
+        });
+
+        return starHtml.join(""); // Join the array of active star images into a string
+      }
+      document
+        .getElementById("AddToCart_FourFifty")
+        .addEventListener("click", function () {
+          product_list_for_cart_FourFifty.forEach((item) => {
+            addToCart(item);
+          });
+        });
+      document
+        .getElementById("AddToCart_SevenHundred")
+        .addEventListener("click", function () {
+          product_list_for_cart_SevenHundred.forEach((item) => {
+            addToCart(item);
+          });
+        });
+      document
+        .getElementById("AddToCart_OneHundred")
+        .addEventListener("click", function () {
+          product_list_for_cart_OneThousand.forEach((item) => {
+            addToCart(item);
+          });
+        });
+    </script>
+  </body>
+</html>

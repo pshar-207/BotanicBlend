@@ -1,9 +1,18 @@
 // Store references to each question section
-var questions = document.querySelectorAll(".q1, .q2, .q3, .q4, .q5, .q6");
+var questions = document.querySelectorAll(".q1, .q2, .q3, .q4, .q5");
 
 // Store references to the navigation buttons
 var backButton = document.querySelector(".back_btn");
 var nextButton = document.querySelector(".next_btn");
+
+// Store user selections
+var userData = {
+  gender: null,
+  skinType: null,
+  age: null,
+  anythingElse: null,
+  hasActiveAcne: null,
+};
 
 // Set initial question index
 var currentQuestionIndex = 0;
@@ -13,18 +22,29 @@ nextButton.addEventListener("click", showNextQuestion);
 backButton.addEventListener("click", showPreviousQuestion);
 
 function showNextQuestion() {
-  if (currentQuestionIndex < questions.length - 1) {
+  console.log(`index before : ${currentQuestionIndex}`);
+  if (currentQuestionIndex < questions.length) {
+    saveUserSelection();
     questions[currentQuestionIndex].style.display = "none";
     currentQuestionIndex++;
-    questions[currentQuestionIndex].style.display = "flex";
+    if (currentQuestionIndex != 5) {
+      questions[currentQuestionIndex].style.display = "flex";
+    }
     updateBackButtonVisibility();
   }
+  if (currentQuestionIndex === questions.length) {
+    window.location.href = `/other%20pages/quizResults.html?skinType=${encodeURIComponent(
+      userData.skinType
+    )}&hasActiveAcne=${encodeURIComponent(userData.hasActiveAcne)}`;
+  }
+  console.log(`index after : ${currentQuestionIndex}`);
 }
 
 function showPreviousQuestion() {
   if (currentQuestionIndex > 0) {
     questions[currentQuestionIndex].style.display = "none";
     currentQuestionIndex--;
+
     questions[currentQuestionIndex].style.display = "flex";
     updateBackButtonVisibility();
   }
@@ -67,5 +87,36 @@ function restoreOriginalColors(element) {
   if (element !== clickedDiv) {
     element.style.backgroundColor = "white";
     element.style.border = "1px solid black";
+  }
+}
+
+function saveUserSelection() {
+  // Save user selection for each question
+  switch (currentQuestionIndex) {
+    case 0:
+      userData.gender = clickedDiv.innerText.trim();
+      console.log(userData.gender);
+      clickedDiv = null;
+      break;
+    case 1:
+      userData.skinType = clickedDiv.innerText.trim();
+      console.log(userData.skinType);
+      clickedDiv = null;
+      break;
+    case 2:
+      userData.age = clickedDiv.innerText.trim();
+      console.log(userData.age);
+      clickedDiv = null;
+      break;
+    case 3:
+      userData.anythingElse = document.getElementById("comment").value.trim();
+      console.log(userData.anythingElse);
+      clickedDiv = null;
+      break;
+    case 4:
+      userData.hasActiveAcne = clickedDiv.innerText.trim();
+      console.log(`Has active acne : ${userData.hasActiveAcne}`);
+      clickedDiv = null;
+      break;
   }
 }

@@ -124,4 +124,17 @@ body {
   margin-bottom: 0.2rem;
 }
 
+.rating {
+  cursor: pointer;
+  font-size: 0;
+  display: flex;
+}
+
+.MultiplePageReviesStars {
+  width: 1rem;
+  height: 1rem;
+  object-fit: contain;
+  margin: 0;
+}
+
 /* Product */

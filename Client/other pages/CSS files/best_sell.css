@@ -75,3 +75,16 @@
 .best_sell_product_price {
   padding-bottom: 0.2rem;
 }
+
+.best_sell_product_rating {
+  cursor: pointer;
+  font-size: 0;
+  display: flex;
+}
+
+.reviesStars {
+  width: 1rem;
+  height: 1rem;
+  object-fit: contain;
+  margin: 0;
+}

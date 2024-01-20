@@ -300,150 +300,11 @@
                 <div class="cart_product_image">
                   <a href="#">
                     <img
-                      src="Photo/Best Seller Products Image/aloveragel.jpg"
+                      src="Photos/products/Bathing/ALOE VERA SHAMPOO.jpg"
                       alt=""
                   /></a>
                 </div>
                 <div class="cart_product_name">Products Name</div>
-                <div class="cart_product_desc">Product Description</div>
-                <div class="cart_product_rating">rating</div>
-                <div class="cart_product_price">price</div>
-                <a href=""
-                  ><div
-                    class="cart_product_buttons"
-                    onmouseover="changeColors(this)"
-                  >
-                    Buy
-                  </div></a
-                >
-              </div>
-            </li>
-            <li>
-              <div class="cart_product_section">
-                <div class="cart_product_image">
-                  <a href="#">
-                    <img
-                      src="Photo/Best Seller Products Image/aloveragel.jpg"
-                      alt=""
-                  /></a>
-                </div>
-                <div class="cart_product_name">Products Name</div>
-                <div class="cart_product_desc">Product Description</div>
-                <div class="cart_product_rating">rating</div>
-                <div class="cart_product_price">price</div>
-                <a href=""
-                  ><div
-                    class="cart_product_buttons"
-                    onmouseover="changeColors(this)"
-                  >
-                    Buy
-                  </div></a
-                >
-              </div>
-            </li>
-            <li>
-              <div class="cart_product_section">
-                <div class="cart_product_image">
-                  <a href="#">
-                    <img
-                      src="Photo/Best Seller Products Image/aloveragel.jpg"
-                      alt=""
-                  /></a>
-                </div>
-                <div class="cart_product_name">Products Name</div>
-                <div class="cart_product_desc">Product Description</div>
-                <div class="cart_product_rating">rating</div>
-                <div class="cart_product_price">price</div>
-                <a href=""
-                  ><div
-                    class="cart_product_buttons"
-                    onmouseover="changeColors(this)"
-                  >
-                    Buy
-                  </div></a
-                >
-              </div>
-            </li>
-            <li>
-              <div class="cart_product_section">
-                <div class="cart_product_image">
-                  <a href="#">
-                    <img
-                      src="Photo/Best Seller Products Image/aloveragel.jpg"
-                      alt=""
-                  /></a>
-                </div>
-                <div class="cart_product_name">Products Name</div>
-                <div class="cart_product_desc">Product Description</div>
-                <div class="cart_product_rating">rating</div>
-                <div class="cart_product_price">price</div>
-                <a href=""
-                  ><div
-                    class="cart_product_buttons"
-                    onmouseover="changeColors(this)"
-                  >
-                    Buy
-                  </div></a
-                >
-              </div>
-            </li>
-            <li>
-              <div class="cart_product_section">
-                <div class="cart_product_image">
-                  <a href="#">
-                    <img
-                      src="Photo/Best Seller Products Image/aloveragel.jpg"
-                      alt=""
-                  /></a>
-                </div>
-                <div class="cart_product_name">Products Name</div>
-                <div class="cart_product_desc">Product Description</div>
-                <div class="cart_product_rating">rating</div>
-                <div class="cart_product_price">price</div>
-                <a href=""
-                  ><div
-                    class="cart_product_buttons"
-                    onmouseover="changeColors(this)"
-                  >
-                    Buy
-                  </div></a
-                >
-              </div>
-            </li>
-            <li>
-              <div class="cart_product_section">
-                <div class="cart_product_image">
-                  <a href="#">
-                    <img
-                      src="Photo/Best Seller Products Image/aloveragel.jpg"
-                      alt=""
-                  /></a>
-                </div>
-                <div class="cart_product_name">Products Name</div>
-                <div class="cart_product_desc">Product Description</div>
-                <div class="cart_product_rating">rating</div>
-                <div class="cart_product_price">price</div>
-                <a href=""
-                  ><div
-                    class="cart_product_buttons"
-                    onmouseover="changeColors(this)"
-                  >
-                    Buy
-                  </div></a
-                >
-              </div>
-            </li>
-            <li>
-              <div class="cart_product_section">
-                <div class="cart_product_image">
-                  <a href="#">
-                    <img
-                      src="Photo/Best Seller Products Image/aloveragel.jpg"
-                      alt=""
-                  /></a>
-                </div>
-                <div class="cart_product_name">Products Name</div>
-                <div class="cart_product_desc">Product Description</div>
                 <div class="cart_product_rating">rating</div>
                 <div class="cart_product_price">price</div>
                 <a href=""
@@ -873,5 +734,84 @@
     <script src="JavaScript files/Load_logo_img.js"></script>
     <script src="JavaScript files/shopDropdownShow.js"></script>
     <script src="JavaScript files/link_changer.js"></script>
+    <script src="JavaScript files/addToCart.js"></script>
+    <script>
+      function getAddToCartForMyCartAccount() {
+        fetch("/GetAddToCartProducts", {
+          method: "GET",
+          headers: {
+            "Content-Type": "application/json",
+          },
+        })
+          .then((response) => response.json())
+          .then((data) => {
+            // Update the review list in the UI
+            const CartList = document.querySelector(".myCartProducts");
+            if (data.success) {
+              CartList.innerHTML = "";
+              const cart = data.row;
+
+              cart.forEach((cart_product) => {
+                console.log(cart_product.product_name);
+                const listItem = document.createElement("li");
+                listItem.innerHTML = `
+                  <div class="cart_product_section">
+                        <div class="cart_product_image">
+                          <a href="#">
+                            <img
+                              class="CartProductImagAccounre"
+                              src="${cart_product.img_url}"
+                              alt=""
+                          /></a>
+                        </div>
+                        <div class="cart_product_name">${
+                          cart_product.product_name
+                        }</div>
+                        <div class="cart_product_rating">${generateStarsForAccount(
+                          cart_product.rating
+                        )}</div>
+                        <div class="cart_product_price">${
+                          cart_product.price
+                        }</div>
+                        <a href=""
+                          ><div
+                            class="cart_product_buttons"
+                            onmouseover="changeColors(this)"
+                          >
+                            Buy
+                          </div></a
+                        >
+                      </div>
+                `;
+                CartList.appendChild(listItem);
+              });
+              var currentPath = window.location.pathname;
+              console.log(currentPath);
+              if (currentPath.includes("other%20pages")) {
+                const images = document.querySelectorAll(
+                  ".CartProductImagAccounre"
+                );
+                images.forEach((image) => {
+                  image.src = image.src.replace("other%20pages", "");
+                });
+              }
+            }
+          })
+          .catch((error) => {
+            console.error("Error updating review list:", error);
+          });
+      }
+      getAddToCartForMyCartAccount();
+      function generateStarsForAccount(rating) {
+        const maxStars = 5; // Set the maximum number of stars
+
+        // Create an array of active star images based on the rating
+        const starHtml = Array.from({ length: rating }, () => {
+          return `<img class="reviesStarsAccount" src="Photos/Stars/active-star.png" alt="" />`;
+        });
+
+        return starHtml.join(""); // Join the array of active star images into a string
+      }
+    </script>
   </body>
 </html>

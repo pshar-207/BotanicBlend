@@ -20,18 +20,24 @@ function renderNewArrivals(data) {
     listItem.innerHTML = `
                 <div class="new_arrival_product_section">
                     <div class="new_arrival_product_image">
-                        <a href="other pages/Product_Page.html?productName=${product.name}"><img src="${product.image_url}" alt="" /></a>
+                        <a href="other pages/Product_Page.html?productName=${
+                          product.name
+                        }"><img src="${product.image_url}" alt="" /></a>
 
                     </div>
-                    <div class="new_arrival_product_name">${product.name}</div>                    
-                    <div class="new_arrival_product_rating">${product.rating}</div>
+                    <div class="new_arrival_product_name">${
+                      product.name
+                    }</div>                    
+                    <div class="new_arrival_product_rating">${generateStarsForIndexPage(
+                      product.rating
+                    )}</div>
                     <div class="new_arrival_product_price">
                         <div class="price">${product.price}</div>
                         <!-- Add to Cart section -->
                         <div class="add_to_cart product-container"
                             onmouseover="showAddToCart(this) ; changeColors(this)"
                             onmouseout="hideAddToCart(this)">
-                            <div class="icon">
+                            <div class="icon" >
                                  <svg
                                     xmlns="http://www.w3.org/2000/svg"
                                     height="16"
@@ -44,7 +50,9 @@ function renderNewArrivals(data) {
                                     />
                                 </svg>
                             </div>
-                            <div class="add-to-cart">Add to Cart</div>
+                            <div class="add-to-cart" onclick='addToCart("${
+                              product.name
+                            }")'>Add to Cart</div>
                         </div>
                     </div>
                     <!-- Buy button -->
@@ -81,12 +89,18 @@ function renderBestSellers(data) {
     listItem.innerHTML = `
                 <div class="best_sell_product_section">
                   <div class="best_sell_product_image">
-                    <a href="other pages/Product_Page.html?productName=${product.name}">
+                    <a href="other pages/Product_Page.html?productName=${
+                      product.name
+                    }">
                       <img src="${product.image_url}" alt="" />
                     </a>
                     </div>
-                    <div class="best_sell_product_name">${product.name}</div>                    
-                    <div class="best_sell_product_rating">${product.rating}</div>
+                    <div class="best_sell_product_name">${
+                      product.name
+                    }</div>                    
+                    <div class="best_sell_product_rating">${generateStarsForIndexPage(
+                      product.rating
+                    )}</div>
                     <div class="best_sell_product_price">
                         <div class="price">${product.price}</div>
                         <!-- Add to Cart section -->
@@ -106,7 +120,9 @@ function renderBestSellers(data) {
                                     />
                                 </svg>
                             </div>
-                            <div class="add-to-cart">Add to Cart</div>
+                            <div class="add-to-cart" onclick='addToCart("${
+                              product.name
+                            }")'>Add to Cart</div>
                         </div>
                     </div>
                     <!-- Buy button -->
@@ -120,4 +136,15 @@ function renderBestSellers(data) {
     // Append the list item to the UL
     bestSellerList.appendChild(listItem);
   });
+}
+
+function generateStarsForIndexPage(rating) {
+  const maxStars = 5; // Set the maximum number of stars
+
+  // Create an array of active star images based on the rating
+  const starHtml = Array.from({ length: rating }, () => {
+    return `<img class="IndexPageStars" src="other pages/Photos/Stars/active-star.png" alt="" />`;
+  });
+
+  return starHtml.join(""); // Join the array of active star images into a string
 }

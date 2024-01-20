@@ -9,6 +9,8 @@ const app = express();
 // Add these lines after creating the express app
 const session = require("express-session");
 const { request } = require("http");
+const { cpSync } = require("fs");
+const { and } = require("sequelize");
 
 // Use sessions
 app.use(
@@ -524,25 +526,13 @@ app.get("/productDetails", async (req, res) => {
 // Endpoint to submit a review
 app.post("/submitReview", async (req, res) => {
   try {
-    // Assuming you have a 'reviews' table with columns 'user_id', 'rating', 'title', 'body', 'product_id'
     const { rating, title, body, product_Name } = req.body;
-    const userId = req.session.userId; // Assuming you have stored the user ID in the session
-
-    // Replace 'your-product-id' with the actual product ID for which the review is being submitted
-
+    const userId = req.session.userId;
     const productIdResult = await pool.query(
       "SELECT id FROM products WHERE name = ?",
       [product_Name]
     );
-
     const productId = productIdResult[0][0].id;
-
-    console.log(product_Name);
-    console.log(productId);
-    console.log(userId);
-    console.log(rating);
-    console.log(title);
-    console.log(body);
 
     // Insert the review into the database
     const [result] = await pool.query(
@@ -590,6 +580,178 @@ app.get("/getReviews", async (req, res) => {
   } catch (error) {
     console.log("review not found");
     console.error("Error getting review:", error);
+    res.json({ success: false });
+  }
+});
+
+// Endpoint to add to cart
+app.post("/AddToCart", async (req, res) => {
+  try {
+    const name = req.body.name;
+    const userId = req.session.userId;
+    console.log(name);
+
+    // Check if the product is already in the cart for the user
+    const [existingProduct] = await pool.query(
+      "SELECT * FROM cart WHERE user_id = ? AND product_name = ?",
+      [userId, name]
+    );
+
+    if (existingProduct.length > 0) {
+      // Product already exists in the cart
+      console.log("Product already in the cart");
+      res.json({ success: false, message: "Product already in the cart" });
+    } else {
+      // Product does not exist in the cart, insert it
+      const [result] = await pool.query(
+        "INSERT INTO cart (user_id, product_name) VALUES (?, ?)",
+        [userId, name]
+      );
+      console.log("Product added to the cart");
+      res.json({ success: true, message: "Product added to the cart" });
+    }
+  } catch (error) {
+    console.log("Failed to add product to cart");
+    console.error("Error AddToCart:", error);
+    res.json({ success: false, message: "Failed to add product to cart" });
+  }
+});
+
+//get Add to Cart Products
+app.get("/GetAddToCartProducts", async (req, res) => {
+  try {
+    const id = req.session.userId;
+
+    let rows = [];
+    if (req.session.isAuthenticated) {
+      [rows] = await pool.query(
+        "SELECT p.name AS product_name,p.image_url AS img_url,p.rating AS rating,MIN(v.price) AS price FROM products p JOIN product_variations v ON p.id = v.product_id JOIN cart c ON p.name = c.product_name WHERE c.user_id = ? GROUP BY p.id, p.name, p.image_url, p.rating",
+        [id]
+      );
+      res.json({ success: true, row: rows });
+    }
+  } catch (error) {
+    console.log("cart product not found");
+    console.error("Error getting review:", error);
+    res.json({ success: false });
+  }
+});
+
+// Endpoint to remove from cart
+app.post("/RemoveFromCart", async (req, res) => {
+  try {
+    const productName = req.body.productName;
+    const userId = req.session.userId;
+
+    const [result] = await pool.query(
+      "DELETE FROM cart WHERE user_id = ? AND product_name = ?",
+      [userId, productName]
+    );
+    if (result.affectedRows > 0) {
+      console.log("Product removed from the cart");
+      res.json({ success: true, message: "Product removed from the cart" });
+    } else {
+      console.log("Product not found in the cart");
+      res.json({ success: false, message: "Product not found in the cart" });
+    }
+  } catch (error) {
+    console.log("Failed to remove product from the cart");
+    console.error("Error RemoveFromCart:", error);
+    res.json({
+      success: false,
+      message: "Failed to remove product from the cart",
+    });
+  }
+});
+
+// Endpoit to get quiz result
+app.get("/GetQuizResults", async (req, res) => {
+  try {
+    const skinType = req.query.skinTypeName;
+    const acne = req.query.Has_Active_Acne;
+
+    if (skinType == "Dry") {
+      if (acne == "Yes") {
+        [firstRows] = await pool.query(
+          "SELECT products.name, products.image_url, products.rating, product_variations.size FROM products JOIN product_variations ON products.id = product_variations.product_id WHERE products.name in ('SUNSCREEN','KESAR CHANDAN GEL','GLYCERINE GULAB GEL','NEEM TULSI FACEWASH') and product_variations.size in ('100ML','50ML')"
+        );
+        [secondRows] = await pool.query(
+          "SELECT products.name, products.image_url, products.rating, max(product_variations.size) FROM products JOIN product_variations ON products.id = product_variations.product_id WHERE products.name in ('SUNSCREEN','KESAR CHANDAN GEL','GLYCERINE GULAB GEL','NEEM TULSI FACEWASH') GROUP BY products.name, products.image_url, products.rating"
+        );
+        [thirdRows] = await pool.query(
+          "SELECT products.name, products.image_url, products.rating, MAX(CASE WHEN products.name = 'BODY BUTTER' THEN '250ml' ELSE product_variations.size END) AS max_size FROM products JOIN product_variations ON products.id = product_variations.product_id WHERE products.name in ('SUNSCREEN','KESAR CHANDAN GEL','BODY BUTTER','GLYCERINE GULAB GEL','FOOT CREAM','NEEM TULSI FACEWASH')GROUP BY products.name, products.image_url, products.rating"
+        );
+      }
+      if (acne == "No") {
+        [firstRows] = await pool.query(
+          "SELECT products.name, products.image_url, products.rating, product_variations.size FROM products JOIN product_variations ON products.id = product_variations.product_id WHERE products.name in ('SUNSCREEN','KESAR CHANDAN GEL','GLYCERINE GULAB GEL','VITAMIN C FACEWASH') and product_variations.size in ('100ML','50ML')"
+        );
+        [secondRows] = await pool.query(
+          "SELECT products.name, products.image_url, products.rating, max(product_variations.size) FROM products JOIN product_variations ON products.id = product_variations.product_id WHERE products.name in ('SUNSCREEN','KESAR CHANDAN GEL','GLYCERINE GULAB GEL','VITAMIN C FACEWASH') GROUP BY products.name, products.image_url, products.rating"
+        );
+        [thirdRows] = await pool.query(
+          "SELECT products.name, products.image_url, products.rating, MAX(CASE WHEN products.name = 'BODY BUTTER' THEN '250ml' ELSE product_variations.size END) AS max_size FROM products JOIN product_variations ON products.id = product_variations.product_id WHERE products.name in ('SUNSCREEN','KESAR CHANDAN GEL','BODY BUTTER','GLYCERINE GULAB GEL','FOOT CREAM','VITAMIN C FACEWASH')GROUP BY products.name, products.image_url, products.rating"
+        );
+      }
+    }
+    if (skinType == "Oily") {
+      if (acne == "Yes") {
+        [firstRows] = await pool.query(
+          "SELECT products.name, products.image_url, products.rating, product_variations.size FROM products JOIN product_variations ON products.id = product_variations.product_id WHERE products.name in ('SUNSCREEN','ALOE VERA CREAM','KESAR CHANDAN GEL','NEEM TULSI FACEWASH') and product_variations.size in ('100ML','50ML')"
+        );
+        [secondRows] = await pool.query(
+          "SELECT products.name, products.image_url, products.rating, max(product_variations.size) FROM products JOIN product_variations ON products.id = product_variations.product_id WHERE products.name in ('SUNSCREEN','ALOE VERA CREAM','KESAR CHANDAN GEL','NEEM TULSI FACEWASH') GROUP BY products.name, products.image_url, products.rating"
+        );
+        [thirdRows] = await pool.query(
+          "SELECT products.name, products.image_url, products.rating, max(product_variations.size) FROM products JOIN product_variations ON products.id = product_variations.product_id WHERE products.name in ('SUNSCREEN','ALOE VERA CREAM','KESAR CHANDAN GEL','WALNUT SCRUB','UNDER EYE GEL','NEEM TULSI FACEWASH') GROUP BY products.name, products.image_url, products.rating"
+        );
+      }
+      if (acne == "No") {
+        [firstRows] = await pool.query(
+          "SELECT products.name, products.image_url, products.rating, product_variations.size FROM products JOIN product_variations ON products.id = product_variations.product_id WHERE products.name in ('SUNSCREEN','ALOE VERA CREAM','KESAR CHANDAN GEL','VITAMIN C FACEWASH') and product_variations.size in ('100ML','50ML')"
+        );
+        [secondRows] = await pool.query(
+          "SELECT products.name, products.image_url, products.rating, max(product_variations.size) FROM products JOIN product_variations ON products.id = product_variations.product_id WHERE products.name in ('SUNSCREEN','ALOE VERA CREAM','KESAR CHANDAN GEL','VITAMIN C FACEWASH') GROUP BY products.name, products.image_url, products.rating"
+        );
+        [thirdRows] = await pool.query(
+          "SELECT products.name, products.image_url, products.rating, max(product_variations.size) FROM products JOIN product_variations ON products.id = product_variations.product_id WHERE products.name in ('SUNSCREEN','ALOE VERA CREAM','KESAR CHANDAN GEL','WALNUT SCRUB','UNDER EYE GEL','VITAMIN C FACEWASH') GROUP BY products.name, products.image_url, products.rating"
+        );
+      }
+    }
+    if (skinType == "Normal") {
+      if (acne == "Yes") {
+        [firstRows] = await pool.query(
+          "SELECT products.name, products.image_url, products.rating, product_variations.size FROM products JOIN product_variations ON products.id = product_variations.product_id WHERE products.name in ('SUNSCREEN','VITAMIN C CREAM','ALOE VERA GEL','NEEM TULSI FACEWASH') and product_variations.size in ('100ML','50ML')"
+        );
+        [secondRows] = await pool.query(
+          "SELECT products.name, products.image_url, products.rating, MAX(CASE WHEN products.name = 'ALOE VERA GEL' THEN '250ml' ELSE product_variations.size END) as size FROM products JOIN product_variations ON products.id = product_variations.product_id WHERE products.name in ('SUNSCREEN','VITAMIN C CREAM','ALOE VERA GEL','NEEM TULSI FACEWASH') GROUP BY products.name, products.image_url, products.rating"
+        );
+        [thirdRows] = await pool.query(
+          "SELECT products.name, products.image_url, products.rating, MAX(CASE WHEN products.name = 'ALOE VERA GEL' THEN '250ml' ELSE product_variations.size END) as size FROM products JOIN product_variations ON products.id = product_variations.product_id WHERE products.name in ('SUNSCREEN','VITAMIN C CREAM','ALOE VERA GEL','FOOT CREAM','UNDER EYE GEL','NEEM TULSI FACEWASH') GROUP BY products.name, products.image_url, products.rating"
+        );
+      }
+      if (acne == "No") {
+        [firstRows] = await pool.query(
+          "SELECT products.name, products.image_url, products.rating, product_variations.size FROM products JOIN product_variations ON products.id = product_variations.product_id WHERE products.name in ('SUNSCREEN','VITAMIN C CREAM','ALOE VERA GEL','VITAMIN C FACEWASH') and product_variations.size in ('100ML','50ML')"
+        );
+        [secondRows] = await pool.query(
+          "SELECT products.name, products.image_url, products.rating, MAX(CASE WHEN products.name = 'ALOE VERA GEL' THEN '250ml' ELSE product_variations.size END) as size FROM products JOIN product_variations ON products.id = product_variations.product_id WHERE products.name in ('SUNSCREEN','VITAMIN C CREAM','ALOE VERA GEL','VITAMIN C FACEWASH') GROUP BY products.name, products.image_url, products.rating"
+        );
+        [thirdRows] = await pool.query(
+          "SELECT products.name, products.image_url, products.rating, MAX(CASE WHEN products.name = 'ALOE VERA GEL' THEN '250ml' ELSE product_variations.size END) as size FROM products JOIN product_variations ON products.id = product_variations.product_id WHERE products.name in ('SUNSCREEN','VITAMIN C CREAM','ALOE VERA GEL','FOOT CREAM','UNDER EYE GEL','VITAMIN C FACEWASH') GROUP BY products.name, products.image_url, products.rating"
+        );
+      }
+    }
+
+    res.json({
+      success: true,
+      First_Row: firstRows,
+      Second_Row: secondRows,
+      Third_Row: thirdRows,
+    });
+  } catch (error) {
+    console.log("Quiz products not found");
+    console.error("Error getting quiz products:", error);
     res.json({ success: false });
   }
 });

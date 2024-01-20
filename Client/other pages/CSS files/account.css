@@ -207,7 +207,7 @@ body {
   align-items: center;
 }
 .cart_product_image img {
-  width: 10rem;
+  width: 15rem;
   object-fit: contain;
 }
 
@@ -215,7 +215,7 @@ body {
   background-color: whitesmoke;
   display: flex;
   height: 1.5rem;
-  width: 10rem;
+  width: 15rem;
   /* font-size: 0.5rem; */
   justify-content: center;
   align-items: center;
@@ -229,17 +229,22 @@ body {
   text-decoration: none;
 }
 .myCartProducts {
-  display: flex;
-  justify-content: flex-start;
-
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(15rem, max-content));
+  justify-content: space-between;
   flex-wrap: wrap;
-  gap: 1rem;
+  gap: 3%;
+  padding-left: 0;
+  padding: 5% 0 0 0;
+  margin-bottom: 30%;
 }
 .myCartProducts li {
   list-style: none;
   margin-bottom: 0.5rem;
 }
-
+.cart_product_rating img {
+  width: 1rem;
+}
 /* selector */
 .account_details_container {
   display: block;

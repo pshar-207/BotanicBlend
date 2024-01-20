@@ -223,12 +223,14 @@ function renderProducts(data) {
       <div class="product_container">
         <div class="product_image">
           <a href="Product_Page.html?productName=${product.name}">
-            <img src="${newImgUrl}" alt="" />
+            <img src="${newImgUrl}" alt="" loading="lazy" />
           </a>
         </div>
         <div class="product_name">${product.name}</div>
         
-        <div class="product_rating">${product.rating}</div>
+        <div class="product_rating">${generateStarsForMultiplePage(
+          product.rating
+        )}</div>
         <div class="product_price">
           ${product.price}
           <div
@@ -239,7 +241,9 @@ function renderProducts(data) {
             <div class="icon">
               <i class="fa-solid fa-cart-shopping"></i>
             </div>
-            <div class="add-to-cart">Add to Cart</div>
+            <div class="add-to-cart" onclick='addToCart("${
+              product.name
+            }")'>Add to Cart</div>
           </div>
         </div>
         <a href="#">
@@ -258,4 +262,15 @@ function renderProducts(data) {
     count++;
   });
   productsCount.innerHTML = count;
+}
+
+function generateStarsForMultiplePage(rating) {
+  const maxStars = 5; // Set the maximum number of stars
+
+  // Create an array of active star images based on the rating
+  const starHtml = Array.from({ length: rating }, () => {
+    return `<img class="MultiplePageReviesStars" src="Photos/Stars/active-star.png" alt="" />`;
+  });
+
+  return starHtml.join(""); // Join the array of active star images into a string
 }
