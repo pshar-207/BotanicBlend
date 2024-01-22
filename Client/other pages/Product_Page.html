@@ -386,13 +386,13 @@
     <script src="JavaScript files/cart_icon_change.js"></script>
     <script></script>
 
-    <script src="JavaScript files/productPageWeightSelector.js"></script>
     <script src="JavaScript files/productPage_descriptionOrShipping_hide_show.js"></script>
     <script src="JavaScript files/button_color_change.js"></script>
     <script src="JavaScript files/productPage_reviewScroll.js"></script>
     <script src="JavaScript files/productPage_reviewWrite_HideShow.js"></script>
     <script src="JavaScript files/shopDropdownShow.js"></script>
     <script src="JavaScript files/Load_logo_img.js"></script>
+    <script src="JavaScript files/productPageWeightSelector.js"></script>
 
     <!-- Star JavaScript -->
     <script>
@@ -503,7 +503,9 @@
                 "onmouseout",
                 "restoreOriginalColorsWeight(this)"
               );
+              weightSpan.setAttribute("id", `weight${i + 1}`);
               weightContainer.appendChild(weightSpan);
+              changeColorsClickWeight(document.getElementById("weight1"));
             }
 
             const priceContainer = document.querySelector(
@@ -515,11 +517,14 @@
               priceDiv.setAttribute("class", "productPrice");
               priceDiv.setAttribute("id", `price${i + 1}`);
               priceContainer.appendChild(priceDiv);
-              originalPrice = productDetails[0].price;
+
               if (i > 0) {
                 priceDiv.style.display = "none";
               } else {
                 priceDiv.style.display = "block";
+                originalPrice = priceDiv.innerText;
+                newPrice = document.getElementById("price1");
+                updateQtyAndPrice();
               }
             }
 
@@ -603,13 +608,11 @@
       function updateQty() {
         Qty.textContent = quantity;
       }
-      newPrice = document.getElementById("price1");
-      function updateTotalPrice() {
-        console.log(originalPrice);
-        var totalPrice = originalPrice * quantity;
-        console.log(totalPrice);
 
-        console.log(newPrice);
+      function updateTotalPrice() {
+        totalPrice = originalPrice * quantity;
+        console.log(originalPrice);
+        console.log(totalPrice);
         newPrice.innerText = totalPrice;
       }
     </script>

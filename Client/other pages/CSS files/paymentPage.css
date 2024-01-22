@@ -201,18 +201,50 @@
 .buying_produce_img img {
   width: 100%;
   object-fit: contain;
+  border-radius: 50%;
 }
-.buying_product_name_desc {
-  width: 50%;
+.buying_product_name_star {
+  /* width: 50%; */
   margin-right: 5%;
 }
 .buying_product_name {
   font-size: 1.5rem;
+  margin-bottom: 1rem;
 }
-.buying_description {
-  font-size: 0.8rem;
+
+.weight_container,
+.quantity_container {
+  display: flex;
+  align-items: center;
 }
-.buying_product_price_rating {
+.weight_container {
+  margin-bottom: 1rem;
+}
+.weight,
+.quantity {
+  font-size: 1.2rem;
+  margin-right: 5%;
+}
+
+.weight_container span {
+  border: 1px solid black;
+  padding: 1% 3% 1% 3%;
+  margin-right: 2%;
+}
+.quantity_container span {
+  border: 1px solid black;
+  padding: 1%;
+}
+.qty_descrese,
+.qty_increse {
+  cursor: pointer;
+  user-select: none;
+}
+.qty_number {
+  user-select: none;
+}
+
+.buying_product_price {
   width: auto;
   margin-left: auto;
 }
