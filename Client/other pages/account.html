@@ -229,61 +229,20 @@
             <li>
               <div class="my_product_orders">
                 <div class="produce_img">
-                  <img src="Photo/Header Image/BBL 2.png" alt="" />
+                  <img
+                    src="Photos/products/Bathing/ALOE VERA SHAMPOO.jpg"
+                    alt=""
+                  />
                 </div>
-                <div class="product_name_desc">
+                <div class="product_name_rating">
                   <div class="product_name">Alowera</div>
-                  <p class="description">
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                  </p>
+                  <div class="product_rating">*****</div>
                 </div>
-                <div class="product_price_rating">
-                  <div class="price">520</div>
-                  <div class="rating">5</div>
+                <div class="product_weight_qty">
+                  <div class="weight">Weight : 250ml</div>
+                  <div class="qty">Quantity : 2</div>
                 </div>
-                <div class="shipping_date">1/5/202</div>
-              </div>
-            </li>
-            <li>
-              <div class="my_product_orders">
-                <div class="produce_img">
-                  <img src="Photo/Header Image/BBL 2.png" alt="" />
-                </div>
-                <div class="product_name_desc">
-                  <div class="product_name">Alowera</div>
-                  <p class="description">
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                  </p>
-                </div>
-                <div class="product_price_rating">
-                  <div class="price">520</div>
-                  <div class="rating">5</div>
-                </div>
-                <div class="shipping_date">1/5/202</div>
-              </div>
-            </li>
-            <li>
-              <div class="my_product_orders">
-                <div class="produce_img">
-                  <img src="Photo/Header Image/BBL 2.png" alt="" />
-                </div>
-                <div class="product_name_desc">
-                  <div class="product_name">Alowera</div>
-                  <p class="description">
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                  </p>
-                </div>
-                <div class="product_price_rating">
-                  <div class="price">520</div>
-                  <div class="rating">5</div>
-                </div>
-                <div class="shipping_date">1/5/202</div>
+                <div class="price">11000</div>
               </div>
             </li>
           </ul>
@@ -802,6 +761,54 @@
           });
       }
       getAddToCartForMyCartAccount();
+
+      //My order
+      function getPurchaseForMyOrdersAccount() {
+        fetch("/getUserPurchaseProducts", {
+          method: "GET",
+          headers: {
+            "Content-Type": "application/json",
+          },
+        })
+          .then((response) => response.json())
+          .then((data) => {
+            // Update the review list in the UI
+            const OrderList = document.querySelector(".myOrderProducts");
+            if (data.success) {
+              OrderList.innerHTML = "";
+              const Orders = data.row;
+
+              Orders.forEach((MyOrders) => {
+                console.log(MyOrders.product_name);
+                const listItem = document.createElement("li");
+                listItem.innerHTML = `
+                 <div class="my_product_orders">
+                <div class="produce_img">
+                  <img
+                    src="${MyOrders.produc_img}"
+                    alt=""
+                  />
+                </div>
+                <div class="product_name_rating">
+                  <div class="product_name">${MyOrders.product_Name}</div>
+                  <div class="product_rating">${MyOrders.rating}</div>
+                </div>
+                <div class="product_weight_qty">
+                  <div class="weight">Weight : ${MyOrders.size}</div>
+                  <div class="qty">Quantity : ${MyOrders.quantity}</div>
+                </div>
+                <div class="price">${MyOrders.price}</div>
+              </div>
+                `;
+                OrderList.appendChild(listItem);
+              });
+            }
+          })
+          .catch((error) => {
+            console.error("Error updating review list:", error);
+          });
+      }
+      getPurchaseForMyOrdersAccount();
       function generateStarsForAccount(rating) {
         const maxStars = 5; // Set the maximum number of stars
 

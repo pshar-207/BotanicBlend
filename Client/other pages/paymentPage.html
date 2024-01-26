@@ -17,37 +17,44 @@
     <!-- header -->
     <div class="payment_products_container">
       <div class="userInfo_payment_container">
-        <form action="">
+        <form action="" class="purchase_form">
           <div class="email_container">
             <div class="email_heading_container">
               <div class="contactHeading">Contact</div>
-              <div class="logIn">Have an Account? <a href="#">Log In</a></div>
+              <div class="logIn">
+                Have an Account?
+                <a href="#" onclick="toggleLoginForm()">Log In</a>
+              </div>
             </div>
-            <input type="email" placeholder="Email" />
+            <input type="email" placeholder="Email" id="purchaseUserEmail" />
             <input type="checkbox" /><span>Email me with news and offers</span>
           </div>
           <div class="deviveryDetails_container">
             <div class="delivery_heading">Delivery</div>
             <div class="country">
-              <input type="text" placeholder="Country Region" />
+              <input
+                type="text"
+                id="UserCountry"
+                placeholder="Country Region"
+              />
             </div>
             <div class="name">
-              <input type="text" placeholder="First Name" />
-              <input type="text" placeholder="Last Name" />
+              <input type="text" id="UserFirstName" placeholder="First Name" />
+              <input type="text" id="UserLastName" placeholder="Last Name" />
             </div>
             <div class="address">
-              <input type="text" placeholder="Address" />
+              <input type="text" id="UserAddress" placeholder="Address" />
             </div>
             <div class="city_state_pincode">
-              <input type="text" placeholder="City" />
-              <input type="text" placeholder="State" />
-              <input type="text" placeholder="Pincode" />
+              <input type="text" id="UserCity" placeholder="City" />
+              <input type="text" id="UserState" placeholder="State" />
+              <input type="text" id="UserPincode" placeholder="Pincode" />
             </div>
             <div class="phoneNumber">
-              <input type="text" placeholder="Phone" />
+              <input type="text" id="UserPhoneNumber" placeholder="Phone" />
             </div>
             <div class="saveInfo">
-              <input type="checkbox" /><span
+              <input type="checkbox" id="saveInfo" /><span
                 >Save this information for next time</span
               >
             </div>
@@ -58,7 +65,7 @@
               All transaction are secure and encrypted
             </div>
             <div class="onlinePayment">
-              <input type="radio" />
+              <input type="radio" name="paymentMethod" checked value="Online" />
               <span>UPI/ Cards, Wallets, NetBanking</span>
             </div>
             <div class="onlinePaymentWarning">
@@ -70,41 +77,57 @@
               >
             </div>
             <div class="cashOnDelivery">
-              <input type="radio" /><span>Cash on Delivery (COD)</span>
+              <input type="radio" name="paymentMethod" value="COD" /><span
+                >Cash on Delivery (COD)</span
+              >
             </div>
           </div>
           <div class="billingAddress_conatiner">
             <div class="billing_heading">Billing address</div>
             <div class="sameAsShippingAdd">
-              <input type="radio" /><span>Same as shipping address</span>
+              <input
+                type="radio"
+                name="BillingAddress"
+                checked
+                value="sameAddress"
+              /><span>Same as shipping address</span>
             </div>
             <div class="diffAddress">
-              <input type="radio" />
+              <input
+                type="radio"
+                name="BillingAddress"
+                value="DiiffrentAddress"
+              />
               <span>Use a different billing adress</span>
             </div>
             <div class="differentAdd_container">
               <div class="diff_country">
-                <input type="text" placeholder="Country Region" />
+                <input
+                  type="text"
+                  id="diifCountry"
+                  placeholder="Country Region"
+                />
               </div>
               <div class="diff_name">
-                <input type="text" placeholder="firstName" />
-                <input type="text" placeholder="lastName" />
+                <input type="text" id="diffFirstName" placeholder="firstName" />
+                <input type="text" id="diffLalsName" placeholder="lastName" />
               </div>
               <div class="diff_address">
-                <input type="text" placeholder="Address" />
+                <input type="text" id="diffAddress" placeholder="Address" />
               </div>
               <div class="diff_city_state_pincode">
-                <input type="text" placeholder="city" />
-                <input type="text" placeholder="state" />
-                <input type="text" placeholder="pincode" />
+                <input type="text" id="diffCity" placeholder="city" />
+                <input type="text" id="diffState" placeholder="state" />
+                <input type="text" id="diffPincode" placeholder="pincode" />
               </div>
               <div class="diff_phoneNumber">
-                <input type="text" placeholder="Phone" />
+                <input type="text" id="diffPhoneNumber" placeholder="Phone" />
               </div>
             </div>
             <div class="payNow_BuyMore_container">
-              <div class="buyMore">Buy More</div>
-              <div class="payNow">Pay Now</div>
+              <!-- <div class="buyMore">Buy More</div> -->
+              <!-- <div class="payNow">Pay Now</div> -->
+              <button type="submit" class="payNow">Pay Now</button>
             </div>
           </div>
         </form>
@@ -112,7 +135,7 @@
 
       <div class="allProducts_container">
         <ul class="purchaseProducts_container">
-          <li>
+          <!-- <li>
             <div class="productToPurchase">
               <div class="buying_produce_img">
                 <img
@@ -130,16 +153,9 @@
                 <div class="weight_container">
                   <div class="weight">Weight</div>
                 </div>
-
                 <div class="quantity_container">
                   <div class="quantity">Quantity</div>
-                  <span class="qty_descrese" onclick="decreaseQuantity()"
-                    >-</span
-                  >
                   <span class="qty_number">1</span>
-                  <span class="qty_increse" onclick="increaseQuantity()"
-                    >+</span
-                  >
                 </div>
               </div>
 
@@ -147,7 +163,7 @@
                 <div class="buying_price">520</div>
               </div>
             </div>
-          </li>
+          </li> -->
         </ul>
         <div class="subTotal_contianer">
           <div class="subTotal">Sub Total</div>
@@ -177,5 +193,210 @@
     <script src="JavaScript files/singIn.js"></script>
     <script src="JavaScript files/loginButtonChanger.js"></script>
     <script src="JavaScript files/addToCart.js"></script>
+    <script>
+      checkAuthAndFillUserInfo();
+      var urlParams = new URLSearchParams(window.location.search);
+      var productParam = urlParams.get("product");
+
+      // Parse the JSON string back to an array
+      var productsArray = JSON.parse(decodeURIComponent(productParam));
+
+      // Now, productsArray contains your array of products
+      console.log(productsArray);
+
+      const purchaseProductsList = document.querySelector(
+        ".purchaseProducts_container"
+      );
+      var subTotal = 0;
+      const productList = [];
+      productsArray.forEach((item) => {
+        const listItem = document.createElement("li");
+        listItem.innerHTML = `
+                    <div class="productToPurchase">
+              <div class="buying_produce_img">
+                <img
+                  src="${item.img}"
+                  alt=""
+                />
+              </div>
+
+              <div class="buying_product_name_star">
+                <div class="buying_product_name">${item.name}</div>
+                <div class="star">${item.rating}</div>
+              </div>
+
+              <div class="buying_product_qty">
+                <div class="weight_container">
+                  <div class="weight">${item.weight}</div>
+                </div>
+                <div class="quantity_container">
+                  <div class="quantity">Quantity</div>
+                  <span class="qty_number">${item.quantity}</span>
+                </div>
+              </div>
+
+              <div class="buying_product_price">
+                <div class="buying_price">${item.price}</div>
+              </div>
+            </div>
+                  `;
+        purchaseProductsList.appendChild(listItem);
+        subTotal += item.price;
+        var product = {
+          name: item.name,
+          img: item.img,
+          size: item.weight,
+          qty: item.quantity,
+          price: item.price,
+        };
+        productList.push(product);
+      });
+      productList.forEach((item) => {
+        console.log(item.name);
+      });
+
+      console.log(typeof subTotal);
+      subTotal = parseInt(subTotal);
+      console.log(typeof subTotal);
+      document.querySelector(".subTotalAmount").innerHTML = subTotal;
+      var subTotalGST = (subTotal * 18) / 100;
+      console.log(subTotalGST);
+      document.querySelector(".gstAmount").innerHTML = subTotalGST;
+      document.querySelector(".totalAmount").innerHTML = subTotal + subTotalGST;
+      var totalAmount = subTotal + subTotalGST;
+
+      var saveInfo = document.getElementById("saveInfo");
+
+      //submiting
+      document.addEventListener("DOMContentLoaded", () => {
+        const form = document.querySelector(".purchase_form");
+        form.addEventListener("submit", (event) => {
+          event.preventDefault(); // Prevent default form submission
+
+          fetch("/purchase", {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json",
+            },
+            body: JSON.stringify({
+              email: document.getElementById("purchaseUserEmail").value,
+              country: document.getElementById("UserCountry").value,
+              fname: document.getElementById("UserFirstName").value,
+              lname: document.getElementById("UserLastName").value,
+              address: document.getElementById("UserAddress").value,
+              city: document.getElementById("UserCity").value,
+              state: document.getElementById("UserState").value,
+              pincode: document.getElementById("UserPincode").value,
+              phone: document.getElementById("UserPhoneNumber").value,
+              paymentMethod: document.querySelector(
+                'input[name="paymentMethod"]:checked'
+              ).value,
+              billingAddress: document.querySelector(
+                'input[name="BillingAddress"]:checked'
+              ).value,
+              diffcountry: document.getElementById("diifCountry").value,
+              difffname: document.getElementById("diffFirstName").value,
+              difflname: document.getElementById("diffLalsName").value,
+              diffaddress: document.getElementById("diffAddress").value,
+              diffcity: document.getElementById("diffCity").value,
+              diffstate: document.getElementById("diffState").value,
+              diffpincode: document.getElementById("diffPincode").value,
+              diffphone: document.getElementById("diffPhoneNumber").value,
+              amount: totalAmount,
+              productList: productList,
+              saveInfo: saveInfo.checked,
+            }),
+          })
+            .then((response) => {
+              if (response.status === 401) {
+                return response.json(); // This will trigger the catch block
+              }
+              if (!response.ok) {
+                throw new Error("Network response was not ok");
+              }
+              return response.json(); // or response.text() for non-JSON data
+            })
+            .then((data) => {
+              // Handle the data
+              if (data.message === "Account Already exist") {
+                alert("user already exixst");
+                console.log("email exist");
+              }
+              if (data.message === "Purchase successful") {
+                console.log("Purchase successful");
+                alert("Purchase successful");
+              }
+            })
+            .catch((error) => {
+              // Handle errors
+              console.error("Fetch error:", error);
+            });
+        });
+      });
+
+      function checkAuthAndFillUserInfo() {
+        window.addEventListener("load", function () {
+          fetch("/checkAuth")
+            .then((response) => {
+              if (!response.ok) {
+                throw new Error("Failed to check authentication");
+              }
+              return response.json();
+            })
+            .then((data) => {
+              if (data.isAuthenticated) {
+                return fetch("/user_detail");
+              } else {
+                throw new Error("User not authenticated");
+              }
+            })
+            .then((response) => {
+              if (!response.ok) {
+                throw new Error("Failed to fetch user details");
+              }
+              return response.json();
+            })
+            .then((userData) => {
+              // Autofill email input field
+              document.getElementById("purchaseUserEmail").value =
+                userData.userDetails.email;
+
+              // Make email field read-only
+              document.getElementById("purchaseUserEmail").readOnly = true;
+            })
+            .catch((error) => {
+              console.error("Error:", error);
+            });
+        });
+      }
+
+      fetch(`/getUserAddressInfo`, {
+        method: "GET",
+        headers: {
+          "Content-Type": "application/json",
+        },
+      })
+        .then((response) => response.json())
+        .then((data) => {
+          // Assuming the server returns an array of reviews
+          const user_Adress = data.row;
+          document.getElementById("UserCountry").value =
+            user_Adress[0].country_region;
+          console.log("save inf oget");
+          document.getElementById("UserFirstName").value =
+            user_Adress[0].first_name;
+          document.getElementById("UserLastName").value =
+            user_Adress[0].last_name;
+          document.getElementById("UserAddress").value = user_Adress[0].address;
+          document.getElementById("UserCity").value = user_Adress[0].city;
+          document.getElementById("UserState").value = user_Adress[0].state;
+          document.getElementById("UserPincode").value = user_Adress[0].pincode;
+          document.getElementById("UserPhoneNumber").value =
+            user_Adress[0].phone_number;
+        })
+        .catch((error) => {
+          console.error("Not getting save address:", error);
+        });
+    </script>
   </body>
 </html>

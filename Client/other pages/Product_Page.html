@@ -51,13 +51,14 @@
         </div>
 
         <div class="buy_cart_container">
-          <div
+          <a
             class="buy_button"
+            href="paymentPage.html"
             onmouseover="changeColors(this)"
             onmouseout="restoreOriginalColors(this)"
           >
             BUY
-          </div>
+          </a>
           <div
             class="add_to_cart_button"
             onmouseover="changeColors(this)"
@@ -384,7 +385,6 @@
     <script src="JavaScript files/loginFormShow.js"></script>
     <script src="JavaScript files/button_color_change.js"></script>
     <script src="JavaScript files/cart_icon_change.js"></script>
-    <script></script>
 
     <script src="JavaScript files/productPage_descriptionOrShipping_hide_show.js"></script>
     <script src="JavaScript files/button_color_change.js"></script>
@@ -442,17 +442,16 @@
 
     <!-- products fetching -->
     <script>
-      var originalPrice;
-      var newPrice;
+      // var originalPrice;
+      // var newPrice;
+
       document.addEventListener("DOMContentLoaded", function () {
         const queryString = window.location.search;
-
         // Parse the query string into a URLSearchParams object
         const urlParams = new URLSearchParams(queryString);
-
         // Access individual parameters using their names
         const product_Name = urlParams.get("productName");
-        console.log(product_Name);
+        // console.log(product_Name);
 
         fetch(`/productDetails?productName=${product_Name}`)
           .then((response) => response.json())
@@ -532,6 +531,13 @@
               function () {
                 addToCart(product_Name);
               };
+            // var buyButton = document.querySelector(".buy_button");
+            // console.log(`buy button link ${buyButton.getAttribute("href")}`);
+            // var buyButtonHref = buyButton.getAttribute("href");
+            // buyButtonHref =
+            //   buyButtonHref + `&ProductName=${productDetails[0].name}`;
+            // console.log(buyButtonHref);
+            // buyButton.setAttribute("href", buyButtonHref);
 
             document.querySelector(".DescriptionProductName").innerText =
               productDetails[0].name;
@@ -548,78 +554,79 @@
             console.error("Error fetching product details:", error)
           );
       });
-      var quantity = 1;
-      function weightSelector(div, productDetails) {
-        const selectedWeight = div.innerText;
-        console.log(selectedWeight);
+      // var quantity = 1;
+      // function weightSelector(div, productDetails) {
+      //   const selectedWeight = div.innerText;
+      //   console.log(selectedWeight);
 
-        const indexOfSize = productDetails.findIndex(
-          (item) => item.size === selectedWeight
-        );
+      //   const indexOfSize = productDetails.findIndex(
+      //     (item) => item.size === selectedWeight
+      //   );
 
-        if (indexOfSize !== -1) {
-          // Iterate over all price divs and show/hide based on the selected weight
-          for (let i = 0; i < productDetails.length; i++) {
-            const priceDiv = document.getElementById(`price${i + 1}`);
+      //   if (indexOfSize !== -1) {
+      //     // Iterate over all price divs and show/hide based on the selected weight
+      //     for (let i = 0; i < productDetails.length; i++) {
+      //       const priceDiv = document.getElementById(`price${i + 1}`);
 
-            if (i === indexOfSize) {
-              // Show the price div for the selected weight
-              priceDiv.style.display = "block";
-            } else {
-              // Hide other price divs
-              priceDiv.style.display = "none";
-            }
-          }
-          quantity = 1;
-          console.log(quantity);
-          newPrice = document.getElementById(`price${indexOfSize + 1}`);
-          console.log(newPrice);
-          originalPrice = productDetails[indexOfSize].price;
+      //       if (i === indexOfSize) {
+      //         // Show the price div for the selected weight
+      //         priceDiv.style.display = "block";
+      //       } else {
+      //         // Hide other price divs
+      //         priceDiv.style.display = "none";
+      //       }
+      //     }
+      //     // quantity = 1;
+      //     console.log(quantity);
+      //     newPrice = document.getElementById(`price${indexOfSize + 1}`);
+      //     console.log(newPrice);
+      //     originalPrice = productDetails[indexOfSize].price;
 
-          updateQty();
-          updateTotalPrice();
-        } else {
-          console.log(`${selectedWeight} not found in productDetails`);
-        }
-      }
+      //     updateQty();
+      //     updateTotalPrice();
+      //   } else {
+      //     console.log(`${selectedWeight} not found in productDetails`);
+      //   }
+      // }
 
-      // JavaScript fro set price according to size
-      var Qty = document.querySelector(".qty_number");
+      // // JavaScript fro set price according to size
+      // var Qty = document.querySelector(".qty_number");
 
-      function increaseQuantity() {
-        if (quantity < 10) {
-          quantity++;
-          updateQtyAndPrice();
-        }
-      }
+      // function increaseQuantity() {
+      //   if (quantity < 10) {
+      //     quantity++;
+      //     updateQtyAndPrice();
+      //   }
+      // }
 
-      function decreaseQuantity() {
-        if (quantity > 1) {
-          quantity--;
-          updateQtyAndPrice();
-        }
-      }
+      // function decreaseQuantity() {
+      //   if (quantity > 1) {
+      //     quantity--;
+      //     updateQtyAndPrice();
+      //   }
+      // }
 
-      function updateQtyAndPrice() {
-        updateQty();
-        updateTotalPrice();
-      }
+      // function updateQtyAndPrice() {
+      //   updateQty();
+      //   updateTotalPrice();
+      // }
 
-      function updateQty() {
-        Qty.textContent = quantity;
-      }
+      // function updateQty() {
+      //   Qty.textContent = quantity;
+      // }
 
-      function updateTotalPrice() {
-        totalPrice = originalPrice * quantity;
-        console.log(originalPrice);
-        console.log(totalPrice);
-        newPrice.innerText = totalPrice;
-      }
+      // function updateTotalPrice() {
+      //   totalPrice = originalPrice * quantity;
+      //   newPrice.innerText = totalPrice;
+      // }
     </script>
+
+    <script src="JavaScript files/Qty_selector.js"></script>
 
     <!-- user review -->
     <script>
       //BEST SELLERS PRODUCTS
+
       fetch("/Best_Sellers")
         .then((response) => response.json())
         .then((data) => {
@@ -693,7 +700,8 @@
       const queryString = window.location.search;
       const urlParams = new URLSearchParams(queryString);
       const product_Name = urlParams.get("productName");
-      console.log(product_Name);
+
+      // console.log(product_Name);
       function submitReview(event) {
         event.preventDefault(); // Prevent the default form submission
 

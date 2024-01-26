@@ -22,7 +22,9 @@ function renderNewArrivals(data) {
                     <div class="new_arrival_product_image">
                         <a href="other pages/Product_Page.html?productName=${
                           product.name
-                        }"><img src="${product.image_url}" alt="" /></a>
+                        }&price=${product.price}&img=${
+      product.image_url
+    }&rating=${product.rating}"><img src="${product.image_url}" alt="" /></a>
 
                     </div>
                     <div class="new_arrival_product_name">${
@@ -91,7 +93,9 @@ function renderBestSellers(data) {
                   <div class="best_sell_product_image">
                     <a href="other pages/Product_Page.html?productName=${
                       product.name
-                    }">
+                    }&price=${product.price}&img=${product.image_url}&rating=${
+      product.rating
+    }">
                       <img src="${product.image_url}" alt="" />
                     </a>
                     </div>

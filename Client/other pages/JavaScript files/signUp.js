@@ -8,7 +8,7 @@ document.addEventListener("DOMContentLoaded", () => {
     console.log(emailuser);
 
     if (!emailuser) {
-      console.log("emial empty");
+      console.log("email empty");
     }
 
     fetch("/signup", {

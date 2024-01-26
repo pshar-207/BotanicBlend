@@ -48,7 +48,7 @@
         <div class="QuizResult_AddToCart_Button" id="AddToCart_FourFifty">
           Add To Cart All
         </div>
-        <div class="QuizResult_Buy_Button">Buy All</div>
+        <div class="QuizResult_Buy_Button" id="buyAll_FourFifty">Buy All</div>
       </div>
 
       <hr />
@@ -61,7 +61,9 @@
         <div class="QuizResult_AddToCart_Button" id="AddToCart_SevenHundred">
           Add To Cart All
         </div>
-        <div class="QuizResult_Buy_Button">Buy All</div>
+        <div class="QuizResult_Buy_Button" id="buyAll_SevenHundred">
+          Buy All
+        </div>
       </div>
 
       <hr />
@@ -74,7 +76,7 @@
         <div class="QuizResult_AddToCart_Button" id="AddToCart_OneHundred">
           Add To Cart All
         </div>
-        <div class="QuizResult_Buy_Button">Buy All</div>
+        <div class="QuizResult_Buy_Button" id="buyAll_OneHundred">Buy All</div>
       </div>
       <hr />
     </div>
@@ -101,6 +103,9 @@
       const product_list_for_cart_FourFifty = [];
       const product_list_for_cart_SevenHundred = [];
       const product_list_for_cart_OneThousand = [];
+      const productsArray_FourFifty = [];
+      const productsArray_SevenHundred = [];
+      const productsArray_OneThousand = [];
 
       function getQuizProducts(skinType, hasActiveAcne) {
         console.log(skinType);
@@ -142,7 +147,17 @@
                   `;
                 FourFifty.appendChild(listItem);
                 product_list_for_cart_FourFifty.push(row.name);
+                var product = {
+                  name: row.name,
+                  img: img_url,
+                  rating: row.rating,
+                  weight: row.size,
+                  quantity: 1,
+                  price: parseFloat(row.price),
+                };
+                productsArray_FourFifty.push(product);
               });
+              console.log(productsArray_FourFifty);
 
               const secondRow = data.Second_Row;
               secondRow.forEach((row) => {
@@ -164,7 +179,17 @@
                   `;
                 SevenHundred.appendChild(listItem);
                 product_list_for_cart_SevenHundred.push(row.name);
+                var product = {
+                  name: row.name,
+                  img: img_url,
+                  rating: row.rating,
+                  weight: row.size,
+                  quantity: 1,
+                  price: parseFloat(row.price),
+                };
+                productsArray_SevenHundred.push(product);
               });
+              console.log(productsArray_SevenHundred);
 
               const thirdRow = data.Third_Row;
               thirdRow.forEach((row) => {
@@ -186,7 +211,17 @@
                   `;
                 OneThousand.appendChild(listItem);
                 product_list_for_cart_OneThousand.push(row.name);
+                var product = {
+                  name: row.name,
+                  img: img_url,
+                  rating: row.rating,
+                  weight: row.size,
+                  quantity: 1,
+                  price: parseFloat(row.price),
+                };
+                productsArray_OneThousand.push(product);
               });
+              console.log(productsArray_OneThousand);
             } else {
               console.log("fail to quiz");
             }
@@ -226,6 +261,31 @@
           product_list_for_cart_OneThousand.forEach((item) => {
             addToCart(item);
           });
+        });
+
+      document
+        .getElementById("buyAll_FourFifty")
+        .addEventListener("click", function () {
+          console.log("450");
+          window.location.href = `paymentPage.html?product=${encodeURIComponent(
+            JSON.stringify(productsArray_FourFifty)
+          )}`;
+        });
+      document
+        .getElementById("buyAll_SevenHundred")
+        .addEventListener("click", function () {
+          console.log("700");
+          window.location.href = `paymentPage.html?product=${encodeURIComponent(
+            JSON.stringify(productsArray_SevenHundred)
+          )}`;
+        });
+      document
+        .getElementById("buyAll_OneHundred")
+        .addEventListener("click", function () {
+          console.log("1000");
+          window.location.href = `paymentPage.html?product=${encodeURIComponent(
+            JSON.stringify(productsArray_OneThousand)
+          )}`;
         });
     </script>
   </body>

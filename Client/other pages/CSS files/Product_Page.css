@@ -61,6 +61,10 @@ body {
   cursor: pointer;
   user-select: none;
 }
+.qty_descrese:hover,
+.qty_increse:hover {
+  background-color: #fcc6e2;
+}
 .qty_number {
   user-select: none;
 }
