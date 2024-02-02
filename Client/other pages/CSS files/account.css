@@ -3,9 +3,17 @@
   margin: 0;
   box-sizing: border-box;
 }
+.header_containor {
+  position: sticky;
+  top: 0;
+  width: 100%;
+  z-index: 2;
+  background-color: white;
+}
 body {
-  background-color: rgb(255, 255, 255);
+  background-color: whitesmoke;
   overflow-x: hidden;
+  font-family: var(--heading);
 }
 .account_container {
   display: flex;
@@ -28,13 +36,16 @@ body {
   margin-bottom: 15%;
 }
 .left_side_img img {
-  height: 3rem;
+  width: 3.5vw;
   object-fit: cover;
   margin-right: 0.5rem;
   cursor: pointer;
 }
 .text h2 {
-  width: fit-content;
+  font-size: 1.8vw;
+}
+.text span {
+  font-size: 1.2vw;
 }
 .text h2,
 .text span {
@@ -49,8 +60,7 @@ body {
 .account_deital_heading,
 .my_orders_heading,
 .my_cart_heading {
-  font-size: 2rem;
-  border-bottom: 1px sold black;
+  font-size: 3vw;
   padding: 0 0 3% 0;
 }
 .account_details {
@@ -71,22 +81,36 @@ body {
 }
 .account_details .edit span {
   cursor: pointer;
-  color: rgb(125, 125, 228);
+  color: black;
 }
 .account_details .edit span:hover {
-  color: rgb(47, 47, 218);
+  color: #fa0081;
 }
 .account_details h2 {
-  font-size: 1.1rem;
-  font-weight: 500;
+  font-size: 1.2vw;
+  font-weight: 600;
 }
-
+.account_details span {
+  font-size: 1.2vw;
+}
+#logoutButton {
+  display: flex;
+  justify-content: end;
+  align-items: center;
+  margin-top: 1vw;
+}
+#logoutButton input[type="button"] {
+  background-color: whitesmoke;
+  padding: 0.8vw;
+  font-size: 1vw;
+  border: 1px solid black;
+}
 .edit_popup {
   position: absolute;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  background-color: cyan;
+  background-color: #fcc6e2;
 }
 .name_edit {
   display: none;
@@ -97,15 +121,21 @@ body {
   display: flex;
   justify-content: space-between;
   align-items: center;
+  font-size: 1.2vw;
 }
 .edit_close {
   display: flex;
   justify-content: end;
   cursor: pointer;
 }
+.edit_close i {
+  font-size: 1.5vw;
+}
 .name {
-  margin-left: 1rem;
-  margin-bottom: 1rem;
+  margin-left: 1vw;
+  margin-bottom: 1vw;
+  font-size: 2vw;
+  font-weight: 500;
 }
 .name_edit input[type="text"],
 .name_edit input[type="password"] {
@@ -114,37 +144,47 @@ body {
   background-color: white;
   border-radius: 0;
   padding: 0.5rem;
-  font-size: 1rem;
+  font-size: 1.2vw;
+  font-family: var(--heading);
+}
+#birthdayEditForm input[type="date"] {
+  font-size: 1.5vw;
+  font-family: var(--heading);
+  padding: 0.5vw;
 }
 .cancel {
   margin-left: 1rem;
   cursor: pointer;
 }
 .save {
-  background-color: #0b1354;
   padding: 0.5rem 1.5rem 0.5rem 1.5rem;
-  color: white;
+  color: black;
   border-radius: 0.3rem;
   cursor: pointer;
 }
-
+#skinTypeEditForm {
+  display: flex;
+}
 .q2_dry,
 .q2_oily,
 .q2_normal {
   border: 1px solid black;
-  width: 12rem;
-  height: 4rem;
-  margin: 1rem;
-  padding: 0.5rem;
+  width: 10vw;
+  height: 3vw;
+  margin: 0.5vw;
+  padding: 0.5vw;
   display: flex;
   align-items: center;
+  justify-content: center;
+  background-color: whitesmoke;
+  font-size: 1.2vw;
 }
 
 .my_orders_container ul {
   list-style: none;
 }
 .my_product_orders > * {
-  border-bottom: 1px solid black;
+  border-bottom: 1px solid rgb(199, 199, 199);
   /* padding: 20% 0 3% 0; */
   display: flex;
   align-items: center;
@@ -157,17 +197,20 @@ body {
 .produce_img,
 .product_name_rating,
 .product_weight_qty,
-.shipping_date {
-  height: 4rem;
+.price {
+  height: 4vw;
 }
 .produce_img {
   display: flex;
   align-items: center;
 }
 .my_product_orders img {
-  width: 3rem;
+  width: 3.5vw;
   object-fit: contain;
   border-radius: 50%;
+}
+.product_name_rating img {
+  width: 1vw;
 }
 .product_name_rating {
   display: flex;
@@ -181,20 +224,22 @@ body {
   align-items: start;
   padding-left: 15%;
 }
-.shipping_date {
+.price {
   display: flex;
   justify-content: right;
+  font-size: 1.2vw;
 }
 .product_name,
 .weight {
   height: 2rem;
   display: flex;
-  align-items: center;
   align-items: end;
+  font-size: 1.2vw;
 }
 .description,
 .qty {
   height: 2rem;
+  font-size: 1.2vw;
 }
 .description {
   font-size: 0.5rem;
@@ -209,16 +254,16 @@ body {
   align-items: center;
 }
 .cart_product_image img {
-  width: 15rem;
+  width: 15vw;
   object-fit: contain;
 }
 
 .cart_product_buttons {
   background-color: whitesmoke;
   display: flex;
-  height: 1.5rem;
-  width: 15rem;
-  /* font-size: 0.5rem; */
+  height: 2vw;
+  width: 15vw;
+  font-size: 1.2vw;
   justify-content: center;
   align-items: center;
   color: black;
@@ -227,25 +272,26 @@ body {
   /* padding: 3% 0 3% 0; */
   transition: background-color 0.5s, color 0.5s;
 }
+.cart_product_name,
+.cart_product_price {
+  font-size: 1.2vw;
+}
 .cart_product_section a {
   text-decoration: none;
 }
 .myCartProducts {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(15rem, max-content));
+  grid-template-columns: repeat(auto-fit, minmax(20vw, max-content));
   justify-content: space-between;
-  flex-wrap: wrap;
-  gap: 3%;
   padding-left: 0;
   padding: 5% 0 0 0;
-  margin-bottom: 30%;
 }
 .myCartProducts li {
   list-style: none;
   margin-bottom: 0.5rem;
 }
 .cart_product_rating img {
-  width: 1rem;
+  width: 1.2vw;
 }
 /* selector */
 .account_details_container {

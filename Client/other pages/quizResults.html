@@ -4,6 +4,22 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+
+    <link
+      href="https://fonts.googleapis.com/css2?family=Quicksand&display=swap"
+      rel="stylesheet"
+    />
+
+    <link
+      href="https://fonts.googleapis.com/css2?family=Dancing+Script&family=Quicksand&display=swap"
+      rel="stylesheet"
+    />
+    <!-- Google Fonts -->
+
+    <link rel="stylesheet" href="CSS files/googleFont.css" />
     <link rel="stylesheet" href="CSS files/QuizResults.css" />
     <link rel="stylesheet" href="CSS files/cart.css" />
     <link rel="stylesheet" href="CSS files/loginForm.css" />
@@ -21,7 +37,7 @@
       <img src="Photos/contact/heading image.jpg" loading="lazy" alt="" />
       <div class="quiz_text">
         <h1>QUIZ RESULT</h1>
-        <p>Home / For You</p>
+        <p><a href="/">Home</a> / For You</p>
       </div>
     </div>
     <!-- heading image and heading -->
@@ -30,25 +46,22 @@
       <div class="skinCareRoutineHeading">
         Skincare Routine in <strike>Rs 500</strike> Rs 450
       </div>
-      <ul class="quizResultProductsContainer" id="FourFifty">
-        <!-- <li>
-          <div class="quizProduct">
-            <img
-              src="Photos/products/BodyCare/SUNSCREEN.jpg"
-              alt=""
-              loading="lazy"
-            />
-            <div class="quizProductName">SUNSCREEN</div>
-            <div class="quizProductWeight">Weight - 100ML</div>
-            <div class="quizProductRating">*****</div>
-          </div>
-        </li> -->
-      </ul>
+      <ul class="quizResultProductsContainer" id="FourFifty"></ul>
       <div class="addToCart_Buy_btn">
-        <div class="QuizResult_AddToCart_Button" id="AddToCart_FourFifty">
+        <div
+          class="QuizResult_AddToCart_Button"
+          id="AddToCart_FourFifty"
+          onmouseover="changeColors(this)"
+        >
           Add To Cart All
         </div>
-        <div class="QuizResult_Buy_Button" id="buyAll_FourFifty">Buy All</div>
+        <div
+          class="QuizResult_Buy_Button"
+          id="buyAll_FourFifty"
+          onmouseover="changeColors(this)"
+        >
+          Buy All
+        </div>
       </div>
 
       <hr />
@@ -58,10 +71,18 @@
       </div>
       <ul class="quizResultProductsContainer" id="SevenHundred"></ul>
       <div class="addToCart_Buy_btn">
-        <div class="QuizResult_AddToCart_Button" id="AddToCart_SevenHundred">
+        <div
+          class="QuizResult_AddToCart_Button"
+          id="AddToCart_SevenHundred"
+          onmouseover="changeColors(this)"
+        >
           Add To Cart All
         </div>
-        <div class="QuizResult_Buy_Button" id="buyAll_SevenHundred">
+        <div
+          class="QuizResult_Buy_Button"
+          id="buyAll_SevenHundred"
+          onmouseover="changeColors(this)"
+        >
           Buy All
         </div>
       </div>
@@ -73,10 +94,20 @@
       </div>
       <ul class="quizResultProductsContainer" id="OneThousand"></ul>
       <div class="addToCart_Buy_btn">
-        <div class="QuizResult_AddToCart_Button" id="AddToCart_OneHundred">
+        <div
+          class="QuizResult_AddToCart_Button"
+          id="AddToCart_OneHundred"
+          onmouseover="changeColors(this)"
+        >
           Add To Cart All
         </div>
-        <div class="QuizResult_Buy_Button" id="buyAll_OneHundred">Buy All</div>
+        <div
+          class="QuizResult_Buy_Button"
+          id="buyAll_OneHundred"
+          onmouseover="changeColors(this)"
+        >
+          Buy All
+        </div>
       </div>
       <hr />
     </div>
@@ -86,16 +117,13 @@
       <div id="footer-placeholder"></div>
     </div>
     <!-- Footer -->
-    <script src="JavaScript files/header_footer_loader.js"></script>
+    <script src="JavaScript files/NavbarFooterLoader.js"></script>
+    <script src="JavaScript files/loginButtonChanger.js"></script>
     <script src="JavaScript files/cart.js"></script>
     <script src="JavaScript files/loginFormShow.js"></script>
-    <script src="JavaScript files/Load_logo_img.js"></script>
-    <script src="JavaScript files/shopDropdownShow.js"></script>
-    <script src="JavaScript files/link_changer.js"></script>
     <script src="JavaScript files/singIn.js"></script>
-    <script src="JavaScript files/loginButtonChanger.js"></script>
     <script src="JavaScript files/addToCart.js"></script>
-
+    <script src="JavaScript files/button_color_change.js"></script>
     <script>
       var urlParams = new URLSearchParams(window.location.search);
       var skinType = urlParams.get("skinType");
@@ -133,11 +161,14 @@
                 const listItem = document.createElement("li");
                 listItem.innerHTML = `
                      <div class="quizProduct">
+                      <a href="Product_Page.html?productName=${
+                        row.name
+                      }&price=${row.price}&img=${img_url}&rating=${row.rating}">
                       <img
                         src="${img_url}"
                         alt=""
                         loading="lazy"
-                      />
+                      /></a>
                       <div class="quizProductName">${row.name}</div>
                       <div class="quizProductWeight">Weight - ${row.size}</div>
                       <div class="quizProductRating">${generateStarsForQuizResult(
@@ -165,11 +196,14 @@
                 const listItem = document.createElement("li");
                 listItem.innerHTML = `
                      <div class="quizProduct">
+                      <a href="Product_Page.html?productName=${
+                        row.name
+                      }&price=${row.price}&img=${img_url}&rating=${row.rating}">
                       <img
                         src="${img_url}"
                         alt=""
                         loading="lazy"
-                      />
+                      /></a>
                       <div class="quizProductName">${row.name}</div>
                       <div class="quizProductWeight">Weight - ${row.size}</div>
                       <div class="quizProductRating">${generateStarsForQuizResult(
@@ -197,11 +231,14 @@
                 const listItem = document.createElement("li");
                 listItem.innerHTML = `
                      <div class="quizProduct">
+                      <a href="Product_Page.html?productName=${
+                        row.name
+                      }&price=${row.price}&img=${img_url}&rating=${row.rating}">
                       <img
                         src="${img_url}"
                         alt=""
                         loading="lazy"
-                      />
+                      /></a>
                       <div class="quizProductName">${row.name}</div>
                       <div class="quizProductWeight">Weight - ${row.size}</div>
                       <div class="quizProductRating">${generateStarsForQuizResult(
@@ -232,14 +269,10 @@
       }
       getQuizProducts(skinType, hasActiveAcne);
       function generateStarsForQuizResult(rating) {
-        const maxStars = 5; // Set the maximum number of stars
-
-        // Create an array of active star images based on the rating
         const starHtml = Array.from({ length: rating }, () => {
           return `<img class="QuizResultReviesStars" src="Photos/Stars/active-star.png" alt="" />`;
         });
-
-        return starHtml.join(""); // Join the array of active star images into a string
+        return starHtml.join("");
       }
       document
         .getElementById("AddToCart_FourFifty")

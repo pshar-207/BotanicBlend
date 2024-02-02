@@ -7,7 +7,7 @@
 .why_BB_container {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  padding: 5rem 10% 5rem 10%;
+  padding: 0 5%;
   /* height: fit-content; */
 }
 .why_BB_text {
@@ -17,22 +17,26 @@
   flex-flow: column;
   justify-content: center;
   /* align-items: start; */
+  padding: 0 5% 0 10%;
 }
 .why_BB_text h1 {
-  font-size: 3.5rem;
+  font-size: 3.3vw;
   padding: 0 0 5% 0;
   text-align: left;
+  font-family: var(--heading);
 }
 .why_BB_text p {
-  font-size: 1.5rem;
-  line-height: 2rem;
+  font-size: 2vw;
+  line-height: 2.5vw;
   text-align: justify;
+  font-family: var(--heading);
 }
 .why_BB_media {
-  margin: 0 0 0 20%;
+  /* margin: 0 0 0 20%; */
   /* width: 30vw; */
+  padding: 10%;
 }
-.why_BB_media video {
+.why_BB_media img {
   width: 100%;
   height: 100%;
 }

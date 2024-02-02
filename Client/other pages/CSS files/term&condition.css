@@ -3,9 +3,16 @@
   margin: 0;
   box-sizing: border-box;
 }
+.header_containor {
+  position: sticky;
+  top: 0;
+  width: 100%;
+  z-index: 2;
+}
 body {
   background-color: rgb(255, 255, 255);
   overflow-x: hidden;
+  font-family: var(--heading);
 }
 .heading_container {
   position: relative;
@@ -33,37 +40,54 @@ body {
   color: white;
   z-index: 1;
 }
+.term_text h1 {
+  font-size: 2.8vw;
+}
+.term_text p {
+  font-size: 1.3vw;
+}
+.term_text a {
+  text-decoration: none;
+  color: white;
+}
+
 .FAQ_heading {
   text-align: center;
   margin: 5%;
 }
 .FAQ_heading h2 {
-  font-size: 2rem;
+  font-size: 2.5vw;
+}
+.FAQ_heading span {
+  font-size: 1.5vw;
 }
 
 .Q_A_container {
   margin: 0 8% 10% 8%;
 }
 .q_a {
-  margin-bottom: 1rem;
+  margin-bottom: 1vw;
 }
 .q {
   display: flex;
   justify-content: space-between;
-  font-size: 1rem;
+  font-size: 1.2vw;
   background-color: white;
   border: 1px solid black;
-  padding: 1rem;
+  padding: 1vw;
   transition: background-color 1s ease, color 1s ease;
+}
+.q h3 {
+  font-weight: lighter;
 }
 .q span {
   cursor: pointer;
 }
 .a {
-  font-size: 1rem;
+  font-size: 1.2vw;
   background-color: white;
   border: 1px solid black;
-  padding: 1rem;
+  padding: 1vw;
   opacity: 0;
   visibility: hidden;
   height: 0px;

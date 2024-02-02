@@ -273,20 +273,16 @@ app.post("/update-dob", async (req, res) => {
 
     // Check if the user already has a date of birth in the profiles table
     const [existingProfile] = await pool.query(
-      "SELECT * FROM profiles WHERE user_id = ?",
+      "SELECT birthday FROM profiles WHERE user_id = ?",
       [userId]
     );
-
-    if (existingProfile.length > 0) {
-      // If the user already has a profile, show an alert that the DOB is already added
+    if (existingProfile.length === 1 && existingProfile[0].birthday !== null) {
       res.json({ success: false, message: "Date of birth already added" });
     } else {
-      // If the user doesn't have a profile, insert a new row with the date of birth
       await pool.query(
-        "INSERT INTO profiles (user_id, birthday) VALUES (?, ?)",
-        [userId, newDob]
+        "INSERT INTO profiles (user_id, birthday) VALUES (?,?) ON DUPLICATE KEY UPDATE birthday = ?",
+        [userId, newDob, newDob]
       );
-
       res.json({ success: true });
     }
   } catch (err) {
@@ -319,7 +315,7 @@ app.post("/update-skin-type", async (req, res) => {
 app.get("/New_Arrivals", async (req, res) => {
   try {
     const [results] = await pool.query(
-      "SELECT products.image_url,products.name,products.rating,MIN(product_variations.price) AS price FROM products INNER JOIN product_variations ON products.id = product_variations.product_id GROUP BY products.image_url,products.name,products.rating,products.date ORDER BY products.date desc limit 4;"
+      "SELECT p.image_url, p.name, p.rating, pv.price, pv.size FROM products p INNER JOIN (SELECT product_id, MIN(price) AS min_price FROM product_variations GROUP BY product_id) AS min_prices ON p.id = min_prices.product_id INNER JOIN product_variations pv ON p.id = pv.product_id AND min_prices.min_price = pv.price ORDER BY p.date DESC LIMIT 4;"
     );
     res.json(results);
   } catch (err) {
@@ -332,7 +328,7 @@ app.get("/New_Arrivals", async (req, res) => {
 app.get("/Best_Sellers", async (req, res) => {
   try {
     const [results] = await pool.query(
-      "SELECT products.image_url,products.name,products.rating,MIN(product_variations.price) AS price FROM products INNER JOIN product_variations ON products.id = product_variations.product_id WHERE products.best_seller = TRUE GROUP BY products.image_url,products.name,products.rating limit 4;"
+      "SELECT p.image_url, p.name, p.rating, pv.price, pv.size FROM products p INNER JOIN (SELECT product_id, MIN(price) AS min_price FROM product_variations GROUP BY product_id) AS min_prices ON p.id = min_prices.product_id INNER JOIN product_variations pv ON p.id = pv.product_id AND min_prices.min_price = pv.price WHERE p.best_seller = TRUE limit 4;"
     );
     res.json(results);
   } catch (err) {
@@ -345,7 +341,7 @@ app.get("/Best_Sellers", async (req, res) => {
 app.get("/getAllProducts", async (req, res) => {
   try {
     const [results] = await pool.query(
-      "SELECT products.image_url,products.name,products.description,products.rating,MIN(product_variations.price) AS price FROM products INNER JOIN product_variations ON products.id = product_variations.product_id GROUP BY products.image_url,products.name,products.description,products.rating;"
+      "SELECT p.image_url, p.name, p.rating, pv.price, pv.size FROM products p INNER JOIN (SELECT product_id, MIN(price) AS min_price FROM product_variations GROUP BY product_id) AS min_prices ON p.id = min_prices.product_id INNER JOIN product_variations pv ON p.id = pv.product_id AND min_prices.min_price = pv.price;"
     );
     res.json(results);
   } catch (err) {
@@ -358,7 +354,7 @@ app.get("/getAllProducts", async (req, res) => {
 app.get("/All_Best_Sellers", async (req, res) => {
   try {
     const [results] = await pool.query(
-      "SELECT products.image_url,products.name,products.description,products.rating,MIN(product_variations.price) AS price FROM products INNER JOIN product_variations ON products.id = product_variations.product_id WHERE products.best_seller = TRUE GROUP BY products.image_url,products.name,products.description,products.rating;"
+      "SELECT products.image_url,products.name,products.rating,MIN(product_variations.price) AS price, MIN(product_variations.size) AS size FROM products INNER JOIN product_variations ON products.id = product_variations.product_id WHERE products.best_seller = TRUE GROUP BY products.image_url, products.name, products.rating;"
     );
     res.json(results);
   } catch (err) {
@@ -371,7 +367,7 @@ app.get("/All_Best_Sellers", async (req, res) => {
 app.get("/All_New_Arrivals", async (req, res) => {
   try {
     const [results] = await pool.query(
-      "SELECT products.image_url,products.name,products.description,products.rating,MIN(product_variations.price) AS price FROM products INNER JOIN product_variations ON products.id = product_variations.product_id GROUP BY products.image_url,products.name,products.description,products.rating,products.date ORDER BY products.date desc limit 8;"
+      "SELECT products.image_url,products.name,products.rating,MIN(product_variations.price) AS price,MIN(product_variations.size) AS size FROM products INNER JOIN product_variations ON products.id = product_variations.product_id GROUP BY products.image_url, products.name, products.rating, products.date ORDER BY products.date DESC LIMIT 8;"
     );
     res.json(results);
   } catch (err) {
@@ -384,7 +380,7 @@ app.get("/All_New_Arrivals", async (req, res) => {
 app.get("/All_Creams_Products", async (req, res) => {
   try {
     const [results] = await pool.query(
-      "SELECT products.image_url,products.name,products.description,products.rating,MIN(product_variations.price) AS price FROM products INNER JOIN product_variations ON products.id = product_variations.product_id where products.category = 'Creams' GROUP BY products.image_url,products.name,products.description,products.rating;"
+      "SELECT products.image_url,products.name,products.rating,MIN(product_variations.price) AS price,MIN(product_variations.size) AS size FROM products INNER JOIN product_variations ON products.id = product_variations.product_id WHERE products.category = 'Creams' GROUP BY products.image_url, products.name, products.rating;"
     );
     res.json(results);
   } catch (err) {
@@ -397,7 +393,7 @@ app.get("/All_Creams_Products", async (req, res) => {
 app.get("/All_Gels_Products", async (req, res) => {
   try {
     const [results] = await pool.query(
-      "SELECT products.image_url,products.name,products.description,products.rating,MIN(product_variations.price) AS price FROM products INNER JOIN product_variations ON products.id = product_variations.product_id where products.category = 'gels' GROUP BY products.image_url,products.name,products.description,products.rating;"
+      "SELECT products.image_url,products.name,products.rating,MIN(product_variations.price) AS price,MIN(product_variations.size) AS size FROM products INNER JOIN product_variations ON products.id = product_variations.product_id WHERE products.category = 'gels' GROUP BY products.image_url, products.name, products.rating;"
     );
     res.json(results);
   } catch (err) {
@@ -410,7 +406,7 @@ app.get("/All_Gels_Products", async (req, res) => {
 app.get("/All_Bathing_Products", async (req, res) => {
   try {
     const [results] = await pool.query(
-      "SELECT products.image_url,products.name,products.description,products.rating,MIN(product_variations.price) AS price FROM products INNER JOIN product_variations ON products.id = product_variations.product_id where products.category = 'bathing' GROUP BY products.image_url,products.name,products.description,products.rating;"
+      "SELECT products.image_url,products.name,products.rating,MIN(product_variations.price) AS price,MIN(product_variations.size) AS size FROM products INNER JOIN product_variations ON products.id = product_variations.product_id WHERE products.category = 'bathing' GROUP BY products.image_url, products.name, products.rating;"
     );
     res.json(results);
   } catch (err) {
@@ -423,7 +419,7 @@ app.get("/All_Bathing_Products", async (req, res) => {
 app.get("/All_BodyCare_Products", async (req, res) => {
   try {
     const [results] = await pool.query(
-      "SELECT products.image_url,products.name,products.description,products.rating,MIN(product_variations.price) AS price FROM products INNER JOIN product_variations ON products.id = product_variations.product_id where products.category = 'bodyCare' GROUP BY products.image_url,products.name,products.description,products.rating;"
+      "SELECT products.image_url,products.name,products.rating,MIN(product_variations.price) AS price,MIN(product_variations.size) AS size FROM products INNER JOIN product_variations ON products.id = product_variations.product_id WHERE products.category = 'bodyCare' GROUP BY products.image_url, products.name, products.rating;"
     );
     res.json(results);
   } catch (err) {
@@ -436,7 +432,7 @@ app.get("/All_BodyCare_Products", async (req, res) => {
 app.get("/DrySkin_Products", async (req, res) => {
   try {
     const [results] = await pool.query(
-      "SELECT products.image_url,products.name,products.description,products.rating,MIN(product_variations.price) AS price FROM products INNER JOIN product_variations ON products.id = product_variations.product_id where products.Dry = 1 GROUP BY products.image_url,products.name,products.description,products.rating;"
+      "SELECT products.image_url,products.name,products.rating,MIN(product_variations.price) AS price,MIN(product_variations.size) AS size FROM products INNER JOIN product_variations ON products.id = product_variations.product_id WHERE products.Dry = 1 GROUP BY products.image_url, products.name, products.rating;"
     );
     res.json(results);
   } catch (err) {
@@ -449,7 +445,7 @@ app.get("/DrySkin_Products", async (req, res) => {
 app.get("/OilySkin_Products", async (req, res) => {
   try {
     const [results] = await pool.query(
-      "SELECT products.image_url,products.name,products.description,products.rating,MIN(product_variations.price) AS price FROM products INNER JOIN product_variations ON products.id = product_variations.product_id where products.Oily = 1 GROUP BY products.image_url,products.name,products.description,products.rating;"
+      "SELECT products.image_url,products.name,products.rating,MIN(product_variations.price) AS price,MIN(product_variations.size) AS size FROM products INNER JOIN product_variations ON products.id = product_variations.product_id WHERE products.Oily = 1 GROUP BY products.image_url, products.name, products.rating;"
     );
     res.json(results);
   } catch (err) {
@@ -462,7 +458,7 @@ app.get("/OilySkin_Products", async (req, res) => {
 app.get("/NormalSkin_Products", async (req, res) => {
   try {
     const [results] = await pool.query(
-      "SELECT products.image_url,products.name,products.description,products.rating,MIN(product_variations.price) AS price FROM products INNER JOIN product_variations ON products.id = product_variations.product_id where products.Normal = 1 GROUP BY products.image_url,products.name,products.description,products.rating;"
+      "SELECT products.image_url,products.name,products.rating,MIN(product_variations.price) AS price,MIN(product_variations.size) AS size FROM products INNER JOIN product_variations ON products.id = product_variations.product_id WHERE products.Normal = 1 GROUP BY products.image_url, products.name, products.rating;"
     );
     res.json(results);
   } catch (err) {
@@ -625,7 +621,7 @@ app.get("/GetAddToCartProducts", async (req, res) => {
     let rows = [];
     if (req.session.isAuthenticated) {
       [rows] = await pool.query(
-        "SELECT p.name AS product_name,p.image_url AS img_url,p.rating AS rating,MIN(v.price) AS price FROM products p JOIN product_variations v ON p.id = v.product_id JOIN cart c ON p.name = c.product_name WHERE c.user_id = ? GROUP BY p.id, p.name, p.image_url, p.rating",
+        "WITH RankedProducts AS (SELECT p.name AS product_name,p.image_url AS img_url,p.rating AS rating,v.price AS price,v.size AS size,ROW_NUMBER() OVER (PARTITION BY p.id ORDER BY v.price) AS row_num FROM products p JOIN product_variations v ON p.id = v.product_id JOIN cart c ON p.name = c.product_name WHERE c.user_id = 1)SELECT product_name,img_url,rating,price,size FROM  RankedProducts WHERE row_num = 1;",
         [id]
       );
       res.json({ success: true, row: rows });
@@ -911,7 +907,10 @@ app.get("/getUserAddressInfo", async (req, res) => {
     if (isSaveChecked[0][0].final_saveInfo == 1) {
       let rows = [];
       if (req.session.isAuthenticated) {
-        [rows] = await pool.query("select * from shipping_addresses limit 1");
+        [rows] = await pool.query(
+          "select * from shipping_addresses where user_id=? limit 1",
+          [userId]
+        );
         console.log(rows);
         res.json({ success: true, row: rows });
       }

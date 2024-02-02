@@ -1,13 +1,18 @@
 .side-cart {
   position: fixed;
   top: 0;
-  right: -20rem; /* Initially hide the side cart off-screen */
+  right: -20rem;
   width: 20rem;
   height: 100%;
   background-color: white;
-  /* box-shadow: 0 0 50px rgba(0, 0, 0, 0.1); */
   transition: right 0.3s ease-in-out;
   overflow-y: auto;
+  box-shadow: 10px 10px 10px rgba(0, 0, 0, 0.3);
+}
+.cart_heading_container {
+  position: sticky;
+  top: 0;
+  background-color: whitesmoke;
 }
 .cart_heading {
   display: flex;
@@ -18,11 +23,13 @@
 .cart_heading span {
   margin: 1rem;
   cursor: pointer;
+  font-size: 1.2rem;
 }
 .side-cart p {
   font-weight: bold;
   margin: 1rem;
   font-size: 1.5rem;
+  font-family: var(--heading);
 }
 
 .side-cart ul {
@@ -33,8 +40,8 @@
 .side-cart li {
   padding: 1rem;
   font-size: 1rem;
-  /* border-bottom: 1px solid #ccc; */
   display: flex;
+  font-family: var(--heading);
 }
 
 .cart-icon {
@@ -56,8 +63,7 @@
 .cartProductRating img {
   width: 1rem;
 }
-.cartProductDetails,
-.buy_remove_btn {
+.cartProductDetails {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -66,7 +72,9 @@
   align-items: end;
   margin-left: auto;
 }
-.remove_button,
-.buy_button {
+.remove_button {
   cursor: pointer;
+}
+.remove_button i {
+  font-size: 1vw;
 }

@@ -4,9 +4,24 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+
+    <link
+      href="https://fonts.googleapis.com/css2?family=Quicksand&display=swap"
+      rel="stylesheet"
+    />
+
+    <link
+      href="https://fonts.googleapis.com/css2?family=Dancing+Script&family=Quicksand&display=swap"
+      rel="stylesheet"
+    />
+    <!-- Google Fonts -->
+
+    <link rel="stylesheet" href="CSS files/googleFont.css" />
     <link rel="stylesheet" href="CSS files/term&condition.css" />
     <link rel="stylesheet" href="CSS files/cart.css" />
-
     <link rel="stylesheet" href="CSS files/loginForm.css" />
     <link rel="stylesheet" href="CSS files/header.css" />
   </head>
@@ -22,7 +37,7 @@
       <img src="Photos/contact/heading image.jpg" alt="" />
       <div class="term_text">
         <h1>TERM & CONDITION</h1>
-        <p>Home / FAQ</p>
+        <p><a href="/">Home</a> / FAQ</p>
       </div>
     </div>
     <!-- heading image and heading -->
@@ -99,14 +114,13 @@
       <div id="footer-placeholder"></div>
     </div>
     <!-- Footer -->
-    <script src="JavaScript files/header_footer_loader.js"></script>
+    <script src="JavaScript files/NavbarFooterLoader.js"></script>
+    <script src="JavaScript files/loginButtonChanger.js"></script>
     <script src="JavaScript files/cart.js"></script>
     <script src="JavaScript files/loginFormShow.js"></script>
-    <script src="JavaScript files/Load_logo_img.js"></script>
-    <script src="JavaScript files/shopDropdownShow.js"></script>
-    <script src="JavaScript files/link_changer.js"></script>
     <script src="JavaScript files/singIn.js"></script>
-    <script src="JavaScript files/loginButtonChanger.js"></script>
+    <script src="JavaScript files/addToCart.js"></script>
+
     <script>
       function toggleAnswer(span) {
         var answer = span.parentElement.nextElementSibling; // Get the next sibling (answer div)
@@ -123,8 +137,8 @@
           answer.style.visibility = "visible";
           answer.style.height = "auto";
           span.textContent = "-";
-          parentDiv.style.backgroundColor = "#092A63";
-          parentDiv.style.color = "white";
+          parentDiv.style.backgroundColor = "#fcc6e2";
+          parentDiv.style.color = "black";
         }
       }
     </script>

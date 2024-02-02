@@ -12,9 +12,12 @@
   object-fit: cover;
 }
 .prons_heading {
-  font-size: 1.5rem;
+  font-size: 2vw;
   font-weight: bold;
+  font-family: var(--heading);
 }
 .prons_text {
-  font-size: 0.8rem;
+  font-size: 1vw;
+  text-align: center;
+  font-family: var(--heading);
 }

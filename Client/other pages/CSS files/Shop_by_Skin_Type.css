@@ -8,7 +8,11 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 2rem;
+  font-size: 2.5vw;
+  font-family: var(--heading);
+}
+.skintype_upper_section h2 {
+  padding-bottom: 10%;
 }
 
 .skintype_lower_section {
@@ -47,7 +51,8 @@
 }
 .skin_type_text {
   display: none;
-  font-size: 2rem;
+  font-size: 2.5vw;
+  font-family: var(--heading);
 }
 .leftfill,
 .rightfill {

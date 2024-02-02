@@ -1,5 +1,6 @@
 body {
   background-color: whitesmoke;
+  font-family: var(--heading);
 }
 .product_detail_container {
   display: grid;
@@ -24,7 +25,7 @@ body {
 }
 
 .product_name {
-  font-size: 3.5rem;
+  font-size: 3vw;
 }
 
 .weight_container,
@@ -77,7 +78,10 @@ body {
   font-size: 1.3rem;
   margin-right: 5%;
 }
-
+.buy_button {
+  text-decoration: none;
+  color: black;
+}
 .best_sell_container,
 .description_review_policy_container {
   padding: 0 10% 5% 10%;

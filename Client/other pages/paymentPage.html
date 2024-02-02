@@ -4,10 +4,26 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+
+    <link
+      href="https://fonts.googleapis.com/css2?family=Quicksand&display=swap"
+      rel="stylesheet"
+    />
+
+    <link
+      href="https://fonts.googleapis.com/css2?family=Dancing+Script&family=Quicksand&display=swap"
+      rel="stylesheet"
+    />
+    <!-- Google Fonts -->
+
+    <link rel="stylesheet" href="CSS files/googleFont.css" />
+    <link rel="stylesheet" href="CSS files/paymentPage.css" />
     <link rel="stylesheet" href="CSS files/header.css" />
     <link rel="stylesheet" href="CSS files/loginForm.css" />
     <link rel="stylesheet" href="CSS files/cart.css" />
-    <link rel="stylesheet" href="CSS files/paymentPage.css" />
   </head>
   <body>
     <!-- header -->
@@ -65,7 +81,13 @@
               All transaction are secure and encrypted
             </div>
             <div class="onlinePayment">
-              <input type="radio" name="paymentMethod" checked value="Online" />
+              <input
+                type="radio"
+                name="paymentMethod"
+                checked
+                value="Online"
+                id="onlinePaymentRadio"
+              />
               <span>UPI/ Cards, Wallets, NetBanking</span>
             </div>
             <div class="onlinePaymentWarning">
@@ -77,9 +99,12 @@
               >
             </div>
             <div class="cashOnDelivery">
-              <input type="radio" name="paymentMethod" value="COD" /><span
-                >Cash on Delivery (COD)</span
-              >
+              <input
+                type="radio"
+                id="codRadio"
+                name="paymentMethod"
+                value="COD"
+              /><span>Cash on Delivery (COD)</span>
             </div>
           </div>
           <div class="billingAddress_conatiner">
@@ -90,6 +115,7 @@
                 name="BillingAddress"
                 checked
                 value="sameAddress"
+                id="billingRadioSameAddress"
               /><span>Same as shipping address</span>
             </div>
             <div class="diffAddress">
@@ -97,6 +123,7 @@
                 type="radio"
                 name="BillingAddress"
                 value="DiiffrentAddress"
+                id="billingRadioDiffAddress"
               />
               <span>Use a different billing adress</span>
             </div>
@@ -124,47 +151,15 @@
                 <input type="text" id="diffPhoneNumber" placeholder="Phone" />
               </div>
             </div>
-            <div class="payNow_BuyMore_container">
-              <!-- <div class="buyMore">Buy More</div> -->
-              <!-- <div class="payNow">Pay Now</div> -->
-              <button type="submit" class="payNow">Pay Now</button>
+            <div class="payNow_container">
+              <button type="submit">Pay Now</button>
             </div>
           </div>
         </form>
       </div>
 
       <div class="allProducts_container">
-        <ul class="purchaseProducts_container">
-          <!-- <li>
-            <div class="productToPurchase">
-              <div class="buying_produce_img">
-                <img
-                  src="Photos/products/Bathing/ALOE VERA SHAMPOO.jpg"
-                  alt=""
-                />
-              </div>
-
-              <div class="buying_product_name_star">
-                <div class="buying_product_name">Alowera</div>
-                <div class="star">*****</div>
-              </div>
-
-              <div class="buying_product_qty">
-                <div class="weight_container">
-                  <div class="weight">Weight</div>
-                </div>
-                <div class="quantity_container">
-                  <div class="quantity">Quantity</div>
-                  <span class="qty_number">1</span>
-                </div>
-              </div>
-
-              <div class="buying_product_price">
-                <div class="buying_price">520</div>
-              </div>
-            </div>
-          </li> -->
-        </ul>
+        <ul class="purchaseProducts_container"></ul>
         <div class="subTotal_contianer">
           <div class="subTotal">Sub Total</div>
           <div class="subTotalAmount">xyz</div>
@@ -184,14 +179,11 @@
       <div id="footer-placeholder"></div>
     </div>
     <!-- Footer -->
-    <script src="JavaScript files/header_footer_loader.js"></script>
+    <script src="JavaScript files/NavbarFooterLoader.js"></script>
+    <script src="JavaScript files/loginButtonChanger.js"></script>
     <script src="JavaScript files/cart.js"></script>
     <script src="JavaScript files/loginFormShow.js"></script>
-    <script src="JavaScript files/link_changer.js"></script>
-    <script src="JavaScript files/Load_logo_img.js"></script>
-    <script src="JavaScript files/shopDropdownShow.js"></script>
     <script src="JavaScript files/singIn.js"></script>
-    <script src="JavaScript files/loginButtonChanger.js"></script>
     <script src="JavaScript files/addToCart.js"></script>
     <script>
       checkAuthAndFillUserInfo();
@@ -222,21 +214,23 @@
 
               <div class="buying_product_name_star">
                 <div class="buying_product_name">${item.name}</div>
-                <div class="star">${item.rating}</div>
+                <div class="star">${generateStarsForIndexPage(
+                  item.rating
+                )}</div>
               </div>
 
               <div class="buying_product_qty">
                 <div class="weight_container">
-                  <div class="weight">${item.weight}</div>
+                  <div class="weight">Weight : ${item.weight}</div>
                 </div>
                 <div class="quantity_container">
-                  <div class="quantity">Quantity</div>
+                  <div class="quantity">Qty : </div>
                   <span class="qty_number">${item.quantity}</span>
                 </div>
               </div>
 
               <div class="buying_product_price">
-                <div class="buying_price">${item.price}</div>
+                <div class="buying_price">&#8377; ${item.price}</div>
               </div>
             </div>
                   `;
@@ -250,6 +244,13 @@
           price: item.price,
         };
         productList.push(product);
+
+        function generateStarsForIndexPage(rating) {
+          const starHtml = Array.from({ length: rating }, () => {
+            return `<img class="IndexPageStars" src="Photos/Stars/active-star.png" alt="" />`;
+          });
+          return starHtml.join("");
+        }
       });
       productList.forEach((item) => {
         console.log(item.name);
@@ -258,11 +259,15 @@
       console.log(typeof subTotal);
       subTotal = parseInt(subTotal);
       console.log(typeof subTotal);
-      document.querySelector(".subTotalAmount").innerHTML = subTotal;
+      document.querySelector(
+        ".subTotalAmount"
+      ).innerHTML = `&#8377; ${subTotal}`;
       var subTotalGST = (subTotal * 18) / 100;
       console.log(subTotalGST);
-      document.querySelector(".gstAmount").innerHTML = subTotalGST;
-      document.querySelector(".totalAmount").innerHTML = subTotal + subTotalGST;
+      document.querySelector(".gstAmount").innerHTML = `&#8377; ${subTotalGST}`;
+      document.querySelector(".totalAmount").innerHTML = `&#8377; ${
+        subTotal + subTotalGST
+      }`;
       var totalAmount = subTotal + subTotalGST;
 
       var saveInfo = document.getElementById("saveInfo");
@@ -397,6 +402,44 @@
         .catch((error) => {
           console.error("Not getting save address:", error);
         });
+    </script>
+    <script>
+      // Add event listener to the radio buttons
+      const onlinePaymentRadio = document.getElementById("onlinePaymentRadio");
+      const codRadio = document.getElementById("codRadio");
+      const onlinePaymentWarning = document.querySelector(
+        ".onlinePaymentWarning"
+      );
+      onlinePaymentRadio.addEventListener("change", () => {
+        onlinePaymentWarning.style.display = onlinePaymentRadio.checked
+          ? "flex"
+          : "none";
+      });
+
+      codRadio.addEventListener("change", () => {
+        onlinePaymentWarning.style.display = codRadio.checked ? "none" : "flex";
+      });
+
+      const billingRadioSameAddress = document.getElementById(
+        "billingRadioSameAddress"
+      );
+      const billingRadioDiffAddress = document.getElementById(
+        "billingRadioDiffAddress"
+      );
+      const differentAdd_container = document.querySelector(
+        ".differentAdd_container"
+      );
+      billingRadioDiffAddress.addEventListener("change", () => {
+        differentAdd_container.style.display = billingRadioDiffAddress.checked
+          ? "block"
+          : "none";
+      });
+
+      billingRadioSameAddress.addEventListener("change", () => {
+        differentAdd_container.style.display = billingRadioSameAddress.checked
+          ? "none"
+          : "block";
+      });
     </script>
   </body>
 </html>

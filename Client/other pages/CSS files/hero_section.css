@@ -1,10 +1,10 @@
 /* hero section */
 .hero_section {
-  margin-top: -4%;
   background-color: aquamarine;
-  position: relative;
   width: 100vw;
   overflow: hidden;
+  position: relative;
+  margin-top: -12%;
 }
 .hero_image_container {
   display: flex;
@@ -32,6 +32,11 @@
 .hero_b2 {
   right: 2%;
 }
+.hero_b1 i,
+.hero_b2 i {
+  font-size: 2vw;
+}
+
 .hero_indicators {
   position: absolute;
   bottom: 50px;
@@ -58,31 +63,35 @@
 
 .quiz_section {
   position: absolute;
-  top: 35%;
-  left: 10%;
+  top: 42%;
+  left: 8%;
   font-size: 1.5rem;
 }
 .quiz_section_a_cotainer {
-  padding: 0.7rem 2.5rem 0.7rem 2.5rem;
+  padding: 0.7vw 1.5vw;
   width: fit-content;
-  background-color: white;
+  background-color: transparent;
   border-radius: 10rem;
   border: 0.1rem solid black;
   transition: background-color 0.5s, color 0.5s;
 }
 
 .quiz_section_h1 {
-  font-size: 3rem;
+  font-size: 3vw;
   font-weight: bolder;
-  width: 35rem;
+  width: 40vw;
   white-space: normal;
   margin-bottom: 5%;
+  font-family: var(--heading);
 }
 
 .quiz_section_a {
   text-decoration: none;
   color: black;
-  font-size: 1rem;
+  font-size: 1.5vw;
+  font-family: var(--heading);
+  /* font-weight: bold; */
+  font-style: italic;
 }
 /* .quiz_section_a_cotainer:hover {
   background-color: #0b1354;

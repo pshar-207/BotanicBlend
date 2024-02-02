@@ -207,7 +207,6 @@ if (PageName == "NormalSkin") {
 function renderProducts(data) {
   console.log("fetching");
   const productsCount = document.querySelector(".ProductsCount");
-  let count = 0;
   // Get the UL element
   const productsListContainer = document.querySelector(".ProductsListCotainer");
 
@@ -216,13 +215,25 @@ function renderProducts(data) {
 
   // Loop through the data and create list items
   data.forEach((product) => {
+    var buyProduct = [];
+    var buy_product = {
+      img: product.image_url.replace("other pages/", ""),
+      name: product.name,
+      price: parseInt(product.price, 10),
+      quantity: 1,
+      rating: product.rating,
+      weight: product.size,
+    };
+    buyProduct.push(buy_product);
     const listItem = document.createElement("li");
     let newImgUrl = product.image_url.replace("other pages/", "");
 
     listItem.innerHTML = `
       <div class="product_container">
         <div class="product_image">
-          <a href="Product_Page.html?productName=${product.name}">
+          <a href="Product_Page.html?productName=${product.name}&price=${
+      product.price
+    }&img=${newImgUrl}&rating=${product.rating}">
             <img src="${newImgUrl}" alt="" loading="lazy" />
           </a>
         </div>
@@ -231,8 +242,8 @@ function renderProducts(data) {
         <div class="product_rating">${generateStarsForMultiplePage(
           product.rating
         )}</div>
-        <div class="product_price">
-          ${product.price}
+        <div class="product_price">Price : 
+          ${parseInt(product.price)}
           <div
             class="add_to_cart product-container"
             onmouseover="showAddToCart(this) ; changeColors(this)"
@@ -246,7 +257,9 @@ function renderProducts(data) {
             }")'>Add to Cart</div>
           </div>
         </div>
-        <a href="#">
+        <a href="paymentPage.html?product=${encodeURIComponent(
+          JSON.stringify(buyProduct)
+        )}">
           <div
             class="product_buttons btn_color"
             onmouseover="changeColors(this)"
@@ -259,18 +272,12 @@ function renderProducts(data) {
 
     // Append the list item to the UL
     productsListContainer.appendChild(listItem);
-    count++;
   });
-  productsCount.innerHTML = count;
 }
 
 function generateStarsForMultiplePage(rating) {
-  const maxStars = 5; // Set the maximum number of stars
-
-  // Create an array of active star images based on the rating
   const starHtml = Array.from({ length: rating }, () => {
     return `<img class="MultiplePageReviesStars" src="Photos/Stars/active-star.png" alt="" />`;
   });
-
-  return starHtml.join(""); // Join the array of active star images into a string
+  return starHtml.join("");
 }

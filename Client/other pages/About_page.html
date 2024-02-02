@@ -4,8 +4,29 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
+    <!-- Font Awesome -->
+    <link
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.0/css/all.min.css"
+    />
+    <!-- Font Awesome -->
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+
+    <link
+      href="https://fonts.googleapis.com/css2?family=Quicksand&display=swap"
+      rel="stylesheet"
+    />
+
+    <link
+      href="https://fonts.googleapis.com/css2?family=Dancing+Script&family=Quicksand&display=swap"
+      rel="stylesheet"
+    />
+    <!-- Google Fonts -->
+
+    <link rel="stylesheet" href="CSS files/googleFont.css" />
     <link rel="stylesheet" href="CSS files/about.css" />
-    <link rel="stylesheet" href="CSS files/cart.css" />    
+    <link rel="stylesheet" href="CSS files/cart.css" />
     <link rel="stylesheet" href="CSS files/loginForm.css" />
     <link rel="stylesheet" href="CSS files/header.css" />
   </head>
@@ -19,20 +40,12 @@
     <!-- About Video -->
     <div class="video_container">
       <video autoplay muted loop playsinline>
-        <!-- 'autoplay' will start the video automatically -->
-        <!-- 'muted' will ensure the video plays without sound -->
-        <!-- 'loop' will make the video play in a loop -->
-        <!-- 'playsinline' will make sure the video plays inline on iOS devices -->
-
         <source src="Photos/About/video.mp4" type="video/mp4" />
-        <!-- Replace "your-video.mp4" with the actual path to your video file -->
-
         Your browser does not support the video tag.
       </video>
-      <!-- <div class="black-overlay"></div> -->
       <div class="about_text">
         <h1>About</h1>
-        <p>Home / About</p>
+        <p><a href="/">Home</a> / About</p>
       </div>
     </div>
     <!-- About Video -->
@@ -215,8 +228,12 @@
         </li>
       </ul>
       <div class="hero_buttons">
-        <button class="hero_b1" onclick="goPrev()">&lt;</button>
-        <button class="hero_b2" onclick="goNext()">&gt;</button>
+        <button class="hero_b1" onclick="goPrev()">
+          <i class="fa-solid fa-chevron-left"></i>
+        </button>
+        <button class="hero_b2" onclick="goNext()">
+          <i class="fa-solid fa-chevron-right"></i>
+        </button>
       </div>
       <div class="hero_indicators"></div>
     </div>
@@ -267,14 +284,12 @@
     </div>
     <!-- Footer -->
 
-    <script src="JavaScript files/header_footer_loader.js"></script>
+    <script src="JavaScript files/NavbarFooterLoader.js"></script>
+    <script src="JavaScript files/loginButtonChanger.js"></script>
     <script src="JavaScript files/cart.js"></script>
     <script src="JavaScript files/loginFormShow.js"></script>
-    <script src="JavaScript files/image_slider.js"></script>
-    <script src="JavaScript files/Load_logo_img.js"></script>
-    <script src="JavaScript files/shopDropdownShow.js"></script>
-    <script src="JavaScript files/link_changer.js"></script>
     <script src="JavaScript files/singIn.js"></script>
-    <script src="JavaScript files/loginButtonChanger.js"></script>
-
+    <script src="JavaScript files/addToCart.js"></script>
+    <script src="JavaScript files/image_slider.js"></script>
+  </body>
 </html>

@@ -3,17 +3,33 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <!-- Font Awesome -->
     <link
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.0/css/all.min.css"
     />
+    <!-- Font Awesome -->
 
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+
+    <link
+      href="https://fonts.googleapis.com/css2?family=Quicksand&display=swap"
+      rel="stylesheet"
+    />
+
+    <link
+      href="https://fonts.googleapis.com/css2?family=Dancing+Script&family=Quicksand&display=swap"
+      rel="stylesheet"
+    />
+    <!-- Google Fonts -->
+    <link rel="stylesheet" href="other pages/CSS files/googleFont.css" />
     <link rel="stylesheet" href="other pages/CSS files/Index.css" />
-
     <link rel="stylesheet" href="other pages/CSS files/header.css" />
+    <link rel="stylesheet" href="other pages/CSS files/hero_section.css" />
     <link rel="stylesheet" href="other pages/CSS files/cart.css" />
     <link rel="stylesheet" href="other pages/CSS files/loginForm.css" />
-
-    <link rel="stylesheet" href="other pages/CSS files/hero_section.css" />
     <link rel="stylesheet" href="other pages/CSS files/new_arrivals.css" />
     <link rel="stylesheet" href="other pages/CSS files/Why_BB.css" />
     <link rel="stylesheet" href="other pages/CSS files/best_sell.css" />
@@ -22,6 +38,7 @@
     <link rel="stylesheet" href="other pages/CSS files/Prons.css" />
     <link rel="stylesheet" href="other pages/CSS files/Shop_by_Skin_Type.css" />
     <link rel="stylesheet" href="other pages/CSS files/science.css" />
+    <!-- <link rel="stylesheet" href="other pages/CSS files/footer.css" /> -->
 
     <title>Document</title>
   </head>
@@ -52,8 +69,12 @@
         />
       </div>
       <div class="hero_buttons">
-        <button class="hero_b1" onclick="goPrev()">&lt;</button>
-        <button class="hero_b2" onclick="goNext()">&gt;</button>
+        <button class="hero_b1" onclick="goPrev()">
+          <i class="fa-solid fa-chevron-left"></i>
+        </button>
+        <button class="hero_b2" onclick="goNext()">
+          <i class="fa-solid fa-chevron-right"></i>
+        </button>
       </div>
       <div class="hero_indicators"></div>
       <div class="quiz_section">
@@ -96,13 +117,7 @@
           </p>
         </div>
         <div class="why_BB_media">
-          <video autoplay loop muted playsinline>
-            <source
-              src="other pages/Photos/Why BotanicBlend/why_BB (online-video-cutter.com).mp4"
-              type="video/mp4"
-            />
-            Your browser does not support the video tag.
-          </video>
+          <img src="other pages/Photos/Header Image/BB_Logo.png" alt="" />
         </div>
       </div>
     </div>
@@ -124,7 +139,11 @@
       <div class="testimonial_heading">What People Are Saying!</div>
       <div class="testimonial">
         <div class="testimonial_image">
-          <img src="other pages/Photos/Testimonials/sunscrean.jpg" alt="" />
+          <img
+            src="other pages/Photos/Testimonials/sunscrean.jpg"
+            loading="lazy"
+            alt=""
+          />
         </div>
         <div class="testimonial_text_right">
           <div class="testimonial_text_about_product_right">
@@ -134,7 +153,12 @@
             greasy or sticky like some other sunscreens do. I will be purchasing
             more soon!
           </div>
-          <div class="testimonial_product"><a href="">About Sunscreen</a></div>
+          <div class="testimonial_product">
+            <a
+              href="other pages/Product_Page.html?productName=SUNSCREEN&price=100.00&img=Photos/products/BodyCare/SUNSCREEN.jpg&rating=5"
+              >About Sunscreen</a
+            >
+          </div>
         </div>
       </div>
       <div class="testimonial">
@@ -145,16 +169,27 @@
             irritating. nice product.
           </div>
           <div class="testimonial_product">
-            <a href="">About Kesar Chandan Gel</a>
+            <a
+              href="other pages/Product_Page.html?productName=KESAR CHANDAN GEL&price=100.00&img=Photos/products/Gels/KESAR CHANDAN GEL.jpg&rating=3"
+              >About Kesar Chandan Gel</a
+            >
           </div>
         </div>
         <div class="testimonial_image left_img">
-          <img src="other pages/Photos/Testimonials/keshar.jpg" alt="" />
+          <img
+            src="other pages/Photos/Testimonials/keshar.jpg"
+            loading="lazy"
+            alt=""
+          />
         </div>
       </div>
       <div class="testimonial">
         <div class="testimonial_image">
-          <img src="other pages/Photos/Testimonials/amla.jpg" alt="" />
+          <img
+            src="other pages/Photos/Testimonials/amla.jpg"
+            loading="lazy"
+            alt=""
+          />
         </div>
         <div class="testimonial_text_right">
           <div class="testimonial_text_about_product_right">
@@ -163,7 +198,10 @@
             much.
           </div>
           <div class="testimonial_product">
-            <a href="">About Amla Shikakai Shampoo</a>
+            <a
+              href="other pages/Product_Page.html?productName=AMLA SHIKAKAI SHAMPOO&price=150.00&img=Photos/products/Bathing/AMLA SHIKAKAI SHAMPOO.jpg&rating=5"
+              >About Amla Shikakai Shampoo</a
+            >
           </div>
         </div>
       </div>
@@ -251,10 +289,14 @@
       <p class="prons_heading">Returns</p>
       <p class="prons_heading">Online Support</p>
       <p class="prons_heading">Flexible Payment</p>
-      <p class="prons_text">Free Shipping for Rrders over 10,00,000&#8377;</p>
-      <p class="prons_text">Within 5 Minutes for an Exchange</p>
-      <p class="prons_text">5 Seconds a Day, 1 Day a Week</p>
-      <p class="prons_text">Pay with Multiple Payment Options</p>
+      <p class="prons_text">Free shipping on orders above 500&#8377;</p>
+      <p class="prons_text">
+        Exchange available withing 7 days of return with package unopend
+      </p>
+      <p class="prons_text">Available Monday-Saturday from 8-10</p>
+      <p class="prons_text">
+        Flexible payment available with all types of cards and online
+      </p>
     </div>
     <!-- prons -->
 
@@ -325,7 +367,7 @@
     <!-- science -->
     <div class="science_container">
       <h2 class="science_content">Science-backed clean ingredients</h2>
-      <p class="science_content">
+      <p class="science_content_paragraph">
         Every product at BotanicBlend we formulate is free of sulfates,
         parabens, GMOs, mineral oils, and is always cruelty-free.
       </p>
@@ -370,25 +412,16 @@
       <div id="footer-placeholder"></div>
     </div>
     <!-- Footer -->
-    <script src="other pages/JavaScript files/header_footer_loader.js"></script>
-    <script src="other pages/JavaScript files/image_slider.js"></script>
 
-    <script src="other pages/JavaScript files/shopDropdownShow.js"></script>
+    <script src="other pages/JavaScript files/header_footer_loader.js"></script>
+    <script src="other pages/JavaScript files/button_color_change.js"></script>
+    <script src="other pages/JavaScript files/image_slider.js"></script>
+    <script src="app.js"></script>
     <script src="other pages/JavaScript files/cart.js"></script>
     <script src="other pages/JavaScript files/loginFormShow.js"></script>
     <script src="other pages/JavaScript files/loginButtonChanger.js"></script>
-
-    <script src="other pages/JavaScript files/button_color_change.js"></script>
     <script src="other pages/JavaScript files/cart_icon_change.js"></script>
     <script src="other pages/JavaScript files/skintype_show.js"></script>
-    <script src="app.js"></script>
-
-    <script>
-      function loadBackupImage() {
-        var img = document.querySelector(".BB_logo_img");
-        img.src = "other pages/Photos/Header Image/BB_Logo.png";
-      }
-    </script>
     <script src="other pages/JavaScript files/singIn.js"></script>
     <script src="other pages/JavaScript files/addToCart.js"></script>
   </body>

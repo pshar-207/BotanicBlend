@@ -3,9 +3,16 @@
   margin: 0;
   box-sizing: border-box;
 }
+.header_containor {
+  position: sticky;
+  top: 0;
+  width: 100%;
+  z-index: 2;
+}
 body {
   background-color: rgb(255, 255, 255);
   overflow-x: hidden;
+  font-family: var(--heading);
 }
 .header_containor {
   position: fixed;
@@ -38,12 +45,22 @@ body {
   color: white;
   z-index: 1;
 }
+.quiz_text h1 {
+  font-size: 3vw;
+}
+.quiz_text p {
+  font-size: 1.5vw;
+}
+.quiz_text a {
+  text-decoration: none;
+  color: white;
+}
 
 .quizResultOuterContainer {
   padding: 5%;
 }
 .skinCareRoutineHeading {
-  font-size: 1.5rem;
+  font-size: 1.8vw;
   margin-top: 3%;
 }
 .addToCart_Buy_btn {
@@ -53,14 +70,26 @@ body {
 .QuizResult_AddToCart_Button,
 .QuizResult_Buy_Button {
   border: 1px solid black;
-  padding: 0.5rem 1rem;
+
   cursor: pointer;
   user-select: none;
   margin: 1% 0;
+  font-size: 1.5vw;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.QuizResult_AddToCart_Button {
+  width: 13vw;
+  height: 3.4vw;
+}
+.QuizResult_Buy_Button {
+  width: 8vw;
+  height: 3.4vw;
 }
 .quizResultProductsContainer {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(15rem, max-content));
+  grid-template-columns: repeat(auto-fit, minmax(15vw, max-content));
   justify-content: space-between;
   flex-wrap: wrap;
   gap: 5%;
@@ -70,11 +99,14 @@ body {
 .quizResultProductsContainer li {
   list-style: none;
 }
+.quizProduct {
+  font-size: 1.5vw;
+}
 .quizProduct img {
-  width: 15rem;
+  width: 19vw;
   object-fit: contain;
 }
 .quizProductRating img {
-  width: 1rem;
+  width: 1.2vw;
   margin-right: 0.1rem;
 }

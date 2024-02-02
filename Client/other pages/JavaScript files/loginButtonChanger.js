@@ -6,7 +6,7 @@ document.addEventListener("DOMContentLoaded", () => {
   fetch("/isUserLogedIn")
     .then((response) => response.json())
     .then((data) => {
-      login_button.style.backgroundColor = "cyan";
+      // login_button.style.backgroundColor = "cyan";
       if (data.isAuthenticated) {
         // User is authenticated, show logout button
         login_button.onclick = "";

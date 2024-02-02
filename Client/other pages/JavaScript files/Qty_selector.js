@@ -67,6 +67,7 @@ function weightSelector(div, productDetails) {
     originalPrice = productDetails[indexOfSize].price;
     updateQty();
     updateTotalPrice();
+
     updateHref();
     update_product();
   } else {

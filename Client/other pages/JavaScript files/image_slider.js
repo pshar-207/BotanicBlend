@@ -50,4 +50,4 @@ updateIndicators();
 const startInterval = () => {
   intervalId = setInterval(goNext, 5000);
 };
-startInterval();
+// startInterval();

@@ -4,10 +4,26 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
-    <link
+    <!-- <link
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
+    /> -->
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+
+    <link
+      href="https://fonts.googleapis.com/css2?family=Quicksand&display=swap"
+      rel="stylesheet"
     />
+
+    <link
+      href="https://fonts.googleapis.com/css2?family=Dancing+Script&family=Quicksand&display=swap"
+      rel="stylesheet"
+    />
+    <!-- Google Fonts -->
+
+    <link rel="stylesheet" href="CSS files/googleFont.css" />
     <link rel="stylesheet" href="CSS files/account.css" />
     <link rel="stylesheet" href="CSS files/cart.css" />
     <link rel="stylesheet" href="CSS files/loginForm.css" />
@@ -80,6 +96,15 @@
             <h2>Skin Type</h2>
             <span id="user_skinType">We'll tailor a ritual just for you</span>
             <div class="edit"><span class="edit_pop5">ADD</span></div>
+          </div>
+          <div id="logoutButton">
+            <input
+              type="button"
+              value="LOG OUT"
+              onmouseover="changeColor(this)"
+              onmouseout="restoreOriginalColors(this)"
+              onclick="logoutUser()"
+            />
           </div>
         </div>
 
@@ -190,7 +215,7 @@
             <form action="" method="post" id="skinTypeEditForm">
               <div
                 class="q2_dry"
-                onmouseover="changeColors(this)"
+                onmouseover="changeColor(this)"
                 onclick="changeColorsClick(this)"
                 onmouseout="restoreOriginalColors(this)"
               >
@@ -198,7 +223,7 @@
               </div>
               <div
                 class="q2_oily"
-                onmouseover="changeColors(this)"
+                onmouseover="changeColor(this)"
                 onclick="changeColorsClick(this)"
                 onmouseout="restoreOriginalColors(this)"
               >
@@ -206,7 +231,7 @@
               </div>
               <div
                 class="q2_normal"
-                onmouseover="changeColors(this)"
+                onmouseover="changeColor(this)"
                 onclick="changeColorsClick(this)"
                 onmouseout="restoreOriginalColors(this)"
               >
@@ -225,27 +250,7 @@
         <div class="my_orders_container">
           <div class="my_orders_heading">My Orders</div>
           <hr />
-          <ul class="myOrderProducts">
-            <li>
-              <div class="my_product_orders">
-                <div class="produce_img">
-                  <img
-                    src="Photos/products/Bathing/ALOE VERA SHAMPOO.jpg"
-                    alt=""
-                  />
-                </div>
-                <div class="product_name_rating">
-                  <div class="product_name">Alowera</div>
-                  <div class="product_rating">*****</div>
-                </div>
-                <div class="product_weight_qty">
-                  <div class="weight">Weight : 250ml</div>
-                  <div class="qty">Quantity : 2</div>
-                </div>
-                <div class="price">11000</div>
-              </div>
-            </li>
-          </ul>
+          <ul class="myOrderProducts"></ul>
         </div>
         <!-- My Orders -->
 
@@ -253,37 +258,10 @@
         <div class="my_cart_container">
           <div class="my_cart_heading">Cart</div>
           <hr />
-          <ul class="myCartProducts">
-            <li>
-              <div class="cart_product_section">
-                <div class="cart_product_image">
-                  <a href="#">
-                    <img
-                      src="Photos/products/Bathing/ALOE VERA SHAMPOO.jpg"
-                      alt=""
-                  /></a>
-                </div>
-                <div class="cart_product_name">Products Name</div>
-                <div class="cart_product_rating">rating</div>
-                <div class="cart_product_price">price</div>
-                <a href=""
-                  ><div
-                    class="cart_product_buttons"
-                    onmouseover="changeColors(this)"
-                  >
-                    Buy
-                  </div></a
-                >
-              </div>
-            </li>
-          </ul>
+          <ul class="myCartProducts"></ul>
         </div>
         <!-- Cart -->
       </div>
-    </div>
-
-    <div id="logoutButton">
-      <input type="button" value="LOG OUT" onclick="logoutUser()" />
     </div>
 
     <!-- Footer -->
@@ -291,8 +269,15 @@
       <div id="footer-placeholder"></div>
     </div>
     <!-- Footer -->
+
+    <script src="JavaScript files/account_option_selector.js"></script>
+    <script src="JavaScript files/NavbarFooterLoader.js"></script>
+    <script src="JavaScript files/loginButtonChanger.js"></script>
+    <script src="JavaScript files/cart.js"></script>
+    <script src="JavaScript files/addToCart.js"></script>
+
+    <!-- pop up hide -->
     <script>
-      // Function to hide the specified pop-up div
       function hidePopup(popId) {
         var popup = document.querySelector("." + popId);
         if (popup) {
@@ -377,24 +362,6 @@
       });
     </script>
 
-    <!-- <script src="JavaScript files/loginFormShow.js"></script> -->
-    <script>
-      // Function to handle user logout
-      //document.addEventListener("DOMContentLoaded", () => {
-      function logoutUser() {
-        fetch("/logout")
-          .then((response) => response.json())
-          .then((data) => {
-            if (data.message === "Logged out successfully") {
-              alert("You have been logged out!");
-              window.location.href = "/"; // Refresh the page or redirect as needed
-            } else {
-              alert("Error logging out");
-            }
-          })
-          .catch((error) => console.error("Error logging out:", error));
-      }
-    </script>
     <script>
       document.addEventListener("DOMContentLoaded", () => {
         // Fetch user details
@@ -420,6 +387,7 @@
             formatBirthday(userDetails.birthday) ||
               "We'd love to celebrate you with a little gift!"
           );
+
           updateDetail(
             "user_skinType",
             userDetails.skin_type || "We'll tailor a ritual just for you"
@@ -559,7 +527,7 @@
         // Get the date of birth value from the input field
         const dobInput = document.getElementById("dobInput");
         const newDob = dobInput.value;
-
+        console.log(newDob);
         // Prepare the request options
         const options = {
           method: "POST",
@@ -574,12 +542,12 @@
           .then((response) => response.json())
           .then((data) => {
             if (data.success) {
-              // Optionally update the UI or show a success message
-              console.log("DOB updated successfully!");
+              alert("Date of birth added!");
+              window.location.reload();
             } else {
               // Handle the case where the update was not successful
               if (data.message === "Date of birth already added") {
-                alert("Date of birth has already been added!");
+                alert("Date of birth has already been added.");
               } else {
                 console.error("Failed to update DOB.");
               }
@@ -591,22 +559,17 @@
       }
     </script>
 
-    <!-- color chanege -->
+    <!-- skinType update -->
     <script>
-      // Include your existing JavaScript code here
-
       let selectedSkinType = null;
       var clickedDiv = null;
-      var originalBackgroundColor = element.style.backgroundColor;
-      var originalBorder = element.style.border;
-      function changeColors(element) {
+      // var originalBackgroundColor = element.style.backgroundColor;
+      // var originalBorder = element.style.border;
+      function changeColor(element) {
         // Apply hover effect only if the div is not clicked
         if (element !== clickedDiv) {
-          // Save the original colors
-
-          // Change colors on hover
           element.style.backgroundColor = "#fcc6e2"; // Change this to the desired background color
-          element.style.border = "1px solid white";
+          element.style.border = "1px solid black";
         }
       }
 
@@ -652,11 +615,9 @@
           .then((response) => response.json())
           .then((data) => {
             if (data.success) {
-              // Optionally update the UI or show a success message
-              console.log("Skin type updated successfully!");
               alert("Skin-Type Updated!");
+              window.location.reload();
             } else {
-              // Handle the case where the update was not successful
               console.error("Failed to update skin type.");
             }
           })
@@ -668,32 +629,8 @@
         hidePopup("pop5");
       }
     </script>
-    <script src="JavaScript files/button_color_change.js"></script>
-    <script src="JavaScript files/account_option_selector.js"></script>
-    <script>
-      // Add these lines to handle logout
-      document.addEventListener("DOMContentLoaded", () => {
-        const logoutButton = document.getElementById("logoutButton");
-        logoutButton.removeEventListener("click", existingClickListener);
-        logoutButton.addEventListener("click", () => {
-          fetch("/logout")
-            .then((response) => response.json())
-            .then((data) => {
-              if (data.message === "Logged out successfully") {
-                alert("You have been logged out!");
-                window.location.href = "/";
-              }
-            })
-            .catch((error) => console.error("Error logging out:", error));
-        });
-      });
-    </script>
-    <script src="JavaScript files/header_footer_loader.js"></script>
-    <script src="JavaScript files/cart.js"></script>
-    <script src="JavaScript files/Load_logo_img.js"></script>
-    <script src="JavaScript files/shopDropdownShow.js"></script>
-    <script src="JavaScript files/link_changer.js"></script>
-    <script src="JavaScript files/addToCart.js"></script>
+
+    <!-- order and cart products -->
     <script>
       function getAddToCartForMyCartAccount() {
         fetch("/GetAddToCartProducts", {
@@ -711,12 +648,25 @@
               const cart = data.row;
 
               cart.forEach((cart_product) => {
-                console.log(cart_product.product_name);
+                var buyProduct = [];
+                var buy_product = {
+                  img: cart_product.img_url.replace("other pages/", ""),
+                  name: cart_product.product_name,
+                  price: parseInt(cart_product.price, 10),
+                  quantity: 1,
+                  rating: cart_product.rating,
+                  weight: cart_product.size,
+                };
+                buyProduct.push(buy_product);
                 const listItem = document.createElement("li");
                 listItem.innerHTML = `
                   <div class="cart_product_section">
                         <div class="cart_product_image">
-                          <a href="#">
+                          <a href="Product_Page.html?productName=${
+                            cart_product.product_name
+                          }&price=${cart_product.price}&img=${
+                  cart_product.img_url
+                }&rating=${cart_product.rating}">
                             <img
                               class="CartProductImagAccounre"
                               src="${cart_product.img_url}"
@@ -729,13 +679,16 @@
                         <div class="cart_product_rating">${generateStarsForAccount(
                           cart_product.rating
                         )}</div>
-                        <div class="cart_product_price">${
+                        <div class="cart_product_price">Price : ${parseInt(
                           cart_product.price
-                        }</div>
-                        <a href=""
+                        )}</div>
+                        <a href="paymentPage.html?product=${encodeURIComponent(
+                          JSON.stringify(buyProduct)
+                        )}"
                           ><div
                             class="cart_product_buttons"
-                            onmouseover="changeColors(this)"
+                            onmouseover="changeColor(this)"            
+                            onmouseout="restoreOriginalColors(this)"
                           >
                             Buy
                           </div></a
@@ -745,7 +698,6 @@
                 CartList.appendChild(listItem);
               });
               var currentPath = window.location.pathname;
-              console.log(currentPath);
               if (currentPath.includes("other%20pages")) {
                 const images = document.querySelectorAll(
                   ".CartProductImagAccounre"
@@ -779,7 +731,6 @@
               const Orders = data.row;
 
               Orders.forEach((MyOrders) => {
-                console.log(MyOrders.product_name);
                 const listItem = document.createElement("li");
                 listItem.innerHTML = `
                  <div class="my_product_orders">
@@ -791,7 +742,9 @@
                 </div>
                 <div class="product_name_rating">
                   <div class="product_name">${MyOrders.product_Name}</div>
-                  <div class="product_rating">${MyOrders.rating}</div>
+                  <div class="product_rating">${generateStarsForAccount(
+                    MyOrders.rating
+                  )}</div>
                 </div>
                 <div class="product_weight_qty">
                   <div class="weight">Weight : ${MyOrders.size}</div>
@@ -810,14 +763,27 @@
       }
       getPurchaseForMyOrdersAccount();
       function generateStarsForAccount(rating) {
-        const maxStars = 5; // Set the maximum number of stars
-
-        // Create an array of active star images based on the rating
         const starHtml = Array.from({ length: rating }, () => {
           return `<img class="reviesStarsAccount" src="Photos/Stars/active-star.png" alt="" />`;
         });
-
-        return starHtml.join(""); // Join the array of active star images into a string
+        return starHtml.join("");
+      }
+    </script>
+    <!-- logout  -->
+    <script>
+      // Function to handle user logout
+      function logoutUser() {
+        fetch("/logout")
+          .then((response) => response.json())
+          .then((data) => {
+            if (data.message === "Logged out successfully") {
+              alert("You have been logged out!");
+              window.location.href = "/"; // Refresh the page or redirect as needed
+            } else {
+              alert("Error logging out");
+            }
+          })
+          .catch((error) => console.error("Error logging out:", error));
       }
     </script>
   </body>

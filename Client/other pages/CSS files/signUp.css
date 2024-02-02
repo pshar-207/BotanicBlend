@@ -1,8 +1,19 @@
+.header_containor {
+  position: sticky;
+  top: 0;
+  width: 100%;
+  z-index: 2;
+  background-color: white;
+}
 .heading {
   text-align: center;
-  font-size: 2rem;
+  font-size: 2.2vw;
   font-style: italic;
   padding: 3%;
+}
+body {
+  background-color: whitesmoke;
+  font-family: var(--heading);
 }
 .singUp {
   display: flex;
@@ -17,24 +28,26 @@ form input[type="password"] {
   box-sizing: border-box;
   width: 100%;
   border: 1px solid black;
-  background-color: white;
+  background-color: whitesmoke;
   border-radius: 0;
-  padding: 1rem;
-  font-size: 1rem;
+  padding: 1vw;
+  font-size: 1.2vw;
+  font-family: var(--heading);
   margin-bottom: 2%;
 }
-form input[type="button"] {
-  box-sizing: border-box;
+
+form input[type="submit"] {
+  background-color: whitesmoke;
   width: 100%;
-  border: 1px solid black;
-  background-color: white;
-  border-radius: 0;
-  padding: 1rem;
-  font-size: 1rem;
-}
-form input[type="button"]:hover {
-  background-color: #0b1354;
-  color: white;
+  color: black;
   border: none;
-  border: 1px solid white;
+  padding: 1vw;
+  font-size: 1.2vw;
+  border: 1px solid black;
+}
+form input[type="submit"]:hover {
+  background-color: #fcc6e2;
+  color: black;
+  border: none;
+  border: 1px solid #fcc6e2;
 }

@@ -1,10 +1,7 @@
-// Function to handle user login
 function loginUser() {
-  // Get user credentials from the login form
   const email = document.getElementById("email").value;
   const password = document.getElementById("password").value;
 
-  // Make a fetch request to the server-side login endpoint
   fetch("/login", {
     method: "POST",
     headers: {
@@ -15,11 +12,10 @@ function loginUser() {
     .then((response) => response.json())
     .then((data) => {
       if (data.message === "Login successful") {
-        alert("Login successful!");
-        // Redirect or reload as needed
-        window.location.reload(); // Refresh the page or redirect as needed
+        // alert("Login successful!");
+        window.location.reload();
       } else {
-        alert(data.message); // Display error message
+        alert(data.message);
       }
     })
     .catch((error) => console.error("Error logging in:", error));

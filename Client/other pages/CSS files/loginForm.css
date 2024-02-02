@@ -10,23 +10,27 @@
   transition: top 0.5s ease-in-out;
   overflow-y: auto;
   padding-bottom: 5%;
-  box-shadow: 10px 10px 10px rgba(0, 0, 0, 0.3);
+  box-shadow: 6px 4px 18px 1px rgba(0, 0, 0, 0.3);
 }
 .close_btn {
   text-align: right;
   padding: 1rem;
   cursor: pointer;
+  font-family: var(--heading);
 }
 .logo_image,
 .logo_name {
   display: flex;
   justify-content: center;
-  font-size: 2rem;
+  font-size: 2.5rem;
+  font-family: var(--logo);
   padding: 0 0 0.5rem 0;
 }
 .logo_image img {
   width: 5rem;
   object-fit: cover;
+  border-radius: 50%;
+  box-shadow: 5px 5px 20px 0px rgba(0, 0, 0, 0.3);
 }
 .form_container {
   display: flex;
@@ -40,6 +44,7 @@
   padding: 0.5rem;
   background-color: white;
   border: 1px solid black;
+  font-family: var(--heading);
 }
 .form_container input[type="password"] {
   border-radius: 0;
@@ -47,6 +52,7 @@
   padding: 0.5rem;
   background-color: white;
   border: 1px solid black;
+  font-family: var(--heading);
 }
 
 .form_container input[type="button"] {
@@ -54,11 +60,16 @@
   height: 3rem;
   border: 1px solid black;
   background-color: white;
+  font-size: 1.2rem;
+  font-family: var(--heading);
 }
 .form_container input[type="button"]:hover {
   background-color: #0b1354;
   color: white;
   border: none;
+}
+.form_container a {
+  font-family: var(--heading);
 }
 .sign_up {
   width: 100%;
@@ -67,6 +78,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
+  font-family: var(--heading);
 }
 .sign_up a {
   margin-left: 10%;

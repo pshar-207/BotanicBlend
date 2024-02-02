@@ -3,11 +3,17 @@
   margin: 0;
   box-sizing: border-box;
 }
-body {
-  background-color: rgb(255, 255, 255);
-  overflow-x: hidden;
+.header_containor {
+  position: sticky;
+  top: 0;
+  width: 100%;
+  z-index: 2;
 }
-
+body {
+  background-color: whitesmoke;
+  overflow-x: hidden;
+  font-family: var(--heading);
+}
 .navbar-container {
   background-color: white;
 }
@@ -37,44 +43,40 @@ body {
   color: white;
   z-index: 1;
 }
+.headingText h1 {
+  font-size: 2.8vw;
+  font-weight: 500;
+}
+.headingText p {
+  font-size: 1.3vw;
+}
 .headingText a {
   text-decoration: none;
   color: white;
 }
-/* sortBy and count */
-.soryBy_Count {
-  display: flex;
-  justify-content: space-between;
-  padding: 2% 5% 2% 5%;
-  align-items: center;
-}
-.sortBy {
-  border: 1px solid black;
-  padding: 0.5%;
-}
-/* sortBy and count */
 
 /* Product */
 .ProductsListCotainer {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(15rem, max-content));
+  grid-template-columns: repeat(auto-fit, minmax(18vw, max-content));
   justify-content: space-between;
-  flex-wrap: wrap;
-  gap: 3%;
-  padding-left: 0;
-  padding: 0 5% 0 5%;
-  margin-bottom: 30%;
+  gap: 1vw;
+  padding: 5%;
 }
 .ProductsListCotainer li {
   list-style: none;
   margin-bottom: 5%;
   /* border-bottom: 0.1rem solid black; */
 }
+
+.product_container {
+  font-size: 1.2vw;
+}
 .product_container a {
   text-decoration: none;
 }
 .product_image {
-  width: 15rem;
+  width: 18vw;
 }
 .product_image img {
   width: 100%;
@@ -86,7 +88,7 @@ body {
 .product_price {
   display: flex;
   justify-content: space-between;
-  width: 15rem;
+  width: 18vw;
 }
 .product_buttons,
 .add_to_cart {
@@ -101,13 +103,18 @@ body {
   border-radius: 0.2rem;
 }
 .product_buttons {
-  padding: 3% 0 3% 0;
+  padding: 1vw;
   transition: background-color 0.5s, color 0.5s;
-  width: 15rem;
+  width: 18vw;
+  background-color: whitesmoke;
 }
 .add_to_cart {
   padding: 1% 5% 1% 5%;
   font-size: 0.8rem;
+  cursor: pointer;
+}
+.icon i {
+  font-size: 1.2vw;
 }
 .product-container {
   /* cursor: pointer; */
@@ -131,8 +138,7 @@ body {
 }
 
 .MultiplePageReviesStars {
-  width: 1rem;
-  height: 1rem;
+  width: 1.2vw;
   object-fit: contain;
   margin: 0;
 }
