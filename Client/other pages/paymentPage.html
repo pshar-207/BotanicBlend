@@ -42,7 +42,12 @@
                 <a href="#" onclick="toggleLoginForm()">Log In</a>
               </div>
             </div>
-            <input type="email" placeholder="Email" id="purchaseUserEmail" />
+            <input
+              type="email"
+              placeholder="Email"
+              id="purchaseUserEmail"
+              required
+            />
             <input type="checkbox" /><span>Email me with news and offers</span>
           </div>
           <div class="deviveryDetails_container">
@@ -330,6 +335,7 @@
               if (data.message === "Purchase successful") {
                 console.log("Purchase successful");
                 alert("Purchase successful");
+                window.location.href = "/";
               }
             })
             .catch((error) => {

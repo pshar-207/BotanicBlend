@@ -3,7 +3,7 @@ function changeColors(element) {
   var originalBackgroundColor = element.style.backgroundColor;
   // Change colors on hover
   element.style.backgroundColor = "#fcc6e2";
-  element.style.border = "0.1rem solid #fcc6e2";
+  element.style.border = "0.1rem solid black";
   element.style.color = "black";
 
   // Add an event listener for mouseout to restore the original colors

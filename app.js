@@ -522,12 +522,13 @@ app.get("/productDetails", async (req, res) => {
 // Endpoint to submit a review
 app.post("/submitReview", async (req, res) => {
   try {
-    const { rating, title, body, product_Name } = req.body;
+    const { rating, title, body, productName } = req.body;
     const userId = req.session.userId;
     const productIdResult = await pool.query(
       "SELECT id FROM products WHERE name = ?",
-      [product_Name]
+      [productName]
     );
+
     const productId = productIdResult[0][0].id;
 
     // Insert the review into the database
@@ -927,7 +928,7 @@ app.get("/getUserPurchaseProducts", async (req, res) => {
     const userId = req.session.userId;
     let rows = [];
     [rows] = await pool.query(
-      "SELECT pp.produc_img,pp.product_Name,pp.quantity,pp.size,pp.price,p.rating FROM purchase_products pp JOIN products p ON pp.product_Name = p.name WHERE pp.user_id = ?",
+      "SELECT pp.produc_img,pp.product_Name,pp.quantity,pp.size,pp.price,p.rating,pu.purchase_date FROM purchase_products pp JOIN products p ON pp.product_Name = p.name JOIN purchases pu ON pp.purchase_id = pu.purchase_id WHERE pp.user_id = ?",
       [userId]
     );
 

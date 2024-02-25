@@ -732,6 +732,19 @@
 
               Orders.forEach((MyOrders) => {
                 const listItem = document.createElement("li");
+
+                var purchase_Date = MyOrders.purchase_date;
+                var purchaseDate = new Date(purchase_Date);
+                purchaseDate.setDate(purchaseDate.getDate() + 5);
+                // var formattedDate = purchaseDate.toISOString().split("T")[0];
+                var day = ("0" + purchaseDate.getDate()).slice(-2); // Get day with leading zero if necessary
+                var month = ("0" + (purchaseDate.getMonth() + 1)).slice(-2); // Get month with leading zero if necessary
+                var year = purchaseDate.getFullYear();
+
+                var formattedDate = day + "-" + month + "-" + year;
+                console.log(MyOrders.purchase_date);
+                console.log(formattedDate);
+
                 listItem.innerHTML = `
                  <div class="my_product_orders">
                 <div class="produce_img">
@@ -750,7 +763,10 @@
                   <div class="weight">Weight : ${MyOrders.size}</div>
                   <div class="qty">Quantity : ${MyOrders.quantity}</div>
                 </div>
-                <div class="price">${MyOrders.price}</div>
+                <div class="price_date">
+                  <div class="price">Price : ₹${MyOrders.price}</div>
+                  <dive class="Purchase_date">Delivery Date : ${formattedDate}</div>
+                </div>
               </div>
                 `;
                 OrderList.appendChild(listItem);

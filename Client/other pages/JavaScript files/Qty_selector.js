@@ -62,14 +62,12 @@ function weightSelector(div, productDetails) {
         priceDiv.style.display = "none";
       }
     }
-    // quantity = 1;
     newPrice = document.getElementById(`price${indexOfSize + 1}`);
     originalPrice = productDetails[indexOfSize].price;
     updateQty();
     updateTotalPrice();
-
-    updateHref();
     update_product();
+    updateHref();
   } else {
     console.log(`${selected_Weight} not found in productDetails`);
   }
@@ -95,8 +93,6 @@ function decreaseQuantity() {
 function updateQtyAndPrice() {
   updateQty();
   updateTotalPrice();
-  // weightSelector();
-
   update_product();
   updateHref();
 }
@@ -130,48 +126,19 @@ var product = {
   weight: selected_Weight,
 };
 products.push(product);
-console.log(products);
 function update_product() {
   product.weight = selected_Weight;
   product.quantity = quantity;
   product.price = newPrice.innerText;
-  // console.log(product);
 }
 
-// Href += `?ProductName=${encodeURIComponent(
-//   product_Name
-// )}&img_url=${product_imgUrl}&rating=${product_rating}&QTY=${quantity}&selectedWeight=${selected_Weight}&price=${parseFloat(
-//   product_Price
-// )}`;
 Href += `?product=${encodeURIComponent(JSON.stringify(products))}`;
-console.log(Href);
+
 buyButton.setAttribute("href", Href);
-// console.log(selectedWeight);
 function updateHref() {
-  // // Get the current QTY value from the Href
-  // var currentQty = urlParams.get("QTY");
-  // // Replace the current QTY value with the new quantity
-  // Href = Href.replace(/(QTY=)[^&]*/, `$1${quantity}`);
-  // // Add or update the selectedWeight parameter in the Href
-  // Href = Href.replace(
-  //   /(selectedWeight=)[^&]*/,
-  //   `$1${encodeURIComponent(selected_Weight)}`
-  // );
-  // Href = Href.replace(
-  //   /(price=)[^&]*/,
-  //   `$1${encodeURIComponent(newPrice.innerText)}`
-  // );
-  // console.log(newPrice.innerText);
-  // // console.log(originalPrice);
-  // // console.log(newPrice.innerText);
-  // console.log(Href);
-  // buyButton.setAttribute("href", Href);
-  console.log(products);
   Href = Href.replace(
     /(product=)[^&]*/,
     `$1${encodeURIComponent(JSON.stringify(products))}`
   );
-  console.log(Href);
-  console.log(products);
   buyButton.setAttribute("href", Href);
 }

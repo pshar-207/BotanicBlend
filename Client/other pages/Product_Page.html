@@ -18,14 +18,13 @@
       rel="stylesheet"
     />
     <!-- Google Fonts -->
-
+    <link rel="stylesheet" href="CSS files/best_sell.css" />
+    <link rel="stylesheet" href="CSS files/new_arrivals.css" />
     <link rel="stylesheet" href="CSS files/googleFont.css" />
+    <link rel="stylesheet" href="CSS files/Product_Page.css" />
     <link rel="stylesheet" href="CSS files/header.css" />
     <link rel="stylesheet" href="CSS files/cart.css" />
     <link rel="stylesheet" href="CSS files/loginForm.css" />
-    <link rel="stylesheet" href="CSS files/best_sell.css" />
-    <link rel="stylesheet" href="CSS files/new_arrivals.css" />
-    <link rel="stylesheet" href="CSS files/Product_Page.css" />
   </head>
   <body>
     <!-- header -->
@@ -39,10 +38,10 @@
         <div class="product_image">
           <img src="" alt="" />
         </div>
-        <div class="other_images">
+        <!-- <div class="other_images">
           <img class="firdt_img" src="" alt="" />
           <img class="second_img" src="" alt="" />
-        </div>
+        </div> -->
       </div>
       <div class="product_detail">
         <div class="name_assurance_container">
@@ -64,27 +63,26 @@
 
         <div class="product_price_container">
           <div class="price_heading">Price</div>
+          <div class="priceSign">₹</div>
         </div>
 
         <div class="buy_cart_container">
-          <a
-            class="buy_button"
-            href="paymentPage.html"
-            onmouseover="changeColors(this)"
-            onmouseout="restoreOriginalColors(this)"
-          >
-            BUY
-          </a>
-          <div
-            class="add_to_cart_button"
-            onmouseover="changeColors(this)"
-            onmouseout="restoreOriginalColors(this)"
-          >
-            ADD TO CART
-          </div>
+          <a class="buy_button" href="paymentPage.html"> BUY </a>
+          <div class="add_to_cart_button">ADD TO CART</div>
         </div>
       </div>
     </div>
+
+    <!-- Best Sellers Dynamically -->
+    <div class="best_sell_container">
+      <div class="best_sell_heading">
+        <h1>Our Best Selling Products</h1>
+      </div>
+      <div class="best_sell_products">
+        <ul id="bestSellerList"></ul>
+      </div>
+    </div>
+    <!-- Best Sellers Dynamically -->
 
     <div class="description_review_policy_container">
       <div class="desc_shipping_review">
@@ -104,13 +102,7 @@
         >
           Shipping & Returns
         </div>
-        <div
-          class="reviews"
-          onmouseover="changeColors(this)"
-          onclick="scrollToReview()"
-        >
-          Reviews
-        </div>
+        <div class="reviews" onclick="scrollToReview()">Reviews</div>
       </div>
       <div class="product_description_container">
         <div class="product_description">
@@ -121,72 +113,20 @@
         </div>
         <div class="keyIngredientsContainer">
           <div class="keyIngredients">Key Ingredients :</div>
-          <ul class="keyIngredientsList">
-            <li>
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolore
-              qui ab consectetur odit error quas fugit esse accusantium minus
-              ullam. Voluptatem delectus molestiae porro ut est minus quisquam,
-              magnam nihil.
-            </li>
-            <li>
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolore
-              qui ab consectetur odit error quas fugit esse accusantium minus
-              ullam. Voluptatem delectus molestiae porro ut est minus quisquam,
-              magnam nihil.
-            </li>
-          </ul>
+          <div class="keyIngredientsList"></div>
         </div>
         <div class="featuresContainer">
           <div class="features">Features :</div>
-          <ul class="featuresList">
-            <li>
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolore
-              qui ab consectetur odit error quas fugit esse accusantium minus
-              ullam. Voluptatem delectus molestiae porro ut est minus quisquam,
-              magnam nihil.
-            </li>
-            <li>
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolore
-              qui ab consectetur odit error quas fugit esse accusantium minus
-              ullam. Voluptatem delectus molestiae porro ut est minus quisquam,
-              magnam nihil.
-            </li>
-          </ul>
+          <div class="featuresList"></div>
         </div>
 
         <div class="howToUseContainer">
           <div class="howToUse">How To Use :</div>
-          <ul class="howToUseList">
-            <li>
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolore
-              qui ab consectetur odit error quas fugit esse accusantium minus
-              ullam. Voluptatem delectus molestiae porro ut est minus quisquam,
-              magnam nihil.
-            </li>
-            <li>
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolore
-              qui ab consectetur odit error quas fugit esse accusantium minus
-              ullam. Voluptatem delectus molestiae porro ut est minus quisquam,
-              magnam nihil.
-            </li>
-          </ul>
+          <div class="howToUseList"></div>
         </div>
         <div class="cautionContainer">
           <div class="caution">Caution :</div>
-          <ul class="cautionList">
-            <li>
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolore
-              qui ab consectetur odit error quas fugit esse accusantium minus
-              ullam. Voluptatem delectus molestiae porro ut est minus quisquam,
-              magnam nihil.
-            </li>
-            <li>
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolore
-              qui ab consectetur odit error quas fugit esse accusantium minus
-              ullam. Voluptatem delectus molestiae porro ut est minus quisquam,
-              magnam nihil.
-            </li>
-          </ul>
+          <div class="cautionList"></div>
         </div>
       </div>
       <div class="shipping_Returns_container">
@@ -246,12 +186,7 @@
       <div class="customer_reviews_container">
         <div class="customerReviewHeading">
           <div class="heading">Customer Reviews</div>
-          <span
-            class="writeReview"
-            onmouseover="changeColors(this)"
-            onmouseout="restoreOriginalColors(this)"
-            >Write a review</span
-          >
+          <span class="writeReview">Write a review</span>
         </div>
         <div class="review_write_container">
           <div class="review_write_container_heading">Write a review</div>
@@ -350,8 +285,6 @@
                 type="submit"
                 value="Submit Review"
                 id="ReviewSubmitButton"
-                onmouseover="changeColors(this)"
-                onmouseout="restoreOriginalColors(this)"
               />
             </div>
           </form>
@@ -365,7 +298,7 @@
                 <span>on</span>
                 <div class="date">11/11/2024</div>
               </div>
-              <div class="rating"></div>
+              <div class="customerRating"></div>
               <div class="review_title">xyz</div>
               <div class="review_body">
                 Lorem ipsum dolor sit, amet consectetur adipisicing elit.
@@ -379,109 +312,41 @@
       </div>
     </div>
 
-    <!-- Best Sellers Dynamically -->
-    <div class="best_sell_container">
-      <div class="best_sell_heading">
-        <h1>Our Best Selling Products</h1>
-      </div>
-      <div class="best_sell_products">
-        <ul id="bestSellerList"></ul>
-      </div>
-    </div>
-    <!-- Best Sellers Dynamically -->
-
     <!-- Footer -->
     <div class="footer_container">
       <div id="footer-placeholder"></div>
     </div>
     <!-- Footer -->
-    <script src="JavaScript files/header_footer_loader.js"></script>
+    <script src="JavaScript files/NavbarFooterLoader.js"></script>
+    <script src="JavaScript files/loginButtonChanger.js"></script>
     <script src="JavaScript files/cart.js"></script>
-    <script src="JavaScript files/search.js"></script>
     <script src="JavaScript files/loginFormShow.js"></script>
+    <script src="JavaScript files/singIn.js"></script>
+    <script src="JavaScript files/addToCart.js"></script>
     <script src="JavaScript files/button_color_change.js"></script>
     <script src="JavaScript files/cart_icon_change.js"></script>
 
     <script src="JavaScript files/productPage_descriptionOrShipping_hide_show.js"></script>
-    <script src="JavaScript files/button_color_change.js"></script>
     <script src="JavaScript files/productPage_reviewScroll.js"></script>
     <script src="JavaScript files/productPage_reviewWrite_HideShow.js"></script>
-    <script src="JavaScript files/shopDropdownShow.js"></script>
-    <script src="JavaScript files/Load_logo_img.js"></script>
-    <script src="JavaScript files/productPageWeightSelector.js"></script>
 
-    <!-- Star JavaScript -->
-    <script>
-      let selectedRating = 0;
-
-      function updateStars(rating) {
-        if (selectedRating === 0) {
-          const stars = document.querySelectorAll(".star");
-
-          for (let i = 0; i < stars.length; i++) {
-            if (i < rating) {
-              stars[i].src = "Photos/Stars/active-star.png";
-              // console.log(`star activated${i}`);
-              // console.log(stars[i]);
-            } else {
-              stars[i].src = "Photos/Stars/unactive-star.png";
-              // console.log(stars[i]);
-            }
-          }
-        }
-      }
-
-      function resetStars() {
-        if (selectedRating === 0) {
-          const stars = document.querySelectorAll(".star");
-
-          stars.forEach((star) => {
-            star.src = "Photos/Stars/unactive-star.png";
-          });
-        }
-      }
-
-      function setRating(rating) {
-        selectedRating = rating;
-
-        const stars = document.querySelectorAll(".star");
-
-        stars.forEach((star, index) => {
-          if (index < rating) {
-            star.src = "Photos/Stars/active-star.png";
-          } else {
-            star.src = "Photos/Stars/unactive-star.png";
-          }
-        });
-      }
-    </script>
+    <script src="JavaScript files/ReviewStar.js"></script>
 
     <!-- products fetching -->
     <script>
-      // var originalPrice;
-      // var newPrice;
-
       document.addEventListener("DOMContentLoaded", function () {
         const queryString = window.location.search;
         // Parse the query string into a URLSearchParams object
         const urlParams = new URLSearchParams(queryString);
         // Access individual parameters using their names
         const product_Name = urlParams.get("productName");
-        // console.log(product_Name);
 
         fetch(`/productDetails?productName=${product_Name}`)
           .then((response) => response.json())
           .then((productDetails) => {
             // Update HTML elements with product details
-
             document.querySelector(".product_image img").src =
               productDetails[0].image_url.replace("other pages/", "");
-
-            document.querySelector(".firdt_img").src =
-              productDetails[0].image_url.replace("other pages/", "");
-
-            document.querySelector(".second_img").src =
-              productDetails[0].another_img_url.replace("other pages/", "");
 
             document.querySelector(".product_name").innerText =
               productDetails[0].name;
@@ -492,14 +357,12 @@
               starImage.src = "Photos/Stars/active-star.png";
               starImage.alt = "Product_Star";
               starImage.className = "Product_star";
-              starImage.id = "Product_star" + (i + 1); // IDs should be unique, so append i+1
-
+              starImage.id = "Product_star" + (i + 1);
               ratingContainer.appendChild(starImage);
             }
 
             document.querySelector(".product_description").innerText =
               productDetails[0].description;
-
             const weightContainer = document.querySelector(".weight_container");
             for (let i = 0; i < productDetails.length; i++) {
               const weightSpan = document.createElement("span");
@@ -528,7 +391,7 @@
             );
             for (let i = 0; i < productDetails.length; i++) {
               const priceDiv = document.createElement("div");
-              priceDiv.innerText = productDetails[i].price;
+              priceDiv.innerHTML = productDetails[i].price;
               priceDiv.setAttribute("class", "productPrice");
               priceDiv.setAttribute("id", `price${i + 1}`);
               priceContainer.appendChild(priceDiv);
@@ -547,13 +410,6 @@
               function () {
                 addToCart(product_Name);
               };
-            // var buyButton = document.querySelector(".buy_button");
-            // console.log(`buy button link ${buyButton.getAttribute("href")}`);
-            // var buyButtonHref = buyButton.getAttribute("href");
-            // buyButtonHref =
-            //   buyButtonHref + `&ProductName=${productDetails[0].name}`;
-            // console.log(buyButtonHref);
-            // buyButton.setAttribute("href", buyButtonHref);
 
             document.querySelector(".DescriptionProductName").innerText =
               productDetails[0].name;
@@ -570,76 +426,11 @@
             console.error("Error fetching product details:", error)
           );
       });
-      // var quantity = 1;
-      // function weightSelector(div, productDetails) {
-      //   const selectedWeight = div.innerText;
-      //   console.log(selectedWeight);
-
-      //   const indexOfSize = productDetails.findIndex(
-      //     (item) => item.size === selectedWeight
-      //   );
-
-      //   if (indexOfSize !== -1) {
-      //     // Iterate over all price divs and show/hide based on the selected weight
-      //     for (let i = 0; i < productDetails.length; i++) {
-      //       const priceDiv = document.getElementById(`price${i + 1}`);
-
-      //       if (i === indexOfSize) {
-      //         // Show the price div for the selected weight
-      //         priceDiv.style.display = "block";
-      //       } else {
-      //         // Hide other price divs
-      //         priceDiv.style.display = "none";
-      //       }
-      //     }
-      //     // quantity = 1;
-      //     console.log(quantity);
-      //     newPrice = document.getElementById(`price${indexOfSize + 1}`);
-      //     console.log(newPrice);
-      //     originalPrice = productDetails[indexOfSize].price;
-
-      //     updateQty();
-      //     updateTotalPrice();
-      //   } else {
-      //     console.log(`${selectedWeight} not found in productDetails`);
-      //   }
-      // }
-
-      // // JavaScript fro set price according to size
-      // var Qty = document.querySelector(".qty_number");
-
-      // function increaseQuantity() {
-      //   if (quantity < 10) {
-      //     quantity++;
-      //     updateQtyAndPrice();
-      //   }
-      // }
-
-      // function decreaseQuantity() {
-      //   if (quantity > 1) {
-      //     quantity--;
-      //     updateQtyAndPrice();
-      //   }
-      // }
-
-      // function updateQtyAndPrice() {
-      //   updateQty();
-      //   updateTotalPrice();
-      // }
-
-      // function updateQty() {
-      //   Qty.textContent = quantity;
-      // }
-
-      // function updateTotalPrice() {
-      //   totalPrice = originalPrice * quantity;
-      //   newPrice.innerText = totalPrice;
-      // }
     </script>
 
     <script src="JavaScript files/Qty_selector.js"></script>
 
-    <!-- user review -->
+    <!--Best Seller and User Review -->
     <script>
       //BEST SELLERS PRODUCTS
 
@@ -659,20 +450,35 @@
         // Loop through the data and create list items
         data.forEach((product) => {
           const listItem = document.createElement("li");
-
           var modifiedImagePath = product.image_url.replace("other pages/", "");
 
+          var buyProduct = [];
+          var buy_product = {
+            img: modifiedImagePath,
+            name: product.name,
+            price: parseInt(product.price, 10),
+            quantity: 1,
+            rating: product.rating,
+            weight: product.size,
+          };
+
+          buyProduct.push(buy_product);
           listItem.innerHTML = `
                 <div class="best_sell_product_section">
                   <div class="best_sell_product_image">
-                      <a href="#"><img src="${modifiedImagePath}" alt="" /></a>
+                      <a href="Product_Page.html?productName=${
+                        product.name
+                      }&price=${parseInt(product.price, 10)}&img=${
+            product.image_url
+          }&rating=${
+            product.rating
+          }"><img src="${modifiedImagePath}" alt="" /></a>
 
                     </div>
-                    <div class="best_sell_product_name">${product.name}</div>
-                    <div class="best_sell_product_desc">${
-                      product.description
-                    }</div>
-                    <div class="best_sell_product_rating">${generateStars(
+                    <div class="best_sell_product_name">${
+                      product.name
+                    }</div>                    
+                    <div class="best_sell_product_rating">${generateStarsForReviewSection(
                       product.rating
                     )}</div>
                     <div class="best_sell_product_price">
@@ -700,11 +506,13 @@
                         </div>
                     </div>
                     <!-- Buy button -->
-                    <a href=""><div class="new_arrival_product_buttons btn_color"
+                    <a href="paymentPage.html?product=${encodeURIComponent(
+                      JSON.stringify(buyProduct)
+                    )}"><div class="new_arrival_product_buttons btn_color"
                         onmouseover="changeColors(this)">
                         Buy
                     </div></a>
-                </div>
+                </div> 
             `;
 
           // Append the list item to the UL
@@ -713,9 +521,9 @@
       }
 
       // Function to submit a review
-      const queryString = window.location.search;
-      const urlParams = new URLSearchParams(queryString);
-      const product_Name = urlParams.get("productName");
+      const query_String = window.location.search;
+      const url_Params = new URLSearchParams(query_String);
+      const productName = url_Params.get("productName");
 
       // console.log(product_Name);
       function submitReview(event) {
@@ -732,7 +540,7 @@
           .then((data) => {
             if (data.isAuthenticated) {
               // If authenticated, proceed to submit the review
-              const reviewData = { rating, title, body, product_Name };
+              const reviewData = { rating, title, body, productName };
               submitReviewToServer(reviewData);
             } else {
               // If not authenticated, show an alert
@@ -761,7 +569,7 @@
 
               console.log("review submited");
               // alert("Review Submited");
-              updateReviewList(product_Name);
+              updateReviewList(productName);
               // You may also want to update the product rating in the UI
               // (e.g., by refreshing the product details section)
             } else {
@@ -774,8 +582,8 @@
       }
 
       // Function to update the review list from the server
-      function updateReviewList(product_Name) {
-        fetch(`/getReviews?productName=${product_Name}`, {
+      function updateReviewList(productName) {
+        fetch(`/getReviews?productName=${productName}`, {
           method: "GET",
           headers: {
             "Content-Type": "application/json",
@@ -802,7 +610,7 @@
             <span>on</span>
             <div class="date">${formattedDate}</div>
           </div>
-          <div class="rating">${generateStarsForReviewSection(
+          <div class="CustomerRating">${generateStarsForReviewSection(
             review.user_rating
           )}</div>
           <div class="review_title">${review.title}</div>
@@ -838,8 +646,7 @@
         .getElementById("reviewForm")
         .addEventListener("submit", submitReview);
 
-      updateReviewList(product_Name);
+      updateReviewList(productName);
     </script>
-    <script src="JavaScript files/addToCart.js"></script>
   </body>
 </html>
