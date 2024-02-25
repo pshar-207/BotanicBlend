@@ -12,6 +12,7 @@ const { request } = require("http");
 const { cpSync } = require("fs");
 const { and } = require("sequelize");
 const { userInfo } = require("os");
+const { connect } = require("http2");
 
 // Use sessions
 app.use(
@@ -54,14 +55,25 @@ app.post("/signup", async (req, res) => {
     if (req.session.isAuthenticated) {
       return res.status(400).json({ message: "User is already logged in" });
     }
+
     // Get form data from the request body
     const { fname, lname, email, password } = req.body;
+
+    // Check if the email already exists in the database
+    const [existingUser] = await pool.query(
+      "SELECT * FROM users WHERE email = ?",
+      [email]
+    );
+
+    if (existingUser.length > 0) {
+      // If email already exists, return an error message
+      return res.status(400).json({ message: "Email already exists" });
+    }
 
     // Hash the password using a library like bcrypt
     const hashedPassword = await bcrypt.hash(password, 10);
 
     // Prepare the SQL query to insert data into the `users` table
-
     const [result] = await pool.query(
       "INSERT INTO users (first_name, last_name, email, password) VALUES (?, ?, ?, ?)",
       [fname, lname, email, hashedPassword]
@@ -70,11 +82,57 @@ app.post("/signup", async (req, res) => {
     // Set the user as authenticated in the session
     req.session.isAuthenticated = true;
     req.session.userId = result.insertId;
-    //res.json({ message: "User created successfully" }); // Send a success response
+
+    // Send a success response
     res.redirect(`index.html?successMessage=User created successfully`);
   } catch (err) {
     console.error(err);
     res.status(500).send("Error creating user"); // Send an error response
+  }
+});
+
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: true }));
+// password reset
+app.post("/PasswordReset", async (req, res) => {
+  try {
+    // Check if the user is already authenticated
+    if (req.session.isAuthenticated) {
+      return res.status(400).json({ message: "User is already logged in" });
+    }
+
+    // Get form data from the request body
+    const { fname, lname, email, new_password } = req.body;
+    console.log(fname);
+    console.log(lname);
+    console.log(email);
+    console.log(new_password);
+
+    // Check if a user with the provided first name, last name, and email exists in the database
+    const [existingUser] = await pool.query(
+      "SELECT * FROM users WHERE first_name = ? AND last_name = ? AND email = ?",
+      [fname, lname, email]
+    );
+
+    if (existingUser.length === 0) {
+      // If no user found, return an error message
+      return res.status(400).json({ message: "User not found" });
+    }
+
+    // Hash the new password using a library like bcrypt
+    const hashedPassword = await bcrypt.hash(new_password, 10);
+
+    // Update the password for the matched user
+    await pool.query(
+      "UPDATE users SET password = ? WHERE first_name = ? AND last_name = ? AND email = ?",
+      [hashedPassword, fname, lname, email]
+    );
+
+    // Send a success response
+    res.redirect(`index.html?successMessage=Password changed successfully`);
+  } catch (err) {
+    console.error(err);
+    res.status(500).send("Error changing password"); // Send an error response
   }
 });
 
@@ -128,6 +186,39 @@ app.post("/login", async (req, res) => {
     req.session.userId = rows[0].user_id;
 
     res.json({ message: "Login successful" });
+  } catch (err) {
+    console.error(err);
+    res.status(500).json({ message: "Error logging in" });
+  }
+});
+
+const adminUsername = "laxita";
+const hashedPassword = "botanic@123";
+// Admin login route
+app.post("/adminLogIN", async (req, res) => {
+  try {
+    const { username, password } = req.body;
+
+    // Check if username and password are provided
+    if (!username || !password) {
+      return res
+        .status(400)
+        .json({ error: "Username and password are required." });
+    }
+
+    // Check if username matches adminUsername
+    if (username !== adminUsername) {
+      return res.status(401).json({ error: "Invalid username" });
+    }
+
+    // Compare password with hashed password
+
+    if (password == hashedPassword) {
+      return res.status(200).json({ message: "Login successful." });
+    } else {
+      console.error("Invalid password:", err);
+      return res.status(500).json({ error: "Invalid password." });
+    }
   } catch (err) {
     console.error(err);
     res.status(500).json({ message: "Error logging in" });
@@ -471,6 +562,7 @@ app.get("/NormalSkin_Products", async (req, res) => {
 app.post("/submitFeedback", async (req, res) => {
   try {
     const { name, email, phoneNumber, comment } = req.body;
+    console.log(email);
 
     if (req.session.isAuthenticated) {
       const userId = req.session.userId;
@@ -622,7 +714,7 @@ app.get("/GetAddToCartProducts", async (req, res) => {
     let rows = [];
     if (req.session.isAuthenticated) {
       [rows] = await pool.query(
-        "WITH RankedProducts AS (SELECT p.name AS product_name,p.image_url AS img_url,p.rating AS rating,v.price AS price,v.size AS size,ROW_NUMBER() OVER (PARTITION BY p.id ORDER BY v.price) AS row_num FROM products p JOIN product_variations v ON p.id = v.product_id JOIN cart c ON p.name = c.product_name WHERE c.user_id = 1)SELECT product_name,img_url,rating,price,size FROM  RankedProducts WHERE row_num = 1;",
+        "WITH RankedProducts AS (SELECT p.name AS product_name,p.image_url AS img_url,p.rating AS rating,v.price AS price,v.size AS size,ROW_NUMBER() OVER (PARTITION BY p.id ORDER BY v.price) AS row_num FROM products p JOIN product_variations v ON p.id = v.product_id JOIN cart c ON p.name = c.product_name WHERE c.user_id = ?)SELECT product_name,img_url,rating,price,size FROM  RankedProducts WHERE row_num = 1;",
         [id]
       );
       res.json({ success: true, row: rows });
@@ -937,6 +1029,129 @@ app.get("/getUserPurchaseProducts", async (req, res) => {
     console.log("address not found");
     console.error("Error getting address:", error);
     res.json({ success: false });
+  }
+});
+
+// Endpoint to delete user data associated with a specific user_id
+app.delete("/deleteUserData", async (req, res) => {
+  try {
+    const userId = req.session.userId;
+
+    // Execute SQL queries to delete user data from each table
+    await Promise.all([
+      pool.query("DELETE FROM profiles WHERE user_id = ?", [userId]),
+      pool.query("DELETE FROM feedback WHERE user_id = ?", [userId]),
+      pool.query("DELETE FROM reviews WHERE user_id = ?", [userId]),
+      pool.query("DELETE FROM cart WHERE user_id = ?", [userId]),
+      pool.query("DELETE FROM purchase_products WHERE user_id = ?", [userId]),
+      pool.query("DELETE FROM shipping_addresses WHERE user_id = ?", [userId]),
+      pool.query("DELETE FROM billing_addresses WHERE user_id = ?", [userId]),
+      pool.query("DELETE FROM purchases WHERE user_id = ?", [userId]),
+      pool.query("DELETE FROM users WHERE user_id = ?", [userId]),
+    ]);
+
+    // Destroy the session after all queries have been executed
+    req.session.destroy((err) => {
+      if (err) {
+        console.error(err);
+        res.status(500).json({ message: "Error deleting session" });
+      } else {
+        res.status(200).json({ message: "User data deleted successfully" });
+      }
+    });
+  } catch (error) {
+    console.error("Error deleting user data:", error);
+    res.status(500).json({ message: "Internal server error" });
+  }
+});
+
+// Admin Panel
+app.get("/NumberOfPurchase", async (req, res) => {
+  try {
+    const [rows] = await pool.query(
+      "SELECT COUNT(*) AS purchase_count FROM purchases"
+    );
+    const purchaseCount = rows[0].purchase_count;
+    console.log("Number of purchases:", purchaseCount);
+    res.json({ success: true, purchaseCount });
+  } catch (error) {
+    console.error("Error getting purchase count:", error);
+    res.json({ success: false, error: "Failed to retrieve purchase count" });
+  }
+});
+
+app.get("/NumberOfUsers", async (req, res) => {
+  try {
+    const [rows] = await pool.query("SELECT COUNT(*) AS user_count FROM users");
+    const userCount = rows[0].user_count;
+    console.log("Number of Users:", userCount);
+    res.json({ success: true, userCount });
+  } catch (error) {
+    console.error("Error getting Users count:", error);
+    res.json({ success: false, error: "Failed to retrieve Users count" });
+  }
+});
+
+app.get("/TotalProducts", async (req, res) => {
+  try {
+    const [rows] = await pool.query(
+      "SELECT COUNT(*) AS product_count FROM products"
+    );
+    const ProductCount = rows[0].product_count;
+    console.log("Number of Products:", ProductCount);
+    res.json({ success: true, ProductCount });
+  } catch (error) {
+    console.error("Error getting products count:", error);
+    res.json({ success: false, error: "Failed to retrieve products count" });
+  }
+});
+app.get("/GetAllFeedback", async (req, res) => {
+  try {
+    const [rows] = await pool.query(
+      "select name, email, phone_number, comment, created_at from feedback"
+    );
+    res.json({ success: true, rows });
+  } catch (error) {
+    console.error("Error getting feedback:", error);
+    res.json({ success: false, error: "Failed to retrieve feedback" });
+  }
+});
+
+app.delete("/deleteProduct", async (req, res) => {
+  try {
+    const productName = req.body.name;
+
+    // Step 1: Retrieve the product_id based on the product_Name
+    const results = await pool.query("SELECT id FROM products WHERE name = ?", [
+      productName,
+    ]);
+
+    // Check if the product exists
+    if (results.length === 0) {
+      console.log(`Product ${productName} not found.`);
+      res.status(404).send("Product not found");
+      return;
+    }
+    console.log(results[0][0].id);
+    // Step 2: Retrieve the product_id from the query results
+    const productId = results[0][0].id;
+
+    // Step 3: Execute the SQL queries to delete related data using the retrieved product_id
+    await Promise.all([
+      pool.query("DELETE FROM reviews WHERE product_id = ?", [productId]),
+      pool.query("DELETE FROM product_description WHERE product_id = ?", [
+        productId,
+      ]),
+      pool.query("DELETE FROM product_variations WHERE product_id = ?", [
+        productId,
+      ]),
+      pool.query("DELETE FROM products WHERE id = ?", [productId]),
+    ]);
+
+    res.status(200).send("Product and related data deleted successfully");
+  } catch (error) {
+    console.error("Error deleting product:", error);
+    res.status(500).json({ message: "Internal server error" });
   }
 });
 

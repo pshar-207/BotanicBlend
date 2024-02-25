@@ -97,14 +97,17 @@
             <span id="user_skinType">We'll tailor a ritual just for you</span>
             <div class="edit"><span class="edit_pop5">ADD</span></div>
           </div>
-          <div id="logoutButton">
-            <input
-              type="button"
-              value="LOG OUT"
-              onmouseover="changeColor(this)"
-              onmouseout="restoreOriginalColors(this)"
-              onclick="logoutUser()"
-            />
+          <div class="delete_logout">
+            <div id="deleteUserButton">Delete Account?</div>
+            <div id="logoutButton">
+              <input
+                type="button"
+                value="LOG OUT"
+                onmouseover="changeColor(this)"
+                onmouseout="restoreOriginalColors(this)"
+                onclick="logoutUser()"
+              />
+            </div>
           </div>
         </div>
 
@@ -275,6 +278,7 @@
     <script src="JavaScript files/loginButtonChanger.js"></script>
     <script src="JavaScript files/cart.js"></script>
     <script src="JavaScript files/addToCart.js"></script>
+    <script src="JavaScript files/deleteAccount.js"></script>
 
     <!-- pop up hide -->
     <script>

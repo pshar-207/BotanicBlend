@@ -93,17 +93,20 @@ body {
 .account_details span {
   font-size: 1.2vw;
 }
-#logoutButton {
+.delete_logout {
   display: flex;
-  justify-content: end;
-  align-items: center;
+  justify-content: space-between;
   margin-top: 1vw;
 }
+
 #logoutButton input[type="button"] {
   background-color: whitesmoke;
   padding: 0.8vw;
   font-size: 1vw;
   border: 1px solid black;
+}
+#deleteUserButton {
+  cursor: pointer;
 }
 .edit_popup {
   position: absolute;

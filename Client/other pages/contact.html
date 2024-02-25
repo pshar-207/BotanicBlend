@@ -69,8 +69,8 @@
           <input type="text" id="username" name="username" placeholder="Name" />
           <input
             type="text"
-            id="user_email"
-            name="user_email"
+            id="userEmail"
+            name="userEmail"
             placeholder="Email"
           />
           <input
@@ -121,11 +121,11 @@
                     " " +
                     userData.userDetails.last_name
                 );
-                $("#user_email").val(userData.userDetails.email);
+                $("#userEmail").val(userData.userDetails.email);
 
                 // Make name and email fields read-only
                 $("#username").prop("readonly", true);
-                $("#user_email").prop("readonly", true);
+                $("#userEmail").prop("readonly", true);
               });
             }
           });
@@ -135,7 +135,7 @@
       function submitFeedback() {
         var feedbackData = {
           name: $("#username").val(),
-          email: $("#email").val(),
+          email: $("#userEmail").val(),
           phoneNumber: $("#phoneNumber").val(),
           comment: $("#comment").val(),
         };
