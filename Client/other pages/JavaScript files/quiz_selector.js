@@ -1,6 +1,12 @@
 // Store references to each question section
 var questions = document.querySelectorAll(".q1, .q2, .q3, .q4, .q5");
 
+// Add a reference to the span element
+var questionNumberSpan = document.getElementById("question-number");
+
+// Set initial question number
+var currentQuestionNumber = 1;
+
 // Store references to the navigation buttons
 var backButton = document.querySelector(".back_btn");
 var nextButton = document.querySelector(".next_btn");
@@ -27,9 +33,11 @@ function showNextQuestion() {
     saveUserSelection();
     questions[currentQuestionIndex].style.display = "none";
     currentQuestionIndex++;
+    currentQuestionNumber++;
     if (currentQuestionIndex != 5) {
       questions[currentQuestionIndex].style.display = "flex";
     }
+    questionNumberSpan.textContent = `${currentQuestionNumber} `;
     updateBackButtonVisibility();
   }
   if (currentQuestionIndex === questions.length) {
@@ -44,8 +52,9 @@ function showPreviousQuestion() {
   if (currentQuestionIndex > 0) {
     questions[currentQuestionIndex].style.display = "none";
     currentQuestionIndex--;
-
+    currentQuestionNumber--;
     questions[currentQuestionIndex].style.display = "flex";
+    questionNumberSpan.textContent = `${currentQuestionNumber} `;
     updateBackButtonVisibility();
   }
 }

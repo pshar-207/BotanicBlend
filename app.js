@@ -600,7 +600,7 @@ app.get("/productDetails", async (req, res) => {
   const productName = req.query.productName;
   try {
     const [results] = await pool.query(
-      "SELECT p.image_url, p.another_img_url, p.name, p.rating, p.description, pv.size, pv.price, pd.KeyIngredients, pd.Features, pd.HowToUse, pd.Caution FROM products p JOIN product_variations pv ON p.id = pv.product_id JOIN product_description pd ON p.id = pd.product_id WHERE p.name = ?;",
+      "SELECT p.image_url, p.name, p.rating, p.description, pv.size, pv.price, pd.KeyIngredients, pd.Features, pd.HowToUse, pd.Caution FROM products p JOIN product_variations pv ON p.id = pv.product_id JOIN product_description pd ON p.id = pd.product_id WHERE p.name = ?;",
       [productName]
     );
     res.json(results);
