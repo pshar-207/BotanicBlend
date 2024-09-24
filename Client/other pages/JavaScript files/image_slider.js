@@ -41,7 +41,7 @@ slides.forEach((_, index) => {
     counter = index;
     slideImage();
     clearInterval(intervalId);
-    startInterval();
+    // startInterval();
   });
   indicatorsContainer.appendChild(dot);
 });
@@ -50,4 +50,4 @@ updateIndicators();
 const startInterval = () => {
   intervalId = setInterval(goNext, 5000);
 };
-startInterval();
+// startInterval();

@@ -17,8 +17,8 @@ function loadAndInsertContent(url, placeholderId) {
     });
 }
 // Load header and footer using the function
-loadAndInsertContent("/other pages/Header.html", "header-placeholder");
-loadAndInsertContent("/other pages/Footer.html", "footer-placeholder");
+loadAndInsertContent("other pages/Header.html", "header-placeholder");
+loadAndInsertContent("other pages/Footer.html", "footer-placeholder");
 
 //Function to change Navbar color
 function changeNavbarBackgroundColorOnScroll() {

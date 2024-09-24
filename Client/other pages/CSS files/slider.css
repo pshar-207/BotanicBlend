@@ -6,14 +6,7 @@
   /* justify-content: center; */
   transition: transform 0.5s ease-in-out;
 }
-/* .slide_items {
-  display: none;
-  transition: ease-in-out; /* Add a transition for opacity
-} */
-/* .slide_items.active {
-  display: block;
-  opacity: 1;
-} */
+
 .navigation-button {
   background-color: #007bff;
   color: #fff;

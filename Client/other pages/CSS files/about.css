@@ -42,6 +42,7 @@ body {
 }
 .about_text h1 {
   font-size: 5.5vw;
+  text-align: justify;
 }
 .about_text p {
   font-size: 1.8vw;
@@ -103,6 +104,7 @@ body {
 }
 .WhoWeAre_text p {
   font-size: 1.8vw;
+  text-align: justify;
 }
 .WhoWeAre_img {
   display: flex;
@@ -281,7 +283,7 @@ ul.testimonial_container h2 {
 .bg_img {
   position: fixed;
   top: 0;
-  z-index: -1;
+  z-index: -5;
 }
 .bg_img img {
   width: 100%;

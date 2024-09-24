@@ -64,9 +64,9 @@
   font-family: var(--heading);
 }
 .form_container input[type="button"]:hover {
-  background-color: #0b1354;
-  color: white;
-  border: none;
+  background-color: #fcc6e2;
+  color: black;
+  border: 1px solid black;
 }
 .form_container a {
   font-family: var(--heading);
