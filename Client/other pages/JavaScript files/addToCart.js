@@ -50,7 +50,7 @@ function getAddToCartProduct() {
       if (data.success) {
         var currentPath = window.location.pathname;
         var link;
-        console.log(currentPath);
+        // console.log(currentPath);
         CartList.innerHTML = "";
         const cart = data.row;
         cart.forEach((cart_product) => {
@@ -59,7 +59,7 @@ function getAddToCartProduct() {
           } else {
             link = `Product_Page.html?productName=${cart_product.product_name}&price=${cart_product.price}&img=${cart_product.img_url}&rating=${cart_product.rating}`;
           }
-          console.log(link);
+          // console.log(link);
           const listItem = document.createElement("li");
           listItem.innerHTML = `
           <div class="cartProductImg">

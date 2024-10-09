@@ -10,6 +10,6 @@ console.log("Cart Working");
 
 function closeCart() {
   var sideCart = document.getElementById("sideCart");
-  sideCart.style.right = "-20rem";
+  sideCart.style.right = "-35vw";
   isCartOpen = false;
 }

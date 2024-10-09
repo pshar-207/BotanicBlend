@@ -73,7 +73,7 @@ function changeColors(element) {
 
     // Change colors on hover
     element.style.backgroundColor = "#fcc6e2"; // Change this to the desired background color
-    element.style.border = "1px solid white";
+    element.style.border = "0.1vw solid white";
   }
 }
 
@@ -81,7 +81,7 @@ function changeColorsClick(div) {
   // Reset styles for the previously clicked div
   if (clickedDiv) {
     clickedDiv.style.backgroundColor = "white";
-    clickedDiv.style.border = "1px solid black";
+    clickedDiv.style.border = "0.1vw solid black";
   }
 
   // Set styles for the clicked div
@@ -95,7 +95,7 @@ function restoreOriginalColors(element) {
   // Restore original colors only if the div is not clicked
   if (element !== clickedDiv) {
     element.style.backgroundColor = "white";
-    element.style.border = "1px solid black";
+    element.style.border = "0.1vw solid black";
   }
 }
 
