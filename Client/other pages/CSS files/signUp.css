@@ -27,7 +27,7 @@ form input[type="email"],
 form input[type="password"] {
   box-sizing: border-box;
   width: 100%;
-  border: 1px solid black;
+  border: 0.1vw solid black;
   background-color: whitesmoke;
   border-radius: 0;
   padding: 1vw;
@@ -43,11 +43,11 @@ form input[type="submit"] {
   border: none;
   padding: 1vw;
   font-size: 1.2vw;
-  border: 1px solid black;
+  border: 0.1vw solid black;
 }
 form input[type="submit"]:hover {
   background-color: #fcc6e2;
   color: black;
   border: none;
-  border: 1px solid black;
+  border: 0.1vw solid black;
 }

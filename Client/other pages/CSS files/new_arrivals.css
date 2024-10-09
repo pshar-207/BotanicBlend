@@ -46,12 +46,12 @@
 .add_to_cart {
   background-color: whitesmoke;
   display: flex;
-  height: 1rem;
+  height: 1vw;
   justify-content: center;
   align-items: center;
   color: black;
-  border: 0.1rem solid black;
-  border-radius: 0.2rem;
+  border: 0.1vw solid black;
+  border-radius: 0.5vw;
 }
 .new_arrival_product_buttons {
   padding: 3% 0 3% 0;
@@ -59,8 +59,6 @@
 }
 .add_to_cart {
   padding: 2% 5% 2% 5%;
-}
-.add_to_cart {
   font-size: 1.2vw;
 }
 .add_to_cart i {
@@ -80,7 +78,7 @@
 .new_arrival_product_rating,
 .new_arrival_product_price,
 .new_arrival_product_buttons {
-  margin-bottom: 0.2rem;
+  margin-bottom: 0.2vw;
   font-size: 1.5vw;
   font-family: var(--heading);
 }

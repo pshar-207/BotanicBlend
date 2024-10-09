@@ -9,11 +9,13 @@
 /* Instagram link */
 .instagram_link {
   background-color: rgb(52, 52, 52);
+  /* background-color: transparent; */
   height: fit-content;
   display: flex;
   justify-content: center;
   align-items: center;
-  padding: 0.5vh;
+  padding: 0.3vw;
+  height: 2.5vw;
 }
 .instagram_link a {
   text-decoration: none;
@@ -30,14 +32,16 @@
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   position: relative;
+  transition: background-color 0.3s;
+  /* height: 5vw; */
 }
 .left_nav {
-  padding: 0.5rem;
+  padding: 0.5vw;
 }
 .left_nav img {
-  width: 5.5%;
+  width: 4vw;
   object-fit: cover;
-  margin-right: 0.5rem;
+  margin-right: 1vw;
 }
 .left_nav a {
   display: flex;
@@ -61,6 +65,7 @@
   font-size: 1.8vw;
   align-items: center;
   font-family: var(--heading);
+  height: 4vw;
 }
 .right_nav a {
   text-decoration: none;
@@ -71,14 +76,18 @@
   border: none;
   background-color: transparent;
 }
-.cart_icon i {
-  font-size: 1.7vw;
-}
+.cart_icon i,
 .login_icon i {
   font-size: 1.7vw;
+  display: flex;
+  align-items: center;
 }
 
-.shop {
+.shop,
+.contact_navbar,
+.about_navbar,
+.login_icon,
+.cart_icon {
   cursor: pointer;
   height: 100%;
   display: flex;

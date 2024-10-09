@@ -39,7 +39,7 @@
 
 .hero_indicators {
   position: absolute;
-  bottom: 50px;
+  bottom: 5%;
   left: 50%;
   transform: translateX(-50%);
   display: flex;
@@ -47,10 +47,10 @@
 
 .dot {
   display: inline-block;
-  height: 0.5rem;
-  width: 0.5rem;
-  margin: 0.1rem;
-  border-radius: 0.5rem;
+  height: 1vw;
+  width: 1vw;
+  margin: 0.1vw;
+  border-radius: 50cqh;
   background: #ffffff;
   cursor: pointer;
   transition: 1s;
@@ -58,12 +58,12 @@
 
 .dot.active {
   /* background-color: #979797; */
-  width: 1rem;
+  width: 2vw;
 }
 
 .quiz_section {
   position: absolute;
-  top: 42%;
+  top: 38%;
   left: 8%;
   font-size: 1.5rem;
 }
@@ -71,19 +71,29 @@
   padding: 0.7vw 1.5vw;
   width: fit-content;
   background-color: transparent;
-  border-radius: 10rem;
-  border: 0.1rem solid black;
+  border-radius: 100vw;
+  border: 0.1vw solid black;
   transition: background-color 0.5s, color 0.5s;
 }
 
+.quiz_section_a_cotainer:hover {
+  background-color: #ffffff;
+}
+
 .quiz_section_h1 {
-  font-size: 3vw;
+  font-size: 4vw;
   font-weight: bolder;
   width: 40vw;
   white-space: normal;
   margin-bottom: 5%;
   font-family: var(--heading);
 }
+/* 
+@media screen and (min-aspect-ratio: 1/3) and (max-aspect-ratio: 1/1) {
+  .quiz_section_h1 {
+    font-size: 10rem;
+  }
+} */
 
 .quiz_section_a {
   text-decoration: none;

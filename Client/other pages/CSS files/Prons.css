@@ -2,8 +2,8 @@
   display: grid;
   grid-template-columns: repeat(4, auto);
   grid-template-rows: repeat(3, auto);
-  gap: 0.5rem;
-  padding: 10rem 10% 10rem 10%;
+  gap: 0.5vw;
+  padding: 15vw 10vw;
   justify-items: center;
   align-items: center;
 }

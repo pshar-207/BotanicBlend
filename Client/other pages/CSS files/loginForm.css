@@ -13,8 +13,9 @@
   box-shadow: 6px 4px 18px 1px rgba(0, 0, 0, 0.3);
 }
 .close_btn {
+  font-size: 1.5vw;
   text-align: right;
-  padding: 1rem;
+  padding: 1.5vw;
   cursor: pointer;
   font-family: var(--heading);
 }
@@ -22,12 +23,12 @@
 .logo_name {
   display: flex;
   justify-content: center;
-  font-size: 2.5rem;
+  font-size: 3vw;
   font-family: var(--logo);
-  padding: 0 0 0.5rem 0;
+  padding: 0.5vw;
 }
 .logo_image img {
-  width: 5rem;
+  width: 5vw;
   object-fit: cover;
   border-radius: 50%;
   box-shadow: 5px 5px 20px 0px rgba(0, 0, 0, 0.3);
@@ -36,44 +37,43 @@
   display: flex;
   flex-direction: column;
   margin: 2% 15% 0 15%;
-  gap: 1rem;
+  gap: 1vw;
 }
-.form_container input[type="email"] {
-  border-radius: 0;
-  font-size: 1rem;
-  padding: 0.5rem;
-  background-color: white;
-  border: 1px solid black;
-  font-family: var(--heading);
-}
+.form_container input[type="email"],
 .form_container input[type="password"] {
   border-radius: 0;
-  font-size: 1rem;
-  padding: 0.5rem;
+  font-size: 1.5vw;
+  padding: 0.8vw;
   background-color: white;
-  border: 1px solid black;
+  border: 0.1vw solid black;
   font-family: var(--heading);
+}
+
+.forget_password {
+  font-size: 1vw;
 }
 
 .form_container input[type="button"] {
   width: 100%;
-  height: 3rem;
-  border: 1px solid black;
+  height: 4vw;
+  border: 0.1vw solid black;
   background-color: white;
-  font-size: 1.2rem;
+  font-size: 1.5vw;
   font-family: var(--heading);
 }
 .form_container input[type="button"]:hover {
   background-color: #fcc6e2;
   color: black;
-  border: 1px solid black;
+  border: 0.1vw solid black;
 }
 .form_container a {
   font-family: var(--heading);
+  text-decoration: none;
 }
 .sign_up {
   width: 100%;
-  height: 3rem;
+  height: 4vw;
+  font-size: 1.5vw;
   background-color: #fcc6e2;
   display: flex;
   justify-content: center;

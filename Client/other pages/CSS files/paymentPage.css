@@ -10,7 +10,7 @@
   width: 100%;
   z-index: 2;
   background-color: white;
-  border-bottom: 1px solid black;
+  border-bottom: 0.1vw solid black;
 }
 body {
   background-color: whitesmoke;
@@ -49,7 +49,7 @@ body {
   width: 100%;
   padding: 1.5%;
   border-radius: 0;
-  border: 1px solid black;
+  border: 0.1vw solid black;
   font-size: 1vw;
   font-family: var(--heading);
 }
@@ -80,7 +80,7 @@ body {
 .diff_city_state_pincode input[type="text"],
 .diff_phoneNumber input[type="text"] {
   background-color: white;
-  border: 1px solid black;
+  border: 0.1vw solid black;
   border-radius: 0;
   padding: 1.5%;
   width: 100%;
@@ -134,7 +134,7 @@ body {
   font-size: 1.3vw;
 }
 .onlinePayment {
-  border: 1px solid black;
+  border: 0.1vw solid black;
   padding: 1.5%;
 }
 .onlinePayment input[type="radio"] {
@@ -143,7 +143,7 @@ body {
 
 .onlinePaymentWarning {
   display: flex;
-  border: 1px solid black;
+  border: 0.1vw solid black;
 }
 
 .onlinePaymentWarning img {
@@ -155,7 +155,7 @@ body {
   padding: 10% 20% 10% 0;
 }
 .cashOnDelivery {
-  border: 1px solid black;
+  border: 0.1vw solid black;
   padding: 1.5%;
 }
 .cashOnDelivery input[type="radio"] {
@@ -171,7 +171,7 @@ body {
 }
 .sameAsShippingAdd,
 .diffAddress {
-  border: 1px solid black;
+  border: 0.1vw solid black;
   padding: 1.5%;
 }
 .sameAsShippingAdd input[type="radio"],
@@ -203,7 +203,7 @@ body {
   width: 100%;
   padding: 0.5vw;
   border: none;
-  border: 1px solid black;
+  border: 0.1vw solid black;
 }
 .payNow_container button[type="submit"]:hover {
   background-color: #fcc6e2;
@@ -263,13 +263,14 @@ body {
 }
 
 .weight_container span {
-  border: 1px solid black;
+  border: 0.1vw solid black;
   padding: 1% 3% 1% 3%;
   margin-right: 2%;
 }
 .quantity_container span {
   /* border: 1px solid black; */
   padding: 1%;
+  font-size: 1.3vw;
 }
 .qty_descrese,
 .qty_increse {

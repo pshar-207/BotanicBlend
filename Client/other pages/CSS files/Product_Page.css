@@ -52,13 +52,13 @@ body {
 }
 
 .weight_container span {
-  border: 1px solid black;
+  border: 0.1vw solid black;
   font-size: 1.2vw;
   padding: 1% 3% 1% 3%;
   margin-right: 2%;
 }
 .quantity_container span {
-  border: 1px solid black;
+  border: 0.1vw solid black;
   padding: 1%;
   font-size: 1.2vw;
 }
@@ -79,7 +79,7 @@ body {
 }
 
 .buy_cart_container > * {
-  border: 1px solid black;
+  border: 0.1vw solid black;
   padding: 1% 3% 1% 3%;
   font-size: 1.3vw;
   margin-right: 5%;
@@ -90,11 +90,11 @@ body {
 }
 .buy_button:hover {
   background-color: #fcc6e2;
-  border: 1px solid black;
+  border: 0.1vw solid black;
 }
 .add_to_cart_button:hover {
   background-color: #fcc6e2;
-  border: 1px solid black;
+  border: 0.1vw solid black;
 }
 .best_sell_container,
 .description_review_policy_container {
@@ -103,7 +103,7 @@ body {
 .product_description_container,
 .shipping_Returns_container,
 .customer_reviews_container {
-  border: 1px solid black;
+  border: 0.1vw solid black;
   padding: 2%;
   margin-bottom: 1%;
 }
@@ -112,9 +112,13 @@ body {
 .reviews {
   cursor: pointer;
 }
+.returnPolicy_detail,
+.shippingDetail_container {
+  font-size: 1.2vw;
+}
 .reviews:hover {
   background-color: #fcc6e2;
-  border: 1px solid black;
+  border: 0.1vw solid black;
 }
 .shipping_Returns_container {
   display: none;
@@ -127,7 +131,7 @@ body {
   font-size: 1.3vw;
 }
 .desc_shipping_review > * {
-  border: 1px solid black;
+  border: 0.1vw solid black;
   padding: 0.5% 2% 0.5% 2%;
 }
 
@@ -164,7 +168,7 @@ body {
   margin-bottom: 1%;
 }
 .writeReview {
-  border: 1px solid black;
+  border: 0.1vw solid black;
   padding: 0.5%;
   cursor: pointer;
   user-select: none;
@@ -172,7 +176,7 @@ body {
 }
 .writeReview:hover {
   background-color: #fcc6e2;
-  border: 1px solid black;
+  border: 0.1vw solid black;
 }
 .heading,
 .writeReview {
@@ -183,7 +187,7 @@ body {
 }
 
 .review_write_container {
-  border-bottom: 1px solid black;
+  border-bottom: 0.1vw solid black;
   margin-bottom: 1%;
   display: none;
 }
@@ -220,7 +224,7 @@ body {
 
 .review_title_container input[type="text"] {
   box-sizing: border-box;
-  border: 1px solid black;
+  border: 0.1vw solid black;
   border-radius: 0;
   padding: 0.5%;
   font-size: 1vw;
@@ -245,12 +249,12 @@ body {
 .submit_button input[type="submit"] {
   padding: 0.3% 1% 0.3% 1%;
   border-radius: 0;
-  border: 1px solid black;
+  border: 0.1vw solid black;
   font-size: 1vw;
 }
 .submit_button input[type="submit"]:hover {
   background-color: #fcc6e2;
-  border: 1px solid black;
+  border: 0.1vw solid black;
 }
 .rating_container,
 .rating {
