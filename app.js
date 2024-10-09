@@ -1,12 +1,11 @@
+require("dotenv").config();
 const express = require("express");
 const mysql = require("mysql2/promise");
 const bcrypt = require("bcrypt");
 const bodyParser = require("body-parser");
 const path = require("path");
-
 const app = express();
 
-// Add these lines after creating the express app
 const session = require("express-session");
 const { request } = require("http");
 const { cpSync } = require("fs");
@@ -28,13 +27,31 @@ const port = 3000;
 // Serve static files from the 'public' directory
 app.use(express.static(path.join(__dirname, "Client")));
 
-// MySQL database connection pool
+const fs = require("fs");
+
 const pool = mysql.createPool({
-  host: "localhost",
-  user: "root",
-  password: "botanic@123",
-  database: "BotanicBlend",
+  host: process.env.DB_HOST,
+  user: process.env.DB_USER,
+  password: process.env.DB_PASSWORD,
+  database: process.env.DB_NAME,
+  port: 27280,
+  ssl: {
+    ca: fs.readFileSync(__dirname + `${process.env.CA_PATH}`),
+    rejectUnauthorized: true,
+  },
 });
+
+// Check connection to the MySQL database
+(async () => {
+  try {
+    const connection = await pool.getConnection();
+    const [rows] = await connection.query("SELECT 1");
+    console.log("Database connected successfully!");
+    connection.release(); // Release the connection back to the pool
+  } catch (error) {
+    console.error("Error connecting to the database:", error.message);
+  }
+})();
 
 // Check authentication status
 app.get("/checkAuth", (req, res) => {
@@ -714,7 +731,7 @@ app.get("/GetAddToCartProducts", async (req, res) => {
     let rows = [];
     if (req.session.isAuthenticated) {
       [rows] = await pool.query(
-        "WITH RankedProducts AS (SELECT p.name AS product_name,p.image_url AS img_url,p.rating AS rating,v.price AS price,v.size AS size,ROW_NUMBER() OVER (PARTITION BY p.id ORDER BY v.price) AS row_num FROM products p JOIN product_variations v ON p.id = v.product_id JOIN cart c ON p.name = c.product_name WHERE c.user_id = ?)SELECT product_name,img_url,rating,price,size FROM  RankedProducts WHERE row_num = 1;",
+        "SELECT DISTINCT p.name AS product_name, p.image_url AS img_url, p.rating AS rating, v.price AS price, v.size AS size FROM products p JOIN product_variations v ON p.id = v.product_id JOIN cart c ON p.name = c.product_name WHERE c.user_id = ? AND v.price = (SELECT MIN(v2.price) FROM product_variations v2 WHERE v2.product_id = p.id);",
         [id]
       );
       res.json({ success: true, row: rows });
