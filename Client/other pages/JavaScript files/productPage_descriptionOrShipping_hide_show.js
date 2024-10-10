@@ -26,7 +26,7 @@ function changeColorsClickDescriptionShipping(div) {
   console.log("clicked");
   if (clickedDivCheck) {
     clickedDivCheck.style.backgroundColor = "whitesmoke";
-    clickedDivCheck.style.border = "1px solid black";
+    clickedDivCheck.style.border = "0.1vw solid black";
     console.log("clicked");
   }
 
@@ -42,13 +42,13 @@ function changeColorsDescriptionShipping(element) {
   if (element !== clickedDivCheck) {
     // Change colors on hover
     element.style.backgroundColor = "#fcc6e2";
-    element.style.border = "1px solid black";
+    element.style.border = "0.1vw solid black";
   }
 }
 function restoreOriginalColorsDescriptionShipping(element) {
   // Restore original colors only if the div is not clicked
   if (element !== clickedDivCheck) {
     element.style.backgroundColor = "whitesmoke";
-    element.style.border = "1px solid black";
+    element.style.border = "0.1vw solid black";
   }
 }

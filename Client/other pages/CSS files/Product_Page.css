@@ -201,7 +201,17 @@ body {
 }
 .customerName_date_container {
   display: flex;
+  justify-content: space-between;
+}
+.customerName_date_container_left {
+  display: flex;
   font-size: 1.2vw;
+  width: 100%;
+}
+.customerName_date_container_right {
+  width: 100%;
+  display: flex;
+  justify-content: end;
 }
 .customer_name {
   margin-right: 1%;
@@ -209,6 +219,35 @@ body {
 .date {
   margin-left: 1%;
 }
+.delete-review {
+  border: 0;
+  font-size: 1.2vw;
+  position: relative;
+  color: black;
+  text-decoration: none;
+  transition: color 0.3s ease;
+  font-family: var(--heading);
+  background-color: transparent;
+}
+.delete-review::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 0;
+  height: 0.1vw;
+  background-color: red;
+  transition: width 0.3s ease;
+}
+
+.delete-review:hover {
+  color: red;
+}
+
+.delete-review:hover::after {
+  width: 100%;
+}
+
 .review_container {
   padding: 0 2% 0 2%;
 }

@@ -464,56 +464,56 @@
 
           buyProduct.push(buy_product);
           listItem.innerHTML = `
-                <div class="best_sell_product_section">
-                  <div class="best_sell_product_image">
-                      <a href="Product_Page.html?productName=${
-                        product.name
-                      }&price=${parseInt(product.price, 10)}&img=${
+                      <div class="best_sell_product_section">
+                        <div class="best_sell_product_image">
+                            <a href="Product_Page.html?productName=${
+                              product.name
+                            }&price=${parseInt(product.price, 10)}&img=${
             product.image_url
           }&rating=${
             product.rating
           }"><img src="${modifiedImagePath}" alt="" /></a>
 
-                    </div>
-                    <div class="best_sell_product_name">${
-                      product.name
-                    }</div>                    
-                    <div class="best_sell_product_rating">${generateStarsForReviewSection(
-                      product.rating
-                    )}</div>
-                    <div class="best_sell_product_price">
-                        <div class="price">${product.price}</div>
-                        <!-- Add to Cart section -->
-                        <div class="add_to_cart product-container"
-                            onmouseover="showAddToCart(this) ; changeColors(this)"
-                            onmouseout="hideAddToCart(this)">
-                            <div class="icon">
-                                 <svg
-                                    xmlns="http://www.w3.org/2000/svg"
-                                    height="16"
-                                    width="15"
-                                    viewBox="0 0 576 512"
-                                    >
-                                    <!--!Font Awesome Free 6.5.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2023 Fonticons, Inc.-->
-                                    <path
-                                        d="M0 24C0 10.7 10.7 0 24 0H69.5c22 0 41.5 12.8 50.6 32h411c26.3 0 45.5 25 38.6 50.4l-41 152.3c-8.5 31.4-37 53.3-69.5 53.3H170.7l5.4 28.5c2.2 11.3 12.1 19.5 23.6 19.5H488c13.3 0 24 10.7 24 24s-10.7 24-24 24H199.7c-34.6 0-64.3-24.6-70.7-58.5L77.4 54.5c-.7-3.8-4-6.5-7.9-6.5H24C10.7 48 0 37.3 0 24zM128 464a48 48 0 1 1 96 0 48 48 0 1 1 -96 0zm336-48a48 48 0 1 1 0 96 48 48 0 1 1 0-96z"
-                                    />
-                                </svg>
-                            </div>
-                            <div class="add-to-cart" onclick='addToCart("${
-                              product.name
-                            }")'>Add to Cart</div>
-                        </div>
-                    </div>
-                    <!-- Buy button -->
-                    <a href="paymentPage.html?product=${encodeURIComponent(
-                      JSON.stringify(buyProduct)
-                    )}"><div class="new_arrival_product_buttons btn_color"
-                        onmouseover="changeColors(this)">
-                        Buy
-                    </div></a>
-                </div> 
-            `;
+                          </div>
+                          <div class="best_sell_product_name">${
+                            product.name
+                          }</div>
+                          <div class="best_sell_product_rating">${generateStarsForReviewSection(
+                            product.rating
+                          )}</div>
+                          <div class="best_sell_product_price">
+                              <div class="price">${product.price}</div>
+                              <!-- Add to Cart section -->
+                              <div class="add_to_cart product-container"
+                                  onmouseover="showAddToCart(this) ; changeColors(this)"
+                                  onmouseout="hideAddToCart(this)">
+                                  <div class="icon">
+                                       <svg
+                                          xmlns="http://www.w3.org/2000/svg"
+                                          height="16"
+                                          width="15"
+                                          viewBox="0 0 576 512"
+                                          >
+                                          <!--!Font Awesome Free 6.5.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2023 Fonticons, Inc.-->
+                                          <path
+                                              d="M0 24C0 10.7 10.7 0 24 0H69.5c22 0 41.5 12.8 50.6 32h411c26.3 0 45.5 25 38.6 50.4l-41 152.3c-8.5 31.4-37 53.3-69.5 53.3H170.7l5.4 28.5c2.2 11.3 12.1 19.5 23.6 19.5H488c13.3 0 24 10.7 24 24s-10.7 24-24 24H199.7c-34.6 0-64.3-24.6-70.7-58.5L77.4 54.5c-.7-3.8-4-6.5-7.9-6.5H24C10.7 48 0 37.3 0 24zM128 464a48 48 0 1 1 96 0 48 48 0 1 1 -96 0zm336-48a48 48 0 1 1 0 96 48 48 0 1 1 0-96z"
+                                          />
+                                      </svg>
+                                  </div>
+                                  <div class="add-to-cart" onclick='addToCart("${
+                                    product.name
+                                  }")'>Add to Cart</div>
+                              </div>
+                          </div>
+                          <!-- Buy button -->
+                          <a href="paymentPage.html?product=${encodeURIComponent(
+                            JSON.stringify(buyProduct)
+                          )}"><div class="new_arrival_product_buttons btn_color"
+                              onmouseover="changeColors(this)">
+                              Buy
+                          </div></a>
+                      </div>
+                  `;
 
           // Append the list item to the UL
           bestSellerList.appendChild(listItem);
@@ -525,7 +525,6 @@
       const url_Params = new URLSearchParams(query_String);
       const productName = url_Params.get("productName");
 
-      // console.log(product_Name);
       function submitReview(event) {
         event.preventDefault(); // Prevent the default form submission
 
@@ -570,8 +569,14 @@
               console.log("review submited");
               // alert("Review Submited");
               updateReviewList(productName);
-              // You may also want to update the product rating in the UI
-              // (e.g., by refreshing the product details section)
+              document.getElementById("reviewTitle").value = "";
+              document.getElementById("reviewBody").value = "";
+              selectedRating = 0;
+              resetStars();
+              const review_Button = document.querySelector(".writeReview");
+              reviewContainer.style.display = "none";
+              reviewClicked = false;
+              review_Button.textContent = "Write a review";
             } else {
               alert("Failed to submit the review. Please try again later.");
             }
@@ -591,9 +596,7 @@
         })
           .then((response) => response.json())
           .then((data) => {
-            // Assuming the server returns an array of reviews
             const reviews = data.reviews;
-
             // Update the review list in the UI
             const reviewList = document.getElementById("reviewList");
             reviewList.innerHTML = ""; // Clear existing reviews
@@ -604,23 +607,82 @@
               ).toLocaleString();
               // Create HTML elements for each review and append to the list
               const listItem = document.createElement("li");
-              listItem.innerHTML = `
-          <div class="customerName_date_container">
-            <div class="customer_name">${review.user_name}</div>
-            <span>on</span>
-            <div class="date">${formattedDate}</div>
-          </div>
-          <div class="CustomerRating">${generateStarsForReviewSection(
-            review.user_rating
-          )}</div>
-          <div class="review_title">${review.title}</div>
-          <div class="review_body">${review.body}</div>
-        `;
+
+              if (data.sessionId && data.sessionId == review.user_id) {
+                console.log(`user log in ${data.sessionId}`);
+
+                listItem.innerHTML = `
+                    <div class="customerName_date_container">
+                      <div class="customerName_date_container_left">
+                        <div class="customer_name">${review.user_name}</div>
+                        <span>on</span>
+                        <div class="date">${formattedDate}</div>
+                      </div>
+                      <div class="customerName_date_container_right">
+                        <button class="delete-review" data-review-id="${
+                          review.reviewId
+                        }">
+                          Delete Review
+                        </button>
+                      </div>
+                    </div>
+                    <div class="CustomerRating">${generateStarsForReviewSection(
+                      review.user_rating
+                    )}</div>
+                    <div class="review_title">${review.title}</div>
+                    <div class="review_body">${review.body}</div>
+                  `;
+              } else {
+                listItem.innerHTML = `
+                    <div class="customerName_date_container">
+                      <div class="customerName_date_container_left">
+                        <div class="customer_name">${review.user_name}</div>
+                        <span>on</span>
+                        <div class="date">${formattedDate}</div>
+                      </div>
+                      <div class="customerName_date_container_right">
+                        
+                      </div>
+                    </div>
+                    <div class="CustomerRating">${generateStarsForReviewSection(
+                      review.user_rating
+                    )}</div>
+                    <div class="review_title">${review.title}</div>
+                    <div class="review_body">${review.body}</div>
+                  `;
+              }
               reviewList.appendChild(listItem);
+            });
+            const deleteButtons = document.querySelectorAll(".delete-review");
+            deleteButtons.forEach((button) => {
+              button.addEventListener("click", (event) => {
+                const reviewId = event.target.getAttribute("data-review-id");
+                deleteReview(reviewId);
+              });
             });
           })
           .catch((error) => {
             console.error("Error updating review list:", error);
+          });
+      }
+
+      function deleteReview(reviewId) {
+        fetch(`/deleteReview/${reviewId}`, {
+          method: "DELETE",
+          headers: {
+            "Content-Type": "application/json",
+          },
+        })
+          .then((response) => response.json())
+          .then((data) => {
+            if (data.success) {
+              updateReviewList(productName);
+            } else {
+              console.log(data.message);
+            }
+          })
+          .catch((error) => {
+            console.error("Error deleting review:", error);
           });
       }
 

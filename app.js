@@ -209,39 +209,6 @@ app.post("/login", async (req, res) => {
   }
 });
 
-const adminUsername = "laxita";
-const hashedPassword = "botanic@123";
-// Admin login route
-app.post("/adminLogIN", async (req, res) => {
-  try {
-    const { username, password } = req.body;
-
-    // Check if username and password are provided
-    if (!username || !password) {
-      return res
-        .status(400)
-        .json({ error: "Username and password are required." });
-    }
-
-    // Check if username matches adminUsername
-    if (username !== adminUsername) {
-      return res.status(401).json({ error: "Invalid username" });
-    }
-
-    // Compare password with hashed password
-
-    if (password == hashedPassword) {
-      return res.status(200).json({ message: "Login successful." });
-    } else {
-      console.error("Invalid password:", err);
-      return res.status(500).json({ error: "Invalid password." });
-    }
-  } catch (err) {
-    console.error(err);
-    res.status(500).json({ message: "Error logging in" });
-  }
-});
-
 // Server-side route to check authentication status
 app.get("/isUserLogedIn", (req, res) => {
   // Check if the user is authenticated
@@ -656,7 +623,6 @@ app.post("/submitReview", async (req, res) => {
       "SELECT  CONCAT(u.first_name, ' ', u.last_name) AS user_name, r.created_at, r.user_rating, r.title, r.body FROM users u JOIN reviews r ON u.user_id = r.user_id WHERE r.product_id = ?",
       [productId]
     );
-    console.log(rows[0]);
 
     res.json({ success: true, reviews: rows });
   } catch (error) {
@@ -676,16 +642,49 @@ app.get("/getReviews", async (req, res) => {
       [productName]
     );
     const productId = productIdResult[0][0].id;
-
-    const [rows] = await pool.query(
-      "SELECT  CONCAT(u.first_name, ' ', u.last_name) AS user_name, r.created_at, r.user_rating, r.title, r.body FROM users u JOIN reviews r ON u.user_id = r.user_id WHERE r.product_id = ? order by r.created_at desc",
-      [productId]
-    );
-
-    res.json({ reviews: rows });
+    let rows = [];
+    if (req.session.isAuthenticated) {
+      [rows] = await pool.query(
+        "SELECT  CONCAT(u.first_name, ' ', u.last_name) AS user_name, u.user_id AS user_id, r.review_id AS reviewId, r.created_at, r.user_rating, r.title, r.body FROM users u JOIN reviews r ON u.user_id = r.user_id WHERE r.product_id = ? order by r.created_at desc",
+        [productId]
+      );
+      res.json({ reviews: rows, sessionId: req.session.userId });
+    } else {
+      [rows] = await pool.query(
+        "SELECT  CONCAT(u.first_name, ' ', u.last_name) AS user_name, r.created_at, r.user_rating, r.title, r.body FROM users u JOIN reviews r ON u.user_id = r.user_id WHERE r.product_id = ? order by r.created_at desc",
+        [productId]
+      );
+      res.json({ reviews: rows });
+    }
   } catch (error) {
     console.log("review not found");
     console.error("Error getting review:", error);
+    res.json({ success: false });
+  }
+});
+
+// Delete a review
+app.delete("/deleteReview/:reviewId", async (req, res) => {
+  try {
+    const reviewId = req.params.reviewId;
+
+    // Ensure the user is authenticated before allowing deletion
+    if (!req.session.isAuthenticated) {
+      return res.status(401).json({ success: false, message: "Unauthorized" });
+    }
+
+    // Delete the review from the database
+    const result = await pool.query("DELETE FROM reviews WHERE review_id = ?", [
+      reviewId,
+    ]);
+
+    if (result[0].affectedRows > 0) {
+      res.json({ success: true, message: "Review deleted successfully" });
+    } else {
+      res.json({ success: false, message: "Review not found" });
+    }
+  } catch (error) {
+    console.error("Error deleting review:", error);
     res.json({ success: false });
   }
 });
@@ -695,7 +694,6 @@ app.post("/AddToCart", async (req, res) => {
   try {
     const name = req.body.name;
     const userId = req.session.userId;
-    console.log(name);
 
     // Check if the product is already in the cart for the user
     const [existingProduct] = await pool.query(
@@ -1131,44 +1129,6 @@ app.get("/GetAllFeedback", async (req, res) => {
   } catch (error) {
     console.error("Error getting feedback:", error);
     res.json({ success: false, error: "Failed to retrieve feedback" });
-  }
-});
-
-app.delete("/deleteProduct", async (req, res) => {
-  try {
-    const productName = req.body.name;
-
-    // Step 1: Retrieve the product_id based on the product_Name
-    const results = await pool.query("SELECT id FROM products WHERE name = ?", [
-      productName,
-    ]);
-
-    // Check if the product exists
-    if (results.length === 0) {
-      console.log(`Product ${productName} not found.`);
-      res.status(404).send("Product not found");
-      return;
-    }
-    console.log(results[0][0].id);
-    // Step 2: Retrieve the product_id from the query results
-    const productId = results[0][0].id;
-
-    // Step 3: Execute the SQL queries to delete related data using the retrieved product_id
-    await Promise.all([
-      pool.query("DELETE FROM reviews WHERE product_id = ?", [productId]),
-      pool.query("DELETE FROM product_description WHERE product_id = ?", [
-        productId,
-      ]),
-      pool.query("DELETE FROM product_variations WHERE product_id = ?", [
-        productId,
-      ]),
-      pool.query("DELETE FROM products WHERE id = ?", [productId]),
-    ]);
-
-    res.status(200).send("Product and related data deleted successfully");
-  } catch (error) {
-    console.error("Error deleting product:", error);
-    res.status(500).json({ message: "Internal server error" });
   }
 });
 
