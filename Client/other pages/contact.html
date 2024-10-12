@@ -64,14 +64,24 @@
 
     <div class="contat_form_container">
       <h2>Contact Form</h2>
-      <form method="post" id="feedbackForm">
+      <form action="/submitFeedback" method="post" id="feedbackForm">
         <div class="customer_info">
-          <input type="text" id="username" name="username" placeholder="Name" />
           <input
             type="text"
+            id="username"
+            class="user_name"
+            name="username"
+            placeholder="Name"
+            required
+            pattern="[A-Za-z\s]{2,50}"
+            title="Name should contain only alphabets and be 2 to 50 characters long"
+          />
+          <input
+            type="email"
             id="userEmail"
             name="userEmail"
             placeholder="Email"
+            required
           />
           <input
             type="tel"
@@ -79,6 +89,8 @@
             name="phoneNumber"
             placeholder="Phone No."
             required
+            pattern="[0-9]{10}"
+            title="Phone number must be 10 digits long."
           />
         </div>
         <div class="comment_section">
@@ -90,7 +102,7 @@
           ></textarea>
         </div>
         <div class="send_btn">
-          <input type="button" value="SEND" onclick="submitFeedback()" />
+          <input type="submit" value="SEND" />
         </div>
       </form>
     </div>
@@ -102,55 +114,81 @@
     </div>
     <!-- Footer -->
     <script src="JavaScript files/NavbarFooterLoader.js"></script>
-    <script src="JavaScript files/loginButtonChanger.js"></script>
+    <!-- <script src="JavaScript files/loginButtonChanger.js"></script> -->
     <script src="JavaScript files/cart.js"></script>
     <script src="JavaScript files/loginFormShow.js"></script>
     <script src="JavaScript files/singIn.js"></script>
     <script src="JavaScript files/addToCart.js"></script>
-    <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
     <script>
-      function checkAuthAndFillUserInfo() {
-        // Run the code after the page has fully loaded
-        $(window).on("load", function () {
-          $.get("/checkAuth", function (data) {
-            if (data.isAuthenticated) {
-              $.get("/user_detail", function (userData) {
-                // Autofill name and email input fields
-                $("#username").val(
-                  userData.userDetails.first_name +
-                    " " +
-                    userData.userDetails.last_name
-                );
-                $("#userEmail").val(userData.userDetails.email);
+      document.addEventListener("DOMContentLoaded", () => {
+        //If user loged in then fetch user details
+        fetch("/user_detail")
+          .then((response) => response.json())
+          .then((data) => {
+            updateDetails(data.userDetails);
+          })
+          .catch((error) =>
+            console.error("Error checking authentication:", error)
+          );
 
-                // Make name and email fields read-only
-                $("#username").prop("readonly", true);
-                $("#userEmail").prop("readonly", true);
-              });
-            }
-          });
-        });
-      }
+        // Function to update the details in the HTML
+        function updateDetails(userDetails) {
+          updateDetail(
+            "username",
+            `${userDetails.first_name} ${userDetails.last_name}`
+          );
+          updateDetail("userEmail", userDetails.email);
+        }
 
-      function submitFeedback() {
-        var feedbackData = {
-          name: $("#username").val(),
-          email: $("#userEmail").val(),
-          phoneNumber: $("#phoneNumber").val(),
-          comment: $("#comment").val(),
-        };
-
-        $.post("/submitFeedback", feedbackData, function (response) {
-          if (response.success) {
-            alert("Feedback submitted successfully");
-          } else {
-            alert("Error submitting feedback");
+        function updateDetail(elementId, value) {
+          const detailElement = document.getElementById(elementId);
+          if (detailElement) {
+            detailElement.value = value;
           }
-        });
-      }
+        }
 
-      $(document).ready(function () {
-        checkAuthAndFillUserInfo();
+        const form = document.querySelector("form");
+        form.addEventListener("submit", (event) => {
+          event.preventDefault(); // Prevent default form submission
+
+          if (!form.checkValidity()) {
+            form.reportValidity();
+            return false;
+          }
+
+          const Name = document.getElementById("username").value;
+          const Email = document.getElementById("userEmail").value;
+          const PhoneNumber = document.getElementById("phoneNumber").value;
+          const Comment = document.getElementById("comment").value;
+          console.log("Form Data:", Name, Email, PhoneNumber, Comment);
+
+          fetch("/submitFeedback", {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json",
+            },
+            body: JSON.stringify({
+              name: Name,
+              email: Email,
+              phoneNumber: PhoneNumber,
+              comment: Comment,
+            }),
+          })
+            .then((response) => response.json())
+            .then((data) => {
+              if (data.message === "Feedback submitted successfully") {
+                alert("Feedback submitted successfully");
+                console.log("feed back submited");
+              } // Handle success response
+              if (data.message === "Error submitting feedback") {
+                alert("Feedback not submitted successfully");
+                console.log("feed back not submited");
+              }
+            })
+            .catch((error) => {
+              console.error("Error:", error); // Handle errors
+            });
+        });
       });
     </script>
   </body>

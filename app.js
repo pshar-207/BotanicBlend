@@ -28,6 +28,7 @@ const port = 3000;
 app.use(express.static(path.join(__dirname, "Client")));
 
 const fs = require("fs");
+const { log } = require("console");
 
 const pool = mysql.createPool({
   host: process.env.DB_HOST,
@@ -546,24 +547,17 @@ app.get("/NormalSkin_Products", async (req, res) => {
 app.post("/submitFeedback", async (req, res) => {
   try {
     const { name, email, phoneNumber, comment } = req.body;
-    console.log(email);
+    console.log(req.session.userId);
+    console.log(name, email, phoneNumber, comment);
 
-    if (req.session.isAuthenticated) {
-      const userId = req.session.userId;
+    if (req.session.userId) {
       await pool.query(
         "INSERT INTO feedback (user_id, name, email, phone_number, comment) VALUES (?, ?, ?, ?, ?)",
-        [userId, name, email, phoneNumber, comment]
+        [req.session.userId, name, email, phoneNumber, comment]
       );
 
       res.json({ success: true, message: "Feedback submitted successfully" });
     } else {
-      // const [result] = await pool.query(
-      //   "INSERT INTO users (first_name, last_name, email) VALUES (?, ?, ?)",
-      //   [name, "", email]
-      // );
-
-      // const newUserId = result.insertId;
-
       await pool.query(
         "INSERT INTO feedback (name, email, phone_number, comment) VALUES (?, ?, ?, ?)",
         [name, email, phoneNumber, comment]

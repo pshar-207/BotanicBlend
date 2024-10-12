@@ -5,8 +5,9 @@ document.addEventListener("DOMContentLoaded", () => {
     event.preventDefault(); // Prevent default form submission
 
     // Validate the form
-    if (!validateForm()) {
-      return; // Stop form submission if validation fails
+    if (!form.checkValidity()) {
+      form.reportValidity();
+      return false;
     }
 
     const emailuser = document.querySelector(".userEmail").value;
@@ -40,9 +41,16 @@ document.addEventListener("DOMContentLoaded", () => {
           alert("Your account has been created!");
           console.log("created");
         } // Handle success response
+        if (data.message === "User is already logged in") {
+          alert("You are already login");
+        }
+        if (data.message === "Email already exists") {
+          alert("Account already exits");
+        }
       })
       .catch((error) => {
         console.error("Error:", error); // Handle errors
+        alert("Your account not created!");
       });
   });
 });
