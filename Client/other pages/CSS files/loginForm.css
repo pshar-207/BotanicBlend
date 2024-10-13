@@ -115,11 +115,13 @@
     font-size: 3vw;
   }
   .form_container input[type="button"] {
-    height: 8vw;
+    min-height: 8vw;
+    overflow: hidden;
     font-size: 4vw;
   }
   .sign_up {
-    height: 6vw;
+    min-height: 6vw;
+    overflow: hidden;
     font-size: 2.5vw;
   }
   .sign_up a {
