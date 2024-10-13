@@ -119,14 +119,113 @@
               <i class="fa-solid fa-cart-shopping" style="color: #000000"></i>
             </button>
           </div>
+          <div class="Menu_button">
+            <div
+              class="menu_login_icon"
+              onclick="toggleLoginForm()"
+              id="login-button"
+            >
+              <i class="fa-solid fa-user" style="color: #000000"></i>
+            </div>
+            <div class="menu_cart_icon" onclick="toggleCart()">
+              <i class="fa-solid fa-cart-shopping" style="color: #000000"></i>
+            </div>
+            <div class="menu_button" onclick="toggleMenu()">
+              <i class="fa-solid fa-bars"></i>
+            </div>
+          </div>
         </div>
+        <!-- Menu Bar -->
+        <div class="Menu_container">
+          <div class="top_menu_close">
+            <div class="menu_close" onclick="closeMenu()">
+              <button><i class="fa-solid fa-xmark"></i></button>
+            </div>
+          </div>
+          <div class="center_menu">
+            <div class="products_collection">
+              <a
+                href="other pages/MultipleProductsPage.html?pageName=AllProducts"
+                id="allSkinCareLink"
+                >All Skincare</a
+              >
+              <a
+                href="other pages/MultipleProductsPage.html?pageName=AllNewArrivalProducts"
+                id="allNewArrivalsLink"
+                >New Arrivals</a
+              >
+              <a
+                href="other pages/MultipleProductsPage.html?pageName=AllBestSellerProducts"
+                id="allBestSellersLink"
+                >Best Sellers</a
+              >
+            </div>
+            <div class="shopBySkinType">
+              <span>SKIN TYPE</span>
+              <a
+                href="other pages/MultipleProductsPage.html?pageName=DrySkin"
+                id="drySkinLink"
+                >Dry</a
+              >
+              <a
+                href="other pages/MultipleProductsPage.html?pageName=OilySkin"
+                id="oilySkinLink"
+                >Oily</a
+              >
+              <a
+                href="other pages/MultipleProductsPage.html?pageName=NormalSkin"
+                id="normalSkinLink"
+                >Normal</a
+              >
+            </div>
+            <div class="shopByCategory">
+              <span>CATEGORY</span>
+              <a
+                href="other pages/MultipleProductsPage.html?pageName=Creams"
+                id="CreamsLink"
+                >Creams</a
+              >
+              <a
+                href="other pages/MultipleProductsPage.html?pageName=Gels"
+                id="GelsLink"
+                >Gels</a
+              >
+              <a
+                href="other pages/MultipleProductsPage.html?pageName=Bathing"
+                id="BathingLink"
+                >Bathing</a
+              >
+              <a
+                href="other pages/MultipleProductsPage.html?pageName=BodyCare"
+                id="BodyCareLink"
+                >Body Care</a
+              >
+            </div>
+          </div>
+          <div class="bottom_menu">
+            <div class="menu_contact_navbar">
+              <a href="other pages/contact.html" id="contact_page_link"
+                >Contact</a
+              >
+            </div>
+            <div class="menu_about_navbar">
+              <a href="other pages/About_page.html" id="about_page_link"
+                >About</a
+              >
+            </div>
+          </div>
+        </div>
+        <!-- Menu Bar -->
+
         <!-- side cart -->
         <div class="side-cart" id="sideCart">
           <!-- Your cart content goes here -->
           <div class="cart_heading_container">
             <div class="cart_heading">
               <p>Shopping Cart</p>
-              <span onclick="closeCart()">Close</span>
+              <span onclick="closeCart()"
+                ><i class="fa-solid fa-xmark"></i
+              ></span>
             </div>
             <hr />
           </div>
