@@ -17,7 +17,7 @@
   flex-flow: column;
   justify-content: center;
   /* align-items: start; */
-  padding: 15% 5% 15% 15%;
+  padding: 15%;
 }
 .why_BB_text h1 {
   font-size: 3.3vw;
@@ -34,7 +34,7 @@
 .why_BB_media {
   /* margin: 0 0 0 20%; */
   /* width: 30vw; */
-  padding: 15%;
+  padding: 15% 5% 15% 15%;
 }
 .why_BB_media img {
   width: 100%;
@@ -55,3 +55,24 @@
 } */
 /* Transition */
 /* why botenic blend */
+
+/* Phone Responsive */
+@media screen and (min-aspect-ratio: 1/3) and (max-aspect-ratio: 1/1) {
+  .why_BB_media {
+    display: none;
+  }
+  .why_BB_container {
+    display: flex;
+    padding: 0;
+  }
+  .why_BB_text {
+    padding: 10%;
+  }
+  .why_BB_text h1 {
+    font-size: 8vw;
+  }
+  .why_BB_text p {
+    font-size: 4vw;
+    line-height: normal;
+  }
+}

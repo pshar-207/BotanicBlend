@@ -11,7 +11,7 @@
   font-family: var(--heading);
 }
 .new_arrival_products {
-  padding-bottom: 3rem;
+  padding-bottom: 5vw;
 }
 .new_arrival_products a {
   text-decoration: none;
@@ -93,4 +93,19 @@
   width: 1.2vw;
   object-fit: contain;
   margin: 0;
+}
+
+/* Phone Responsive */
+@media screen and (min-aspect-ratio: 1/3) and (max-aspect-ratio: 1/1) {
+  .new_arrival_heading {
+    font-size: 4vw;
+  }
+  .new_arrival_products ul {
+    display: grid;
+    flex-flow: row;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    padding-left: 0;
+    grid-template-columns: 1fr 1fr;
+  }
 }
