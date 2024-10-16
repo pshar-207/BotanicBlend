@@ -12,10 +12,7 @@
 .new_arrival_products {
   padding-bottom: 3rem;
 }
-/* .new_arrival_products a {
-  text-decoration: none;
-  color: black;
-} */
+
 .new_arrival_products ul {
   display: flex;
   justify-content: space-evenly;

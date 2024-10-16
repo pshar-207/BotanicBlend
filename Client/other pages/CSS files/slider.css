@@ -1,9 +1,7 @@
 .slide_container {
   position: relative;
   display: flex;
-  /* width: 100%; */
   overflow: hidden;
-  /* justify-content: center; */
   transition: transform 0.5s ease-in-out;
 }
 
