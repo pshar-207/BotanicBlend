@@ -18,9 +18,9 @@
       rel="stylesheet"
     />
     <!-- Google Fonts -->
+    <link rel="stylesheet" href="CSS files/googleFont.css" />
     <link rel="stylesheet" href="CSS files/best_sell.css" />
     <link rel="stylesheet" href="CSS files/new_arrivals.css" />
-    <link rel="stylesheet" href="CSS files/googleFont.css" />
     <link rel="stylesheet" href="CSS files/Product_Page.css" />
     <link rel="stylesheet" href="CSS files/header.css" />
     <link rel="stylesheet" href="CSS files/cart.css" />
@@ -294,18 +294,13 @@
           <ul class="review_list" id="reviewList">
             <li>
               <div class="customerName_date_container">
-                <div class="customer_name">Crish bumstured</div>
+                <div class="customer_name">Name</div>
                 <span>on</span>
-                <div class="date">11/11/2024</div>
+                <div class="date">Date</div>
               </div>
               <div class="customerRating"></div>
-              <div class="review_title">xyz</div>
-              <div class="review_body">
-                Lorem ipsum dolor sit, amet consectetur adipisicing elit.
-                Voluptates quod praesentium ducimus assumenda sit repudiandae
-                est? Eum, qui ut officiis modi cupiditate pariatur, vel vitae
-                reprehenderit facere aperiam ipsum necessitatibus?
-              </div>
+              <div class="review_title">Review Title</div>
+              <div class="review_body">Review Body</div>
             </li>
           </ul>
         </div>
@@ -318,7 +313,6 @@
     </div>
     <!-- Footer -->
     <script src="JavaScript files/NavbarFooterLoader.js"></script>
-    <!-- <script src="JavaScript files/loginButtonChanger.js"></script> -->
     <script src="JavaScript files/cart.js"></script>
     <script src="JavaScript files/loginFormShow.js"></script>
     <script src="JavaScript files/singIn.js"></script>
@@ -329,22 +323,18 @@
     <script src="JavaScript files/productPage_descriptionOrShipping_hide_show.js"></script>
     <script src="JavaScript files/productPage_reviewScroll.js"></script>
     <script src="JavaScript files/productPage_reviewWrite_HideShow.js"></script>
-
     <script src="JavaScript files/ReviewStar.js"></script>
 
-    <!-- products fetching -->
     <script>
+      // products fetching
       document.addEventListener("DOMContentLoaded", function () {
         const queryString = window.location.search;
-        // Parse the query string into a URLSearchParams object
         const urlParams = new URLSearchParams(queryString);
-        // Access individual parameters using their names
         const product_Name = urlParams.get("productName");
 
         fetch(`/productDetails?productName=${product_Name}`)
           .then((response) => response.json())
           .then((productDetails) => {
-            // Update HTML elements with product details
             document.querySelector(".product_image img").src =
               productDetails[0].image_url.replace("other pages/", "");
 
@@ -430,24 +420,19 @@
 
     <script src="JavaScript files/Qty_selector.js"></script>
 
-    <!--Best Seller and User Review -->
     <script>
       //BEST SELLERS PRODUCTS
 
       fetch("/Best_Sellers")
         .then((response) => response.json())
         .then((data) => {
-          // Call a function to render the data
           renderBestSellers(data);
         })
         .catch((error) => console.error("Error fetching data:", error));
 
-      // Function to render new arrivals
       function renderBestSellers(data) {
-        // Get the UL element
         const bestSellerList = document.getElementById("bestSellerList");
 
-        // Loop through the data and create list items
         data.forEach((product) => {
           const listItem = document.createElement("li");
           var modifiedImagePath = product.image_url.replace("other pages/", "");
@@ -515,7 +500,6 @@
                       </div>
                   `;
 
-          // Append the list item to the UL
           bestSellerList.appendChild(listItem);
         });
       }
@@ -526,23 +510,19 @@
       const productName = url_Params.get("productName");
 
       function submitReview(event) {
-        event.preventDefault(); // Prevent the default form submission
+        event.preventDefault();
 
-        // Get the values from the form
-        const rating = getSelectedRating(); // You need to implement this function
+        const rating = getSelectedRating();
         const title = document.getElementById("reviewTitle").value;
         const body = document.getElementById("reviewBody").value;
 
-        // Check if the user is authenticated
         fetch("/checkAuth")
           .then((response) => response.json())
           .then((data) => {
             if (data.isAuthenticated) {
-              // If authenticated, proceed to submit the review
               const reviewData = { rating, title, body, productName };
               submitReviewToServer(reviewData);
             } else {
-              // If not authenticated, show an alert
               alert("You must log in before submitting a review.");
             }
           })
@@ -562,12 +542,7 @@
         })
           .then((response) => response.json())
           .then((data) => {
-            // console.log(data);
             if (data.success) {
-              // If the review is successfully submitted, update the UI
-
-              console.log("review submited");
-              // alert("Review Submited");
               updateReviewList(productName);
               document.getElementById("reviewTitle").value = "";
               document.getElementById("reviewBody").value = "";
@@ -597,15 +572,15 @@
           .then((response) => response.json())
           .then((data) => {
             const reviews = data.reviews;
-            // Update the review list in the UI
+
             const reviewList = document.getElementById("reviewList");
-            reviewList.innerHTML = ""; // Clear existing reviews
+            reviewList.innerHTML = "";
 
             reviews.forEach((review) => {
               const formattedDate = new Date(
                 review.created_at
               ).toLocaleString();
-              // Create HTML elements for each review and append to the list
+
               const listItem = document.createElement("li");
 
               if (data.sessionId && data.sessionId == review.user_id) {
@@ -688,14 +663,13 @@
 
       // Function to generate star icons based on the rating
       function generateStarsForReviewSection(rating) {
-        const maxStars = 5; // Set the maximum number of stars
+        const maxStars = 5;
 
-        // Create an array of active star images based on the rating
         const starHtml = Array.from({ length: rating }, () => {
           return `<img class="CustomerReviesStars" src="Photos/Stars/active-star.png" alt="" />`;
         });
 
-        return starHtml.join(""); // Join the array of active star images into a string
+        return starHtml.join("");
       }
 
       // Function to get the selected rating

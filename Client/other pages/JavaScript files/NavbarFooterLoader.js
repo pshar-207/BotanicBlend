@@ -7,44 +7,30 @@ function loadAndInsertContent(url, placeholderId) {
   fetch(url)
     .then((response) => response.text())
     .then((content) => {
-      // Insert the fetched content into the placeholder
       placeholder.innerHTML = content;
-
       login_button = document.getElementById("login-button");
-      // After content is loaded, change the background color
-      // Call the function to change the background color on scroll
       changeNavbarBackgroundColorOnScroll();
     })
     .catch((error) => {
       console.error("Error loading content:", error);
     });
 }
-// Load header and footer using the function
+// Loading header and footer using the function
 loadAndInsertContent("/other pages/Navbar.html", "header-placeholder");
 loadAndInsertContent(
   "/other pages/FooterForOtherPages.html",
   "footer-placeholder"
 );
 
-//Add these lines to check if the user is logged in or not
+//checking if the user is logged in or not
 document.addEventListener("DOMContentLoaded", () => {
-  // const login_button = document.getElementById("login-button");
-
-  // Check if the user is authenticated
   fetch("/isUserLogedIn")
     .then((response) => response.json())
     .then((data) => {
-      // login_button.style.backgroundColor = "cyan";
       if (data.isAuthenticated) {
-        // User is authenticated, show logout button
         login_button.onclick = "";
         login_button.onclick = () => {
-          var currentPath = window.location.pathname;
-          if (currentPath.includes("other%20pages")) {
-            window.location.href = "account.html";
-          } else {
-            window.location.href = "other pages/account.html";
-          }
+          window.location.href = "account.html";
         };
         console.log("User Logged in");
       } else {

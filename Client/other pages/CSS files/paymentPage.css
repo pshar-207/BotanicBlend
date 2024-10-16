@@ -53,8 +53,13 @@ body {
   font-size: 1vw;
   font-family: var(--heading);
 }
+.emailMeNews {
+  display: flex;
+  align-items: center;
+}
 .email_container input[type="checkbox"] {
-  margin-right: 0.5%;
+  margin-right: 0.5vw;
+  width: 1.2vw;
 }
 .email_container span {
   font-size: 1vw;
@@ -73,12 +78,14 @@ body {
 .name input[type="text"],
 .address input[type="text"],
 .city_state_pincode input[type="text"],
-.phoneNumber input[type="text"],
+.city_state_pincode input[type="number"],
+.phoneNumber input[type="tel"],
 .diff_country input[type="text"],
 .diff_name input[type="text"],
 .diff_address input[type="text"],
 .diff_city_state_pincode input[type="text"],
-.diff_phoneNumber input[type="text"] {
+.diff_city_state_pincode input[type="number"],
+.diff_phoneNumber input[type="tel"] {
   background-color: white;
   border: 0.1vw solid black;
   border-radius: 0;
@@ -109,12 +116,17 @@ body {
   display: flex;
   gap: 1%;
 }
-.phoneNumber input[type="text"],
-.diff_phoneNumber input[type="text"] {
+.phoneNumber input[type="tel"],
+.diff_phoneNumber input[type="tel"] {
   width: 100%;
 }
+.saveInfo {
+  display: flex;
+  align-items: center;
+}
 .saveInfo input[type="checkbox"] {
-  margin-right: 0.5%;
+  margin-right: 0.5vw;
+  width: 1.2vw;
 }
 .saveInfo span {
   font-size: 1vw;
@@ -136,9 +148,13 @@ body {
 .onlinePayment {
   border: 0.1vw solid black;
   padding: 1.5%;
+  display: flex;
+  align-items: center;
 }
 .onlinePayment input[type="radio"] {
-  margin-right: 0.5%;
+  margin-right: 0.5vw;
+  width: 1.5vw;
+  height: 1.5vw;
 }
 
 .onlinePaymentWarning {
@@ -157,9 +173,13 @@ body {
 .cashOnDelivery {
   border: 0.1vw solid black;
   padding: 1.5%;
+  display: flex;
+  align-items: center;
 }
 .cashOnDelivery input[type="radio"] {
-  margin-right: 0.5%;
+  margin-right: 0.5vw;
+  width: 1.5vw;
+  height: 1.5vw;
 }
 
 /* Payment */
@@ -173,16 +193,20 @@ body {
 .diffAddress {
   border: 0.1vw solid black;
   padding: 1.5%;
+  display: flex;
+  align-items: center;
 }
 .sameAsShippingAdd input[type="radio"],
 .diffAddress input[type="radio"] {
-  margin-right: 0.5%;
+  margin-right: 0.5vw;
+  width: 1.5vw;
+  height: 1.5vw;
 }
 
 .differentAdd_container {
   display: none;
   padding: 2%;
-  border: 1px solid black;
+  border: 0.1vw solid black;
   background-color: rgb(255, 235, 239);
 }
 .billingAddress_conatiner span {
@@ -197,7 +221,7 @@ body {
   gap: 3%;
   margin-top: 3%;
 }
-.payNow_container button[type="submit"] {
+.payNow_container input[type="submit"] {
   font-size: 1.5vw;
   font-family: var(--heading);
   width: 100%;
@@ -205,7 +229,7 @@ body {
   border: none;
   border: 0.1vw solid black;
 }
-.payNow_container button[type="submit"]:hover {
+.payNow_container input[type="submit"]:hover {
   background-color: #fcc6e2;
 }
 /* PayNow */

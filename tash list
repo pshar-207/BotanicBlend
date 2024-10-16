@@ -1,0 +1,119 @@
+[33mcommit 2c4dbdbd9661241265ca525458cba26c1d37d174[m[33m ([m[1;36mHEAD[m[33m -> [m[1;32mmain[m[33m, [m[1;31morigin/main[m[33m, [m[1;31morigin/HEAD[m[33m)[m
+Author: Praveen Sharma <p.shar.18.12.2000@gmail.com>
+Date:   Mon Oct 14 12:20:36 2024 +0530
+
+    Make Why_BB and New_arrivals mobile responsive
+
+[33mcommit 423d994e313a4a6afed72c6354b27380a350cd19[m
+Author: Praveen Sharma <p.shar.18.12.2000@gmail.com>
+Date:   Sun Oct 13 20:54:01 2024 +0530
+
+    Make Navbar and Hero section height Responsive
+
+[33mcommit 4da28c54ccc5f76c806ac754d525ea87fb7e26b0[m
+Author: Praveen Sharma <p.shar.18.12.2000@gmail.com>
+Date:   Sun Oct 13 20:26:37 2024 +0530
+
+    Make Navbar and Hero section Mobile Responsive
+
+[33mcommit 2f8dea28b8be2ed174a4cf7ff9f4e333172a6dab[m
+Author: Praveen Sharma <p.shar.18.12.2000@gmail.com>
+Date:   Sat Oct 12 19:13:50 2024 +0530
+
+    Add validation in SignUp and Feedback
+
+[33mcommit 10994692d305c8aae0ac3d0bd4ea347fdace5846[m
+Author: Praveen Sharma <p.shar.18.12.2000@gmail.com>
+Date:   Thu Oct 10 23:08:53 2024 +0530
+
+    add review delete button functionality
+
+[33mcommit cfe154fb2fea1c6c78fc6df65bde9a9404d387c2[m
+Author: Praveen Sharma <p.shar.18.12.2000@gmail.com>
+Date:   Wed Oct 9 21:36:26 2024 +0530
+
+    connect to cloud database
+
+[33mcommit 4e24dabdf0417d1e26c58d41eac5b098798e109d[m[33m ([m[1;31morigin/responsive[m[33m)[m
+Author: Praveen Sharma <p.shar.18.12.2000@gmail.com>
+Date:   Wed Oct 9 18:59:04 2024 +0530
+
+    Make website more responsive
+
+[33mcommit 4aebbee064c895a80ceb912e28e4fb01fd090a21[m
+Author: Praveen Sharma <p.shar.18.12.2000@gmail.com>
+Date:   Wed Oct 9 18:53:25 2024 +0530
+
+    update README.md file
+
+[33mcommit 8b3b9516a4f48fc1d6952bcd6dd38419320b9304[m
+Author: Praveen Sharma <p.shar.18.12.2000@gmail.com>
+Date:   Wed Oct 9 18:51:57 2024 +0530
+
+    Delete some files
+
+[33mcommit 0bbaf3ce3bf9aada0cbdcf9f0c2682a7de1fc72f[m
+Author: pshar <pshar_101>
+Date:   Tue Sep 24 08:48:48 2024 +0530
+
+    fix header and footer
+
+[33mcommit 51cb2bc6a2546823cd1e5df1e4fc38fe0c1bcaac[m
+Author: pshar-207 <p.shar.18.12.2000@gmail.com>
+Date:   Sun Feb 25 18:37:34 2024 -0800
+
+    bug fix in quiz
+
+[33mcommit 3cdf9ded9d6450aad47cd24033ac8b8e21587fd7[m
+Author: pshar-207 <p.shar.18.12.2000@gmail.com>
+Date:   Sun Feb 25 13:18:57 2024 -0800
+
+    Add Admin Panel
+
+[33mcommit 97e24eea573214ccae779f29cf4600ee3730539d[m
+Author: pshar-207 <p.shar.18.12.2000@gmail.com>
+Date:   Sat Feb 24 23:14:31 2024 -0800
+
+    Improved Version
+
+[33mcommit ea6271bf63ec1e79b9f662370553fa23d4abe80f[m
+Author: pshar-207 <p.shar.18.12.2000@gmail.com>
+Date:   Fri Feb 2 09:16:48 2024 -0800
+
+    Optimize code
+
+[33mcommit 4076dbbf04b5018ef9b01ad6afbe26a716cb3f92[m
+Author: pshar-207 <p.shar.18.12.2000@gmail.com>
+Date:   Fri Jan 26 08:37:15 2024 -0800
+
+    Add Purchase Functionality
+
+[33mcommit 088bfb5f30bc61b7c6375c4c13943ef4294615fa[m
+Author: pshar-207 <p.shar.18.12.2000@gmail.com>
+Date:   Mon Jan 22 01:59:13 2024 -0800
+
+    Price and Weight updated
+
+[33mcommit 1ba5a16413bc7805d81fcf810ea9e5edf69ec4c2[m
+Author: pshar-207 <p.shar.18.12.2000@gmail.com>
+Date:   Sat Jan 20 05:21:11 2024 -0800
+
+    Add 'Add to Cart' functionality and Quiz Result Page
+
+[33mcommit 496aa4e95ba3982def6cc1c13376371a46c8151b[m
+Author: pshar-207 <p.shar.18.12.2000@gmail.com>
+Date:   Wed Jan 17 03:11:43 2024 -0800
+
+    Showing all reviews in productDetail page
+
+[33mcommit 9ef5f6d2a237e3b563c2050831cecfab8597bea3[m
+Author: pshar-207 <p.shar.18.12.2000@gmail.com>
+Date:   Tue Jan 16 22:50:50 2024 -0800
+
+    Add Review Submit Functionality
+
+[33mcommit 5f79a03a9ad294aa3521c8ed0969caaa8cbdb52c[m
+Author: pshar-207 <p.shar.18.12.2000@gmail.com>
+Date:   Fri Jan 12 11:53:24 2024 -0800
+
+    Linking Product_Page to Prducts

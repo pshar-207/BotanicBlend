@@ -39,6 +39,10 @@ document.addEventListener("DOMContentLoaded", () => {
           alert("Password Changed");
           console.log("Password Changed");
         } // Handle success response
+        if (data.message === "User not found") {
+          alert("User not found");
+          console.log("User not found");
+        }
       })
       .catch((error) => {
         console.error("Error:", error); // Handle errors

@@ -48,7 +48,11 @@
               id="purchaseUserEmail"
               required
             />
-            <input type="checkbox" /><span>Email me with news and offers</span>
+            <div class="emailMeNews">
+              <input type="checkbox" /><span
+                >Email me with news and offers</span
+              >
+            </div>
           </div>
           <div class="deviveryDetails_container">
             <div class="delivery_heading">Delivery</div>
@@ -57,22 +61,54 @@
                 type="text"
                 id="UserCountry"
                 placeholder="Country Region"
+                required
               />
             </div>
             <div class="name">
-              <input type="text" id="UserFirstName" placeholder="First Name" />
-              <input type="text" id="UserLastName" placeholder="Last Name" />
+              <input
+                type="text"
+                id="UserFirstName"
+                placeholder="First Name"
+                required
+                pattern="[A-Za-z\s]{2,50}"
+                title="First name should contain only alphabets and be 2 to 50 characters long"
+              />
+              <input
+                type="text"
+                id="UserLastName"
+                placeholder="Last Name"
+                required
+                pattern="[A-Za-z\s]{2,50}"
+                title="First name should contain only alphabets and be 2 to 50 characters long"
+              />
             </div>
             <div class="address">
-              <input type="text" id="UserAddress" placeholder="Address" />
+              <input
+                type="text"
+                id="UserAddress"
+                placeholder="Address"
+                required
+              />
             </div>
             <div class="city_state_pincode">
-              <input type="text" id="UserCity" placeholder="City" />
-              <input type="text" id="UserState" placeholder="State" />
-              <input type="text" id="UserPincode" placeholder="Pincode" />
+              <input type="text" id="UserCity" placeholder="City" required />
+              <input type="text" id="UserState" placeholder="State" required />
+              <input
+                type="number"
+                id="UserPincode"
+                placeholder="Pincode"
+                required
+              />
             </div>
             <div class="phoneNumber">
-              <input type="text" id="UserPhoneNumber" placeholder="Phone" />
+              <input
+                type="tel"
+                id="UserPhoneNumber"
+                placeholder="Phone"
+                required
+                pattern="[0-9]{10}"
+                title="Phone number must be 10 digits long."
+              />
             </div>
             <div class="saveInfo">
               <input type="checkbox" id="saveInfo" /><span
@@ -96,7 +132,7 @@
               <span>UPI/ Cards, Wallets, NetBanking</span>
             </div>
             <div class="onlinePaymentWarning">
-              <img src="Photo/Payment/credit-card 1.png" alt="" />
+              <img src="Photos/payment/credit-card.png" alt="" />
               <span
                 >After clicking “Pay now”, you will be redirect to Secure (UPI,
                 Cards, Wallet, NetBanking) to complete your purchase
@@ -138,26 +174,64 @@
                   type="text"
                   id="diifCountry"
                   placeholder="Country Region"
+                  required
                 />
               </div>
               <div class="diff_name">
-                <input type="text" id="diffFirstName" placeholder="firstName" />
-                <input type="text" id="diffLalsName" placeholder="lastName" />
+                <input
+                  type="text"
+                  id="diffFirstName"
+                  placeholder="firstName"
+                  required
+                  pattern="[A-Za-z\s]{2,50}"
+                  title="First name should contain only alphabets and be 2 to 50 characters long"
+                />
+                <input
+                  type="text"
+                  id="diffLalsName"
+                  placeholder="lastName"
+                  required
+                  pattern="[A-Za-z\s]{2,50}"
+                  title="First name should contain only alphabets and be 2 to 50 characters long"
+                />
               </div>
               <div class="diff_address">
-                <input type="text" id="diffAddress" placeholder="Address" />
+                <input
+                  type="text"
+                  id="diffAddress"
+                  placeholder="Address"
+                  required
+                />
               </div>
               <div class="diff_city_state_pincode">
-                <input type="text" id="diffCity" placeholder="city" />
-                <input type="text" id="diffState" placeholder="state" />
-                <input type="text" id="diffPincode" placeholder="pincode" />
+                <input type="text" id="diffCity" placeholder="city" required />
+                <input
+                  type="text"
+                  id="diffState"
+                  placeholder="state"
+                  required
+                />
+                <input
+                  type="number"
+                  id="diffPincode"
+                  placeholder="pincode"
+                  required
+                />
               </div>
               <div class="diff_phoneNumber">
-                <input type="text" id="diffPhoneNumber" placeholder="Phone" />
+                <input
+                  type="tel"
+                  id="diffPhoneNumber"
+                  placeholder="Phone"
+                  required
+                  pattern="[0-9]{10}"
+                  title="Phone number must be 10 digits long."
+                />
               </div>
             </div>
             <div class="payNow_container">
-              <button type="submit">Pay Now</button>
+              <!-- <button type="submit">Pay Now</button> -->
+              <input type="submit" value="Pay Now" />
             </div>
           </div>
         </form>
@@ -185,7 +259,6 @@
     </div>
     <!-- Footer -->
     <script src="JavaScript files/NavbarFooterLoader.js"></script>
-    <script src="JavaScript files/loginButtonChanger.js"></script>
     <script src="JavaScript files/cart.js"></script>
     <script src="JavaScript files/loginFormShow.js"></script>
     <script src="JavaScript files/singIn.js"></script>
@@ -193,13 +266,8 @@
     <script>
       checkAuthAndFillUserInfo();
       var urlParams = new URLSearchParams(window.location.search);
-      var productParam = urlParams.get("product");
-
-      // Parse the JSON string back to an array
-      var productsArray = JSON.parse(decodeURIComponent(productParam));
-
-      // Now, productsArray contains your array of products
-      console.log(productsArray);
+      var products = urlParams.get("product");
+      var productsArray = JSON.parse(decodeURIComponent(products));
 
       const purchaseProductsList = document.querySelector(
         ".purchaseProducts_container"
@@ -261,14 +329,13 @@
         console.log(item.name);
       });
 
-      console.log(typeof subTotal);
       subTotal = parseInt(subTotal);
-      console.log(typeof subTotal);
+
       document.querySelector(
         ".subTotalAmount"
       ).innerHTML = `&#8377; ${subTotal}`;
       var subTotalGST = (subTotal * 18) / 100;
-      console.log(subTotalGST);
+
       document.querySelector(".gstAmount").innerHTML = `&#8377; ${subTotalGST}`;
       document.querySelector(".totalAmount").innerHTML = `&#8377; ${
         subTotal + subTotalGST
@@ -281,7 +348,7 @@
       document.addEventListener("DOMContentLoaded", () => {
         const form = document.querySelector(".purchase_form");
         form.addEventListener("submit", (event) => {
-          event.preventDefault(); // Prevent default form submission
+          event.preventDefault();
 
           fetch("/purchase", {
             method: "POST",
@@ -319,27 +386,23 @@
           })
             .then((response) => {
               if (response.status === 401) {
-                return response.json(); // This will trigger the catch block
+                return response.json();
               }
               if (!response.ok) {
                 throw new Error("Network response was not ok");
               }
-              return response.json(); // or response.text() for non-JSON data
+              return response.json();
             })
             .then((data) => {
-              // Handle the data
-              if (data.message === "Account Already exist") {
+              if (data.message === "account already exits on this email") {
                 alert("user already exixst");
-                console.log("email exist");
               }
               if (data.message === "Purchase successful") {
-                console.log("Purchase successful");
                 alert("Purchase successful");
-                window.location.href = "/";
+                window.location.href = "/Index.html";
               }
             })
             .catch((error) => {
-              // Handle errors
               console.error("Fetch error:", error);
             });
         });
@@ -358,59 +421,67 @@
               if (data.isAuthenticated) {
                 return fetch("/user_detail");
               } else {
-                throw new Error("User not authenticated");
+                console.log("user is not logged in");
               }
             })
             .then((response) => {
-              if (!response.ok) {
-                throw new Error("Failed to fetch user details");
+              if (!response) {
+                console.log("Unable to find user details");
+              } else {
+                return response.json();
               }
-              return response.json();
             })
             .then((userData) => {
-              // Autofill email input field
-              document.getElementById("purchaseUserEmail").value =
-                userData.userDetails.email;
+              if (userData) {
+                // Autofill email input field
+                document.getElementById("purchaseUserEmail").value =
+                  userData.userDetails.email;
 
-              // Make email field read-only
-              document.getElementById("purchaseUserEmail").readOnly = true;
+                // Make email field read-only
+                document.getElementById("purchaseUserEmail").readOnly = true;
+
+                autoFillUserDetails();
+              }
             })
             .catch((error) => {
               console.error("Error:", error);
             });
         });
       }
-
-      fetch(`/getUserAddressInfo`, {
-        method: "GET",
-        headers: {
-          "Content-Type": "application/json",
-        },
-      })
-        .then((response) => response.json())
-        .then((data) => {
-          // Assuming the server returns an array of reviews
-          const user_Adress = data.row;
-          document.getElementById("UserCountry").value =
-            user_Adress[0].country_region;
-          console.log("save inf oget");
-          document.getElementById("UserFirstName").value =
-            user_Adress[0].first_name;
-          document.getElementById("UserLastName").value =
-            user_Adress[0].last_name;
-          document.getElementById("UserAddress").value = user_Adress[0].address;
-          document.getElementById("UserCity").value = user_Adress[0].city;
-          document.getElementById("UserState").value = user_Adress[0].state;
-          document.getElementById("UserPincode").value = user_Adress[0].pincode;
-          document.getElementById("UserPhoneNumber").value =
-            user_Adress[0].phone_number;
+      function autoFillUserDetails() {
+        fetch(`/getUserAddressInfo`, {
+          method: "GET",
+          headers: {
+            "Content-Type": "application/json",
+          },
         })
-        .catch((error) => {
-          console.error("Not getting save address:", error);
-        });
+          .then((response) => response.json())
+
+          .then((data) => {
+            if (data.success == true) {
+              const user_Adress = data.row;
+              document.getElementById("UserCountry").value =
+                user_Adress[0].country_region;
+              document.getElementById("UserFirstName").value =
+                user_Adress[0].first_name;
+              document.getElementById("UserLastName").value =
+                user_Adress[0].last_name;
+              document.getElementById("UserAddress").value =
+                user_Adress[0].address;
+              document.getElementById("UserCity").value = user_Adress[0].city;
+              document.getElementById("UserState").value = user_Adress[0].state;
+              document.getElementById("UserPincode").value =
+                user_Adress[0].pincode;
+              document.getElementById("UserPhoneNumber").value =
+                user_Adress[0].phone_number;
+            }
+          })
+          .catch((error) => {
+            console.error("Not getting save address:", error);
+          });
+      }
     </script>
     <script>
-      // Add event listener to the radio buttons
       const onlinePaymentRadio = document.getElementById("onlinePaymentRadio");
       const codRadio = document.getElementById("codRadio");
       const onlinePaymentWarning = document.querySelector(
@@ -436,15 +507,33 @@
         ".differentAdd_container"
       );
       billingRadioDiffAddress.addEventListener("change", () => {
+        const hiddenInputs = document.querySelectorAll(
+          ".differentAdd_container input"
+        );
+        hiddenInputs.forEach((input) => {
+          input.disabled = false;
+        });
         differentAdd_container.style.display = billingRadioDiffAddress.checked
           ? "block"
           : "none";
       });
 
       billingRadioSameAddress.addEventListener("change", () => {
+        const hiddenInputs = document.querySelectorAll(
+          ".differentAdd_container input"
+        );
+        hiddenInputs.forEach((input) => {
+          input.disabled = true;
+        });
         differentAdd_container.style.display = billingRadioSameAddress.checked
           ? "none"
           : "block";
+      });
+      const hiddenInputs = document.querySelectorAll(
+        ".differentAdd_container input"
+      );
+      hiddenInputs.forEach((input) => {
+        input.disabled = true;
       });
     </script>
   </body>

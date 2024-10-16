@@ -11,7 +11,12 @@ console.log("Cart Working");
 
 function closeCart() {
   var sideCart = document.getElementById("sideCart");
+<<<<<<< HEAD
   sideCart.style.right = "-80vw";
   sideCart.style.boxSl̥hadow = "none";
+=======
+  sideCart.style.right = "-35vw";
+  sideCart.style.boxShadow = "none";
+>>>>>>> BugFix
   isCartOpen = false;
 }
