@@ -14,11 +14,11 @@ document.addEventListener("DOMContentLoaded", () => {
         })
         .then((data) => {
           if (data.message === "User data deleted successfully") {
-            window.location.href = "/";
+            window.location.href = "/Index.html";
           }
         })
         .catch((error) => {
-          console.error("Error:", error); // Log error message
+          console.error("Error:", error);
         });
     }
   });

@@ -28,9 +28,7 @@ function renderNewArrivals(data) {
                           product.name
                         }&price=${parseInt(product.price, 10)}&img=${
       product.image_url
-    }&rating=${product.rating}"><img src="${
-      product.image_url
-    }" loading="lazy" alt="" /></a>
+    }&rating=${product.rating}"><img src="${product.image_url}" alt="" /></a>
                     </div>
                     <div class="new_arrival_product_name">${
                       product.name
@@ -98,7 +96,7 @@ function renderBestSellers(data) {
                     }&price=${parseInt(product.price, 10)}&img=${
       product.image_url
     }&rating=${product.rating}">
-                      <img src="${product.image_url}" loading="lazy" alt="" />
+                      <img src="${product.image_url}"  alt="" />
                     </a>
                     </div>
                     <div class="best_sell_product_name">${

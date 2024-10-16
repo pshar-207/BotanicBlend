@@ -124,12 +124,18 @@
                 class="name"
                 placeholder="First Name"
                 id="firstNameInput"
+                required
+                pattern="[A-Za-z\s]{2,50}"
+                title="First name should contain only alphabets and be 2 to 50 characters long"
               />
               <input
                 type="text"
                 class="name"
                 placeholder="Last Name"
                 id="lastNameInput"
+                required
+                pattern="[A-Za-z\s]{2,50}"
+                title="Last name should contain only alphabets and be 2 to 50 characters long"
               />
             </form>
             <div class="cancel_save">
@@ -148,10 +154,11 @@
             <h2 class="name">Email</h2>
             <form action="/update-email" method="post" id="emailEditForm">
               <input
-                type="text"
+                type="email"
                 class="name"
                 id="new_email"
                 placeholder="Enter New Email"
+                required
               />
             </form>
             <div class="cancel_save">
@@ -174,12 +181,18 @@
                 class="name"
                 id="previous_password"
                 placeholder="Previous Password"
+                required 
+                pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[@$!%*?&#])[A-Za-z\d@$!%*?&#]{8,}"
+                title="Password must be at least 8 characters long and include one uppercase letter, one lowercase letter, one number, and one special character."               
               />
               <input
                 type="password"
                 class="name"
                 id="new_password"
                 placeholder="New Password"
+                required 
+                pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[@$!%*?&#])[A-Za-z\d@$!%*?&#]{8,}"
+                title="Password must be at least 8 characters long and include one uppercase letter, one lowercase letter, one number, and one special character."               
               />
             </form>
             <div class="cancel_save">
@@ -201,6 +214,7 @@
                 name="dob"
                 id="dobInput"
                 placeholder="DOB"
+                required
               />
             </form>
             <div class="cancel_save">
@@ -303,7 +317,6 @@
           }
         }
 
-        // Attach click event listeners to trigger show/hide for each pop-up
         document
           .querySelector(".edit_pop1")
           .addEventListener("click", function () {
@@ -369,11 +382,10 @@
     <script>
       document.addEventListener("DOMContentLoaded", () => {
         // Fetch user details
-
         fetch("/user_detail")
           .then((response) => response.json())
           .then((data) => {
-            updateDetails(data.userDetails);
+            updateDetails(data.userDetails);            
           })
           .catch((error) =>
             console.error("Error checking authentication:", error)
@@ -447,23 +459,14 @@
           .then((data) => {
             if (data.success) {
               alert("Name updated successfully!");
-              hidePopup("pop1"); // Assuming you have a function to hide the popup
-              // Optionally, you can fetch and update user details after the name update
-              fetch("/user_detail")
-                .then((response) => response.json())
-                .then((data) => {
-                  updateDetails(data.userDetails);
-                })
-                .catch((error) =>
-                  console.error("Error updating details:", error)
-                );
+              window.location.reload();
             } else {
               alert("Error updating name");
             }
           })
           .catch((error) => console.error("Error updating name:", error));
       }
-      // Add this function to handle email form submissions
+
       function submitEmailForm(formId) {
         const newEmail = document.getElementById("new_email").value;
 
@@ -478,9 +481,7 @@
           .then((data) => {
             if (data.success) {
               alert("Email updated successfully");
-              // Optionally, you can update the displayed email on the page
-              updateDetail("user_email", newEmail);
-              hidePopup("pop2");
+              window.location.reload();
             } else {
               alert("Error updating email");
             }
@@ -493,8 +494,6 @@
         const previousPassword =
           document.getElementById("previous_password").value;
         const newPassword = document.getElementById("new_password").value;
-
-        // You can add additional validation here if needed
 
         // Send a fetch request to the server to update the password
         fetch("/update-password", {
@@ -511,7 +510,7 @@
           .then((data) => {
             if (data.success) {
               alert("Password updated successfully!");
-              hidePopup("pop3"); // Close the password edit popup
+              window.location.reload();
             } else {
               alert(
                 "Failed to update password. Please check your input and try again."
@@ -526,13 +525,12 @@
           });
       }
 
-      // Add this function to handle birthday form submissions
       function updateBirthday() {
         // Get the date of birth value from the input field
         const dobInput = document.getElementById("dobInput");
         const newDob = dobInput.value;
         console.log(newDob);
-        // Prepare the request options
+
         const options = {
           method: "POST",
           headers: {
@@ -549,7 +547,6 @@
               alert("Date of birth added!");
               window.location.reload();
             } else {
-              // Handle the case where the update was not successful
               if (data.message === "Date of birth already added") {
                 alert("Date of birth has already been added.");
               } else {
@@ -567,26 +564,23 @@
     <script>
       let selectedSkinType = null;
       var clickedDiv = null;
-      // var originalBackgroundColor = element.style.backgroundColor;
-      // var originalBorder = element.style.border;
       function changeColor(element) {
-        // Apply hover effect only if the div is not clicked
         if (element !== clickedDiv) {
-          element.style.backgroundColor = "#fcc6e2"; // Change this to the desired background color
-          element.style.border = "1px solid black";
+          element.style.backgroundColor = "#fcc6e2";
+          element.style.border = "0.1vw solid black";
         }
       }
 
       function changeColorsClick(div) {
         // Reset styles for the previously clicked div
         if (clickedDiv) {
-          clickedDiv.style.backgroundColor = "white";
-          clickedDiv.style.border = "1px solid black";
+          clickedDiv.style.backgroundColor = "whitesmoke";
+          clickedDiv.style.border = "0.1vw solid black";
         }
 
         // Set styles for the clicked div
-        div.style.backgroundColor = "#fcc6e2"; // Change this to the desired color
-        div.style.color = "black"; // Change this to the desired color
+        div.style.backgroundColor = "#fcc6e2"; 
+        div.style.color = "black"; 
 
         // Update the clickedDiv variable
         clickedDiv = div;
@@ -594,27 +588,26 @@
         //select div by skin type
         selectedSkinType = div.innerText;
       }
-      function restoreOriginalColors(element) {
-        // Restore original colors only if the div is not clicked
+      function restoreOriginalColors(element) {        
         if (element !== clickedDiv) {
           element.style.backgroundColor = "white";
-          element.style.border = "1px solid black";
+          element.style.border = "0.1vw solid black";
         }
       }
 
       function saveSkinType() {
-        // You can now use the selectedSkinType variable to send the data to the server
         console.log("Selected Skin Type:", selectedSkinType);
 
-        // Fetch to the server endpoint for updating skin type
-        const options = {
+        if(selectedSkinType == null){
+        alert("Please select a skin-type")
+        }else{
+          const options = {
           method: "POST",
           headers: {
             "Content-Type": "application/json",
           },
           body: JSON.stringify({ skinType: selectedSkinType }),
         };
-
         fetch("/update-skin-type", options)
           .then((response) => response.json())
           .then((data) => {
@@ -628,9 +621,9 @@
           .catch((error) => {
             console.error("Error updating skin type:", error);
           });
-
-        // Close the popup or perform any other necessary actions
-        hidePopup("pop5");
+          window.location.reload();
+        }
+     
       }
     </script>
 
@@ -740,7 +733,6 @@
                 var purchase_Date = MyOrders.purchase_date;
                 var purchaseDate = new Date(purchase_Date);
                 purchaseDate.setDate(purchaseDate.getDate() + 5);
-                // var formattedDate = purchaseDate.toISOString().split("T")[0];
                 var day = ("0" + purchaseDate.getDate()).slice(-2); // Get day with leading zero if necessary
                 var month = ("0" + (purchaseDate.getMonth() + 1)).slice(-2); // Get month with leading zero if necessary
                 var year = purchaseDate.getFullYear();
@@ -798,7 +790,7 @@
           .then((data) => {
             if (data.message === "Logged out successfully") {
               alert("You have been logged out!");
-              window.location.href = "/"; // Refresh the page or redirect as needed
+              window.location.href = "/Index.html";
             } else {
               alert("Error logging out");
             }

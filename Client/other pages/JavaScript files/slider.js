@@ -29,5 +29,4 @@ nextButton.addEventListener("click", slideToNext);
 // Automatically slide to the next testimonial every 5 seconds
 setInterval(slideToNext, 5000);
 
-// Show the initial testimonial
 showTestimonial(currentIndex);

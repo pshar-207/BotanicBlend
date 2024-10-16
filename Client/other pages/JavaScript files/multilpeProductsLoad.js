@@ -1,4 +1,3 @@
-// products.js
 // Get the query string from the URL
 const queryString = window.location.search;
 
@@ -6,10 +5,7 @@ const queryString = window.location.search;
 const urlParams = new URLSearchParams(queryString);
 
 // Access individual parameters using their names
-const PageName = urlParams.get("pageName"); // Outputs "John"
-
-// Use the retrieved data in your JavaScript code
-// console.log(PageName);
+const PageName = urlParams.get("pageName");
 
 function AllProducts() {
   const heading = document.querySelector(".heading");
@@ -22,7 +18,7 @@ function AllProducts() {
     .then((response) => response.json())
     .then((data) => {
       console.log("get data");
-      // Call a function to render the products on the multipleProducts.html page
+      // Calling a function to render the products on the multipleProducts.html page
       renderProducts(data);
     })
     .catch((error) => console.error("Error fetching products:", error));
@@ -38,7 +34,7 @@ function AllBestSellerProducts() {
     .then((response) => response.json())
     .then((data) => {
       console.log("get data");
-      // Call a function to render the products on the multipleProducts.html page
+      // Calling a function to render the products on the multipleProducts.html page
       renderProducts(data);
     })
     .catch((error) => console.error("Error fetching products:", error));
@@ -54,7 +50,7 @@ function AllNewArrivalProducts() {
     .then((response) => response.json())
     .then((data) => {
       console.log("get data");
-      // Call a function to render the products on the multipleProducts.html page
+      // Calling a function to render the products on the multipleProducts.html page
       renderProducts(data);
     })
     .catch((error) => console.error("Error fetching products:", error));
@@ -70,7 +66,7 @@ function AllCreams() {
     .then((response) => response.json())
     .then((data) => {
       console.log("get data");
-      // Call a function to render the products on the multipleProducts.html page
+      // Calling a function to render the products on the multipleProducts.html page
       renderProducts(data);
     })
     .catch((error) => console.error("Error fetching products:", error));
@@ -86,7 +82,7 @@ function AllGels() {
     .then((response) => response.json())
     .then((data) => {
       console.log("get data");
-      // Call a function to render the products on the multipleProducts.html page
+      // Calling a function to render the products on the multipleProducts.html page
       renderProducts(data);
     })
     .catch((error) => console.error("Error fetching products:", error));
@@ -102,7 +98,7 @@ function AllBathing() {
     .then((response) => response.json())
     .then((data) => {
       console.log("get data");
-      // Call a function to render the products on the multipleProducts.html page
+      // Calling a function to render the products on the multipleProducts.html page
       renderProducts(data);
     })
     .catch((error) => console.error("Error fetching products:", error));
@@ -118,7 +114,7 @@ function AllBodyCare() {
     .then((response) => response.json())
     .then((data) => {
       console.log("get data");
-      // Call a function to render the products on the multipleProducts.html page
+      // Calling a function to render the products on the multipleProducts.html page
       renderProducts(data);
     })
     .catch((error) => console.error("Error fetching products:", error));
@@ -135,7 +131,7 @@ function AllDrySkinProducts() {
     .then((response) => response.json())
     .then((data) => {
       console.log("get data");
-      // Call a function to render the products on the multipleProducts.html page
+      // Calling a function to render the products on the multipleProducts.html page
       renderProducts(data);
     })
     .catch((error) => console.error("Error fetching products:", error));
@@ -151,7 +147,7 @@ function AllOilySkinProducts() {
     .then((response) => response.json())
     .then((data) => {
       console.log("get data");
-      // Call a function to render the products on the multipleProducts.html page
+      // Calling a function to render the products on the multipleProducts.html page
       renderProducts(data);
     })
     .catch((error) => console.error("Error fetching products:", error));
@@ -167,7 +163,7 @@ function AllNormalSkinProducts() {
     .then((response) => response.json())
     .then((data) => {
       console.log("get data");
-      // Call a function to render the products on the multipleProducts.html page
+      // Calling a function to render the products on the multipleProducts.html page
       renderProducts(data);
     })
     .catch((error) => console.error("Error fetching products:", error));
@@ -205,8 +201,6 @@ if (PageName == "NormalSkin") {
 }
 
 function renderProducts(data) {
-  console.log("fetching");
-  const productsCount = document.querySelector(".ProductsCount");
   // Get the UL element
   const productsListContainer = document.querySelector(".ProductsListCotainer");
 
@@ -234,7 +228,7 @@ function renderProducts(data) {
           <a href="Product_Page.html?productName=${product.name}&price=${
       product.price
     }&img=${newImgUrl}&rating=${product.rating}">
-            <img src="${newImgUrl}" alt="" loading="lazy" />
+            <img src="${newImgUrl}" " />
           </a>
         </div>
         <div class="product_name">${product.name}</div>

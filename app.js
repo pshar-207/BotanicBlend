@@ -56,11 +56,16 @@ const pool = mysql.createPool({
 
 // Check authentication status
 app.get("/checkAuth", (req, res) => {
-  // Check if the user is authenticated
-  if (req.session.isAuthenticated) {
-    res.json({ isAuthenticated: true });
-  } else {
-    res.json({ isAuthenticated: false });
+  try {
+    // Check if the user is authenticated
+    if (req.session.isAuthenticated) {
+      res.json({ isAuthenticated: true });
+    } else {
+      res.json({ isAuthenticated: false });
+    }
+  } catch (err) {
+    console.error(err);
+    res.status(500).send("Error in CheckAuth");
   }
 });
 
@@ -102,7 +107,7 @@ app.post("/signup", async (req, res) => {
     req.session.userId = result.insertId;
 
     // Send a success response
-    res.redirect(`index.html?successMessage=User created successfully`);
+    return res.status(200).json({ message: "User created successfully" });
   } catch (err) {
     console.error(err);
     res.status(500).send("Error creating user"); // Send an error response
@@ -854,7 +859,6 @@ app.get("/GetQuizResults", async (req, res) => {
   }
 });
 
-// Assuming you have a route for handling purchases
 app.post("/purchase", async (req, res) => {
   try {
     const {
@@ -901,95 +905,106 @@ app.post("/purchase", async (req, res) => {
     console.log(diffpincode);
     console.log(diffphone);
     console.log(amount);
+
     productList.forEach((item) => {
       console.log(item.name);
     });
+    console.log("");
 
     var userId = null;
     if (req.session.isAuthenticated) {
       userId = req.session.userId;
     }
-    console.log(userId);
-    console.log("save " + saveInfo);
-    // Get the current date and time
-    const currentDate = new Date();
 
-    // Format the date and time as a string (you can adjust the format as needed)
-    const formattedDate = currentDate
-      .toISOString()
-      .slice(0, 19)
-      .replace("T", " ");
-    console.log(formattedDate);
-    await pool.query(
-      "INSERT INTO purchases (user_id, email, purchase_date, total_amount, payment_method, saveInfo) VALUES (?,?,?,?,?,?)",
-      [userId, email, formattedDate, amount, paymentMethod, saveInfo]
-    );
-    const purchaseId = await pool.query(
-      "select purchase_id from purchases where purchase_date = ?",
-      [formattedDate]
+    const [check_email] = await pool.query(
+      "SELECT email FROM users WHERE email = ?",
+      [email]
     );
 
-    async function insertProducts() {
-      try {
-        await Promise.all(
-          productList.map(async (item) => {
-            await pool.query(
-              "INSERT INTO purchase_products (purchase_id, user_id, product_Name, produc_img, quantity, size, price) VALUES (?,?,?,?,?,?,?)",
-              [
-                purchaseId[0][0].purchase_id,
-                userId,
-                item.name,
-                item.img,
-                item.qty,
-                item.size,
-                item.price,
-              ]
-            );
-          })
-        );
-        console.log("All products inserted successfully");
-      } catch (error) {
-        console.error("Error inserting products:", error);
-        // Handle the error as needed
+    if (userId == null && check_email.length > 0) {
+      if (check_email[0].email === email) {
+        res.json({ message: "account already exits on this email" });
       }
-    }
-    // Call the async function
-    insertProducts();
+    } else {
+      // Get the current date and time
+      const currentDate = new Date();
 
-    console.log("id " + purchaseId[0][0].purchase_id);
-    await pool.query(
-      "INSERT INTO shipping_addresses (user_id, purchase_id, country_region, first_name, last_name, address, city, state, pincode, phone_number) VALUES (?,?,?,?,?,?,?,?,?,?)",
-      [
-        userId,
-        purchaseId[0][0].purchase_id,
-        country,
-        fname,
-        lname,
-        address,
-        city,
-        state,
-        pincode,
-        phone,
-      ]
-    );
-    if (billingAddress === "DiiffrentAddress") {
+      // Format the date and time as a string (you can adjust the format as needed)
+      const formattedDate = currentDate
+        .toISOString()
+        .slice(0, 19)
+        .replace("T", " ");
+
       await pool.query(
-        "INSERT INTO billing_addresses (user_id, purchase_id, country_region, first_name, last_name, address, city, state, pincode, phone_number) VALUES (?,?,?,?,?,?,?,?,?,?)",
+        "INSERT INTO purchases (user_id, email, purchase_date, total_amount, payment_method, saveInfo) VALUES (?,?,?,?,?,?)",
+        [userId, email, formattedDate, amount, paymentMethod, saveInfo]
+      );
+      const purchaseId = await pool.query(
+        "select purchase_id from purchases where purchase_date = ?",
+        [formattedDate]
+      );
+
+      async function insertProducts() {
+        try {
+          await Promise.all(
+            productList.map(async (item) => {
+              await pool.query(
+                "INSERT INTO purchase_products (purchase_id, user_id, product_Name, produc_img, quantity, size, price) VALUES (?,?,?,?,?,?,?)",
+                [
+                  purchaseId[0][0].purchase_id,
+                  userId,
+                  item.name,
+                  item.img,
+                  item.qty,
+                  item.size,
+                  Number(item.price) + (Number(item.price) * 18) / 100,
+                ]
+              );
+            })
+          );
+          console.log("All products inserted successfully");
+        } catch (error) {
+          console.error("Error inserting products:", error);
+        }
+      }
+
+      insertProducts();
+
+      console.log("id " + purchaseId[0][0].purchase_id);
+      await pool.query(
+        "INSERT INTO shipping_addresses (user_id, purchase_id, country_region, first_name, last_name, address, city, state, pincode, phone_number) VALUES (?,?,?,?,?,?,?,?,?,?)",
         [
           userId,
           purchaseId[0][0].purchase_id,
-          diffcountry,
-          difffname,
-          difflname,
-          diffaddress,
-          diffcity,
-          diffstate,
-          diffpincode,
-          diffphone,
+          country,
+          fname,
+          lname,
+          address,
+          city,
+          state,
+          pincode,
+          phone,
         ]
       );
+      if (billingAddress === "DiiffrentAddress") {
+        await pool.query(
+          "INSERT INTO billing_addresses (user_id, purchase_id, country_region, first_name, last_name, address, city, state, pincode, phone_number) VALUES (?,?,?,?,?,?,?,?,?,?)",
+          [
+            userId,
+            purchaseId[0][0].purchase_id,
+            diffcountry,
+            difffname,
+            difflname,
+            diffaddress,
+            diffcity,
+            diffstate,
+            diffpincode,
+            diffphone,
+          ]
+        );
+      }
+      res.json({ success: true, message: "Purchase successful" });
     }
-    res.json({ success: true, message: "Purchase successful" });
   } catch (error) {
     console.error("Error completing purchase:", error);
     res
@@ -1006,6 +1021,8 @@ app.get("/getUserAddressInfo", async (req, res) => {
       "SELECT MAX(saveInfo) AS final_saveInfo FROM purchases WHERE user_id = ? GROUP BY user_id",
       [userId]
     );
+    console.log(isSaveChecked[0][0].final_saveInfo);
+
     if (isSaveChecked[0][0].final_saveInfo == 1) {
       let rows = [];
       if (req.session.isAuthenticated) {
@@ -1016,6 +1033,8 @@ app.get("/getUserAddressInfo", async (req, res) => {
         console.log(rows);
         res.json({ success: true, row: rows });
       }
+    } else {
+      res.json({ success: false });
     }
   } catch (error) {
     console.log("address not found");

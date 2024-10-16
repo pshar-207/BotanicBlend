@@ -7,7 +7,7 @@
   background-color: white;
   transition: right 0.3s ease-in-out;
   overflow-y: auto;
-  box-shadow: -12px 10px 17px 4px rgba(0, 0, 0, 0.3);
+  box-shadow: none;
 }
 .cart_heading_container {
   position: sticky;

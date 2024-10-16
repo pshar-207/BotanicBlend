@@ -34,10 +34,10 @@
 
     <!-- heading image and heading -->
     <div class="heading_container">
-      <img src="Photos/contact/heading image.jpg" loading="lazy" alt="" />
+      <img src="Photos/contact/heading image.jpg" alt="" />
       <div class="quiz_text">
         <h1>QUIZ RESULT</h1>
-        <p><a href="/">Home</a> / For You</p>
+        <p><a href="/Index.html">Home</a> / For You</p>
       </div>
     </div>
     <!-- heading image and heading -->
@@ -118,7 +118,6 @@
     </div>
     <!-- Footer -->
     <script src="JavaScript files/NavbarFooterLoader.js"></script>
-    <script src="JavaScript files/loginButtonChanger.js"></script>
     <script src="JavaScript files/cart.js"></script>
     <script src="JavaScript files/loginFormShow.js"></script>
     <script src="JavaScript files/singIn.js"></script>
@@ -136,8 +135,6 @@
       const productsArray_OneThousand = [];
 
       function getQuizProducts(skinType, hasActiveAcne) {
-        console.log(skinType);
-        console.log(hasActiveAcne);
         fetch(
           `/GetQuizResults?skinTypeName=${skinType}&Has_Active_Acne=${hasActiveAcne}`,
           {
@@ -153,7 +150,6 @@
               const FourFifty = document.getElementById("FourFifty");
               const SevenHundred = document.getElementById("SevenHundred");
               const OneThousand = document.getElementById("OneThousand");
-
               const firstRow = data.First_Row;
 
               firstRow.forEach((row) => {
@@ -166,8 +162,7 @@
                       }&price=${row.price}&img=${img_url}&rating=${row.rating}">
                       <img
                         src="${img_url}"
-                        alt=""
-                        loading="lazy"
+                        alt=""               
                       /></a>
                       <div class="quizProductName">${row.name}</div>
                       <div class="quizProductWeight">Weight - ${row.size}</div>
@@ -188,7 +183,6 @@
                 };
                 productsArray_FourFifty.push(product);
               });
-              console.log(productsArray_FourFifty);
 
               const secondRow = data.Second_Row;
               secondRow.forEach((row) => {
@@ -202,7 +196,6 @@
                       <img
                         src="${img_url}"
                         alt=""
-                        loading="lazy"
                       /></a>
                       <div class="quizProductName">${row.name}</div>
                       <div class="quizProductWeight">Weight - ${row.size}</div>
@@ -223,7 +216,6 @@
                 };
                 productsArray_SevenHundred.push(product);
               });
-              console.log(productsArray_SevenHundred);
 
               const thirdRow = data.Third_Row;
               thirdRow.forEach((row) => {
@@ -237,7 +229,6 @@
                       <img
                         src="${img_url}"
                         alt=""
-                        loading="lazy"
                       /></a>
                       <div class="quizProductName">${row.name}</div>
                       <div class="quizProductWeight">Weight - ${row.size}</div>
@@ -258,7 +249,6 @@
                 };
                 productsArray_OneThousand.push(product);
               });
-              console.log(productsArray_OneThousand);
             } else {
               console.log("fail to quiz");
             }

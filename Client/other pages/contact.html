@@ -37,7 +37,7 @@
       <img src="Photos/contact/heading image.jpg" alt="" />
       <div class="contact_text">
         <h1>CONTACT</h1>
-        <p><a href="/">Home</a> / contact us</p>
+        <p><a href="/Index.html">Home</a> / contact us</p>
       </div>
     </div>
     <!-- heading image and heading -->
@@ -114,7 +114,6 @@
     </div>
     <!-- Footer -->
     <script src="JavaScript files/NavbarFooterLoader.js"></script>
-    <!-- <script src="JavaScript files/loginButtonChanger.js"></script> -->
     <script src="JavaScript files/cart.js"></script>
     <script src="JavaScript files/loginFormShow.js"></script>
     <script src="JavaScript files/singIn.js"></script>
@@ -149,7 +148,7 @@
 
         const form = document.querySelector("form");
         form.addEventListener("submit", (event) => {
-          event.preventDefault(); // Prevent default form submission
+          event.preventDefault();
 
           if (!form.checkValidity()) {
             form.reportValidity();
@@ -179,7 +178,7 @@
               if (data.message === "Feedback submitted successfully") {
                 alert("Feedback submitted successfully");
                 console.log("feed back submited");
-              } // Handle success response
+              }
               if (data.message === "Error submitting feedback") {
                 alert("Feedback not submitted successfully");
                 console.log("feed back not submited");

@@ -54,7 +54,7 @@ function getAddToCartProduct() {
         CartList.innerHTML = "";
         const cart = data.row;
         cart.forEach((cart_product) => {
-          if (currentPath === "/") {
+          if (currentPath === "/Index.html") {
             link = `other pages/Product_Page.html?productName=${cart_product.product_name}&price=${cart_product.price}&img=${cart_product.img_url}&rating=${cart_product.rating}`;
           } else {
             link = `Product_Page.html?productName=${cart_product.product_name}&price=${cart_product.price}&img=${cart_product.img_url}&rating=${cart_product.rating}`;

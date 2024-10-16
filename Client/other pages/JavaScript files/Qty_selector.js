@@ -2,37 +2,27 @@ let selected_Weight = null;
 let clickedDiv = null;
 
 function changeColorsWeight(element) {
-  // Apply hover effect only if the div is not clicked
   if (element !== clickedDiv) {
-    // Change colors on hover
     clickedDiv.style.backgroundColor = "whitesmoke";
     element.style.backgroundColor = "#fcc6e2";
-    element.style.border = "1px solid black";
+    element.style.border = "0.1vw solid black";
   }
 }
 
 function changeColorsClickWeight(element) {
-  // Reset styles for the previously clicked div
   if (clickedDiv) {
     clickedDiv.style.backgroundColor = "whitesmoke";
-    clickedDiv.style.border = "1px solid black";
+    clickedDiv.style.border = "0.1vw solid black";
   }
 
-  // Set styles for the clicked div
   element.style.backgroundColor = "#fcc6e2";
-  element.style.color = "black";
-
-  // Update the clickedDiv variable
   clickedDiv = element;
-
-  //select div by skin type
   selected_Weight = element.innerText;
 }
 function restoreOriginalColorsWeight(element) {
-  // Restore original colors only if the div is not clicked
   if (element !== clickedDiv) {
     element.style.backgroundColor = "whitesmoke";
-    element.style.border = "1px solid black";
+    element.style.border = "0.1vw solid black";
     clickedDiv.style.backgroundColor = "#fcc6e2";
   }
 }
@@ -55,10 +45,8 @@ function weightSelector(div, productDetails) {
     for (let i = 0; i < productDetails.length; i++) {
       priceDiv = document.getElementById(`price${i + 1}`);
       if (i === indexOfSize) {
-        // Show the price div for the selected weight
         priceDiv.style.display = "block";
       } else {
-        // Hide other price divs
         priceDiv.style.display = "none";
       }
     }
@@ -72,7 +60,7 @@ function weightSelector(div, productDetails) {
     console.log(`${selected_Weight} not found in productDetails`);
   }
 }
-// JavaScript fro set price according to size
+
 var Qty = document.querySelector(".qty_number");
 
 function increaseQuantity() {

@@ -12,7 +12,7 @@ function loginUser() {
     .then((response) => response.json())
     .then((data) => {
       if (data.message === "Login successful") {
-        // alert("Login successful!");
+        alert("You logged in!");
         window.location.reload();
       } else {
         alert(data.message);
