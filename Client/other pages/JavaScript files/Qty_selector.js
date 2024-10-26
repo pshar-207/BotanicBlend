@@ -16,7 +16,7 @@ function changeColorsClickWeight(element) {
     clickedDiv.style.border = "0.1vw solid var(--black_text)";
   }
 
-  element.style.backgroundColor = "#fcc6e2";
+  element.style.backgroundColor = "var(--button_bg)";
   clickedDiv = element;
   selected_Weight = element.innerText;
 }
