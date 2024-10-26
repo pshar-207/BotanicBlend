@@ -1,6 +1,7 @@
 /* hero section */
 .hero_section {
-  background-color: aquamarine;
+  background-color: var(--backgroung_color);
+  color: var(--black_text);
   width: 100vw;
   overflow: hidden;
   position: relative;
@@ -14,27 +15,6 @@
   height: 100%;
   object-fit: cover;
   transition: transform 1s ease;
-}
-
-.hero_buttons button {
-  font-size: 50px;
-}
-.hero_b1,
-.hero_b2 {
-  position: absolute;
-  top: 50%;
-  background-color: transparent;
-  border: none;
-}
-.hero_b1 {
-  left: 2%;
-}
-.hero_b2 {
-  right: 2%;
-}
-.hero_b1 i,
-.hero_b2 i {
-  font-size: 2vw;
 }
 
 .hero_indicators {
@@ -51,13 +31,16 @@
   width: 1vw;
   margin: 0.1vw;
   border-radius: 50cqh;
-  background: #ffffff;
+  background: var(--white_text);
   cursor: pointer;
   transition: 1s;
+  transition: background 0.5s ease-in-out;
+}
+.dot:hover {
+  background: var(--button_bg_hover);
 }
 
 .dot.active {
-  /* background-color: #979797; */
   width: 2vw;
 }
 
@@ -69,29 +52,30 @@
 .quiz_section_a_cotainer {
   padding: 0.7vw 1.5vw;
   width: fit-content;
-  background-color: transparent;
   border-radius: 100vw;
-  border: 0.1vw solid black;
-  transition: background-color 0.5s, color 0.5s;
+  border: 0.1vw solid var(--black_text);
+  transition: background-color 0.5s, border 0.5s;
 }
 
 .quiz_section_a_cotainer:hover {
-  background-color: #ffffff;
+  background-color: var(--button_bg_hover);
+  border: 0.1vw solid var(--button_border_hover);
 }
 
 .quiz_section_h1 {
   font-size: 4vw;
-  font-weight: bolder;
   width: 40vw;
-  white-space: normal;
   margin-bottom: 5%;
   font-family: var(--heading);
 }
 
 .quiz_section_a {
   text-decoration: none;
-  color: black;
-  font-size: 1.5vw;
+  color: var(--black_text);
+  font-size: 2vw;
   font-family: var(--heading);
   font-style: italic;
+}
+* {
+  font-weight: lighter;
 }

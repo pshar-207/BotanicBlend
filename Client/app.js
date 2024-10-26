@@ -46,7 +46,7 @@ function renderNewArrivals(data) {
                             onmouseover="showAddToCart(this) ; changeColors(this)"
                             onmouseout="hideAddToCart(this)">
                             <div class="icon" >
-                                 <i class="fa-solid fa-cart-shopping" style="color: #000000"></i>
+                                 <i class="fa-solid fa-cart-shopping"></i>
                             </div>
                             <div class="add-to-cart" onclick='addToCart("${
                               product.name
@@ -115,7 +115,7 @@ function renderBestSellers(data) {
                             onmouseover="showAddToCart(this) ; changeColors(this)"
                             onmouseout="hideAddToCart(this)">
                             <div class="icon">
-                                 <i class="fa-solid fa-cart-shopping" style="color: #000000"></i>
+                                 <i class="fa-solid fa-cart-shopping"></i>
                             </div>
                             <div class="add-to-cart" onclick='addToCart("${
                               product.name

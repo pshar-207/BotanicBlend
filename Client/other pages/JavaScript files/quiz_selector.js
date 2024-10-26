@@ -56,31 +56,90 @@ function updateBackButtonVisibility() {
   backButton.style.display = currentQuestionIndex === 0 ? "none" : "block";
 }
 
-var clickedDiv = null;
-var originalBackgroundColor = element.style.backgroundColor;
-var originalBorder = element.style.border;
+var clickedDivGender = null;
+var clickedDivSkinType = null;
+var clickedDivAge = null;
+var clickedDivHasActiveAcne = null;
+
 function changeColors(element) {
-  if (element !== clickedDiv) {
-    element.style.backgroundColor = "#fcc6e2";
-    element.style.border = "0.1vw solid #fcc6e2";
+  if (currentQuestionNumber === 1 && element !== clickedDivGender) {
+    element.style.backgroundColor = "var(--button_bg)";
+    element.style.border = "0.1vw solid var(--button_border)";
+  }
+  if (currentQuestionNumber === 2 && element !== clickedDivSkinType) {
+    element.style.backgroundColor = "var(--button_bg)";
+    element.style.border = "0.1vw solid var(--button_border)";
+  }
+  if (currentQuestionNumber === 3 && element !== clickedDivAge) {
+    element.style.backgroundColor = "var(--button_bg)";
+    element.style.border = "0.1vw solid var(--button_border)";
+  }
+  if (currentQuestionNumber === 5 && element !== clickedDivHasActiveAcne) {
+    element.style.backgroundColor = "var(--button_bg)";
+    element.style.border = "0.1vw solid var(--button_border)";
   }
 }
 
 function changeColorsClick(div) {
-  if (clickedDiv) {
-    clickedDiv.style.backgroundColor = "whitesmoke";
-    clickedDiv.style.border = "0.1vw solid black";
+  if (currentQuestionNumber === 1) {
+    if (clickedDivGender) {
+      clickedDivGender.style.backgroundColor = "var(--backgroung_color)";
+      clickedDivGender.style.border = "0.1vw solid var(--black_text)";
+    }
+
+    // Set styles for the clicked div
+    div.style.backgroundColor = "var(--button_bg)";
+    div.style.border = "0.1vw solid var(--button_border)";
+
+    clickedDivGender = div;
   }
-
-  // Set styles for the clicked div
-  div.style.backgroundColor = "#fcc6e2";
-
-  clickedDiv = div;
+  if (currentQuestionNumber === 2) {
+    if (clickedDivSkinType) {
+      clickedDivSkinType.style.backgroundColor = "var(--backgroung_color)";
+      clickedDivSkinType.style.border = "0.1vw solid var(--black_text)";
+    }
+    // Set styles for the clicked div
+    div.style.backgroundColor = "var(--button_bg)";
+    div.style.border = "0.1vw solid var(--button_border)";
+    clickedDivSkinType = div;
+  }
+  if (currentQuestionNumber === 3) {
+    if (clickedDivAge) {
+      clickedDivAge.style.backgroundColor = "var(--backgroung_color)";
+      clickedDivAge.style.border = "0.1vw solid var(--black_text)";
+    }
+    // Set styles for the clicked div
+    div.style.backgroundColor = "var(--button_bg)";
+    div.style.border = "0.1vw solid var(--button_border)";
+    clickedDivAge = div;
+  }
+  if (currentQuestionNumber === 5) {
+    if (clickedDivHasActiveAcne) {
+      clickedDivHasActiveAcne.style.backgroundColor = "var(--backgroung_color)";
+      clickedDivHasActiveAcne.style.border = "0.1vw solid var(--black_text)";
+    }
+    // Set styles for the clicked div
+    div.style.backgroundColor = "var(--button_bg)";
+    div.style.border = "0.1vw solid var(--button_border)";
+    clickedDivHasActiveAcne = div;
+  }
 }
 function restoreOriginalColors(element) {
-  if (element !== clickedDiv) {
-    element.style.backgroundColor = "whitesmoke";
-    element.style.border = "0.1vw solid black";
+  if (currentQuestionNumber === 1 && element !== clickedDivGender) {
+    element.style.backgroundColor = "var(--backgroung_color)";
+    element.style.border = "0.1vw solid var(--black_text)";
+  }
+  if (currentQuestionNumber === 2 && element !== clickedDivSkinType) {
+    element.style.backgroundColor = "var(--backgroung_color)";
+    element.style.border = "0.1vw solid var(--black_text)";
+  }
+  if (currentQuestionNumber === 3 && element !== clickedDivAge) {
+    element.style.backgroundColor = "var(--backgroung_color)";
+    element.style.border = "0.1vw solid var(--black_text)";
+  }
+  if (currentQuestionNumber === 5 && element !== clickedDivHasActiveAcne) {
+    element.style.backgroundColor = "var(--backgroung_color)";
+    element.style.border = "0.1vw solid var(--black_text)";
   }
 }
 
@@ -88,24 +147,19 @@ function saveUserSelection() {
   // Save user selection for each question
   switch (currentQuestionIndex) {
     case 0:
-      userData.gender = clickedDiv.innerText.trim();
-      clickedDiv = null;
+      userData.gender = clickedDivGender.innerText.trim();
       break;
     case 1:
-      userData.skinType = clickedDiv.innerText.trim();
-      clickedDiv = null;
+      userData.skinType = clickedDivSkinType.innerText.trim();
       break;
     case 2:
-      userData.age = clickedDiv.innerText.trim();
-      clickedDiv = null;
+      userData.age = clickedDivAge.innerText.trim();
       break;
     case 3:
       userData.anythingElse = document.getElementById("comment").value.trim();
-      clickedDiv = null;
       break;
     case 4:
-      userData.hasActiveAcne = clickedDiv.innerText.trim();
-      clickedDiv = null;
+      userData.hasActiveAcne = clickedDivHasActiveAcne.innerText.trim();
       break;
   }
 }

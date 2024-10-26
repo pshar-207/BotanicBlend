@@ -1,0 +1,24 @@
+:root {
+  --backgroung_color: whitesmoke;
+}
+:root {
+  --button_bg: #b4e0ee;
+  --button_border: #b4eede;
+  --button_bg_hover: #67bfda;
+  --button_border_hover: #67bfda;
+}
+:root {
+  --white_text: rgb(255, 255, 255);
+  --black_text: rgb(10, 10, 10);
+  --white_text_hover: rgb(211, 211, 211);
+  --black_text_hover: rgb(0, 0, 0);
+  --link_text: rgb(84, 101, 255);
+}
+:root {
+  --navbar: rgb(255, 255, 255);
+  --navbar_instagram: rgb(36, 36, 36);
+}
+:root {
+  --footer_bg: rgb(20, 20, 20);
+  --footer_copyright_bg: rgb(36, 36, 36);
+}

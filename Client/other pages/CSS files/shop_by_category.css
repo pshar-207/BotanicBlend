@@ -1,13 +1,16 @@
 .shop_by_category_container {
-  background-color: whitesmoke;
+  background-color: var(--backgroung_color);
+  color: var(--black_text);
 }
 .shop_by_category_heading {
   display: flex;
   justify-content: center;
   align-items: center;
-  padding: 5% 0 3% 0;
-  font-size: 2vw;
+  padding: 5% 0;
   font-family: var(--heading);
+}
+.shop_by_category_heading h1 {
+  font-size: 2.99vw;
 }
 .category_img_container {
   position: relative;
@@ -41,47 +44,48 @@
   width: 100%;
   height: 100%;
   object-fit: cover;
+  border-radius: 1vw;
 }
 .img_overlayer {
   position: relative;
+  overflow: hidden;
+  border-radius: 1vw;
 }
-.bathing:hover::after {
-  content: "Bathing";
-  color: white;
-  font-size: 3vw;
-  font-family: var(--heading);
-  pointer-events: none;
-}
-.gel:hover::after {
-  content: "Gel";
-  color: white;
-  font-size: 3vw;
-  font-family: var(--heading);
-  pointer-events: none;
-}
-.body_care:hover::after {
-  content: "BodyCare";
-  color: white;
-  font-size: 4vw;
 
-  font-family: var(--heading);
-  pointer-events: none;
+.category_img {
+  display: block;
+  width: 100%;
+  transition: transform 0.3s ease;
 }
-.cream:hover::after {
-  content: "Cream";
-  color: white;
-  font-size: 3.5vw;
-  font-family: var(--heading);
-  pointer-events: none;
+.img_overlayer:hover .category_img {
+  transform: scale(1.1);
 }
-.img_overlayer:hover::after {
-  display: grid;
-  place-items: center;
+
+.img_overlayer::after {
+  content: attr(data-text);
   position: absolute;
-  top: 0;
-  left: 0;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: var(--white_text);
+  font-family: var(--heading);
+  font-size: 2.99vw;
+  opacity: 0;
+  transition: opacity 0.3s ease, background-color 0.3s ease;
+  pointer-events: none;
+  background-color: rgba(0, 0, 0, 0.5);
   width: 100%;
   height: 100%;
-  background: rgba(65, 65, 65, 0.329); /* Black color with 50% opacity */
-  z-index: 3;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 1vw;
+}
+
+.img_overlayer:hover::after {
+  opacity: 1;
+}
+
+* {
+  font-weight: lighter;
 }

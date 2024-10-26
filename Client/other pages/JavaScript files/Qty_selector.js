@@ -3,16 +3,17 @@ let clickedDiv = null;
 
 function changeColorsWeight(element) {
   if (element !== clickedDiv) {
-    clickedDiv.style.backgroundColor = "whitesmoke";
-    element.style.backgroundColor = "#fcc6e2";
-    element.style.border = "0.1vw solid black";
+    clickedDiv.style.backgroundColor = "var(--backgroung_color)";
+    clickedDiv.style.border = "0.1vw solid var(--black_text)";
+    element.style.backgroundColor = "var(--button_bg)";
+    element.style.border = "0.1vw solid var(--black_text)";
   }
 }
 
 function changeColorsClickWeight(element) {
   if (clickedDiv) {
-    clickedDiv.style.backgroundColor = "whitesmoke";
-    clickedDiv.style.border = "0.1vw solid black";
+    clickedDiv.style.backgroundColor = "var(--backgroung_color)";
+    clickedDiv.style.border = "0.1vw solid var(--black_text)";
   }
 
   element.style.backgroundColor = "#fcc6e2";
@@ -21,9 +22,9 @@ function changeColorsClickWeight(element) {
 }
 function restoreOriginalColorsWeight(element) {
   if (element !== clickedDiv) {
-    element.style.backgroundColor = "whitesmoke";
-    element.style.border = "0.1vw solid black";
-    clickedDiv.style.backgroundColor = "#fcc6e2";
+    element.style.backgroundColor = "var(--backgroung_color)";
+    element.style.border = "0.1vw solid var(--black_text)";
+    clickedDiv.style.backgroundColor = "var(--button_bg)";
   }
 }
 

@@ -1,5 +1,8 @@
 let login_button;
+let shopDropDownOpen = false;
+let shopDropDownMenu = false;
 
+// Function to load Header and Footer content and insert it into a placeholder
 function loadAndInsertContent(url, placeholderId) {
   const placeholder = document.getElementById(placeholderId);
 
@@ -8,7 +11,23 @@ function loadAndInsertContent(url, placeholderId) {
     .then((content) => {
       placeholder.innerHTML = content;
 
+      //login button
       login_button = document.getElementById("login-button");
+
+      //shop dropdown menu
+      shopDropDownMenu = document.querySelector(".shopDropDownOuterContainer");
+      const navbarContainer = document.getElementById("navbar-container");
+      shopDropDownMenu.addEventListener("mouseenter", function () {
+        shopDropDownOpen = true;
+      });
+
+      shopDropDownMenu.addEventListener("mouseleave", function () {
+        shopDropDownOpen = false;
+        if (window.scrollY === 0) {
+          navbarContainer.style.backgroundColor = "transparent";
+        }
+      });
+      //shop dropdown menu
 
       changeNavbarBackgroundColorOnScroll();
     })
@@ -44,12 +63,17 @@ function changeNavbarBackgroundColorOnScroll() {
 
   // Function to handle hover effect
   function handleNavbarHover() {
-    navbarContainer.style.backgroundColor = "white";
+    navbarContainer.style.backgroundColor = "var(--navbar)";
   }
 
   // Function to handle mouseout event
   function handleNavbarMouseOut() {
-    if (window.scrollY == 0 && isCartOpen != true) {
+    if (
+      window.scrollY == 0 &&
+      isCartOpen != true &&
+      isLoginFromOpen != true &&
+      shopDropDownOpen != true
+    ) {
       navbarContainer.style.backgroundColor = "transparent";
     }
   }
@@ -60,8 +84,12 @@ function changeNavbarBackgroundColorOnScroll() {
 
   window.addEventListener("scroll", () => {
     if (window.scrollY > 0) {
-      navbarContainer.style.backgroundColor = "white";
-    } else if (isCartOpen != true) {
+      navbarContainer.style.backgroundColor = "var(--navbar)";
+    } else if (
+      isCartOpen != true &&
+      isLoginFromOpen != true &&
+      shopDropDownOpen != true
+    ) {
       navbarContainer.style.backgroundColor = "transparent";
     }
   });

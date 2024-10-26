@@ -15,16 +15,46 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 
     <link
-      href="https://fonts.googleapis.com/css2?family=Quicksand&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Great+Vibes&display=swap"
       rel="stylesheet"
     />
-
     <link
       href="https://fonts.googleapis.com/css2?family=Dancing+Script&family=Quicksand&display=swap"
       rel="stylesheet"
     />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Alex+Brush&display=swap"
+      rel="stylesheet"
+    />
+
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Quicksand&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Muli&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Lato&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Roboto&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Open+Sans&display=swap"
+      rel="stylesheet"
+    />
     <!-- Google Fonts -->
+
     <link rel="stylesheet" href="other pages/CSS files/googleFont.css" />
+    <link rel="stylesheet" href="other pages/CSS files/color.css" />
     <link rel="stylesheet" href="other pages/CSS files/Index.css" />
     <link rel="stylesheet" href="other pages/CSS files/header.css" />
     <link rel="stylesheet" href="other pages/CSS files/hero_section.css" />
@@ -38,7 +68,8 @@
     <link rel="stylesheet" href="other pages/CSS files/Prons.css" />
     <link rel="stylesheet" href="other pages/CSS files/Shop_by_Skin_Type.css" />
     <link rel="stylesheet" href="other pages/CSS files/science.css" />
-    <!-- <link rel="stylesheet" href="other pages/CSS files/footer.css" /> -->
+    <link rel="stylesheet" href="other pages/CSS files/Y-ScrollBar_hise.css" />
+    <link rel="stylesheet" href="other pages/CSS files/word_spacing.css" />
 
     <title>Document</title>
   </head>
@@ -83,7 +114,7 @@
     <div class="why_BB_outer_container">
       <div class="why_BB_container">
         <div class="why_BB_text">
-          <h1>Why BotanicBlend?</h1>
+          <h1>WHY BOTANICBLEND?</h1>
           <p class="slide_in_text">
             At BotanicBlend we're your go-to for pure, effective organic
             skincare. With a commitment to transparency, cruelty-free practices,
@@ -102,7 +133,7 @@
     <!-- New Arrivals Dynamic -->
     <div class="new_arrival_container">
       <div class="new_arrival_heading">
-        <h1>NEW ARRIVALS</h1>
+        <h1>NEW ARRIVAL PRODUCTS</h1>
       </div>
       <div class="new_arrival_products">
         <ul id="newArrivalsList" class="New-arrivals-products"></ul>
@@ -113,7 +144,7 @@
     <!-- Best Sellers Dynamically -->
     <div class="best_sell_container">
       <div class="best_sell_heading">
-        <h1>Our Best Selling Products</h1>
+        <h1>BEST SELLING PRODUCTS</h1>
       </div>
       <div class="best_sell_products">
         <ul id="bestSellerList"></ul>
@@ -123,7 +154,9 @@
 
     <!-- Testimonial -->
     <div class="testimonial_container">
-      <div class="testimonial_heading">What People Are Saying!</div>
+      <div class="testimonial_heading">
+        <h1>WHAT PEOPLE ARE SAYING!</h1>
+      </div>
       <div class="testimonial">
         <div class="testimonial_image">
           <img src="other pages/Photos/Testimonials/sunscrean.jpg" alt="" />
@@ -186,10 +219,10 @@
     <!-- shop_by_category -->
     <div class="shop_by_category_container">
       <div class="shop_by_category_heading">
-        <h1>Shop By Category</h1>
+        <h1>SHOP BY CATEGORY</h1>
       </div>
       <div class="category_img_container">
-        <div class="bathing img_overlayer" id="img_1">
+        <div class="bathing img_overlayer" id="img_1" data-text="Bathing">
           <a
             href="other pages/MultipleProductsPage.html?pageName=Bathing"
             id="BathingLink"
@@ -201,20 +234,20 @@
           /></a>
         </div>
 
-        <div class="gel img_overlayer" id="img_2">
+        <div class="cream img_overlayer" id="img_2" data-text="Cream">
           <a
-            href="other pages/MultipleProductsPage.html?pageName=Gels"
-            id="GelsLink"
+            href="other pages/MultipleProductsPage.html?pageName=Creams"
+            id="CreamsLink"
           >
             <img
               class="category_img"
-              src="other pages/Photos/Shop by Category/Gels.jpg"
+              src="other pages/Photos/Shop by Category/Creams.jpg"
               alt=""
             />
           </a>
         </div>
 
-        <div class="body_care img_overlayer" id="img_3">
+        <div class="body_care img_overlayer" id="img_3" data-text="Body Care">
           <a
             href="other pages/MultipleProductsPage.html?pageName=BodyCare"
             id="BodyCareLink"
@@ -226,14 +259,14 @@
           /></a>
         </div>
 
-        <div class="cream img_overlayer" id="img_4">
+        <div class="gel img_overlayer" id="img_4" data-text="Gel">
           <a
-            href="other pages/MultipleProductsPage.html?pageName=Creams"
-            id="CreamsLink"
+            href="other pages/MultipleProductsPage.html?pageName=Gels"
+            id="GelsLink"
           >
             <img
               class="category_img"
-              src="other pages/Photos/Shop by Category/Cerams.jpg"
+              src="other pages/Photos/Shop by Category/Gels.jpg"
               alt=""
             />
           </a>
@@ -278,7 +311,7 @@
     <!-- skin-Type -->
     <div class="skin_type_container">
       <div class="skintype_upper_section">
-        <h2>Shop by Skin-Type</h2>
+        <h1>SHOP BY SKIN-TYPE</h1>
       </div>
       <div class="skintype_lower_section"></div>
       <div class="skintype">
@@ -290,7 +323,7 @@
         >
           <img
             class="skinType_img"
-            src="other pages/Photos/Skin-Type Image/oily 2.png"
+            src="other pages/Photos/Skin-Type Image/oily-skin.png"
             alt=""
           />
           <a
@@ -308,7 +341,7 @@
         >
           <img
             class="skinType_img"
-            src="other pages/Photos/Skin-Type Image/dry-skin 2.png"
+            src="other pages/Photos/Skin-Type Image/dry-skin.png"
             alt=""
           />
           <a
@@ -325,7 +358,7 @@
         >
           <img
             class="skinType_img"
-            src="other pages/Photos/Skin-Type Image/normal 1.png"
+            src="other pages/Photos/Skin-Type Image/normal-skin.png"
             alt=""
           />
           <a
@@ -341,7 +374,7 @@
 
     <!-- science -->
     <div class="science_container">
-      <h2 class="science_content">Science-backed clean ingredients</h2>
+      <h2 class="science_content">SCIENCE-BACKED CLEAN INGREDIENTS</h2>
       <p class="science_content_paragraph">
         Every product at BotanicBlend we formulate is free of sulfates,
         parabens, GMOs, mineral oils, and is always cruelty-free.
@@ -389,13 +422,12 @@
     <!-- Footer -->
 
     <script src="other pages/JavaScript files/header_footer_loader.js"></script>
-    <script src="other pages/JavaScript files/button_color_change.js"></script>
     <script src="other pages/JavaScript files/image_slider.js"></script>
     <script src="app.js"></script>
     <script src="other pages/JavaScript files/cart.js"></script>
     <script src="other pages/JavaScript files/loginFormShow.js"></script>
     <script src="other pages/JavaScript files/cart_icon_change.js"></script>
-    <script src="other pages/JavaScript files/skintype_show.js"></script>
+    <!-- <script src="other pages/JavaScript files/skintype_show.js"></script> -->
     <script src="other pages/JavaScript files/singIn.js"></script>
     <script src="other pages/JavaScript files/addToCart.js"></script>
   </body>

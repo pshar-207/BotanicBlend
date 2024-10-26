@@ -10,12 +10,13 @@
   z-index: 2;
 }
 body {
-  background-color: rgb(255, 255, 255);
+  background-color: var(--backgroung_color);
   overflow-x: hidden;
   font-family: var(--heading);
+  color: var(--black_text);
 }
 .video_container {
-  background-color: rgb(255, 255, 255);
+  background-color: var(--backgroung_color);
   position: relative;
   margin-top: -5.1vw;
 }
@@ -43,35 +44,36 @@ body {
 .about_text h1 {
   font-size: 5.5vw;
   text-align: justify;
+  color: var(--white_text);
 }
 .about_text p {
-  font-size: 1.8vw;
-}
-.about_text h1,
-.about_text p {
-  color: white;
+  font-size: 2.3vw;
+  color: var(--white_text);
 }
 .about_text a {
   text-decoration: none;
-  color: white;
+  color: var(--white_text);
+  transition: 0.5s ease-in-out;
+}
+.about_text a:hover {
+  color: var(--white_text_hover);
 }
 
 .prototypr_container {
-  background-color: white;
+  background-color: var(--backgroung_color);
   position: relative;
-  padding: 3vw 0 0 0;
+  padding: 5%;
 }
-.prototype_heading {
-  font-size: 4.5vw;
+.prototype_heading h1 {
+  font-size: 3.5vw;
   text-align: center;
-  padding: 0 0 2vw 0;
+  padding: 0 0 3vw 0;
 }
 .prototype_content {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  grid-template-rows: 2fr, 0.5fr, 1fr;
-  padding: 0 5vw 5vw 5vw;
   justify-items: center;
+  gap: 1vw;
 }
 .prototype_content img {
   width: 8vw;
@@ -83,20 +85,20 @@ body {
   transform: translate(-30%, -65%);
 }
 .prototype_content h2 {
-  padding: 0.5vw 0 0 0;
-  font-size: 1.8vw;
+  padding: 0.5vw 0;
+  font-size: 2.3vw;
 }
 .prototype_content p {
-  padding: 1vw 2vw;
+  padding: 0 2vw;
   text-align: center;
-  font-size: 1.1vw;
+  font-size: 1.5vw;
 }
 
 .whoWeAre_container {
-  background-color: white;
+  background-color: var(--backgroung_color);
   display: grid;
   grid-template-columns: repeat(2, 1fr);
-  padding: 5% 5% 8% 5%;
+  padding: 5%;
 }
 .WhoWeAre_text h2 {
   font-size: 3.5vw;
@@ -104,16 +106,14 @@ body {
 }
 .WhoWeAre_text p {
   font-size: 1.8vw;
-  text-align: justify;
+  line-height: 2.5vw;
 }
 .WhoWeAre_img {
-  display: flex;
-  justify-content: right;
-  position: relative;
+  padding-left: 3vw;
 }
 .WhoWeAre_img img {
-  width: 40vw;
-  object-fit: cover;
+  width: 100%;
+  border-radius: 2vw;
 }
 
 /* .WhoWeAre_img::after {
@@ -128,18 +128,16 @@ body {
 
 /* our products are */
 .our_products_are_container {
-  /* display: grid; */
-  /* grid-template-rows: repeat(2, 1auto); */
   padding: 5%;
-  color: white;
   background-color: rgb(0, 0, 0, 0.4);
+  color: var(--white_text);
 }
 .our_pro_r_haeding {
   display: flex;
   justify-content: center;
 }
 .our_pro_r_haeding span {
-  font-size: 3.5vw;
+  font-size: 5vw;
   padding: 0 0 5% 0;
 }
 .our_pro_r_icon_container {
@@ -152,31 +150,31 @@ body {
   display: flex;
 }
 .icon_img {
-  width: 5vw;
-  height: 5vw;
+  width: 7vw;
+  height: 7vw;
   margin: 0 2% 0 0;
-  background-color: white;
+  background-color: var(--white_text);
   border-radius: 50%;
   display: flex;
 }
 .icon_img img {
-  width: 5vw;
+  width: 7vw;
+  height: 7vw;
   object-fit: cover;
-  height: 5vw;
 }
 .icon_text h2 {
-  font-size: 1.2vw;
+  font-size: 1.5vw;
+  margin-bottom: 0.3vw;
 }
-.icon_text span {
-  font-size: 1vw;
+.icon_text p {
+  font-size: 1.3vw;
 }
 
 /* testimonials */
 .testimonials_outer_container {
-  padding: 15vw 30vw;
+  padding: 15vw 26vw;
   position: relative;
-  /* height: 30rem; */
-  background-color: whitesmoke;
+  background-color: var(--backgroung_color);
 }
 ul.testimonial_container {
   list-style: none;
@@ -190,24 +188,24 @@ ul.testimonial_container li.slide {
   flex: 0 0 100%;
   padding: 3vw;
   transition: transform 0.5s ease;
-  background-color: #fcc6e2;
+  background-color: var(--button_bg);
 }
 ul.testimonial_container span {
   display: block;
-  font-size: 1.1vw;
+  font-size: 1.5vw;
 }
 ul.testimonial_container h2 {
   margin-top: 1vw;
   font-size: 1.7vw;
 }
 
-.hero_buttons button {
-  font-size: 50px;
+.hero_buttons button i {
+  font-size: 3vw;
 }
 .hero_b1,
 .hero_b2 {
   position: absolute;
-  top: 45%;
+  top: 46%;
   background-color: transparent;
   border: none;
 }
@@ -219,7 +217,7 @@ ul.testimonial_container h2 {
 }
 .hero_indicators {
   position: absolute;
-  bottom: 50px;
+  bottom: 15%;
   left: 50%;
   transform: translateX(-50%);
   display: flex;
@@ -227,32 +225,38 @@ ul.testimonial_container h2 {
 .hero_b1 i,
 .hero_b2 i {
   font-size: 2vw;
-  color: #fcc6e2;
+  color: var(--button_bg);
+  transition: 500ms;
+}
+.hero_b1 i:hover,
+.hero_b2 i:hover {
+  color: var(--button_bg_hover);
 }
 
 .dot {
   display: inline-block;
-  height: 0.5vw;
-  width: 0.5vw;
-  margin: 0.1rem;
-  border-radius: 0.5rem;
-  background: #fcc6e2;
+  height: 1vw;
+  width: 1vw;
+  margin: 0.2vw;
+  border-radius: 1vw;
+  background: var(--button_bg);
   cursor: pointer;
   transition: 500ms;
 }
 .dot.active {
-  /* background-color: #979797; */
-  width: 1vw;
+  width: 2vw;
+}
+.dot:hover {
+  background-color: var(--button_bg_hover);
 }
 
 /* our rituals */
 .our_ritual_container {
-  background-color: #fcc6e2;
+  background-color: var(--backgroung_color);
 }
 .our_ritual_heading {
   text-align: center;
   padding: 5% 0 5% 0;
-  font-size: 2rem;
 }
 .our_ritual_heading h2 {
   font-size: 3.5vw;
@@ -261,22 +265,23 @@ ul.testimonial_container h2 {
   padding: 0 15% 0 15%;
   display: grid;
   grid-template-columns: repeat(5, 1fr);
-  grid-template-rows: repeat(2, 1fr);
   justify-items: center;
+  margin-bottom: 2vw;
 }
 .our_rituals_icons img {
   width: 6vw;
   object-fit: cover;
+  margin-bottom: 1vw;
 }
-.our_rituals_icons span {
-  font-size: 1vw;
+.our_rituals_icons p {
+  font-size: 1.3vw;
 }
 .paragraph {
-  padding: 0 10% 10% 10%;
+  padding: 0 8% 10% 8%;
 }
 .paragraph p {
   text-align: center;
-  font-size: 1.1vw;
+  font-size: 1.5vw;
 }
 
 /* bg image */
@@ -288,4 +293,7 @@ ul.testimonial_container h2 {
 .bg_img img {
   width: 100%;
   object-fit: cover;
+}
+* {
+  font-weight: lighter;
 }

@@ -6,32 +6,42 @@
   width: 50svw;
   height: fit-content;
   margin: 0 10% 20% 10%;
-  background-color: rgb(255, 255, 255);
+  background-color: var(--backgroung_color);
+  color: var(--text);
+  font-family: var(--heading);
   transition: top 0.5s ease-in-out;
   overflow-y: auto;
   padding-bottom: 5%;
   box-shadow: none;
+  border-radius: 0 0 1vw 1vw;
+  box-shadow: 5vw 5vw 10vw 2vw rgba(0, 0, 0, 0.3);
+  color: var(--black_text);
 }
 .close_btn {
   font-size: 1.5vw;
   text-align: right;
   padding: 1.5vw;
   cursor: pointer;
-  font-family: var(--heading);
+  position: absolute;
+  top: 0;
+  right: 0;
 }
 .logo_image,
 .logo_name {
   display: flex;
   justify-content: center;
-  font-size: 3vw;
+  font-size: 4vw;
   font-family: var(--logo);
   padding: 0.5vw;
 }
+.logo_image {
+  margin-top: 2vw;
+}
 .logo_image img {
-  width: 5vw;
+  width: 10vw;
   object-fit: cover;
   border-radius: 50%;
-  box-shadow: 5px 5px 20px 0px rgba(0, 0, 0, 0.3);
+  box-shadow: 1vw 1vw 1vw 0vw rgba(0, 0, 0, 0.3);
 }
 .form_container {
   display: flex;
@@ -44,45 +54,91 @@
   border-radius: 0;
   font-size: 1.5vw;
   padding: 0.8vw;
-  background-color: white;
-  border: 0.1vw solid black;
-  font-family: var(--heading);
+  background-color: var(--backgroung_color);
+  border: 0.1vw solid var(--black_text);
+  border-radius: 0.5vw;
+  color: var(--text);
+}
+.form_container input[type="email"]::placeholder,
+.form_container input[type="password"]::placeholder {
+  color: var(--black_text);
+  opacity: 0.5;
 }
 
+.form_container a {
+  text-decoration: none;
+  position: relative;
+  width: fit-content;
+}
 .forget_password {
-  font-size: 1vw;
+  font-size: 1.5vw;
+  color: var(--black_text);
+}
+.forget_password:hover {
+  color: var(--link_text);
 }
 
 .form_container input[type="button"] {
   width: 100%;
   height: 4vw;
-  border: 0.1vw solid black;
-  background-color: white;
+  border: 0.1vw solid var(--black_text);
+  border-radius: 0.5vw;
+  background-color: var(--backgroung_color);
+  color: var(--black_text);
   font-size: 1.5vw;
-  font-family: var(--heading);
+  transition: 0.5s ease-in-out;
 }
 .form_container input[type="button"]:hover {
-  background-color: #fcc6e2;
-  color: black;
-  border: 0.1vw solid black;
+  background-color: var(--button_bg_hover);
+  color: var(--text);
+  border: 0.1vw solid var(--button_border_hover);
 }
-.form_container a {
-  font-family: var(--heading);
-  text-decoration: none;
-}
+
 .sign_up {
   width: 100%;
   height: 4vw;
   font-size: 1.5vw;
-  background-color: #fcc6e2;
+  background-color: var(--backgroung_color);
+  border-radius: 0.5vw;
   display: flex;
   justify-content: center;
   align-items: center;
-  font-family: var(--heading);
+  border: 0.1vw solid var(--black_text);
+  transition: 0.5s ease-in-out;
+}
+.sign_up:hover {
+  background-color: var(--button_bg_hover);
+  border: 0.1vw solid var(--button_border_hover);
 }
 .sign_up a {
   margin-left: 10%;
+  color: var(--black_text);
+  position: relative;
+}
+.sign_up a:hover {
+  color: var(--link_text);
 }
 .login_icon {
   cursor: pointer;
+}
+.form_container a::before,
+.sign_up a::before {
+  content: "";
+  position: absolute;
+  width: 100%;
+  height: 0.1vw;
+  bottom: 0;
+  left: 0;
+  background-color: var(--black_text);
+  transform: scaleX(0);
+  transform-origin: bottom left;
+  transition: transform 0.3s ease-out;
+}
+.form_container a:hover::before,
+.sign_up a:hover::before {
+  transform: scaleX(1);
+  background-color: var(--link_text);
+}
+* {
+  font-weight: lighter;
 }

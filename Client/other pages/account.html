@@ -8,26 +8,56 @@
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
     /> -->
-    <!-- Google Fonts -->
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-
-    <link
-      href="https://fonts.googleapis.com/css2?family=Quicksand&display=swap"
-      rel="stylesheet"
-    />
-
-    <link
-      href="https://fonts.googleapis.com/css2?family=Dancing+Script&family=Quicksand&display=swap"
-      rel="stylesheet"
-    />
-    <!-- Google Fonts -->
+        <!-- Google Fonts -->
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    
+        <link
+          href="https://fonts.googleapis.com/css2?family=Great+Vibes&display=swap"
+          rel="stylesheet"
+        />
+        <link
+          href="https://fonts.googleapis.com/css2?family=Dancing+Script&family=Quicksand&display=swap"
+          rel="stylesheet"
+        />
+        <link
+          href="https://fonts.googleapis.com/css2?family=Alex+Brush&display=swap"
+          rel="stylesheet"
+        />
+    
+        <link
+          href="https://fonts.googleapis.com/css2?family=Poppins&display=swap"
+          rel="stylesheet"
+        />
+        <link
+          href="https://fonts.googleapis.com/css2?family=Quicksand&display=swap"
+          rel="stylesheet"
+        />
+        <link
+          href="https://fonts.googleapis.com/css2?family=Muli&display=swap"
+          rel="stylesheet"
+        />
+        <link
+          href="https://fonts.googleapis.com/css2?family=Lato&display=swap"
+          rel="stylesheet"
+        />
+        <link
+          href="https://fonts.googleapis.com/css2?family=Roboto&display=swap"
+          rel="stylesheet"
+        />
+        <link
+          href="https://fonts.googleapis.com/css2?family=Open+Sans&display=swap"
+          rel="stylesheet"
+        />
+        <!-- Google Fonts -->
 
     <link rel="stylesheet" href="CSS files/googleFont.css" />
+    <link rel="stylesheet" href="CSS files/color.css" />
     <link rel="stylesheet" href="CSS files/account.css" />
     <link rel="stylesheet" href="CSS files/cart.css" />
     <link rel="stylesheet" href="CSS files/loginForm.css" />
     <link rel="stylesheet" href="CSS files/header.css" />
+    <link rel="stylesheet" href="CSS files/word_spacing.css" />
   </head>
   <body>
     <!-- header -->
@@ -45,7 +75,7 @@
             </div>
             <div class="text">
               <h2>My Orders</h2>
-              <span>View and tract your orders</span>
+              <p>View and tract your orders</p>
             </div>
           </div>
           <div class="cart">
@@ -54,7 +84,7 @@
             </div>
             <div class="text">
               <h2>Cart</h2>
-              <span>Manage your cart</span>
+              <p>Manage your cart</p>
             </div>
           </div>
           <div class="profile">
@@ -63,7 +93,7 @@
             </div>
             <div class="text">
               <h2>Profile</h2>
-              <span>Manage your account info</span>
+              <p>Manage your account info</p>
             </div>
           </div>
         </div>
@@ -73,7 +103,7 @@
         <!-- Account Details -->
         <div class="account_details_container">
           <div class="account_deital_heading">Account Details</div>
-          <hr />
+          
           <div class="account_details">
             <h2>Name</h2>
             <span id="user_name">User Name</span>
@@ -103,8 +133,7 @@
               <input
                 type="button"
                 value="LOG OUT"
-                onmouseover="changeColor(this)"
-                onmouseout="restoreOriginalColors(this)"
+                onmouseover="changeColors(this)" 
                 onclick="logoutUser()"
               />
             </div>
@@ -266,7 +295,7 @@
         <!-- My Orders -->
         <div class="my_orders_container">
           <div class="my_orders_heading">My Orders</div>
-          <hr />
+         
           <ul class="myOrderProducts"></ul>
         </div>
         <!-- My Orders -->
@@ -274,7 +303,7 @@
         <!-- Cart -->
         <div class="my_cart_container">
           <div class="my_cart_heading">My Cart Products</div>
-          <hr />
+         
           <ul class="myCartProducts"></ul>
         </div>
         <!-- Cart -->
@@ -288,11 +317,10 @@
     <!-- Footer -->
 
     <script src="JavaScript files/account_option_selector.js"></script>
-    <script src="JavaScript files/NavbarFooterLoader.js"></script>
-    <script src="JavaScript files/loginButtonChanger.js"></script>
+    <script src="JavaScript files/NavbarFooterLoader.js"></script>    
     <script src="JavaScript files/cart.js"></script>
     <script src="JavaScript files/addToCart.js"></script>
-    <script src="JavaScript files/deleteAccount.js"></script>
+    <script src="JavaScript files/deleteAccount.js"></script>    
 
     <!-- pop up hide -->
     <script>
@@ -566,32 +594,34 @@
       var clickedDiv = null;
       function changeColor(element) {
         if (element !== clickedDiv) {
-          element.style.backgroundColor = "#fcc6e2";
-          element.style.border = "0.1vw solid black";
+          element.style.backgroundColor = "var(--button_bg)";
+          element.style.border = "0.1vw solid var(--black_text)";
         }
       }
 
       function changeColorsClick(div) {
         // Reset styles for the previously clicked div
         if (clickedDiv) {
-          clickedDiv.style.backgroundColor = "whitesmoke";
-          clickedDiv.style.border = "0.1vw solid black";
+          clickedDiv.style.backgroundColor = "var(--backgroung_color)";
+          clickedDiv.style.border = "0.1vw solid var(--backgroung_color)";
         }
 
         // Set styles for the clicked div
-        div.style.backgroundColor = "#fcc6e2"; 
-        div.style.color = "black"; 
+        div.style.backgroundColor = "var(--button_bg)"; 
+        div.style.color = "var(--text)"; 
 
         // Update the clickedDiv variable
         clickedDiv = div;
 
         //select div by skin type
         selectedSkinType = div.innerText;
+        console.log(selectedSkinType);
+        
       }
       function restoreOriginalColors(element) {        
         if (element !== clickedDiv) {
-          element.style.backgroundColor = "white";
-          element.style.border = "0.1vw solid black";
+          element.style.backgroundColor = "var(--backgroung_color)";
+          element.style.border = "0.1vw solid var(--backgroung_color)";
         }
       }
 
@@ -684,8 +714,7 @@
                         )}"
                           ><div
                             class="cart_product_buttons"
-                            onmouseover="changeColor(this)"            
-                            onmouseout="restoreOriginalColors(this)"
+                            onmouseover="changeColors(this)"            
                           >
                             Buy
                           </div></a

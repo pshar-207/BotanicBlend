@@ -16,26 +16,26 @@ function showShiipingReturns() {
 }
 
 var clickedDivCheck = description_button;
-clickedDivCheck.style.backgroundColor = "#fcc6e2";
+clickedDivCheck.style.backgroundColor = "var(--button_bg)";
 
 function changeColorsClickDescriptionShipping(div) {
   if (clickedDivCheck) {
-    clickedDivCheck.style.backgroundColor = "whitesmoke";
-    clickedDivCheck.style.border = "0.1vw solid black";
+    clickedDivCheck.style.backgroundColor = "transparent";
+    clickedDivCheck.style.border = "0.1vw solid var(--black_text)";
   }
 
-  div.style.backgroundColor = "#fcc6e2";
+  div.style.backgroundColor = "var(--button_bg)";
   clickedDivCheck = div;
 }
 function changeColorsDescriptionShipping(element) {
   if (element !== clickedDivCheck) {
-    element.style.backgroundColor = "#fcc6e2";
-    element.style.border = "0.1vw solid black";
+    element.style.backgroundColor = "var(--button_bg)";
+    element.style.border = "0.1vw solid var(--black_text)";
   }
 }
 function restoreOriginalColorsDescriptionShipping(element) {
   if (element !== clickedDivCheck) {
-    element.style.backgroundColor = "whitesmoke";
-    element.style.border = "0.1vw solid black";
+    element.style.backgroundColor = "transparent";
+    element.style.border = "0.1vw solid var(--black_text)";
   }
 }

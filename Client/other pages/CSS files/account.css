@@ -8,26 +8,26 @@
   top: 0;
   width: 100%;
   z-index: 2;
-  background-color: white;
+  background-color: var(--navbar);
 }
 body {
-  background-color: whitesmoke;
+  background-color: var(--backgroung_color);
+  color: var(--black_text);
   overflow-x: hidden;
   font-family: var(--heading);
 }
 .account_container {
   display: flex;
 }
+
 .left_side_options_container {
   width: 30%;
-  background-color: #fcc6e2;
+  background-color: var(--button_bg);
   padding: 5% 2% 0 2%;
   display: flex;
   flex-flow: column;
-  /* justify-content: center; */
   align-items: center;
 }
-
 .my_orders,
 .cart,
 .profile {
@@ -35,20 +35,23 @@ body {
   height: 5vw;
   margin-bottom: 15%;
 }
-.left_side_img img {
+.left_side_img {
   width: 3.5vw;
-  object-fit: cover;
   margin-right: 1vw;
+}
+.left_side_img img {
+  width: 100%;
+  object-fit: cover;
   cursor: pointer;
 }
 .text h2 {
   font-size: 1.8vw;
 }
-.text span {
+.text p {
   font-size: 1.2vw;
 }
 .text h2,
-.text span {
+.text p {
   cursor: pointer;
 }
 
@@ -62,18 +65,52 @@ body {
 .my_cart_heading {
   font-size: 3vw;
   padding: 0 0 3% 0;
+  border-bottom: 0.1vw solid var(--black_text);
 }
 .account_details {
   display: grid;
   width: 100%;
   grid-template-columns: 15% 75% 10%;
 }
-
 .account_details > * {
-  border-bottom: 0.1vw solid black;
+  border-bottom: 0.1vw solid var(--black_text);
   padding: 3% 0 3% 0;
   display: flex;
   align-items: center;
+}
+.account_details h2 {
+  font-size: 1.5vw;
+}
+.account_details span {
+  font-size: 1.5vw;
+}
+.delete_logout {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 1vw;
+}
+#deleteUserButton {
+  cursor: pointer;
+  font-size: 1.5vw;
+  position: relative;
+  height: 2vw;
+  transition: 0.3s ease-in-out;
+}
+#deleteUserButton:hover {
+  color: red;
+}
+#logoutButton input[type="button"] {
+  background-color: var(--button_bg);
+  padding: 0.8vw;
+  font-size: 1.5vw;
+  color: var(--black_text);
+  border: 0.1vw solid var(--button_border);
+  border-radius: 0.5vw;
+  transition: 0.5s ease-in-out;
+}
+#logoutButton input[type="button"]:hover {
+  background-color: var(--button_bg_hover);
+  border: 0.1vw solid var(--button_border_hover);
 }
 .account_details .edit {
   display: flex;
@@ -81,54 +118,43 @@ body {
 }
 .account_details .edit span {
   cursor: pointer;
-  color: black;
+  color: var(--text);
 }
-.account_details .edit span:hover {
-  color: #fa0081;
+.edit span {
+  position: relative;
 }
-.account_details h2 {
-  font-size: 1.2vw;
-  font-weight: 600;
+.edit span::before,
+#deleteUserButton::before {
+  content: "";
+  position: absolute;
+  width: 100%;
+  height: 0.1vw;
+  bottom: 0;
+  left: 0;
+  background-color: var(--black_text);
+  transform: scaleX(0);
+  transform-origin: bottom left;
+  transition: transform 0.3s ease-out;
 }
-.account_details span {
-  font-size: 1.2vw;
+#deleteUserButton::before {
+  background-color: red;
 }
-.delete_logout {
-  display: flex;
-  justify-content: space-between;
-  margin-top: 1vw;
-}
-
-#logoutButton input[type="button"] {
-  background-color: whitesmoke;
-  padding: 0.8vw;
-  font-size: 1vw;
-  border: 0.1vw solid black;
-}
-#deleteUserButton {
-  cursor: pointer;
-  font-size: 1.2vw;
-}
-#deleteUserButton:hover {
-  color: red;
+.edit span:hover::before,
+#deleteUserButton:hover::before {
+  transform: scaleX(1);
 }
 .edit_popup {
   position: absolute;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  background-color: #fcc6e2;
+  background-color: var(--button_bg);
+  border-radius: 1vw;
 }
 .name_edit {
   display: none;
   padding: 1vw;
   width: 30vw;
-}
-.cancel_save {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  font-size: 1.2vw;
 }
 .edit_close {
   display: flex;
@@ -141,33 +167,24 @@ body {
 .name {
   margin-left: 1vw;
   margin-bottom: 1vw;
-  font-size: 2vw;
+  font-size: 1.8vw;
   font-weight: 500;
+  color: var(--black_text);
 }
 .name_edit input[type="text"],
-.name_edit input[type="password"] {
+.name_edit input[type="password"],
+.name_edit input[type="email"],
+.name_edit input[type="date"] {
   box-sizing: border-box;
   border: none;
-  background-color: white;
-  border-radius: 0;
+  background-color: var(--backgroung_color);
+  border-radius: 1vw;
   padding: 1vw;
-  font-size: 1.2vw;
-  font-family: var(--heading);
-}
-#birthdayEditForm input[type="date"] {
   font-size: 1.5vw;
-  font-family: var(--heading);
-  padding: 0.5vw;
 }
-.cancel {
-  margin-left: 1rem;
-  cursor: pointer;
-}
-.save {
-  padding: 0.5vw 1.5vw;
-  color: black;
-  /* border-radius: 0.3rem; */
-  cursor: pointer;
+.name_edit input::placeholder {
+  color: var(--black_text);
+  opacity: 0.5;
 }
 #skinTypeEditForm {
   display: flex;
@@ -175,7 +192,6 @@ body {
 .q2_dry,
 .q2_oily,
 .q2_normal {
-  border: 0.1vw solid black;
   width: 10vw;
   height: 3vw;
   margin: 0.5vw;
@@ -183,23 +199,44 @@ body {
   display: flex;
   align-items: center;
   justify-content: center;
-  background-color: whitesmoke;
-  font-size: 1.2vw;
+  background-color: var(--backgroung_color);
+  font-size: 1.5vw;
+  border-radius: 1vw;
+  border: 0.1vw solid var(--backgroung_color);
+  cursor: pointer;
+  transition: 0.3s ease-in-out;
+}
+
+.cancel_save {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 1.5vw;
+}
+.cancel {
+  margin-left: 1.5vw;
+  cursor: pointer;
+}
+.save {
+  padding: 0.5vw 1.5vw;
+  cursor: pointer;
 }
 
 .my_orders_container ul {
   list-style: none;
 }
 .my_product_orders > * {
-  border-bottom: 0.1vw solid rgb(199, 199, 199);
-  /* padding: 20% 0 3% 0; */
+  border-bottom: 0.1vw solid var(--black_text);
   display: flex;
   align-items: center;
+}
+.my_product_orders > div {
+  padding: 2.5vw 0;
 }
 .my_product_orders {
   display: grid;
   width: 100%;
-  grid-template-columns: 10% 30% 20% 40%;
+  grid-template-columns: 8% 32% 20% 40%;
 }
 .produce_img,
 .product_name_rating,
@@ -207,22 +244,32 @@ body {
 .price_date {
   height: 4vw;
 }
+.product_name {
+  padding-bottom: 0.2vw;
+}
 .produce_img {
   display: flex;
   align-items: center;
 }
 .my_product_orders img {
-  width: 3.5vw;
+  width: 4vw;
   object-fit: contain;
   border-radius: 50%;
 }
+.product_rating {
+  width: 1.5vw;
+  display: flex;
+  flex-direction: row;
+}
 .product_name_rating img {
-  width: 1vw;
+  width: 1.5vw;
+  margin-right: 0.1vw;
 }
 .product_name_rating {
   display: flex;
   flex-direction: column;
   align-items: start;
+  justify-content: center;
 }
 .product_weight_qty,
 .price_date {
@@ -230,7 +277,6 @@ body {
   flex-direction: column;
   justify-content: center;
   align-items: start;
-  padding-left: 15%;
 }
 .price {
   display: flex;
@@ -243,16 +289,13 @@ body {
   height: 2vw;
   display: flex;
   align-items: end;
-  font-size: 1.2vw;
+  font-size: 1.5vw;
 }
 
 .qty,
 .Purchase_date {
   height: 2vw;
-  font-size: 1.2vw;
-}
-.description {
-  font-size: 0.5rem;
+  font-size: 1.5vw;
 }
 
 /* MyCart */
@@ -264,44 +307,64 @@ body {
   align-items: center;
 }
 .cart_product_image img {
-  width: 15vw;
+  width: 18vw;
   object-fit: contain;
+  border-radius: 1vw;
 }
 
 .cart_product_buttons {
-  background-color: whitesmoke;
+  background-color: var(--button_bg);
   display: flex;
-  height: 2vw;
-  width: 15vw;
-  font-size: 1.2vw;
+  height: 2.5vw;
+  width: 18vw;
+  font-size: 1.5vw;
   justify-content: center;
   align-items: center;
-  color: black;
-  border: 0.1rem solid black;
-  border-radius: 0.1rem;
-  /* padding: 3% 0 3% 0; */
-  transition: background-color 0.5s, color 0.5s;
+  border: 0.1vw solid var(--button_border);
+  border-radius: 0.5vw;
+  transition: 0.5s ease-in-out;
+}
+.cart_product_buttons:hover {
+  background-color: var(--button_bg_hover);
+  border: 0.1vw solid var(--button_border_hover);
 }
 .cart_product_name,
 .cart_product_price {
-  font-size: 1.2vw;
+  font-size: 1.5vw;
 }
 .cart_product_section a {
   text-decoration: none;
+  color: var(--black_text);
 }
 .myCartProducts {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(20vw, max-content));
+  grid-template-columns: repeat(auto-fit, minmax(15vw, max-content));
   justify-content: space-between;
   padding-left: 0;
   padding: 5% 0 0 0;
+  gap: 3.5vw;
 }
 .myCartProducts li {
   list-style: none;
-  margin-bottom: 0.5rem;
+  margin-bottom: 1.5vw;
+}
+.cart_product_rating {
+  width: 1vw;
+  display: flex;
 }
 .cart_product_rating img {
-  width: 1.2vw;
+  width: 100%;
+  margin-right: 0.1vw;
+}
+.CartProductImagAccounre,
+.cart_product_name,
+.cart_product_rating,
+.cart_product_price {
+  margin-bottom: 0.5vw;
+}
+.cart_product_name {
+  width: 18vw;
+  word-wrap: break-word;
 }
 /* selector */
 .account_details_container {
@@ -313,4 +376,7 @@ body {
 }
 .price_date {
   align-items: end;
+}
+* {
+  font-weight: lighter;
 }

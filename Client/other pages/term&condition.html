@@ -9,21 +9,51 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 
     <link
-      href="https://fonts.googleapis.com/css2?family=Quicksand&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Great+Vibes&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Dancing+Script&family=Quicksand&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Alex+Brush&display=swap"
       rel="stylesheet"
     />
 
     <link
-      href="https://fonts.googleapis.com/css2?family=Dancing+Script&family=Quicksand&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Poppins&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Quicksand&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Muli&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Lato&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Roboto&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Open+Sans&display=swap"
       rel="stylesheet"
     />
     <!-- Google Fonts -->
 
     <link rel="stylesheet" href="CSS files/googleFont.css" />
+    <link rel="stylesheet" href="CSS files/color.css" />
     <link rel="stylesheet" href="CSS files/term&condition.css" />
     <link rel="stylesheet" href="CSS files/cart.css" />
     <link rel="stylesheet" href="CSS files/loginForm.css" />
     <link rel="stylesheet" href="CSS files/header.css" />
+    <link rel="stylesheet" href="CSS files/word_spacing.css" />
   </head>
   <body>
     <!-- header -->
@@ -129,15 +159,17 @@
           answer.style.visibility = "hidden";
           answer.style.height = "0px";
           span.textContent = "+";
-          parentDiv.style.backgroundColor = "white";
-          parentDiv.style.color = "black";
+          parentDiv.style.backgroundColor = "var(--backgroung_color)";
+          parentDiv.style.color = "var(--text)";
+          parentDiv.style.borderRadius = "0.5vw";
         } else {
           answer.style.opacity = "1";
           answer.style.visibility = "visible";
           answer.style.height = "auto";
           span.textContent = "-";
-          parentDiv.style.backgroundColor = "#fcc6e2";
-          parentDiv.style.color = "black";
+          parentDiv.style.backgroundColor = "var(--button_bg)";
+          parentDiv.style.color = "var(--text)";
+          parentDiv.style.borderRadius = "0.5vw 0.5vw 0 0";
         }
       }
     </script>

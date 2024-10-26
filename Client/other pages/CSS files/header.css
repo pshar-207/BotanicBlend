@@ -8,7 +8,7 @@
 
 /* Instagram link */
 .instagram_link {
-  background-color: rgb(52, 52, 52);
+  background-color: var(--navbar_instagram);
   height: fit-content;
   display: flex;
   justify-content: center;
@@ -18,10 +18,10 @@
 }
 .instagram_link a {
   text-decoration: none;
-  color: rgb(255, 255, 255);
+  color: var(--white_text);
   font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
     Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
-  font-size: 1.2vw;
+  font-size: 1.5vw;
 }
 /* Instagram link */
 
@@ -46,7 +46,7 @@
   display: flex;
   align-items: center;
   text-decoration: none;
-  color: black;
+  color: var(--black_text);
 }
 .BB_logo_text {
   font-family: var(--logo);
@@ -67,7 +67,7 @@
 }
 .right_nav a {
   text-decoration: none;
-  color: black;
+  color: var(--black_text);
 }
 .cart_icon button,
 .login_icon button {
@@ -79,6 +79,7 @@
   font-size: 1.7vw;
   display: flex;
   align-items: center;
+  color: var(--black_text);
 }
 
 .shop,
@@ -90,19 +91,30 @@
   height: 100%;
   display: flex;
   align-items: center;
+  color: var(--black_text);
+}
+.shop {
+  height: 6vw;
 }
 
 .shopDropDownOuterContainer {
   position: absolute;
-  top: 4vw;
+  top: 5vw;
   right: 0;
   padding: 1% 3% 2% 3%;
   width: 35vw;
-  background-color: rgb(255, 255, 255);
-  display: none;
+  background-color: var(--navbar);
+  border-radius: 0 0 0 0.5vw;
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(-50vw);
+  transition: all 0.3s ease;
+  z-index: -1;
 }
 .shop:hover .shopDropDownOuterContainer {
-  display: block;
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
 }
 .shopDropDownInnerContainer {
   display: flex;
@@ -113,7 +125,7 @@
 .shopDropDownInnerContainer a {
   white-space: nowrap;
   text-decoration: none;
-  color: black;
+  color: var(--black_text);
   transition: color 0.3s ease-in-out;
 }
 .products_collection,
@@ -129,12 +141,11 @@
 .shopByCategory span,
 .shopBySkinType span {
   font-size: 1.4vw;
-  font-weight: bold;
-  margin-bottom: 0.5rem;
+  margin-bottom: 1vw;
 }
 .shopByCategory a,
 .shopBySkinType a {
-  line-height: 1.5rem;
+  margin-bottom: 0.3vw;
 }
 .products_collection a,
 .shopByCategory a,
@@ -148,7 +159,7 @@
 .shopBySkinType a {
   position: relative;
   text-decoration: none;
-  color: #000; /* Set your desired text color */
+  color: var(--black_text);
   font-size: 1.3vw;
   font-family: var(--heading);
   line-height: 1.8vw;
@@ -157,7 +168,6 @@
   font-size: 1.4vw;
 }
 .products_collection {
-  font-size: 1.2rem;
   gap: 5%;
 }
 .products_collection a::before,
@@ -166,10 +176,10 @@
   content: "";
   position: absolute;
   width: 100%;
-  height: 1px;
+  height: 0.1vw;
   bottom: 0;
   left: 0;
-  background-color: #000;
+  background-color: var(--black_text);
   transform: scaleX(0);
   transform-origin: bottom left;
   transition: transform 0.3s ease-out;
@@ -191,3 +201,6 @@
 /* right navbar */
 
 /* Navbar */
+* {
+  font-weight: lighter;
+}

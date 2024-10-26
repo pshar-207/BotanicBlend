@@ -2,22 +2,27 @@
   display: grid;
   grid-template-columns: repeat(4, auto);
   grid-template-rows: repeat(3, auto);
-  gap: 0.5vw;
-  padding: 15vw 10vw;
+  gap: 0.7vw;
+  padding: 10vw 5vw;
   justify-items: center;
-  align-items: center;
+  align-items: baseline;
+  font-family: var(--heading);
+  background-color: var(--backgroung_color);
+  color: var(--black_text);
 }
 .prons_img {
   width: 30%;
   object-fit: cover;
 }
 .prons_heading {
-  font-size: 2vw;
+  font-size: 1.5vw;
   font-weight: bold;
-  font-family: var(--heading);
 }
 .prons_text {
-  font-size: 1vw;
+  font-size: 1.3vw;
   text-align: center;
-  font-family: var(--heading);
+  padding: 0 1vw;
+}
+* {
+  font-weight: lighter;
 }

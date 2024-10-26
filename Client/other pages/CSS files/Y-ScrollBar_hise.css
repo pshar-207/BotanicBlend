@@ -1,0 +1,6 @@
+body {
+  overflow: scroll; /* or auto */
+}
+body::-webkit-scrollbar {
+  display: none; /* Hides the scrollbar */
+}

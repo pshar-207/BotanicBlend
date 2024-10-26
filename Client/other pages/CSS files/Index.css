@@ -1,6 +1,6 @@
 body {
   overflow-x: hidden;
-  background-color: whitesmoke;
+  background-color: var(--backgroung_color);
   width: 100vw;
   margin: 0;
   padding: 0;
@@ -11,4 +11,7 @@ body {
   top: 0;
   width: 100%;
   z-index: 4;
+}
+* {
+  font-weight: lighter;
 }

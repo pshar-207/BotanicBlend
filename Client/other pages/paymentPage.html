@@ -9,21 +9,51 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 
     <link
-      href="https://fonts.googleapis.com/css2?family=Quicksand&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Great+Vibes&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Dancing+Script&family=Quicksand&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Alex+Brush&display=swap"
       rel="stylesheet"
     />
 
     <link
-      href="https://fonts.googleapis.com/css2?family=Dancing+Script&family=Quicksand&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Poppins&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Quicksand&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Muli&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Lato&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Roboto&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Open+Sans&display=swap"
       rel="stylesheet"
     />
     <!-- Google Fonts -->
 
     <link rel="stylesheet" href="CSS files/googleFont.css" />
+    <link rel="stylesheet" href="CSS files/color.css" />
     <link rel="stylesheet" href="CSS files/paymentPage.css" />
     <link rel="stylesheet" href="CSS files/header.css" />
     <link rel="stylesheet" href="CSS files/loginForm.css" />
     <link rel="stylesheet" href="CSS files/cart.css" />
+    <link rel="stylesheet" href="CSS files/word_spacing.css" />
   </head>
   <body>
     <!-- header -->
@@ -333,10 +363,12 @@
 
       document.querySelector(
         ".subTotalAmount"
-      ).innerHTML = `&#8377; ${subTotal}`;
+      ).innerHTML = `&#8377; ${subTotal} `;
       var subTotalGST = (subTotal * 18) / 100;
 
-      document.querySelector(".gstAmount").innerHTML = `&#8377; ${subTotalGST}`;
+      document.querySelector(
+        ".gstAmount"
+      ).innerHTML = `+ &#8377; ${subTotalGST}`;
       document.querySelector(".totalAmount").innerHTML = `&#8377; ${
         subTotal + subTotalGST
       }`;
@@ -506,6 +538,7 @@
       const differentAdd_container = document.querySelector(
         ".differentAdd_container"
       );
+      const diffAddress = document.querySelector(".diffAddress");
       billingRadioDiffAddress.addEventListener("change", () => {
         const hiddenInputs = document.querySelectorAll(
           ".differentAdd_container input"
@@ -516,6 +549,8 @@
         differentAdd_container.style.display = billingRadioDiffAddress.checked
           ? "block"
           : "none";
+
+        diffAddress.style.borderRadius = "0";
       });
 
       billingRadioSameAddress.addEventListener("change", () => {
@@ -528,6 +563,8 @@
         differentAdd_container.style.display = billingRadioSameAddress.checked
           ? "none"
           : "block";
+
+        diffAddress.style.borderRadius = "0 0 0.5vw .5vw";
       });
       const hiddenInputs = document.querySelectorAll(
         ".differentAdd_container input"
