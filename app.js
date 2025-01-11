@@ -22,7 +22,7 @@ app.use(
   })
 );
 
-const port = 3000;
+const port = 3306;
 
 // Serve static files from the 'public' directory
 app.use(express.static(path.join(__dirname, "Client")));
@@ -35,7 +35,7 @@ const pool = mysql.createPool({
   user: process.env.DB_USER,
   password: process.env.DB_PASSWORD,
   database: process.env.DB_NAME,
-  port: 3306,
+  port: process.env.PORT,
   // ssl: {
   //   ca: fs.readFileSync(__dirname + `${process.env.CA_PATH}`),
   //   rejectUnauthorized: true,
