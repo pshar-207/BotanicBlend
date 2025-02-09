@@ -27,7 +27,7 @@ const port = process.env.DB_PORT || 3306;
 // Serve static files from the 'public' directory
 app.use(express.static(path.join(__dirname, "Client")));
 
-const fs = require("fs");
+// const fs = require("fs");
 const { log } = require("console");
 
 const pool = mysql.createPool({
@@ -37,7 +37,8 @@ const pool = mysql.createPool({
   database: process.env.DB_NAME,
   port: process.env.DB_PORT,
   ssl: {
-    ca: fs.readFileSync(__dirname + `${process.env.CA_PATH}`),
+    // ca: fs.readFileSync(__dirname + `${process.env.CA_CERTIFICATE}`),
+    ca: process.env.CA_CERTIFICATE.replace(/\\n/g, "\n"),
     rejectUnauthorized: true,
   },
 });
